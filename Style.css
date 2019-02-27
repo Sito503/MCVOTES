@@ -1,0 +1,109 @@
+<!Doctype html>
+<html>
+
+<head>
+
+    <title>Advanced Mini-Site</title>
+    <link href="Style.css" rel="stylesheet" type="test/css">
+
+    <style>
+        body { color: #3f212e; background: #ffffff; font: 14px Helvetica, Arial, Sans-serif ; }
+        #header {width: 960px; min-height: 150px; margin: 0 auto; }
+        #navigation { width: 960px; margin: 0 auto; }
+        #container { overflow: auto; width: 960px; margin: 0 auto; }
+        #content { width: 960px; min-height: 400px; margin: 0 auto;  background: #fff;}
+        #contentleft { width: 580px; float: left; margin-right: 20px; }
+        #sidebar { width: 280px; float: left; }
+        #footer { width: 960px; margin: 0 auto; }
+
+    </style>
+</head>
+
+<body>
+<div id ="header">
+
+</div><!--header-->
+
+<!--<div id ="navigation">
+    <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Contact</a></li>
+        <li><a href="">Candidates</a></li>
+        <li><a href="">Quiz</a></li>
+    </ul>
+
+</div>--><!--navigation-->
+
+<div class ="navigation_bar">
+    <ul>
+        <li><a href="index.html" id= "onlink">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="Candidates.html">Candidates</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+    </ul>
+
+</div><!--class--navigation-->
+
+<div id="container">
+
+    <div id="content">
+
+        <div id="contentleft">
+
+            <h1>Welcome to the MC VOTES Site</h1>
+            <p>Im thinking about giving a brief description</p>
+            <p>here but idk if it's needed or if i can make it look good</p>
+
+        </div><!--contentleft-->
+
+
+        <div id="sidebar">
+
+            <div class="sidebar-element">
+                <h3>About the site</h3>
+                <p>it's a sote about elections for Montgomerycollege</p>
+                <p> but it may change a bit in the coming time
+            </div><!--sidebar-element-->
+
+            <div class="sidebar-element">
+                <h3>Unordered List</h3>
+                <ul>
+                    <li><a href="">List Item #1</a></li>
+                    <li><a href="">List Item #2</a></li>
+                    <li><a href="">List Item #3</a></li>
+                </ul>
+            </div><!--sidebar-element-->
+
+        </div><!--sidebar-->
+
+    </div><!--content-->
+</div><!--container-->
+
+<!--<div id="footer">
+
+    <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Contact</a></li>
+        <li><a href="">Quiz</a></li>
+    </ul>
+    <p>&copy;2010 MCVOTES.com</p>
+
+</div>--><!--footer-->
+<div class ="footer_bar">
+    <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Contact</a></li>
+        <li><a href="">Quiz</a></li>
+    </ul>
+
+</div><!--footer_bar-->
+</body>
+
+
+
+</html>
+
