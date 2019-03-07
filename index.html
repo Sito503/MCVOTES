@@ -1,115 +1,85 @@
-    body {
-        margin: auto;
-        background: #efefef;
-        font-family: Arial;
-    }
-    .navigation_bar{
-        margin: auto;
-        border-bottom: 1px solid #000000;
-        width: 860px;
-        padding: 0px 20px 0px 20px;
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Advanced Mini-Site</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.13.1/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.13.1/utils/Draggable.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+  </head>
 
-    }
-    .navigation_bar ul{
-        padding: 0;
-        list-style: none;
+  <body>
+    <ul class="topnav">
+      <li><a class="active" href="#home">Home</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li class="right"><a href="#about">About</a></li>
+    </ul>
 
-    }
-    .navigation_bar ul li{
-        float: left;
-        font-size: 16px;
-        font-weight: bold;
-        margin-right: 10px;
-    }
-    .navigation_bar il li a {
-        text-decoration: none;
-        color: #000000;
-        background: #6db1e4;
-        border: 1px solid #000000;
-        border-bottom: none;
-        padding: 22px 20px 22px 20px;
-        -webkit-border-top-right-radius: 10px;
-        -webkit-border-top-left-radius: 10px;
-        -moz-border-radius-topleft: 10px;
-        -moz-border-radius-topright: 10px;
-        width: 75px;
-        display: block;
-        text-align: center;
-    }
-    .navigation_bar ul li a:hover{
-        text-decoration: none;
-        color: #000000;
-        background: #96e0e9;
-        -moz-transition: background-color 200ms ease-in;
-        -webkit-transition: background-color 200ms ease-in;
-        -ms-transition: background-color 200ms ease-in;
-        -o-transition: background-color 200ms ease-in;
-        transition: background-color 200ms ease-in;
-    }
-    .navigation_bar ul li a#onlink{
-        background: #ffffff;
-        color: #000000;
-        border-bottom: 1px solid #ffffff;
-    }
-    .navigation_bar ul li a#onlink:hover{
-        background: #ffffff;
-        color: #000000;
-    }
+    <div style="padding:0 16px;">
+      <h2>Responsive Topnav Example</h2>
+      <p>
+        This example use media queries to stack the topnav vertically when the
+        screen size is 600px or less.
+      </p>
+      <p>
+        You will learn more about media queries and responsive web design later
+        in our CSS Tutorial.
+      </p>
+      <h4>Resize the browser window to see the effect.</h4>
+    </div>
 
-    <!--the end of navigation part>
+    <div>
+      <div id="list">
+        <div id="char">2</div>
+        <div>1</div>
+        <div></div>
+        <div>4---------</div>
+        <div>5---------</div>
+        <div>6---------</div>
+      </div>
+    </div>
 
-
-
-
-
-        .footer_bar{
-            margin: auto;
-            border-bottom: 1px solid #000000;
-            width: 860px;
-            padding: 0px 20px 0px 20px;
-
-        }
-    .footer_bar ul{
-        padding: 0;
-        list-style: none;
-
-    }
-    .footer_bar ul li{
-        float: left;
-        font-size: 16px;
-        font-weight: bold;
-        margin-right: 10px;
-    }
-    .footer_bar il li a {
-        text-decoration: none;
-        color: #000000;
-        background: #6db1e4;
-        border: 1px solid #000000;
-        border-bottom: none;
-        padding: 20px 20px 20px 20px;
-        -webkit-border-top-right-radius: 10px;
-        -webkit-border-top-left-radius: 10px;
-        -moz-border-radius-topleft: 10px;
-        -moz-border-radius-topright: 10px;
-        width: 75px;
-        display: block;
-        text-align: center;
-    }
-    .footer_bar ul li a:hover{
-        text-decoration: none;
-        color: #000000;
-        background: #96e0e9;
-        -moz-transition: background-color 200ms ease-in;
-        -webkit-transition: background-color 200ms ease-in;
-        -ms-transition: background-color 200ms ease-in;
-        -o-transition: background-color 200ms ease-in;
-        transition: background-color 200ms ease-in;
-    }
-    .footer_bar ul li a#onlink{
-        background: #ffffff;
-        color: #000000;
-    }
-    .footer_bar ul li a#onlink:hover{
-        background: #ffffff;
-        color: #000000;
-    }
+    <div id="container">
+      <div class="buddy" style="display: block;">
+        <div class="question">What do you think about this pupper?</div>
+        <div
+          class="avatar"
+          style="display: block; background-image: url(https://cdn.theatlantic.com/assets/media/img/photo/2019/02/photos-2019-westminster-dog-show/p01_1096566756-1/original.jpg)"
+        ></div>
+      </div>
+      <div class="buddy">
+        <div class="question">What do you think about this pupper?</div>
+        <div
+          class="avatar"
+          style="display: block; background-image: url(https://dynaimage.cdn.cnn.com/cnn/w_768,h_1024,c_scale/https%3A%2F%2Fdynaimage.cdn.cnn.com%2Fcnn%2Fx_1229%2Cy_0%2Cw_2712%2Ch_3616%2Cc_crop%2Fhttps%253A%252F%252Fstamp.static.cnn.io%252F5b7ac48b4db3d70020c01c13%252Fshutterstock_1081879181.jpg)"
+        ></div>
+      </div>
+      <div class="buddy">
+        <div
+          class="avatar"
+          style="display: block; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfwp3l9aas1CvzKEWb0saXNAKEq5dNgoupt81HqRXooTjHcVxmeA)"
+        ></div>
+      </div>
+      <div class="buddy">
+        <div
+          class="avatar"
+          style="display: block; background-image: url(https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/Common-dog-behaviors-explained.jpg?itok=FSzwbBoi)"
+        ></div>
+      </div>
+      <div class="buddy">
+        <div class="question">What do you think about this dog?</div>
+        <div
+          class="avatar"
+          style="display: block; background-image: url(hhttps://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/d/domestic-dog_thumb.ngsversion.1546554600360.adapt.1900.1.jpg)"
+        ></div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
