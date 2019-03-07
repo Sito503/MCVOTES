@@ -1,5 +1,5 @@
 createSortable("#list");
-
+let answers = [];
 function createSortable(selector) {
   var sortable = document.querySelector(selector);
   Draggable.create(sortable.children, {
@@ -82,6 +82,7 @@ $(document).ready(function() {
       .remove();
 
     $(this).append('<div class="status like">Like!</div>');
+    answers.push("yes");
     if ($(this).is(":last-child")) {
       $(".buddy:nth-child(1)")
         .removeClass("rotate-left rotate-right")
@@ -103,12 +104,11 @@ $(document).ready(function() {
       .find(".status")
       .remove();
     $(this).append('<div class="status dislike">Dislike!</div>');
-
+    answers.push("no");
     if ($(this).is(":last-child")) {
       $(".buddy:nth-child(1)")
         .removeClass("rotate-left rotate-right")
         .fadeIn(300);
-      alert("OUPS");
     } else {
       $(this)
         .next()
