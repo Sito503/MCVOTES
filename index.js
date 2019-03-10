@@ -125,16 +125,33 @@ const questionSet = {
     ["Food", "Activities", "Career Workshops", "Book cost", "1231"]
   ]
 };
-function startQuiz(questionSet) {
-  for (let question in questionSet.keys) {
-    questionProps = questionSet[question];
-    questionType = questionProps[0];
-    if (questionType == "T or F") {
-      // use the tinder style
-    } else if (questionType == "Ranking") {
-      // use the ranking style question
-    } else {
-      console.log("Error");
-    }
+function* questionGen() {
+  for (var question in questionSet) {
+    yield question;
+  }
+}
+const questionIter = questionGen();
+
+function startQuiz() {
+  list_of_questions = questionSet;
+  // for (let question in questionSet) {
+  questionProps = questionSet[question];
+  questionType = questionProps[0];
+  if (questionType == "T or F") {
+    // use the tinder style
+  } else if (questionType == "Ranking") {
+    // use the ranking style question
+  } else {
+    console.log("Error");
+  }
+  // }
+}
+
+function showNextQuestion() {
+  valueOfTheQuestionGen = questionIter.next()[
+    (value, isDone)
+  ] = valueOfTheQuestionGen;
+  if (isDone) {
+    return null;
   }
 }
