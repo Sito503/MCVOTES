@@ -120,9 +120,6 @@ ul.topnav li.right {
   left: 40px;
   text-shadow: none;
 }
-.question {
-  z-index: 3;
-  color: black;
-  /*   padding-bottom:20px; */
-  text-align: center;
+.container {
+  margin: 0 auto;
 }
