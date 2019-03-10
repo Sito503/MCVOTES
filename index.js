@@ -1,5 +1,5 @@
 createSortable("#list");
-let answers = [];
+
 function createSortable(selector) {
   var sortable = document.querySelector(selector);
   Draggable.create(sortable.children, {
@@ -25,7 +25,7 @@ function sortablePress() {
 }
 
 function sortableDragStart() {
-  TweenLite.set(this.target, { color: "#88CE02" });
+  TweenLite.set(this.target, { color: "#0E8AD9" });
 }
 
 function sortableDrag() {
@@ -82,7 +82,6 @@ $(document).ready(function() {
       .remove();
 
     $(this).append('<div class="status like">Like!</div>');
-    answers.push("yes");
     if ($(this).is(":last-child")) {
       $(".buddy:nth-child(1)")
         .removeClass("rotate-left rotate-right")
@@ -95,6 +94,7 @@ $(document).ready(function() {
     }
   });
 
+
   $(".buddy").on("swipeleft", function() {
     $(this)
       .addClass("rotate-right")
@@ -104,11 +104,12 @@ $(document).ready(function() {
       .find(".status")
       .remove();
     $(this).append('<div class="status dislike">Dislike!</div>');
-    answers.push("no");
+
     if ($(this).is(":last-child")) {
       $(".buddy:nth-child(1)")
         .removeClass("rotate-left rotate-right")
         .fadeIn(300);
+      alert("OUPS");
     } else {
       $(this)
         .next()
@@ -122,7 +123,7 @@ const questionSet = {
   "Do you think canditaes need to fight for equalty?": ["T or F"],
   "Rank the issues in terms of importance to you?": [
     "Ranking",
-    ["Food", "Activities", "Career Workshops", "Book cost", "1231"]
+    ["Food", "Activities", "Career Workshops", "Book cost", "Library Hours"]
   ]
 };
 function* questionGen() {
@@ -154,4 +155,56 @@ function showNextQuestion() {
   if (isDone) {
     return null;
   }
+}
+/*click button, only select all the DOM element right now*/  
+function clickFunction() {
+ 
+  var select= [];
+  var all = document.getElementsByTagName("*");
+
+ for (var i=0, max=all.length; i < max; i++) {
+  
+    console.log(document.getElementsByClassName('pro')+i);
+ 
+ }
+
+ 
+}
+/*check boxes*/
+(function() {
+    var input = document.querySelectorAll(".items input");
+    var orders = [];
+    SelOrder (input, orders);
+})();
+
+ //order of selection                           
+function SelOrder (input, orders) {
+  for(var i=0; i< input.length; i++) {
+    input[i].addEventListener("change", function(e){
+      if(e.target.checked) {
+        orders.push(e.target.id);
+      } else {
+        for (var k = 0; k < orders.length; k ++) {
+          if(orders[k] == e.target.id) {
+            orders.splice(k, 1);
+          }
+        }
+      }
+      for(var l =0; l <orders.length; l++) {
+        for(var j=0; j< input.length; j++) {
+          if (input[j].id == orders[l]) {
+            input[j].className = "order" + (l + 1);
+          }
+        }
+      }
+    }, false);
+  }
+//clear button
+  var clear = document.querySelector(".clr");
+  clear.addEventListener("click", function() {
+    orders = [];
+    for(var i = 0; i < input.length; i++) {
+      input[i].checked = false;
+    }
+  },false);
 }
