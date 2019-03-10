@@ -117,3 +117,24 @@ $(document).ready(function() {
     }
   });
 });
+
+const questionSet = {
+  "Do you think canditaes need to fight for equalty?": ["T or F"],
+  "Rank the issues in terms of importance to you?": [
+    "Ranking",
+    ["Food", "Activities", "Career Workshops", "Book cost", "1231"]
+  ]
+};
+function startQuiz(questionSet) {
+  for (let question in questionSet.keys) {
+    questionProps = questionSet[question];
+    questionType = questionProps[0];
+    if (questionType == "T or F") {
+      // use the tinder style
+    } else if (questionType == "Ranking") {
+      // use the ranking style question
+    } else {
+      console.log("Error");
+    }
+  }
+}
