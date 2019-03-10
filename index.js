@@ -1,4 +1,5 @@
 createSortable("#list");
+
 let answers = [];
 function createSortable(selector) {
     var sortable = document.querySelector(selector);
@@ -138,4 +139,56 @@ function startQuiz(questionSet)
             console.log("Error");
         }
     }
+
+/*click button, only select all the DOM element right now*/
+function clickFunction() {
+
+  var select= [];
+  var all = document.getElementsByTagName("*");
+
+ for (var i=0, max=all.length; i < max; i++) {
+
+    console.log(document.getElementsByClassName('pro')+i);
+
+ }
+
+
+}
+/*check boxes*/
+(function() {
+    var input = document.querySelectorAll(".items input");
+    var orders = [];
+    SelOrder (input, orders);
+})();
+
+ //order of selection
+function SelOrder (input, orders) {
+  for(var i=0; i< input.length; i++) {
+    input[i].addEventListener("change", function(e){
+      if(e.target.checked) {
+        orders.push(e.target.id);
+      } else {
+        for (var k = 0; k < orders.length; k ++) {
+          if(orders[k] == e.target.id) {
+            orders.splice(k, 1);
+          }
+        }
+      }
+      for(var l =0; l <orders.length; l++) {
+        for(var j=0; j< input.length; j++) {
+          if (input[j].id == orders[l]) {
+            input[j].className = "order" + (l + 1);
+          }
+        }
+      }
+    }, false);
+  }
+//clear button
+  var clear = document.querySelector(".clr");
+  clear.addEventListener("click", function() {
+    orders = [];
+    for(var i = 0; i < input.length; i++) {
+      input[i].checked = false;
+    }
+  },false);
 }
