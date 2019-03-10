@@ -167,16 +167,23 @@ function clickFunction() {
   }
 }
 /*check boxes*/
-(function() {
-  var input = document.querySelectorAll(".items input");
+$(document).ready(function() {
+  var checklistElements = document.querySelectorAll(".ui-checkbox");
   var orders = [];
-  SelOrder(input, orders);
-})();
+  SelOrder(checklistElements, orders);
+});
 
 //order of selection
-function SelOrder(input, orders) {
-  for (var i = 0; i < input.length; i++) {
-    input[i].addEventListener(
+function SelOrder(checklistElements, orders) {
+  checkboxs = [];
+  checkboxLabels = [];
+  for (var elem of checklistElements) {
+    [checkboxLabel, checkbox] = elem.children;
+    checkboxs.push(checkbox);
+    checkboxLabels.push(checkboxLabel);
+  }
+  for (var i = 0; i < checkboxs.length; i++) {
+    checkboxs[i].addEventListener(
       "change",
       function(e) {
         if (e.target.checked) {
@@ -189,9 +196,9 @@ function SelOrder(input, orders) {
           }
         }
         for (var l = 0; l < orders.length; l++) {
-          for (var j = 0; j < input.length; j++) {
-            if (input[j].id == orders[l]) {
-              input[j].className = "order" + (l + 1);
+          for (var j = 0; j < checkboxs.length; j++) {
+            if (checkboxs[j].id == orders[l]) {
+              checkboxs[j].className = "order" + (l + 1);
             }
           }
         }
@@ -204,9 +211,10 @@ function SelOrder(input, orders) {
   clear.addEventListener(
     "click",
     function() {
-      orders = [];
-      for (var i = 0; i < input.length; i++) {
-        input[i].checked = false;
+      for (var i = 0; i < checkboxs.length; i++) {
+        checkboxs[i].checked = false;
+        checkboxLabels[i].classList.remove("ui-checkbox-on");
+        checkboxLabels[i].classList.add("ui-checkbox-off");
       }
     },
     false
