@@ -99,31 +99,41 @@ function showNextQuestion() {
   questionProps = questionSet[question];
   questionType = questionProps[0];
   questionContainer = document.getElementById("question-container");
+  questionContainer.innerHTML = "";
+  wrapperDiv = document.createElement("div");
+  wrapperDiv.classList.add("wrapper");
+  questionDiv = document.createElement("div");
+  questionDiv.classList.add("question");
+  questionDiv.innerText = question;
+  wrapperDiv.appendChild(questionDiv);
 
   if (questionType == "T or F") {
     // use the tinder style
-    wrapperDiv = document.createElement("div");
-    wrapperDiv.classList.add("wrapper");
-    questionDiv = document.createElement("div");
-    questionDiv.classList.add("question");
-    questionDiv.innerText = question;
-    agree = document.createElement("sections");
-    disagree = document.createElement("sections");
 
-    agree.innerText = "Agree";
-    disagree.innerText = "Disagree";
-    wrapperDiv.appendChild(questionDiv);
-
-    wrapperDiv.appendChild(agree);
-    wrapperDiv.appendChild(disagree);
+    wrapperDiv.appendChild(createAnswerModule("1", "Agree"));
+    wrapperDiv.appendChild(createAnswerModule("0", "Disagree"));
     questionContainer.appendChild(wrapperDiv);
   } else if (questionType == "Ranking") {
-    // use the ranking style question
+    questionAnswers = questionProps[1];
+    for (var i = 0; i < questionAnswers.length; i++) {
+      wrapperDiv.appendChild(createAnswerModule("" + i, questionAnswers[i]));
+    }
+    wrapperDiv.classList.add("sortable-items");
+    questionContainer.appendChild(wrapperDiv);
+    makeAnswerSortable();
   } else {
     console.log("Error");
   }
 }
-
+function createAnswerModule(id, answer) {
+  moduleSection = document.createElement("section");
+  moduleSection.id = id;
+  moduleSection.classList.add("module");
+  moduleParagraph = document.createElement("p");
+  moduleParagraph.innerText = answer;
+  moduleSection.appendChild(moduleParagraph);
+  return moduleSection;
+}
 /*check boxes*/
 $(document).ready(function() {
   var checklistElements = document.querySelectorAll(".ui-checkbox");
@@ -252,7 +262,7 @@ function SelOrder(checklistElements, orders) {
   }
 })(jQuery);
 // SORTABLE
-$(function() {
+function makeAnswerSortable() {
   $(".sortable-items").sortable();
   $(".sortable-items").disableSelection();
-});
+}
