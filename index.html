@@ -25,21 +25,9 @@
         <li class="right"><a href="#about">About</a></li>
     </ul>
 
-    <!-- <li>
-  <div id="list" class="pro">
-
-   <div id="food" class="pro" >Food Improvement</div>
-   <div id="transportation" class="pro">More frequent shuttle bus time </div>
-   <div id="tempon" class="pro">Have Hygiene Product in most female bathrooms</div>
-   <div id="security" class="pro">Increase security around the campus </div>
-   <div id="metro" class="pro">Provide Metro Pass</div>
-   <div id="event" class="pro">More school events </div>
-   <div id="advocate" class="pro">Support immigrant students </div>
-  </div>
- </li> -->
 
 
-    <div class="question-container">
+    <div id="question-container">
 
         <div class="sortable-items" id="wrapper">
             <section id="1" class="module">
@@ -59,47 +47,48 @@
             </section>
 
         </div>
-        <a class="button1" id="button1" onclick="clickFunction()">Click Me</a>
+    </div>
+    <a class="button1" id="button1" onclick="showNextQuestion()">Click Me</a>
 
-        <div id="container">
-            <div class="buddy" style="display: block;">
-                <div class="question">What do you think about this pupper?</div>
-                <div class="avatar" style="display: block; background-image: url(https://cdn.theatlantic.com/assets/media/img/photo/2019/02/photos-2019-westminster-dog-show/p01_1096566756-1/original.jpg)"></div>
-            </div>
-            <div class="buddy">
-                <div class="question">What do you think about this pupper?</div>
-                <div class="avatar" style="display: block; background-image: url(https://dynaimage.cdn.cnn.com/cnn/w_768,h_1024,c_scale/https%3A%2F%2Fdynaimage.cdn.cnn.com%2Fcnn%2Fx_1229%2Cy_0%2Cw_2712%2Ch_3616%2Cc_crop%2Fhttps%253A%252F%252Fstamp.static.cnn.io%252F5b7ac48b4db3d70020c01c13%252Fshutterstock_1081879181.jpg)"></div>
-            </div>
-            <div class="buddy">
-                <div class="avatar" style="display: block; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfwp3l9aas1CvzKEWb0saXNAKEq5dNgoupt81HqRXooTjHcVxmeA)"></div>
-            </div>
-            <div class="buddy">
-                <div class="question">What do you think about this cat?</div>
-                <div class="avatar" style="display: block; background-image: url(https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/Common-dog-behaviors-explained.jpg?itok=FSzwbBoi)"></div>
-            </div>
-            <div class="buddy">
-                <div class="question">What do you think about this dog?</div>
-                <div class="avatar" style="display: block; background-image: url(hhttps://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/d/domestic-dog_thumb.ngsversion.1546554600360.adapt.1900.1.jpg)"></div>
-            </div>
+    <div id="container">
+        <div class="buddy" style="display: block;">
+            <div class="question">What do you think about this pupper?</div>
+            <div class="avatar" style="display: block; background-image: url(https://cdn.theatlantic.com/assets/media/img/photo/2019/02/photos-2019-westminster-dog-show/p01_1096566756-1/original.jpg)"></div>
         </div>
-
-        /*Check boxes*/
-        <h2>Check and decide the priority of the school issue</h2>
-        <div class="items">
-            <label for 'ck01'>Food&nbsp;<input type="checkbox" id="ck01"></label>
-            <label for 'ck02'>More frequent shuttle bus time&nbsp;<input type="checkbox" id="ck02"></label>
-            <label for 'ck03'>More school events &nbsp;<input type="checkbox" id="ck03"></label>
-            <label for 'ck04'>Support immigrant students &nbsp;<input type="checkbox" id="ck04"></label>
-            <label for 'ck05'>Provide Metro Pass&nbsp;<input type="checkbox" id="ck05"></label>
-            <label for 'ck06'>Have Hygiene Product in most female bathroom&nbsp;<input type="checkbox" id="ck06"></label>
-            <button class='clr'>Clear All</button>
+        <div class="buddy">
+            <div class="question">What do you think about this pupper?</div>
+            <div class="avatar" style="display: block; background-image: url(https://dynaimage.cdn.cnn.com/cnn/w_768,h_1024,c_scale/https%3A%2F%2Fdynaimage.cdn.cnn.com%2Fcnn%2Fx_1229%2Cy_0%2Cw_2712%2Ch_3616%2Cc_crop%2Fhttps%253A%252F%252Fstamp.static.cnn.io%252F5b7ac48b4db3d70020c01c13%252Fshutterstock_1081879181.jpg)"></div>
         </div>
+        <div class="buddy">
+            <div class="avatar" style="display: block; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfwp3l9aas1CvzKEWb0saXNAKEq5dNgoupt81HqRXooTjHcVxmeA)"></div>
+        </div>
+        <div class="buddy">
+            <div class="question">What do you think about this cat?</div>
+            <div class="avatar" style="display: block; background-image: url(https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/Common-dog-behaviors-explained.jpg?itok=FSzwbBoi)"></div>
+        </div>
+        <div class="buddy">
+            <div class="question">What do you think about this dog?</div>
+            <div class="avatar" style="display: block; background-image: url(hhttps://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/d/domestic-dog_thumb.ngsversion.1546554600360.adapt.1900.1.jpg)"></div>
+        </div>
+    </div>
+
+    /*Check boxes*/
+    <h2>Check and decide the priority of the school issue</h2>
+    <div class="items">
+        <label for 'ck01'>Food&nbsp;<input type="checkbox" id="ck01"></label>
+        <label for 'ck02'>More frequent shuttle bus time&nbsp;<input type="checkbox" id="ck02"></label>
+        <label for 'ck03'>More school events &nbsp;<input type="checkbox" id="ck03"></label>
+        <label for 'ck04'>Support immigrant students &nbsp;<input type="checkbox" id="ck04"></label>
+        <label for 'ck05'>Provide Metro Pass&nbsp;<input type="checkbox" id="ck05"></label>
+        <label for 'ck06'>Have Hygiene Product in most female bathroom&nbsp;<input type="checkbox" id="ck06"></label>
+        <button class='clr'>Clear All</button>
+    </div>
 
 
 
 
 
-        <script src="index.js"></script>
+    <script src="index.js"></script>
 
 </body>
 
