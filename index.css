@@ -130,6 +130,8 @@ ul.topnav li.right {
 
 .container {
   margin: 0 auto;
+  position: center;
+  border: 1px black;
 }
 
 /*  */
@@ -138,23 +140,30 @@ ul.topnav li.right {
 .module {
   width: 320px;
   background: white;
+  margin-right: auto;
+  margin-left: auto;
   border-radius: 25px;
   border: 1px solid #51237f;
   color: black;
   text-align: center;
   transition: color 0.3s, background-color 0.3s;
+
+
+
 }
 
 .module:hover {
   background: #ccc;
-  color: gray;
+  color: #51237f;
 }
 
 .module:active {
   box-shadow: 0px 0px 50px gray;
   -webkit-transform: scale(1.05);
-  -webkit-transform-origin: -30 100%;
+  -webkit-transform-origin: -100px 100%;
   -webkit-transform: rotate(-3deg);
+    margin-right: auto;
+    margin-left: auto;
 }
 
 /*STYLING FOR NOTES SECTION*/
@@ -216,6 +225,8 @@ ul.topnav li.right {
   font-size: 15px;
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
+  margin-right: auto;
+  margin-left: auto;
 
 }
 .button1:hover {
@@ -228,7 +239,29 @@ i {
     display: inline-block;
     padding: 3px;
 }
+
+
 .right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
 }
+
+
+.wrapper {
+    position: center;
+    border-radius: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+
+}
+.question-container{
+    margin-right: auto;
+    margin-left: auto;
+
+    border: 1px black;
+
+}
+.question{
+    font-size: 24px;
+}
+
