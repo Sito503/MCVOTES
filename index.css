@@ -42,96 +42,11 @@ ul.topnav li.right {
   }
 }
 
-#container {
-  width: 500px;
-  margin: auto !important;
-  display: block;
-  height: 800px;
-  position: relative;
-  list-style-type: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.buddy {
-  display: none;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  color: #fff;
-  padding: 20px;
-  width: 360px;
-  height: 660px;
-  top: 50px;
-  left: 50px;
-  position: absolute;
-  cursor: hand;
-}
-
-.rotate-left {
-  transform: rotate(30deg) scale(0.8);
-  transition: 1s;
-  margin-left: 400px;
-  cursor: e-resize;
-  opacity: 0;
-  z-index: 10;
-}
-
-.rotate-right {
-  transform: rotate(-30deg) scale(0.8);
-  transition: 1s;
-  opacity: 0;
-  margin-left: -400px;
-  cursor: w-resize;
-  z-index: 10;
-}
-
-.avatar {
-  background: #222;
-  width: 340px;
-  height: 640px;
-  display: block;
-  margin-top: 10px;
-  margin-left: 10px;
-  background-size: auto 160% !important;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.like {
-  border-radius: 5px;
-  padding: 5px 10px;
-  border: 2px solid green;
-  color: green;
-  text-transform: uppercase;
-  font-size: 15px;
-  position: absolute;
-  top: 50px;
-  right: 40px;
-  text-shadow: none;
-}
-
-.dislike {
-  border-radius: 5px;
-  padding: 5px 10px;
-  border: 2px solid red;
-  color: red;
-  text-transform: uppercase;
-  font-size: 15px;
-  position: absolute;
-  top: 50px;
-  left: 40px;
-  text-shadow: none;
-}
-
 .container {
-  margin: 0 auto;
-  position: center;
-  border: 1px black;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  text-align: center;
 }
 
 /*  */
@@ -140,21 +55,19 @@ ul.topnav li.right {
 .module {
   width: 320px;
   background: white;
-  margin-right: auto;
-  margin-left: auto;
+  text-align: center;
+
   border-radius: 25px;
   border: 1px solid #51237f;
   color: black;
-  text-align: center;
   transition: color 0.3s, background-color 0.3s;
-
-
-
+  margin-top: 10px
 }
 
 .module:hover {
   background: #ccc;
   color: #51237f;
+
 }
 
 .module:active {
@@ -162,8 +75,8 @@ ul.topnav li.right {
   -webkit-transform: scale(1.05);
   -webkit-transform-origin: -100px 100%;
   -webkit-transform: rotate(-3deg);
-    margin-right: auto;
-    margin-left: auto;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 /*STYLING FOR NOTES SECTION*/
@@ -214,7 +127,8 @@ ul.topnav li.right {
   content: "#wrapper";
   position: relative;
 }
-.button1 {
+
+.next-btn {
   background-color: #51237f;
   border-radius: 25px;
   border: none;
@@ -229,39 +143,39 @@ ul.topnav li.right {
   margin-left: auto;
 
 }
-.button1:hover {
+
+.next-btn:hover {
   background-color: white;
-  color:  #51237f;
+  color: #51237f;
 }
+
 i {
-    border: solid black;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
 }
 
 
 .right {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
 
 
 .wrapper {
-    position: center;
-    border-radius: 25px;
-    padding-left: 50px;
-    padding-right: 50px;
+  border-radius: 25px;
+  padding-left: 50px;
+  padding-right: 50px;
 
 }
-.question-container{
-    margin-right: auto;
-    margin-left: auto;
 
-    border: 1px black;
+.question-container {
+
+  border: 1px black;
 
 }
-.question{
-    font-size: 24px;
-}
 
+.question {
+  font-size: 24px;
+}

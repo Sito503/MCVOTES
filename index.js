@@ -193,11 +193,11 @@ function createAnswerModule(id, answer) {
   return moduleSection;
 }
 /*check boxes*/
-$(document).ready(function() {
-  var checklistElements = document.querySelectorAll(".ui-checkbox");
-  var orders = [];
-  SelOrder(checklistElements, orders);
-});
+// $(document).ready(function() {
+//   var checklistElements = document.querySelectorAll(".ui-checkbox");
+//   var orders = [];
+//   SelOrder(checklistElements, orders);
+// });
 
 //order of selection
 function SelOrder(checklistElements, orders) {
