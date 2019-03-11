@@ -46,13 +46,65 @@ $(document).ready(function() {
   });
 });
 
-const questionSet = {
-  "Do you think canditaes need to fight for equalty?": ["T or F"],
-  "Rank the issues in terms of importance to you?": [
-    "Ranking",
-    ["Food", "Activities", "Career Workshops", "Book cost", "1231"]
-  ]
-};
+const questionSet = [
+{
+  question:  "Do you think canditaes need to fight for equalty?",
+      answers: {
+  a: "True",
+      b: "False"
+},
+  correctAnswer: "a"
+},
+{
+    question:  "Rank the issues in terms of importance to you?",
+    answers: {
+      a: "Food",
+      b: "Activities",
+      c: "Career Workshops",
+      d: "Book cost",
+      e: "1231",
+    },
+    correctAnswer: "a"
+  },
+
+  array.sort(function(questionRankingA, questionrRankingB) {
+    return questionRankingB.score - questionRankingA.score;
+  });
+var rank = 1;
+for (var i = 0; i < array.length; i++) {
+  if (i > 0 && array[i].score < array[i - 1].score) {
+    rank++;
+  }
+  array[i].rank = rank;
+}
+
+[
+  {
+    a:"Food",
+    "score":1,
+    "rank":1
+  },
+  {
+    b:"Activies",
+    "score":2,
+    "rank":2
+  },
+  {
+    c:"Career workshops",
+    "score":3,
+    "rank":3
+  },
+  {
+    d:"Bookcost",
+    "score":4,
+    "rank":4
+  },
+  {
+    e: "1231",
+    "score": 5,
+    "rank": 5
+
+  }];
 function* questionGen() {
   for (var question in questionSet) {
     yield question;
