@@ -1,79 +1,6 @@
-createSortable("#list");
-
 let answers = [];
-function createSortable(selector) {
-  var sortable = document.querySelector(selector);
-  Draggable.create(sortable.children, {
-    type: "y",
-    bounds: sortable,
-    edgeResistance: 1,
-    onPress: sortablePress,
-    onDragStart: sortableDragStart,
-    onDrag: sortableDrag,
-    liveSnap: sortableSnap,
-    onDragEnd: sortableDragEnd
-  });
-}
-
-function sortablePress() {
-  var t = this.target,
-    i = 0,
-    child = t;
-  while ((child = child.previousSibling)) if (child.nodeType === 1) i++;
-  t.currentIndex = i;
-  t.currentHeight = t.offsetHeight;
-  t.kids = [].slice.call(t.parentNode.children); // convert to array
-}
-
-function sortableDragStart() {
-  TweenLite.set(this.target, { color: "#88CE02" });
-}
-
-function sortableDrag() {
-  var t = this.target,
-    elements = t.kids.slice(), // clone
-    indexChange = Math.round(this.y / t.currentHeight),
-    bound1 = t.currentIndex,
-    bound2 = bound1 + indexChange;
-  if (bound1 < bound2) {
-    // moved down
-    TweenLite.to(elements.splice(bound1 + 1, bound2 - bound1), 0.15, {
-      yPercent: -100
-    });
-    TweenLite.to(elements, 0.15, { yPercent: 0 });
-  } else if (bound1 === bound2) {
-    elements.splice(bound1, 1);
-    TweenLite.to(elements, 0.15, { yPercent: 0 });
-  } else {
-    // moved up
-    TweenLite.to(elements.splice(bound2, bound1 - bound2), 0.15, {
-      yPercent: 100
-    });
-    TweenLite.to(elements, 0.15, { yPercent: 0 });
-  }
-}
-
-function sortableSnap(y) {
-  var h = this.target.currentHeight;
-  return Math.round(y / h) * h;
-}
-
-function sortableDragEnd() {
-  var t = this.target,
-    max = t.kids.length - 1,
-    newIndex = Math.round(this.y / t.currentHeight);
-  newIndex += (newIndex < 0 ? -1 : 0) + t.currentIndex;
-  if (newIndex === max) {
-    t.parentNode.appendChild(t);
-  } else {
-    t.parentNode.insertBefore(t, t.kids[newIndex + 1]);
-  }
-  TweenLite.set(t.kids, { yPercent: 0, overwrite: "all" });
-  TweenLite.set(t, { y: 0, color: "" });
-}
-
-$(document).ready(function() {
-  $(".buddy").on("swiperight", function() {
+$(document).ready(function () {
+  $(".buddy").on("swiperight", function () {
     $(this)
       .addClass("rotate-left")
       .delay(700)
@@ -96,7 +23,7 @@ $(document).ready(function() {
     }
   });
 
-  $(".buddy").on("swipeleft", function() {
+  $(".buddy").on("swipeleft", function () {
     $(this)
       .addClass("rotate-right")
       .delay(700)
@@ -126,6 +53,7 @@ const questionSet = {
     ["Food", "Activities", "Career Workshops", "Book cost", "1231"]
   ]
 };
+
 function* questionGen() {
   for (var question in questionSet) {
     yield question;
@@ -167,7 +95,7 @@ function clickFunction() {
   }
 }
 /*check boxes*/
-$(document).ready(function() {
+$(document).ready(function () {
   var checklistElements = document.querySelectorAll(".ui-checkbox");
   var orders = [];
   SelOrder(checklistElements, orders);
@@ -185,7 +113,7 @@ function SelOrder(checklistElements, orders) {
   for (var i = 0; i < checkboxs.length; i++) {
     checkboxs[i].addEventListener(
       "change",
-      function(e) {
+      function (e) {
         if (e.target.checked) {
           orders.push(e.target.id);
         } else {
@@ -210,7 +138,7 @@ function SelOrder(checklistElements, orders) {
   var clear = document.querySelector(".clr");
   clear.addEventListener(
     "click",
-    function() {
+    function () {
       for (var i = 0; i < checkboxs.length; i++) {
         checkboxs[i].checked = false;
         checkboxLabels[i].classList.remove("ui-checkbox-on");
@@ -220,3 +148,48 @@ function SelOrder(checklistElements, orders) {
     false
   );
 }
+
+// please ignore this code is to make sure the list are sortable on mobile devices
+! function (a) {
+  function f(a, b) {
+    if (!(a.originalEvent.touches.length > 1)) {
+      a.preventDefault();
+      var c = a.originalEvent.changedTouches[0],
+        d = document.createEvent("MouseEvents");
+      d.initMouseEvent(b, !0, !0, window, 1, c.screenX, c.screenY, c.clientX, c.clientY, !1, !1, !1, !1, 0, null), a.target.dispatchEvent(d)
+    }
+  }
+  if (a.support.touch = "ontouchend" in document, a.support.touch) {
+    var e, b = a.ui.mouse.prototype,
+      c = b._mouseInit,
+      d = b._mouseDestroy;
+    b._touchStart = function (a) {
+      var b = this;
+      !e && b._mouseCapture(a.originalEvent.changedTouches[0]) && (e = !0, b._touchMoved = !1, f(a, "mouseover"), f(a, "mousemove"), f(a, "mousedown"))
+    }, b._touchMove = function (a) {
+      e && (this._touchMoved = !0, f(a, "mousemove"))
+    }, b._touchEnd = function (a) {
+      e && (f(a, "mouseup"), f(a, "mouseout"), this._touchMoved || f(a, "click"), e = !1)
+    }, b._mouseInit = function () {
+      var b = this;
+      b.element.bind({
+        touchstart: a.proxy(b, "_touchStart"),
+        touchmove: a.proxy(b, "_touchMove"),
+        touchend: a.proxy(b, "_touchEnd")
+      }), c.call(b)
+    }, b._mouseDestroy = function () {
+      var b = this;
+      b.element.unbind({
+        touchstart: a.proxy(b, "_touchStart"),
+        touchmove: a.proxy(b, "_touchMove"),
+        touchend: a.proxy(b, "_touchEnd")
+      }), d.call(b)
+    }
+  }
+}(jQuery);
+// SORTABLE
+$(function () {
+  $(".sortable-items").sortable();
+  $(".sortable-items").disableSelection();
+
+});
