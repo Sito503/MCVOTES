@@ -27,7 +27,7 @@ ul.topnav li a:hover:not(.active) {
 }
 
 ul.topnav li a.active {
-  background-color: #4caf50;
+  background-color: #51237f;
 }
 
 ul.topnav li.right {
@@ -203,4 +203,19 @@ ul.topnav li.right {
   z-index: 300;
   content: "#wrapper";
   position: relative;
+}
+.button1 {
+  background-color: #51237f;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+.button1:hover {
+  background-color: white;
+  color:  #51237f;
 }
