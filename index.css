@@ -138,8 +138,9 @@ ul.topnav li.right {
 .module {
   width: 320px;
   background: white;
-  border: 1px solid silver;
-  color: silver;
+  border-radius: 25px;
+  border: 1px solid #51237f;
+  color: black;
   text-align: center;
   transition: color 0.3s, background-color 0.3s;
 }
