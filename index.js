@@ -70,6 +70,7 @@ function getNextQuestion() {
   return value;
 }
 function showNextQuestion() {
+  $("#next").show();
   question = getNextQuestion();
   questionContainer = document.getElementById("question-container");
   questionContainer.innerHTML = "";
@@ -85,6 +86,8 @@ function showNextQuestion() {
 
     if (questionType == "T or F") {
       // use the tinder style
+      $("#next").hide();
+
       wrapperDiv.appendChild(createAnswerModule("1", "Agree", true));
       wrapperDiv.appendChild(createAnswerModule("0", "Disagree", true));
       questionContainer.appendChild(wrapperDiv);
