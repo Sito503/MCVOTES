@@ -143,47 +143,50 @@ function getNextQuestion() {
   }
   return value;
 }
-/*click button, only select all the DOM element right now*/
-function clickFunction() {
-  var select = [];
-  var all = document.getElementsByTagName("*");
+// /*click button, only select all the DOM element right now*/
+// function clickFunction() {
+//   var select = [];
+//   var all = document.getElementsByTagName("*");
 
-  for (var i = 0, max = all.length; i < max; i++) {
-    console.log(document.getElementsByClassName("pro") + i);
-  }
-}
+//   for (var i = 0, max = all.length; i < max; i++) {
+//     console.log(document.getElementsByClassName("pro") + i);
+//   }
+// }
 function showNextQuestion() {
   question = getNextQuestion();
-  questionProps = questionSet[question];
-  questionType = questionProps[0];
   questionContainer = document.getElementById("question-container");
   questionContainer.innerHTML = "";
   wrapperDiv = document.createElement("div");
   wrapperDiv.classList.add("wrapper");
   questionDiv = document.createElement("div");
   questionDiv.classList.add("question");
-  questionDiv.innerText = question;
-  questionContainer.appendChild(questionDiv);
+  if (question != undefined) {
+    questionProps = questionSet[question];
+    questionType = questionProps[0];
+    questionDiv.innerText = question;
+    questionContainer.appendChild(questionDiv);
 
-  if (questionType == "T or F") {
-    // use the tinder style
-
-    wrapperDiv.appendChild(createAnswerModule("1", "Agree"));
-    wrapperDiv.appendChild(createAnswerModule("0", "Disagree"));
-    questionContainer.appendChild(wrapperDiv);
-  } else if (questionType == "Ranking") {
-    questionAnswers = questionProps[1];
-    for (var i = 0; i < questionAnswers.length; i++) {
-      wrapperDiv.appendChild(createAnswerModule("" + i, questionAnswers[i]));
+    if (questionType == "T or F") {
+      // use the tinder style
+      // listener = function(otherFunc, event) {};
+      wrapperDiv.appendChild(createAnswerModule("1", "Agree", undefined));
+      wrapperDiv.appendChild(createAnswerModule("0", "Disagree", undefined));
+      questionContainer.appendChild(wrapperDiv);
+    } else if (questionType == "Ranking") {
+      questionAnswers = questionProps[1];
+      for (var i = 0; i < questionAnswers.length; i++) {
+        wrapperDiv.appendChild(createAnswerModule("" + i, questionAnswers[i]));
+      }
+      wrapperDiv.classList.add("sortable-items");
+      questionContainer.appendChild(wrapperDiv);
+      makeAnswerSortable();
+    } else {
+      console.log("Error");
     }
-    wrapperDiv.classList.add("sortable-items");
-    questionContainer.appendChild(wrapperDiv);
-    makeAnswerSortable();
   } else {
-    console.log("Error");
   }
 }
-function createAnswerModule(id, answer) {
+function createAnswerModule(id, answer, listener) {
   moduleSection = document.createElement("section");
   moduleSection.id = id;
   moduleSection.classList.add("module");
