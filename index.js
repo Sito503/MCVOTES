@@ -70,6 +70,7 @@ function getNextQuestion() {
   return value;
 }
 function showNextQuestion() {
+  console.log("called");
   $("#next").show();
   question = getNextQuestion();
   questionContainer = document.getElementById("question-container");
@@ -99,13 +100,28 @@ function showNextQuestion() {
       wrapperDiv.classList.add("sortable-items");
       questionContainer.appendChild(wrapperDiv);
       makeAnswerSortable();
+      $("#next").off("click");
+      $("#next").click(getAnswersFromSortableQuestion);
     } else {
       console.log("Error");
     }
   } else {
     questionDiv.innerHTML = answers;
+    questionDiv.innerHTML += ":answers \n Quiz done get out here";
     questionContainer.appendChild(questionDiv);
   }
+}
+function getAnswersFromSortableQuestion() {
+  moduleAnswers = document.getElementsByClassName("module");
+  answersID = [];
+  for (var answer of moduleAnswers) {
+    answersID.push([answer.id, answer.innerText]);
+  }
+  console.log(moduleAnswers);
+  answers.push(answersID);
+  $("#next").off("click");
+  $("#next").click(showNextQuestion);
+  showNextQuestion();
 }
 function createAnswerModule(id, answer, clickableQuestion) {
   moduleSection = document.createElement("section");
@@ -223,3 +239,4 @@ $(document).ready(function() {
     $("#tab3_content").show();
   });
 });
+$("#next").click(showNextQuestion);
