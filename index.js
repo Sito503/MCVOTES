@@ -52,87 +52,13 @@ const questionSet = {
     ["Food", "Activities", "Career Workshops", "Book cost", "1231"]
   ]
 };
-// const questionSet = [
-// {
-//   question:  "Do you think canditaes need to fight for equalty?",
-//       answers: {
-//   a: "True",
-//       b: "False"
-// },
-//   correctAnswer: "a"
-// },
-// {
-//     question:  "Rank the issues in terms of importance to you?",
-//     answers: {
-//       a: "Food",
-//       b: "Activities",
-//       c: "Career Workshops",
-//       d: "Book cost",
-//       e: "1231",
-//     },
-//     correctAnswer: "a"
-//   },
 
-//   array.sort(function(questionRankingA, questionrRankingB) {
-//     return questionRankingB.score - questionRankingA.score;
-//   });
-// var rank = 1;
-// for (var i = 0; i < array.length; i++) {
-//   if (i > 0 && array[i].score < array[i - 1].score) {
-//     rank++;
-//   }
-//   array[i].rank = rank;
-// }
-
-// [
-//   {
-//     a:"Food",
-//     "score":1,
-//     "rank":1
-//   },
-//   {
-//     b:"Activies",
-//     "score":2,
-//     "rank":2
-//   },
-//   {
-//     c:"Career workshops",
-//     "score":3,
-//     "rank":3
-//   },
-//   {
-//     d:"Bookcost",
-//     "score":4,
-//     "rank":4
-//   },
-//   {
-//     e: "1231",
-//     "score": 5,
-//     "rank": 5
-
-//   }];
 function* questionGen() {
   for (var question in questionSet) {
     yield question;
   }
 }
 const questionIter = questionGen();
-
-function startQuiz() {
-  // list_of_questions = Object.getOwnPropertyNames(questionSet);
-  // for (let question in questionSet) {
-  question = getNextQuestion();
-  questionProps = questionSet[question];
-  questionType = questionProps[0];
-  if (questionType == "T or F") {
-    // use the tinder style
-  } else if (questionType == "Ranking") {
-    // use the ranking style question
-  } else {
-    console.log("Error");
-  }
-  // }
-}
 function getNextQuestion() {
   valueOfTheQuestionGen = questionIter.next();
   console.log(valueOfTheQuestionGen);
@@ -143,15 +69,6 @@ function getNextQuestion() {
   }
   return value;
 }
-// /*click button, only select all the DOM element right now*/
-// function clickFunction() {
-//   var select = [];
-//   var all = document.getElementsByTagName("*");
-
-//   for (var i = 0, max = all.length; i < max; i++) {
-//     console.log(document.getElementsByClassName("pro") + i);
-//   }
-// }
 function showNextQuestion() {
   question = getNextQuestion();
   questionContainer = document.getElementById("question-container");
@@ -168,9 +85,8 @@ function showNextQuestion() {
 
     if (questionType == "T or F") {
       // use the tinder style
-      // listener = function(otherFunc, event) {};
-      wrapperDiv.appendChild(createAnswerModule("1", "Agree", undefined));
-      wrapperDiv.appendChild(createAnswerModule("0", "Disagree", undefined));
+      wrapperDiv.appendChild(createAnswerModule("1", "Agree", true));
+      wrapperDiv.appendChild(createAnswerModule("0", "Disagree", true));
       questionContainer.appendChild(wrapperDiv);
     } else if (questionType == "Ranking") {
       questionAnswers = questionProps[1];
@@ -184,70 +100,24 @@ function showNextQuestion() {
       console.log("Error");
     }
   } else {
+    questionDiv.innerHTML = answers;
+    questionContainer.appendChild(questionDiv);
   }
 }
-function createAnswerModule(id, answer, listener) {
+function createAnswerModule(id, answer, clickableQuestion) {
   moduleSection = document.createElement("section");
   moduleSection.id = id;
   moduleSection.classList.add("module");
   moduleParagraph = document.createElement("p");
   moduleParagraph.innerText = answer;
   moduleSection.appendChild(moduleParagraph);
+  if (clickableQuestion) {
+    moduleSection.addEventListener("click", function() {
+      answers.push([answer]);
+      showNextQuestion();
+    });
+  }
   return moduleSection;
-}
-/*check boxes*/
-// $(document).ready(function() {
-//   var checklistElements = document.querySelectorAll(".ui-checkbox");
-//   var orders = [];
-//   SelOrder(checklistElements, orders);
-// });
-
-//order of selection
-function SelOrder(checklistElements, orders) {
-  checkboxs = [];
-  checkboxLabels = [];
-  for (var elem of checklistElements) {
-    [checkboxLabel, checkbox] = elem.children;
-    checkboxs.push(checkbox);
-    checkboxLabels.push(checkboxLabel);
-  }
-  for (var i = 0; i < checkboxs.length; i++) {
-    checkboxs[i].addEventListener(
-      "change",
-      function(e) {
-        if (e.target.checked) {
-          orders.push(e.target.id);
-        } else {
-          for (var k = 0; k < orders.length; k++) {
-            if (orders[k] == e.target.id) {
-              orders.splice(k, 1);
-            }
-          }
-        }
-        for (var l = 0; l < orders.length; l++) {
-          for (var j = 0; j < checkboxs.length; j++) {
-            if (checkboxs[j].id == orders[l]) {
-              checkboxs[j].className = "order" + (l + 1);
-            }
-          }
-        }
-      },
-      false
-    );
-  }
-  //clear button
-  var clear = document.querySelector(".clr");
-  clear.addEventListener(
-    "click",
-    function() {
-      for (var i = 0; i < checkboxs.length; i++) {
-        checkboxs[i].checked = false;
-        checkboxLabels[i].classList.remove("ui-checkbox-on");
-        checkboxLabels[i].classList.add("ui-checkbox-off");
-      }
-    },
-    false
-  );
 }
 
 // please ignore this code is to make sure the list are sortable on mobile devices

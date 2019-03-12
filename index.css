@@ -18,12 +18,18 @@ ul.topnav li a {
   display: block;
   color: white;
   text-align: center;
+
   padding: 14px 40px;
   text-decoration: none;
 }
 
  ul.topnav li a:hover:not(.active) { 
   background-color: #51237f; 
+
+}
+
+ul.topnav li a:hover:not(.active) {
+  background-color: rgba(17, 17, 17, 0.397);
   color: white;
 }
 
@@ -45,13 +51,10 @@ ul.topnav li.right {
 }
 
 .container {
-  /* margin-right: auto;
-  margin-left: auto;
-  width: 100%; */
+
   text-align: center;
 }
 
-/*  */
 
 
 .module {
@@ -80,54 +83,6 @@ ul.topnav li.right {
   margin-left: auto;
 }
 
-/*STYLING FOR NOTES SECTION*/
-.notes {
-  display: none;
-  width: 100%;
-  background: silver;
-  padding: 1em 5em;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  font-size: 0.75em;
-  margin: 0 auto;
-}
-
-.notes header {
-  font-weight: bold;
-  font-size: 1em;
-}
-
-.notes ul {
-  padding: 0;
-  display: -webkit-flex;
-  align-items: flex-start;
-}
-
-.notes li {
-  display: inline-block;
-  min-width: 200px;
-  max-width: 300px;
-  list-style: none;
-}
-
-.notes li:nth-child(2) {
-  color: #7d7d7d;
-  padding: 0 1em;
-}
-
-.notes span {
-  font-family: courier, monospaced;
-  font-weight: bold;
-  display: block;
-}
-
-.notes span:hover {
-  background: gray;
-  z-index: 300;
-  content: "#wrapper";
-  position: relative;
-}
 
 .next-btn {
   background-color: #51237f;
