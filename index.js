@@ -202,16 +202,24 @@ function makeAnswerSortable() {
 }
 // tab things do touch yet please
 $(document).ready(function() {
-  $("#tab1_content").hide();
+  $("#tab1_content").show();
   $("#tab2_content").hide();
+  $("#tab3_content").hide();
 
   $("#quiz_tab").click(function() {
     $("#tab1_content").show();
     $("#tab2_content").hide();
+    $("#tab3_content").hide();
   });
 
   $("#candidate_info_tab").click(function() {
-    $("#tab2_content").show();
     $("#tab1_content").hide();
+    $("#tab2_content").show();
+    $("#tab3_content").hide();
+  });
+  $("#role_info_tab").click(function() {
+    $("#tab1_content").hide();
+    $("#tab2_content").hide();
+    $("#tab3_content").show();
   });
 });
