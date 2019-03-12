@@ -446,7 +446,7 @@ slide p {
   font-weight: 600;
   font-size: 1.3em;
   font-family: 'Playfair Display', Arial, sans-serif;
-  color: #28A689 ;
+  color: #28A689;
 }
 
 .snip1515 h4 {
@@ -471,7 +471,7 @@ slide p {
   display: inline-block;
   font-size: 18px;
   font-weight: normal;
-  color:#51237f;
+  color: #51237f;
   opacity: 0.75;
 }
 
@@ -479,4 +479,84 @@ slide p {
   opacity: 1;
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
+}
+
+/* silder */
+
+#slideshow {
+  overflow: hidden;
+  height: 510px;
+  width: 728px;
+  margin: 0 auto;
+}
+
+.slide-wrapper {
+  width: 2912px;
+  -webkit-animation: slide 5s ease infinite;
+}
+
+.slide {
+  float: left;
+  height: 510px;
+  width: 728px;
+}
+
+.slide:nth-child(1) {
+
+  background-image: url("http://www.scholastic.com/content/images/articles/k/kr_news_101612_studentvote_header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.slide:nth-child(2) {
+  background-image: url("https://cdn1.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg");
+  background-repeat: no-repeat;
+
+}
+
+.slide:nth-child(3) {
+  background-image: url("https://d17fnq9dkz9hgj.cloudfront.net/breed-uploads/2018/08/alaskan-malamute-card-large.jpg?bust=1535569394");
+  background-repeat: no-repeat;
+}
+
+.slide:nth-child(4) {
+  background-image: url("http://mcblogs.montgomerycollege.edu/atmc/wp-content/uploads/2018/10/MCVotesBanner-e1539962796712.jpg");
+  background-repeat: no-repeat;
+}
+
+.slide-number {
+  color: #FFF;
+  text-align: center;
+  font-size: 7em;
+}
+
+@-webkit-keyframes slide {
+  20% {
+    margin-left: 0px;
+  }
+
+  30% {
+    margin-left: -728px;
+  }
+
+  50% {
+    margin-left: -728px;
+  }
+
+  60% {
+    margin-left: -1456px;
+  }
+
+  70% {
+    margin-left: -1456px;
+  }
+
+  80% {
+    margin-left: -2184px;
+  }
+
+  90% {
+    margin-left: -2184px;
+  }
 }
