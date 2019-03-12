@@ -197,3 +197,18 @@ function makeAnswerSortable() {
   $(".sortable-items").sortable();
   $(".sortable-items").disableSelection();
 }
+// tab things do touch yet please
+$(document).ready(function() {
+  $("#tab1_content").hide();
+  $("#tab2_content").hide();
+
+  $("#quiz_tab").click(function() {
+    $("#tab1_content").show();
+    $("#tab2_content").hide();
+  });
+
+  $("#candidate_info_tab").click(function() {
+    $("#tab2_content").show();
+    $("#tab1_content").hide();
+  });
+});
