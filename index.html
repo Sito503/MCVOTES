@@ -5,7 +5,7 @@
 
 <head>
     <link rel="shortcut icon" type="image/png" href="/imgs/favicon.png" />
-    <link rel="shortcut icon" type="image/png" href="https://mymc.glb.montgomerycollege.edu/documents/10184/171367/Voter+Registration/e17ced4b-e273-4f94-bf08-b1cf12f14817?t=1472223014550" />
+    <!-- <link rel="shortcut icon" type="image/png" href="https://mymc.glb.montgomerycollege.edu/documents/10184/171367/Voter+Registration/e17ced4b-e273-4f94-bf08-b1cf12f14817?t=1472223014550" /> -->
 
     <!-- new sorting list libs-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -16,6 +16,7 @@
     <title>Advanced Mini-Site</title>
 
     <link rel="stylesheet" type="text/css" href="index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
     <script src="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 </head>
@@ -27,56 +28,64 @@
         <li><a href="#contact">Contact</a></li>
         <li class="right"><a href="#about">About</a></li>
     </ul>
+    <div class="ribbon"><span>Demo BUILD</span></div>
 
 
-    <div class="container">
-        <div id="question-container">
 
-            <div class="sortable-items" id="wrapper">
-                <section id="1" class="module">
-                    <p>1</p>
-                </section>
+    <body>
+        <div class="tab_div">
+            <div class="tabs_menu">
+                <ul class="tabs">
+                    <li id="quiz_tab"> Quiz </li>
+                    <li id="candidate_info_tab">Candidate Info </li>
 
-                <section id="2" class="module">
-                    <p>2</p>
-                </section>
-
-                <section id="3" class="module">
-                    <p>3</p>
-                </section>
-
-                <section id="4" class="module">
-                    <p>4</p>
-                </section>
-
+                </ul>
+                <!--     closing tabs menu div -->
             </div>
+            <div class="tab_content">
+                <div id="tab1_content">
+                    <div class="container">
+                        <div id="question-container">
+
+                            <div class="sortable-items" id="wrapper">
+                                <section id="1" class="module">
+                                    <p>1</p>
+                                </section>
+
+                                <section id="2" class="module">
+                                    <p>2</p>
+                                </section>
+
+                                <section id="3" class="module">
+                                    <p>3</p>
+                                </section>
+
+                                <section id="4" class="module">
+                                    <p>4</p>
+                                </section>
+
+                            </div>
 
 
+                        </div>
+
+                        <a class="next-btn" id="next" onclick="showNextQuestion()"> <i class="arrow right"></i>
+
+                        </a>
+                    </div>
+                </div>
+
+                <div id="tab2_content">
+                    <p> Tab 2 Content </p>
+                    <!--       closes tab 2 content -->
+                </div>
+
+
+                <!--     closing tab content div -->
+            </div>
+            <!--     closing tab div -->
         </div>
-
-        <a class="next-btn" id="next" onclick="showNextQuestion()"> <i class="arrow right"></i>
-
-        </a>
-    </div>
-
-
-    <!-- 
-    /*Check boxes*/
-    <h2>Check and decide the priority of the school issue</h2>
-    <div class="items">
-        <label for 'ck01'>Food&nbsp;<input type="checkbox" id="ck01"></label>
-        <label for 'ck02'>More frequent shuttle bus time&nbsp;<input type="checkbox" id="ck02"></label>
-        <label for 'ck03'>More school events &nbsp;<input type="checkbox" id="ck03"></label>
-        <label for 'ck04'>Support immigrant students &nbsp;<input type="checkbox" id="ck04"></label>
-        <label for 'ck05'>Provide Metro Pass&nbsp;<input type="checkbox" id="ck05"></label>
-        <label for 'ck06'>Have Hygiene Product in most female bathroom&nbsp;<input type="checkbox" id="ck06"></label>
-        <button class='clr'>Clear All</button>
-    </div> -->
-
-
-
-
-
+    </body>
     <script src="index.js"></script>
 
 </body>
