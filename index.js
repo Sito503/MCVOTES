@@ -46,11 +46,19 @@ $(document).ready(function() {
   });
 });
 const questionSet = {
-  "Do you think canditaes need to fight for equalty?": ["T or F"],
-  "Rank the issues in terms of importance to you?": [
+  "Do you think canditaes need to fight for equalty?":["Ranking"],
+  "Rank the issues in terms of importance to you.": [
     "Ranking",
-    ["Food", "Activities", "Career Workshops", "Book cost", "1231"]
+    ["Food quality & affordability", "Improve Student Activity",
+     "Transportation", "Improve advising", "Student health resource",
+     "Library hours", "Diversity inclusion","Campus security", "Textbook affordability"]
+  ],
+  "Rank the following transportation improvements in terms of importance to you": [
+    "Ranking",
+    ["Continue free Ride On","Free parking", "Shuttle frequency",
+    "Student discount metro pass", "Bike share program"]
   ]
+
 };
 
 function* questionGen() {

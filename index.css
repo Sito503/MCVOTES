@@ -156,6 +156,7 @@ body {
 .tab_div {
   width: 100%;
   transform: translateZ(0);
+ 
 }
 
 .tabs_menu {
@@ -163,10 +164,13 @@ body {
   padding-top: 1%;
   width: 20%;
   float: left;
+  color: white;
+  font: 18px arial, sans-serif;
 }
 
 ul.tabs {
   padding: 0;
+  font: 18px arial, sans-serif;
 }
 
 #quiz_tab,
@@ -177,6 +181,7 @@ ul.tabs {
   padding-left: 5%;
   padding-right: 5%;
   width: 100%;
+  font: 18px arial, sans-serif;
 }
 
 ul.tabs li {
