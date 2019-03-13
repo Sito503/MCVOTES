@@ -46,19 +46,15 @@ $(document).ready(function() {
   });
 });
 const questionSet = {
-  "Do you think canditaes need to fight for equalty?":["Ranking"],
-  "Rank the issues in terms of importance to you.": [
+  "Do you think canditaes need to fight for equalty?": ["T or F"],
+  "Rank the issues in terms of importance to you?": [
     "Ranking",
-    ["Food quality & affordability", "Improve Student Activity",
-     "Transportation", "Improve advising", "Student health resource",
-     "Library hours", "Diversity inclusion","Campus security", "Textbook affordability"]
+    ["Food", "Activities", "Career Workshops", "Book cost", "1231"]
   ],
-  "Rank the following transportation improvements in terms of importance to you": [
+  "Rank the issues in terms of importance to you? on does": [
     "Ranking",
-    ["Continue free Ride On","Free parking", "Shuttle frequency",
-    "Student discount metro pass", "Bike share program"]
+    ["Food", "Activities", "Career Workshops", "Book cost", "1231"]
   ]
-
 };
 
 function* questionGen() {
@@ -67,9 +63,9 @@ function* questionGen() {
   }
 }
 const questionIter = questionGen();
+
 function getNextQuestion() {
   valueOfTheQuestionGen = questionIter.next();
-  console.log(valueOfTheQuestionGen);
   value = valueOfTheQuestionGen.value;
   isDone = valueOfTheQuestionGen.isDone;
   if (isDone) {
@@ -77,6 +73,7 @@ function getNextQuestion() {
   }
   return value;
 }
+
 function showNextQuestion() {
   console.log("called");
   $("#next").show();
@@ -110,6 +107,7 @@ function showNextQuestion() {
       makeAnswerSortable();
       $("#next").off("click");
       $("#next").click(getAnswersFromSortableQuestion);
+    } else if (questionType == "Silder") {
     } else {
       console.log("Error");
     }
@@ -119,6 +117,7 @@ function showNextQuestion() {
     questionContainer.appendChild(questionDiv);
   }
 }
+
 function getAnswersFromSortableQuestion() {
   moduleAnswers = document.getElementsByClassName("module");
   answersID = [];
@@ -131,6 +130,7 @@ function getAnswersFromSortableQuestion() {
   $("#next").click(showNextQuestion);
   showNextQuestion();
 }
+
 function createAnswerModule(id, answer, clickableQuestion) {
   moduleSection = document.createElement("section");
   moduleSection.id = id;
