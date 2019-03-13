@@ -47,7 +47,7 @@ $(document).ready(function() {
 });
 const questionSet = {
   "Do you think canditaes need to fight for equalty?": ["T or F"],
-  "Rank the issues in terms of importance to you?": [
+  "Drag and rank the issues in terms of importance to you": [
     "Ranking",
     ["Food Quality & Affordability", "Improve Student Activities", "Textbook Affordability"
     , "Transportation", "Improve Advising", "Campus Security", "Library access",
@@ -91,6 +91,9 @@ function getNextQuestion() {
   }
   return value;
 }
+
+
+
 
 function showNextQuestion() {
   console.log("called");

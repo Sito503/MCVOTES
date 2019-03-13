@@ -2,7 +2,7 @@
 <html lang="en">
 
 
-
+<link rel="stylesheet" type="text/css" href="bower_components/radios-to-slider/dist/radios-to-slider.css">
 <head>
     <!-- new sorting list libs-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -12,10 +12,25 @@
     <!-- end there for new sorting list lib -->
     <title>Advanced Mini-Site</title>
 
-    <link rel="stylesheet" type="text/css" href="slider.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
+    <link rel="stylesheet" type="text/css" href="radios-to-slider/css/radios-to-slider.css">
     <script src="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-</head>
+    <script type="text/javascript" src="radios-to-slider/js/jquery.radios-to-slider.js"></script>
+    <script src="index.js"></script>
+    <script>
+        $(document).ready(function(){
+            var radios = $("#radios").radiosToSlider();
+    
+            // Enable input
+            radios.setEnable();
+    
+            // Retrieve value
+            radios.getValue();
+        });
+    </script>
+
+  </head>
 
 <body>
     <ul class="topnav">
@@ -25,43 +40,29 @@
         <li class="right"><a href="about.html">About</a></li>
     </ul>
     <div class="ribbon"><span>Demo BUILD</span></div>
+    <br />
+    <h3>Montgomery College should improve security, even doing so will increase tuition costs. </h3> <br />
+    <div class="block">
 
-    
-<form>
-        <fieldset class="radio-slider">
-          <legend></legend>
-          <div class="radio-slider__bar">
-            <div class="radio-slider__item">
-              <input type="radio" name="radio-slider" value=".125" id="radio-slider-1"/>
-              <label for="radio-slider-1">Strongly Disagree</label>
-            </div>
-      
-            <div class="radio-slider__item">
-              <input type="radio" name="radio-slider" value=".25" id="radio-slider-2" checked />
-              <label for="radio-slider-2">Disagree</label>
-            </div>
-      
-            <div class="radio-slider__item">
-              <input type="radio" name="radio-slider" value=".5" id="radio-slider-3"/>
-              <label for="radio-slider-3">Neutral</label>
-            </div>
-      
-            <div class="radio-slider__item">
-              <input type="radio" name="radio-slider" value="1" id="radio-slider-4"/>
-              <label for="radio-slider-4">Agree</label>
-            </div>
-      
-            <div class="radio-slider__item">
-              <input type="radio" name="radio-slider" value="5" id="radio-slider-5"/>
-              <label for="radio-slider-5">Strongly Agree</label>
-            </div>
-          </div>
-        </fieldset>
-      </form>
- 
+        <div id="radios">
+          <input id="option1" name="options" type="radio" class ="radiolabel">
+          <label for="option1">Strogly</b> Agree</label>
 
+          <input id="option2" name="options" type="radio">
+          <label for="option2">Agree</label>
 
+          <input id="option3" name="options" type="radio" checked>
+          <label for="option3">Neutral</label>
 
+          <input id="option4" name="options" type="radio">
+          <label for="option4">Disagree</label>
+
+          <input id="option5" name="options" type="radio">
+          <label for="option5">Strongly </b>Disagree</label>
+
+        </div>
+      </div>
+      
 </body>
 
 </html>
