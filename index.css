@@ -16,9 +16,8 @@ ul.topnav li {
 
 ul.topnav li a {
   display: block;
-  color: white;
+  color: white !important;
   text-align: center;
-
   padding: 14px 40px;
   text-decoration: none;
 }
@@ -148,19 +147,16 @@ i {
 }
 
 body {
-  /*   gradient background */
-  /*   background: linear-gradient(135deg, black 0%, white 100%) fixed; */
   background: #17171e;
 }
 
 .tab_div {
   width: 100%;
   transform: translateZ(0);
- 
+
 }
 
 .tabs_menu {
-  /*   background-color:blue; */
   padding-top: 1%;
   width: 20%;
   float: left;
@@ -190,22 +186,13 @@ ul.tabs li {
   border-right: 2px solid white;
   font-size: 18px;
   color: white;
-  /*   transition: background-color 0.2s ease; */
 }
-
-
-/* ul.tabs li:hover {
-  border-right: 2px solid #e1386c;
-  background-color: rgba( 255, 155, 180, .9);
-  font-weight: bold;
-} */
 
 #tab1_content,
 #tab2_content,
 #tab3_content {
-  /*   background-color:red; */
   float: right;
-  width: 70%;
+  width: 80%;
   height: auto;
   padding-top: 5%;
 }
@@ -225,7 +212,7 @@ ul.tabs li {
   padding: 1em;
   cursor: pointer;
   background: #17171e;
-  color: white;
+  color: white !important;
   z-index: 0;
 }
 
@@ -496,7 +483,7 @@ slide p {
 }
 
 .slide-wrapper {
-  width: 2912px;
+  width: 100%;
   -webkit-animation: slide 5s ease infinite;
 }
 
@@ -517,17 +504,19 @@ slide p {
 .slide:nth-child(2) {
   background-image: url("https://cdn1.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg");
   background-repeat: no-repeat;
-
+  background-size: cover;
 }
 
 .slide:nth-child(3) {
   background-image: url("https://d17fnq9dkz9hgj.cloudfront.net/breed-uploads/2018/08/alaskan-malamute-card-large.jpg?bust=1535569394");
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .slide:nth-child(4) {
-  background-image: url("http://mcblogs.montgomerycollege.edu/atmc/wp-content/uploads/2018/10/MCVotesBanner-e1539962796712.jpg");
+  background-image: url("https://i.imgur.com/U9Or8zy.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .slide-number {
