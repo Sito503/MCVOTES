@@ -399,7 +399,7 @@ slide p {
 }
 
 
-.snip1515 {
+.snip {
   font-family: 'Open Sans', Arial, sans-serif;
   position: relative;
   margin: 10px;
@@ -413,12 +413,12 @@ slide p {
   box-shadow: none !important;
 }
 
-.snip1515 * {
+.snip * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-.snip1515 .profile-image {
+.snip .profile-image {
   display: inline-block;
   width: 80%;
   z-index: 1;
@@ -427,12 +427,12 @@ slide p {
   border: 2px solid#51237f;
 }
 
-.snip1515 .profile-image img {
+.snip .profile-image img {
   max-width: 100%;
   vertical-align: top;
 }
 
-.snip1515 figcaption {
+.snip figcaption {
   width: 100%;
   background-color: #F2F2F2;
   color: #555;
@@ -441,37 +441,37 @@ slide p {
   display: inline-block;
 }
 
-.snip1515 h3,
-.snip1515 h4,
-.snip1515 p {
+.snip h3,
+.snip h4,
+.snip p {
   margin: 0 0 5px;
 }
 
-.snip1515 h3 {
+.snip h3 {
   font-weight: 600;
   font-size: 1.3em;
   font-family: 'Playfair Display', Arial, sans-serif;
   color: #28A689;
 }
 
-.snip1515 h4 {
+.snip h4 {
   color: #8c8c8c;
   font-weight: 400;
   letter-spacing: 2px;
 }
 
-.snip1515 p {
+.snip p {
   font-size: 0.9em;
   letter-spacing: 1px;
   opacity: 0.9;
 }
 
-.snip1515 .icons {
+.snip .icons {
   text-align: center;
   width: 100%;
 }
 
-.snip1515 i {
+.snip i {
   padding: 10px 2px;
   display: inline-block;
   font-size: 18px;
@@ -480,7 +480,7 @@ slide p {
   opacity: 0.75;
 }
 
-.snip1515 i:hover {
+.snip i:hover {
   opacity: 1;
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
@@ -564,4 +564,96 @@ slide p {
   90% {
     margin-left: -2184px;
   }
+}
+
+/* slider */
+
+*{
+  margin:0px;
+  padding:0px;
+}
+html{
+  background:#51237F
+;
+}
+.wrapper {
+  margin: 100px 0;
+}
+.toggle_radio{
+  position: relative;
+  background:#6E4D94;
+  margin: 0px auto;
+  overflow: hidden;
+  padding: 0px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius:50px;
+  position: relative;
+  height: 25px;
+  width:600px;
+  color:#6E4D94;
+}
+.toggle_radio > * {
+  float: left;
+}
+.toggle_radio input[type=radio]{
+  display: none;
+  position: fixed;
+}
+.toggle_radio label{
+  font: 90%/1.618 "Arial";
+  color: #51237F;
+  z-index: 0;
+  display: block;
+  color: #ffffff;
+  width: 100px;
+  height: 20px;
+  margin: 3px 3px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 1;
+  /*background: rgba(0,0,0,.1);*/
+  text-align: center;
+  /*margin: 0 2px;*/
+  
+}
+.toggle_option_slider{
+  /*display: none;*/
+  /*background: red;*/
+  width: 100px;
+  height: 20px;
+  position: absolute;
+  top: 3px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  -ms-transition: all .4s ease;
+  transition: all .4s ease;
+}
+
+#first_toggle:checked ~ .toggle_option_slider{
+   background: rgba(255,255,255,.3); 
+  left: 3px;
+}
+#second_toggle:checked ~ .toggle_option_slider{
+   background: rgba(255,255,255,.3); 
+  left: 109px;
+}
+#third_toggle:checked ~ .toggle_option_slider{
+   background: rgba(255,255,255,.3); 
+  left: 215px;
+}
+
+#forth_toggle:checked ~ .toggle_option_slider{
+   background: rgba(255,255,255,.3); 
+  left: 320px;
+}
+#fifth_toggle:checked ~ .toggle_option_slider{
+   background: rgba(255,255,255,.3); 
+  left: 430px;
 }

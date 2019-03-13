@@ -49,12 +49,30 @@ const questionSet = {
   "Do you think canditaes need to fight for equalty?": ["T or F"],
   "Rank the issues in terms of importance to you?": [
     "Ranking",
-    ["Food", "Activities", "Career Workshops", "Book cost", "1231"]
+    ["Food Quality & Affordability", "Improve Student Activities", "Textbook Affordability"
+    , "Transportation", "Improve Advising", "Campus Security", "Library access",
+    "Diversty Inclusion", "Student Health Resource"]
   ],
-  "Rank the issues in terms of importance to you? on does": [
+  "Drag and rank the following transportation improvements in terms of importance to you": [
     "Ranking",
-    ["Food", "Activities", "Career Workshops", "Book cost", "1231"]
-  ]
+    ["Continue Free Ride On", "Free Parking", "Shuttle Frequency", 
+    "Student Discount Metro Pass", "Bike Share Program"]
+  ],
+  "Drag and rank the following campus events in terms of importance to you.": [
+    "Ranking",
+    ["Career Development", "Student Fundraising"," Fun in Campus Life", 
+  "Multicultural Events", "Issue Townhalls", "Health Wellness"]
+  ],
+  "Rank the following food improvement in terms of importance to you.": [
+    "Ranking",
+    ["Quality & Taste","Affordability","Discount Meal Plan","Evening Hours",
+    "Healthier Vending Option"]
+  ],
+  "Drag and rank the following textbook improvement in terms of importance to you": [
+    "Ranking",
+    ["Affordability","More Rentals","c.	More Z-courses/ open educational resources (no-cost resource)"]
+  ],
+  
 };
 
 function* questionGen() {
@@ -108,6 +126,7 @@ function showNextQuestion() {
       $("#next").off("click");
       $("#next").click(getAnswersFromSortableQuestion);
     } else if (questionType == "Silder") {
+
     } else {
       console.log("Error");
     }
