@@ -129,6 +129,7 @@ function showNextQuestion() {
       $("#next").off("click");
       $("#next").click(getAnswersFromSortableQuestion);
     } else if (questionType == "Silder") {
+      
 
     } else {
       console.log("Error");

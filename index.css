@@ -560,15 +560,6 @@ slide p {
 
 /* slider */
 
-.body {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 10px;
-}
-
-a, a:hover, a:visited {
-  color: #666;
-}
-
 .block {
   display: block;
   margin-bottom: 0px;
@@ -577,12 +568,7 @@ a, a:hover, a:visited {
   padding:10px;
 }
 
-h3 {
-  font-weight: bold;
-  margin-bottom: 10px;
-  font-size: 20px;
-  padding: 10px;
-}
+
 
 .main {
   margin: 40px;
@@ -602,11 +588,62 @@ section {
   margin: 0 10px;
 }
 
+.ui-radio{
+ 
+  text-align: center;
+  font-size: 5px;
+  box-sizing: 100%;
+  
+}
+
+.slider-level{
+box-align: center;
+align-content: center;
+padding:1px;
+
+}
+.radios-to-slider.medium .slider-label {
+  width : 80% !important;
+  min-width: 50px;
+  max-width: 100px;
+}
+
+.radios-to-slider .slider-level {
+  background-color: #fff;
+  cursor: pointer;
+  position: absolute;
+  padding: unset;
+  display: block;
+}
+.radios-to-slider .slider-bar {
+  
+  background-color: #6E4D94;
+  float: left;
+  height: 100%;
+  width: 0;
+  pointer-events: none;
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-width: 32px !important;
+}
+
+.radios-to-slider .slider-level.slider-lower-level {
+  opacity: 0.2;
+  align-items:center; 
+}
+
+.slider-knob {
+  float: right;
+  background-color: #51237F;
+}
+
 .box {
   float: left;
   padding: 10px;
   background-color: #eee;
-  width: 100px;
+  width: 500px;
   text-align: center;
 }
 
@@ -633,6 +670,7 @@ table.options th {
   
   color: #999;
   text-align: left;
+  text-size-adjust: 5px;
 }
 
 table.options thead {
