@@ -46,6 +46,9 @@ $(document).ready(function() {
   });
 });
 const questionSet = {
+  "Department advisor should be required to use Starfish for advising appointment.":["Slider"
+  ["Strongly Agree","Agree","Neutral","Disagree","Stronly Disagree"]
+],
   "Do you think canditaes need to fight for equalty?": ["T or F"],
   "Drag and rank the issues in terms of importance to you": [
     "Ranking",
@@ -130,7 +133,7 @@ function showNextQuestion() {
       $("#next").click(getAnswersFromSortableQuestion);
     } else if (questionType == "Silder") {
       
-
+      $("#next").off("click");
     } else {
       console.log("Error");
     }
