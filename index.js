@@ -1,5 +1,6 @@
 let answers = [];
 $(document).ready(function() {
+
   $(".buddy").on("swiperight", function() {
     $(this)
       .addClass("rotate-left")
@@ -134,6 +135,7 @@ function showNextQuestion() {
     } else if (questionType == "Silder") {
       
       $("#next").off("click");
+      $("#next").click(getAnswersFromRadioQuestion);
     } else {
       console.log("Error");
     }
@@ -143,7 +145,43 @@ function showNextQuestion() {
     questionContainer.appendChild(questionDiv);
   }
 }
+function getAnswersFromRadioQuestion(){
+  var radios = document.getElementsByName('radios')
+  var radioValArr;
 
+for (var i = 0, length = radios.length; i < length; i++)
+{
+ if (radios[i].checked)
+ {
+  // do whatever you want with the checked radio
+  alert(radios[i].value);
+  switch(i)
+  {
+    case 0:
+    radioValArr.push("Strongly Agree")
+    break;
+    case 1:
+    radioValArr.push("Agree")
+    break;
+    case 2:
+    radioValArr.push("Neutral")
+    break;
+    case 3:
+    radioValArr.push("Disagree")
+    break;
+    case 4:
+    radioValArr.push("Strongly Disagree")
+    break;
+
+
+  }
+  
+
+  // only one radio can be logically checked, don't check the rest
+  break;
+ }
+}
+}
 function getAnswersFromSortableQuestion() {
   moduleAnswers = document.getElementsByClassName("module");
   answersID = [];

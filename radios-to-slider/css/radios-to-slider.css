@@ -26,6 +26,8 @@
     cursor: pointer;
     position: absolute;
     display: block;
+    padding: unset;
+
 }
 
 .radios-to-slider .slider-level.slider-lower-level {
@@ -50,7 +52,8 @@
     display: block;
     cursor: pointer;
     color: #5e5e5e;
-    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    text-align: unset;
 }
 
 .slider-label-active {
@@ -59,14 +62,16 @@
 
 .radios-to-slider.medium .slider-label {
     top: 50px;
-    width: 44px;
+    width : 80% !important;
+    height: 50px;
+    width: 100px;
 }
 
 
 /* Slider bar */
 
 .radios-to-slider .slider-bar {
-    background-color: #00b4f1;
+    background-color: #6E4D94;
     float: left;
     height: 100%;
     width: 0;
@@ -97,7 +102,7 @@
 
 .slider-knob {
     float: right;
-    background-color: #0977B5;
+    background-color:#51237F;
 }
 
 .radios-to-slider.medium .slider-knob {
