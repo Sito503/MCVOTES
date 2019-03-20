@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   
     <meta charset="utf-8">
     <title>radiosToSlider. jquery plugin to create a slider using a list of radio buttons</title>
     <link rel="stylesheet" href="css/examples.css">
     <link rel="stylesheet" href="css/radios-to-slider.css">
     <link rel="stylesheet" type="text/css" href="index.css" />
     <link rel="shortcut icon" type="image/png" href="/imgs/favicon.png" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" >
     <script type="text/javascript" src="radios-to-slider/js/jquery.radios-to-slider.js"></script>
+    <link rel="shortcut icon" type="image/png" href="/imgs/favicon.png" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+
 </head>
 
-<body id="home">
+<body>
     <ul class="topnav">
         <li><a class="active" href="index.html">Home</a></li>
         <li><a href="News.html" id="#news">News</a></li>
-        <li><a href="slider.html">Slider</a></li>
+        <li><a href="sliderIndex.html">Slider</a></li>
         <li class="right"><a href="about.html">About</a></li>
     </ul>
     <div class="ribbon"><span>Demo BUILD</span></div>
@@ -46,20 +53,29 @@
     			</div>
     		</div>
 
-			<div class ="code">
-            	<script src="https://gist.github.com/darthrubens/9352503.js"></script>
-            </div>
-
-        </section>
-
-
-
 
     </div>
 
     <script src="js/jquery-1.10.2.min.js"></script>
 	<script src="js/jquery.radios-to-slider.js"></script>
-	<script src="js/index.js"></script>
+    <script src="js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" >
+    <script type="text/javascript" src="radios-to-slider/js/jquery.radios-to-slider.js"></script>
+   
+
+    <script>
+        $(document).ready(function(){
+            var radios = $("#radios").radiosToSlider();
+    
+            // Enable input
+            radios.setEnable();
+    
+            // Retrieve value
+            radios.getValue();
+        });
+    </script>
+
 
 </body>
 </html>

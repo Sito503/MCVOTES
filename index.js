@@ -133,9 +133,8 @@ function showNextQuestion() {
       $("#next").off("click");
       $("#next").click(getAnswersFromSortableQuestion);
     } else if (questionType == "Silder") {
+    
       
-      $("#next").off("click");
-      $("#next").click(getAnswersFromRadioQuestion);
     } else {
       console.log("Error");
     }
