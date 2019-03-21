@@ -1,7 +1,7 @@
 let answers = [];
-$(document).ready(function() {
+$(document).ready(function () {
 
-  $(".buddy").on("swiperight", function() {
+  $(".buddy").on("swiperight", function () {
     $(this)
       .addClass("rotate-left")
       .delay(700)
@@ -24,7 +24,7 @@ $(document).ready(function() {
     }
   });
 
-  $(".buddy").on("swipeleft", function() {
+  $(".buddy").on("swipeleft", function () {
     $(this)
       .addClass("rotate-right")
       .delay(700)
@@ -47,36 +47,37 @@ $(document).ready(function() {
   });
 });
 const questionSet = {
-  "Department advisor should be required to use Starfish for advising appointment.":["Slider"
-  ["Strongly Agree","Agree","Neutral","Disagree","Stronly Disagree"]
-],
+  "Department advisor should be required to use Starfish for advising appointment.": ["Slider"],
   "Do you think canditaes need to fight for equalty?": ["T or F"],
   "Drag and rank the issues in terms of importance to you": [
     "Ranking",
-    ["Food Quality & Affordability", "Improve Student Activities", "Textbook Affordability"
-    , "Transportation", "Improve Advising", "Campus Security", "Library access",
-    "Diversty Inclusion", "Student Health Resource"]
+    ["Food Quality & Affordability", "Improve Student Activities", "Textbook Affordability", "Transportation", "Improve Advising", "Campus Security", "Library access",
+      "Diversty Inclusion", "Student Health Resource"
+    ]
   ],
   "Drag and rank the following transportation improvements in terms of importance to you": [
     "Ranking",
-    ["Continue Free Ride On", "Free Parking", "Shuttle Frequency", 
-    "Student Discount Metro Pass", "Bike Share Program"]
+    ["Continue Free Ride On", "Free Parking", "Shuttle Frequency",
+      "Student Discount Metro Pass", "Bike Share Program"
+    ]
   ],
   "Drag and rank the following campus events in terms of importance to you.": [
     "Ranking",
-    ["Career Development", "Student Fundraising"," Fun in Campus Life", 
-  "Multicultural Events", "Issue Townhalls", "Health Wellness"]
+    ["Career Development", "Student Fundraising", " Fun in Campus Life",
+      "Multicultural Events", "Issue Townhalls", "Health Wellness"
+    ]
   ],
   "Rank the following food improvement in terms of importance to you.": [
     "Ranking",
-    ["Quality & Taste","Affordability","Discount Meal Plan","Evening Hours",
-    "Healthier Vending Option"]
+    ["Quality & Taste", "Affordability", "Discount Meal Plan", "Evening Hours",
+      "Healthier Vending Option"
+    ]
   ],
   "Drag and rank the following textbook improvement in terms of importance to you": [
     "Ranking",
-    ["Affordability","More Rentals","c.	More Z-courses/ open educational resources (no-cost resource)"]
+    ["Affordability", "More Rentals", "c.	More Z-courses/ open educational resources (no-cost resource)"]
   ],
-  
+
 };
 
 function* questionGen() {
@@ -132,9 +133,28 @@ function showNextQuestion() {
       makeAnswerSortable();
       $("#next").off("click");
       $("#next").click(getAnswersFromSortableQuestion);
-    } else if (questionType == "Silder") {
-    
-      
+    } else if (questionType == "Slider") {
+      wrapperDiv.id = "radios";
+      wrapperDiv.classList.add("block")
+      labelNameValues = ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"]
+      index = 1
+      for (let index = 1; index <= labelNameValues.length; index++) {
+        optionValue = "option" + index
+        labelInput = document.createElement("input");
+        labelInput.type = "radio"
+        label = document.createElement("label");
+        label.for = optionValue
+        labelInput.id = optionValue
+        label.innerHTML = labelNameValues[index - 1];
+        wrapperDiv.append(labelInput)
+        wrapperDiv.append(label)
+        questionContainer.appendChild(wrapperDiv);
+
+
+
+      }
+      var radios = $("#radios").radiosToSlider();
+
     } else {
       console.log("Error");
     }
@@ -144,43 +164,42 @@ function showNextQuestion() {
     questionContainer.appendChild(questionDiv);
   }
 }
-function getAnswersFromRadioQuestion(){
+
+function getAnswersFromRadioQuestion() {
   var radios = document.getElementsByName('radios')
   var radioValArr;
 
-for (var i = 0, length = radios.length; i < length; i++)
-{
- if (radios[i].checked)
- {
-  // do whatever you want with the checked radio
-  alert(radios[i].value);
-  switch(i)
-  {
-    case 0:
-    radioValArr.push("Strongly Agree")
-    break;
-    case 1:
-    radioValArr.push("Agree")
-    break;
-    case 2:
-    radioValArr.push("Neutral")
-    break;
-    case 3:
-    radioValArr.push("Disagree")
-    break;
-    case 4:
-    radioValArr.push("Strongly Disagree")
-    break;
+  for (var i = 0, length = radios.length; i < length; i++) {
+    if (radios[i].checked) {
+      // do whatever you want with the checked radio
+      alert(radios[i].value);
+      switch (i) {
+        case 0:
+          radioValArr.push("Strongly Agree")
+          break;
+        case 1:
+          radioValArr.push("Agree")
+          break;
+        case 2:
+          radioValArr.push("Neutral")
+          break;
+        case 3:
+          radioValArr.push("Disagree")
+          break;
+        case 4:
+          radioValArr.push("Strongly Disagree")
+          break;
 
 
+      }
+
+
+      // only one radio can be logically checked, don't check the rest
+      break;
+    }
   }
-  
+}
 
-  // only one radio can be logically checked, don't check the rest
-  break;
- }
-}
-}
 function getAnswersFromSortableQuestion() {
   moduleAnswers = document.getElementsByClassName("module");
   answersID = [];
@@ -202,7 +221,7 @@ function createAnswerModule(id, answer, clickableQuestion) {
   moduleParagraph.innerText = answer;
   moduleSection.appendChild(moduleParagraph);
   if (clickableQuestion) {
-    moduleSection.addEventListener("click", function() {
+    moduleSection.addEventListener("click", function () {
       answers.push([answer]);
       showNextQuestion();
     });
@@ -211,29 +230,29 @@ function createAnswerModule(id, answer, clickableQuestion) {
 }
 
 // please ignore this code is to make sure the list are sortable on mobile devices
-!(function(a) {
+!(function (a) {
   function f(a, b) {
     if (!(a.originalEvent.touches.length > 1)) {
       a.preventDefault();
       var c = a.originalEvent.changedTouches[0],
         d = document.createEvent("MouseEvents");
       d.initMouseEvent(
-        b,
-        !0,
-        !0,
-        window,
-        1,
-        c.screenX,
-        c.screenY,
-        c.clientX,
-        c.clientY,
-        !1,
-        !1,
-        !1,
-        !1,
-        0,
-        null
-      ),
+          b,
+          !0,
+          !0,
+          window,
+          1,
+          c.screenX,
+          c.screenY,
+          c.clientX,
+          c.clientY,
+          !1,
+          !1,
+          !1,
+          !1,
+          0,
+          null
+        ),
         a.target.dispatchEvent(d);
     }
   }
@@ -242,44 +261,44 @@ function createAnswerModule(id, answer, clickableQuestion) {
       b = a.ui.mouse.prototype,
       c = b._mouseInit,
       d = b._mouseDestroy;
-    (b._touchStart = function(a) {
+    (b._touchStart = function (a) {
       var b = this;
       !e &&
         b._mouseCapture(a.originalEvent.changedTouches[0]) &&
         ((e = !0),
-        (b._touchMoved = !1),
-        f(a, "mouseover"),
-        f(a, "mousemove"),
-        f(a, "mousedown"));
+          (b._touchMoved = !1),
+          f(a, "mouseover"),
+          f(a, "mousemove"),
+          f(a, "mousedown"));
     }),
-      (b._touchMove = function(a) {
-        e && ((this._touchMoved = !0), f(a, "mousemove"));
-      }),
-      (b._touchEnd = function(a) {
-        e &&
-          (f(a, "mouseup"),
+    (b._touchMove = function (a) {
+      e && ((this._touchMoved = !0), f(a, "mousemove"));
+    }),
+    (b._touchEnd = function (a) {
+      e &&
+        (f(a, "mouseup"),
           f(a, "mouseout"),
           this._touchMoved || f(a, "click"),
           (e = !1));
-      }),
-      (b._mouseInit = function() {
-        var b = this;
-        b.element.bind({
+    }),
+    (b._mouseInit = function () {
+      var b = this;
+      b.element.bind({
           touchstart: a.proxy(b, "_touchStart"),
           touchmove: a.proxy(b, "_touchMove"),
           touchend: a.proxy(b, "_touchEnd")
         }),
-          c.call(b);
-      }),
-      (b._mouseDestroy = function() {
-        var b = this;
-        b.element.unbind({
+        c.call(b);
+    }),
+    (b._mouseDestroy = function () {
+      var b = this;
+      b.element.unbind({
           touchstart: a.proxy(b, "_touchStart"),
           touchmove: a.proxy(b, "_touchMove"),
           touchend: a.proxy(b, "_touchEnd")
         }),
-          d.call(b);
-      });
+        d.call(b);
+    });
   }
 })(jQuery);
 // SORTABLE
@@ -288,23 +307,23 @@ function makeAnswerSortable() {
   $(".sortable-items").disableSelection();
 }
 // tab things do touch yet please
-$(document).ready(function() {
+$(document).ready(function () {
   $("#tab1_content").show();
   $("#tab2_content").hide();
   $("#tab3_content").hide();
 
-  $("#quiz_tab").click(function() {
+  $("#quiz_tab").click(function () {
     $("#tab1_content").show();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
   });
 
-  $("#candidate_info_tab").click(function() {
+  $("#candidate_info_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").show();
     $("#tab3_content").hide();
   });
-  $("#role_info_tab").click(function() {
+  $("#role_info_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").show();
