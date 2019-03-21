@@ -752,7 +752,7 @@ td {
 /* matrix */
 
 
-.container {
+ .container-matrix { 
 	width: 80%;
 	margin: 0 auto;
 	font-size: 20px;
