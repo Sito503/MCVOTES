@@ -47,14 +47,17 @@ $(document).ready(function () {
   });
 });
 const questionSet = {
-  "Department advisor should be required to use Starfish for advising appointment.": ["Slider"],
-  "Do you think canditaes need to fight for equalty?": ["T or F"],
   "Drag and rank the issues in terms of importance to you": [
     "Ranking",
     ["Food Quality & Affordability", "Improve Student Activities", "Textbook Affordability", "Transportation", "Improve Advising", "Campus Security", "Library access",
       "Diversty Inclusion", "Student Health Resource"
     ]
   ],
+  "Department advisor should be required to use Starfish for advising appointment.": ["Slider"],
+  "Montgomery College should improve security, even doing so will increase tuition costs.": ["Slider"],
+
+  "Do you think canditaes need to fight for equalty?": ["T or F"],
+ 
   "Drag and rank the following transportation improvements in terms of importance to you": [
     "Ranking",
     ["Continue Free Ride On", "Free Parking", "Shuttle Frequency",
@@ -75,9 +78,11 @@ const questionSet = {
   ],
   "Drag and rank the following textbook improvement in terms of importance to you": [
     "Ranking",
-    ["Affordability", "More Rentals", "c.	More Z-courses/ open educational resources (no-cost resource)"]
+    ["Affordability", "More Rentals", "More Z-courses/ open educational resources (no-cost resource)"]
   ],
-
+ 
+  " I think the following characteristic(s) are important to me for candidates who...": [
+    "matrix"]
 };
 
 function* questionGen() {
@@ -155,7 +160,10 @@ function showNextQuestion() {
       }
       var radios = $("#radios").radiosToSlider();
 
-    } else {
+    }else if(quesitonType == "matrix"){
+
+    } 
+    else {
       console.log("Error");
     }
   } else {

@@ -15,8 +15,7 @@
   <link rel="stylesheet" type="text/css" href="index.css" />
 
   <link rel="stylesheet" type="text/css" href="radios-to-slider/css/radios-to-slider.css">
-  <script src="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-  <script type="text/javascript" src="radios-to-slider/js/jquery.radios-to-slider.js"></script>
+ 
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
@@ -34,7 +33,7 @@
   <h3>Montgomery College should improve security, even doing so will increase tuition costs. </h3> <br />
   <div class="block">
 
-    <div id="radios">
+    <div id="radios1">
       <input id="option1" name="options" type="radio" class="radiolabel">
       <label for="option1">Strongly</b> Agree</label>
 
@@ -52,19 +51,7 @@
 
     </div>
   </div>
-  <script src="index.js"></script>
-  <script>
-    $(document).ready(function () {
-      var radios = $("#radios").radiosToSlider();
-
-      // Enable input
-      radios.setEnable();
-
-      // Retrieve value
-      radios.getValue();
-    });
-  </script>
-
+  
 
     <div class="container-matrix">
       <br>
@@ -161,7 +148,20 @@
         </tr>
       </table>
     </div>
-
+    <script src="index.js"></script>
+    <script>
+      $(document).ready(function () {
+        var radios = $("#radios").radiosToSlider();
+  
+        // Enable input
+        radios.setEnable();
+  
+        // Retrieve value
+        radios.getValue();
+      });
+    </script>
+   <script src="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+   <script type="text/javascript" src="radios-to-slider/js/jquery.radios-to-slider.js"></script>
 </body>
 
 </html>
