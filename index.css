@@ -803,7 +803,7 @@ td:first-child {
   padding: 3%;
 }
 
-label {
+#registration > div >label {
   display: inline-block;
   cursor: pointer;
   position: relative;
@@ -813,11 +813,11 @@ label {
 	font-family: 'Roboto', sans-serif;
 }
 
-input[type=radio] {
+#registration > div > input[type=radio] {
   display: none;
 }
 
-label:before {
+#registration > div > label:before {
   content: "";
   /*display: inline-block;*/
   width: 20px;
@@ -832,7 +832,7 @@ label:before {
 	border-radius: 50%;
 }
 
-input[type=radio]:checked + label:before {
+#registration > div > input[type=radio]:checked + label:before {
     content: "\2022";
     color: #9FA1A4;
     font-size: 35px;
