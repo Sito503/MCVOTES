@@ -74,6 +74,7 @@ ul.topnav li.right {
   transition: color 0.3s, background-color 0.3s;
   margin: 0 auto;
   margin-top: 10px;
+  padding:0s%;
 }
 
 .module:hover {
@@ -93,9 +94,8 @@ ul.topnav li.right {
 
 .next-btn {
   background-color: #51237f;
-  border-radius: 25px;
   border: none;
-  padding: 15px 32px;
+  padding: 15px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -145,6 +145,7 @@ i {
 .question {
   font-size: 24px;
   font: 18px arial, sans-serif;
+  padding: 5%;
 }
 
 @import 'https://fonts.googleapis.com/css?family=Quicksand';
