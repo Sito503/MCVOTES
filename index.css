@@ -74,7 +74,7 @@ ul.topnav li.right {
   transition: color 0.3s, background-color 0.3s;
   margin: 0 auto;
   margin-top: 10px;
-  padding:0s%;
+  padding:0%;
 }
 
 .module:hover {
@@ -175,17 +175,15 @@ body {
 }
 
 ul.tabs {
-  padding: 0;
+  padding: 1px;
   font: 18px arial, sans-serif;
 }
 
 #quiz_tab,
 #candidate_info_tab,
 #role_info_tab {
-  padding-top: 10%;
-  padding-bottom: 20%;
-  padding-left: 5%;
-  padding-right: 5%;
+  
+  padding:10%;
   width: 100%;
   font: 18px arial, sans-serif;
 }

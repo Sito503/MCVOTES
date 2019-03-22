@@ -140,7 +140,7 @@ function showNextQuestion() {
       $("#next").click(getAnswersFromSortableQuestion);
     } else if (questionType == "Slider") {
       wrapperDiv.id = "radios";
-      wrapperDiv.classList.add("block")
+      wrapperDiv.classList.add("radio-block")
       labelNameValues = ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"]
       index = 1
       for (let index = 1; index <= labelNameValues.length; index++) {
@@ -171,6 +171,11 @@ function showNextQuestion() {
     questionDiv.innerHTML += ":answers \n Quiz done get out here";
     questionContainer.appendChild(questionDiv);
   }
+}
+function getAnswerFromMatrix(){
+
+  
+
 }
 
 function getAnswersFromRadioQuestion() {
