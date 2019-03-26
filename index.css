@@ -841,12 +841,12 @@ td:first-child {
     line-height: 18px;
 }
 
-input.green:checked + label:before {
+#registration > div >input.green:checked + label:before {
     background-color:  #28A689;
 }
-input.orange:checked + label:before {
+#registration > div >input.orange:checked + label:before {
     background-color: #FF5E3A ;
 }
-input.red:checked + label:before {
+#registration > div >input.red:checked + label:before {
     background-color:  #0E8AD9;
 }

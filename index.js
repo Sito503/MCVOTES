@@ -161,6 +161,13 @@ function showNextQuestion() {
       var radios = $("#radios").radiosToSlider();
 
     }else if(quesitonType == "matrix"){
+      wrapperDiv.id = "registration";
+      wrapperDIv.classList.add("container-matrix")
+      labelNameValues=["yes","no","dont care"];
+      index = 1
+      for(let index= 1; index <= labelNameValues.length; index++){
+        
+      }
 
     } 
     else {

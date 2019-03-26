@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/examples.css">
     <link rel="stylesheet" href="css/radios-to-slider.css">
     <link rel="stylesheet" type="text/css" href="index.css" />
+    <link rel="stylesheet" type="text/css" href="progressBar.css" />
     <link rel="shortcut icon" type="image/png" href="/imgs/favicon.png" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" >
@@ -131,24 +132,31 @@
                 </td>
                 
             </tr>
-            <tr>
-                <td>Champ 5</td>
-                <td class="container-button" class="matrixRadio">
-                <input type="radio" id="champ9" name="champC" value="valide" class="green">
-                <label for="champ9"></label>
-                </td>
-                <td class="container-button">
-                <input type="radio" id="champ10" name="champC" value="non-valide" class="orange">
-                <label for="champ10"></label>
-                </td>
-                <td class="container-button">
-                <input type="radio" id="champ11" name="champC" value="non-recu" class="red">
-                <label for="champ11"></label>
-                </td>
-                
-            </tr>
             </table>
         </div>
+
+
+        
+        <div class="center">PROGRESS BAR</div>
+        <div class="progress">
+        <ul>
+            <li class="current">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+        </ul>
+        </div>
+        <div class="buttons">
+            <a href="#" id="prev">prev</a>
+            <a href="#" id="next">next</a>	
+        </div>
+
+
+
 
         <script src="js/jquery-1.10.2.min.js"></script>
         <script src="js/jquery.radios-to-slider.js"></script>
@@ -156,19 +164,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" >
         <script type="text/javascript" src="radios-to-slider/js/jquery.radios-to-slider.js"></script>
-       
-    
-        <!-- <script>
-            $(document).ready(function(){
-                var radios = $("#radios").radiosToSlider();
-        
-                // Enable input
-                radios.setEnable();
-        
-                // Retrieve value
-                radios.getValue();
-            });
-        </script> -->
+       <script type ="text/javascript" src = progressBar.js></script>
+
 
 
 
