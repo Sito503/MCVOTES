@@ -53,10 +53,7 @@ const questionSet = {
       "Diversty Inclusion", "Student Health Resource"
     ]
   ],
-  "Department advisor should be required to use Starfish for advising appointment.": ["Slider"],
-  "Montgomery College should improve security, even doing so will increase tuition costs.": ["Slider"],
-
-  "Do you think canditaes need to fight for equalty?": ["T or F"],
+  
  
   "Drag and rank the following transportation improvements in terms of importance to you": [
     "Ranking",
@@ -80,7 +77,8 @@ const questionSet = {
     "Ranking",
     ["Affordability", "More Rentals", "More Z-courses/ open educational resources (no-cost resource)"]
   ],
- 
+  "Department advisor should be required to use Starfish for advising appointment.": ["Slider"],
+  "Montgomery College should improve security, even doing so will increase tuition costs.": ["Slider"],
   " I think the following characteristic(s) are important to me for candidates who...": [
     "matrix"]
 };
@@ -120,15 +118,9 @@ function showNextQuestion() {
     questionType = questionProps[0];
     questionDiv.innerText = question;
     questionContainer.appendChild(questionDiv);
+    
 
-    if (questionType == "T or F") {
-      // use the tinder style
-      $("#next").hide();
-
-      wrapperDiv.appendChild(createAnswerModule("1", "Agree", true));
-      wrapperDiv.appendChild(createAnswerModule("0", "Disagree", true));
-      questionContainer.appendChild(wrapperDiv);
-    } else if (questionType == "Ranking") {
+    if (questionType == "Ranking") {
       questionAnswers = questionProps[1];
       for (var i = 0; i < questionAnswers.length; i++) {
         wrapperDiv.appendChild(createAnswerModule("" + i, questionAnswers[i]));
@@ -138,6 +130,7 @@ function showNextQuestion() {
       makeAnswerSortable();
       $("#next").off("click");
       $("#next").click(getAnswersFromSortableQuestion);
+      
     } else if (questionType == "Slider") {
       wrapperDiv.id = "radios";
       wrapperDiv.classList.add("radio-block")
@@ -156,9 +149,11 @@ function showNextQuestion() {
         questionContainer.appendChild(wrapperDiv);
 
 
-
       }
+
+       
       var radios = $("#radios").radiosToSlider();
+      
 
     }else if(quesitonType == "matrix"){
       wrapperDiv.id = "registration";
@@ -168,22 +163,30 @@ function showNextQuestion() {
       for(let index= 1; index <= labelNameValues.length; index++){
         
       }
-
+      
+    
     } 
     else {
       console.log("Error");
     }
+    
+    $("#next").click(clickProgress);
+
   } else {
     questionDiv.innerHTML = answers;
     questionDiv.innerHTML += ":answers \n Quiz done get out here";
     questionContainer.appendChild(questionDiv);
   }
+
+  // $("#next").click(clickProgress);
 }
 function getAnswerFromMatrix(){
 
   
 
 }
+
+
 
 function getAnswersFromRadioQuestion() {
   var radios = document.getElementsByName('radios')
@@ -220,6 +223,22 @@ function getAnswersFromRadioQuestion() {
   }
 }
 
+function clickProgress() {
+
+  var $next = $('.progress ul li.current').removeClass('current').addClass('complete').next('li');
+    // if ($next.length) {
+       $next.removeClass('complete').addClass('current');
+       console.log('Prev');
+  
+    // } else {
+    //    $(".progress ul li:first").removeClass('complete').addClass('current');
+    //    if (".progress ul li:last") {
+    //      $('.progress ul li').removeClass('current').removeClass('complete').removeAttr('class');
+    //      $(".progress ul li:first").addClass('current');
+    //    }
+    //    console.log('Next');
+    // }
+}
 function getAnswersFromSortableQuestion() {
   moduleAnswers = document.getElementsByClassName("module");
   answersID = [];
