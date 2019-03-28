@@ -46,10 +46,23 @@ $(document).ready(function () {
     }
   });
 });
+const candidateAnsSet={
+  "Fake":[["0","3","2","4","6","7","8","1","5"],
+  ["1","3","2","0"],
+  ["2","0","3","1"],
+  ["2","1","0","3","5","4"],
+  ["1","2","3","0","4"],
+  ["1","0","2"],
+  ["Agree"],
+  ["Disagree"],
+  ["yes","no","yes","dont care"]],
+}
 const questionSet = {
   "Drag and rank the issues in terms of importance to you": [
     "Ranking",
-    ["Food Quality & Affordability", "Improve Student Activities", "Textbook Affordability", "Transportation", "Improve Advising", "Campus Security", "Library access",
+    ["Food Quality & Affordability", "Improve Student Activities", 
+    "Textbook Affordability", "Transportation", "Improve Advising", 
+    "Campus Security", "Library access",
       "Diversty Inclusion", "Student Health Resource"
     ]
   ],
@@ -177,8 +190,7 @@ function showNextQuestion() {
     questionDiv.innerHTML += ":answers \n Quiz done get out here";
     questionContainer.appendChild(questionDiv);
   }
-
-  // $("#next").click(clickProgress);
+  
 }
 function getAnswerFromMatrix(){
 
