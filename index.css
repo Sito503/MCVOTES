@@ -914,11 +914,11 @@ td:first-child {
   margin-top: 0;
   padding: 3px;
   
-  .list-inline {
-    margin-bottom: 0;
-  }
+ 
 }
-
+.list-inline {
+  margin-bottom: 0;
+}
 
 offset: cards-per-row + 1;
 .deck > *:nth-child({cards-per-row}n+{offset}) {
