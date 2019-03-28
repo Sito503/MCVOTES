@@ -855,3 +855,76 @@ td:first-child {
 #registration > div >input.red:checked + label:before {
     background-color:  #0E8AD9;
 }
+/**card stuff**/
+@cards-per-row: 3;
+
+@card-border: #ddd;
+@card-border-radius: 3px;
+@card-border-width: 1px;
+@card-height: 160px;
+@card-margin: 30px;
+@card-padding: 10px;
+
+@card-footer-bg: #eee;
+
+@img-width: 150px;
+@img-height: 150px;
+@img-border: white;
+@img-border-width: 6px;
+
+.card {
+  border: @card-border-width solid @card-border;
+  border-radius: @card-border-radius;
+  margin: @card-margin 0;
+  padding: @card-padding;
+}
+
+.card-wrapper 
+{
+  padding-top: @img-height/2 + 2*@img-border-width;
+}
+
+.profile-card {
+  margin-top: 0;
+  padding-top: @img-height/2 + 2*@img-border-width;
+  text-align: center;
+}
+
+.profile-card .profile-photo {
+  border: @img-border-width solid @img-border;
+  margin-left: (-@img-width / 2) + (-@img-border-width / 2);
+  position: absolute;
+  top: 0;
+  width: @img-width + (2 * @img-border-width);
+}
+
+.profile-card .profile-name {
+  margin-top: 0;
+}
+
+.profile-card .profile-note {
+  height: @card-height;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-footer {
+  background: @card-footer-bg;
+  margin: -@card-padding;
+  margin-top: 0;
+  padding: 3px;
+  
+  .list-inline {
+    margin-bottom: 0;
+  }
+}
+
+
+@offset: @cards-per-row + 1;
+.deck > *:nth-child(@{cards-per-row}n+@{offset}) {
+  clear: left;
+}
+
+.list-social {
+  font-size: 1.75em;
+}
