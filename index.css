@@ -1,7 +1,7 @@
 h3 {
   padding: 15px;
   font-size: 16px;
-  font-family: 'Roboto', sans-serif, ;
+  font-family: 'Roboto', sans-serif ;
 
 }
 
@@ -72,6 +72,7 @@ ul.topnav li.right {
   border: 2px solid #51237f;
   color: black !important;
   transition: color 0.3s, background-color 0.3s;
+  font-family: 'Open Sans', sans-serif;
   margin: 0 auto;
   margin-top: 10px;
   padding:0%;
@@ -144,7 +145,7 @@ i {
 
 .question {
   font-size: 24px;
-  font: 18px arial, sans-serif;
+  font:  arial, sans-serif;
   padding: 5%;
 }
 
@@ -505,16 +506,18 @@ slide p {
 
 .slide:nth-child(1) {
 
-  background-image: url("http://www.scholastic.com/content/images/articles/k/kr_news_101612_studentvote_header.jpg");
+  background-image: url("imgs/votepic.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  opacity: .85; 
 
 }
 
-.slide:nth-child(2) {
+/* .slide:nth-child(2) {
   background-image: url("https://cdn1.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  opacity: 0.5; 
 }
 
 .slide:nth-child(3) {
@@ -528,12 +531,14 @@ slide p {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+*/
 .slide-number {
   color: #FFF;
   text-align: center;
-  font-size: 7em;
-}
+  float: unset;
+  font-size: 60px;
+  font-family: 'Open Sans', sans-serif;
+} 
 
 @-webkit-keyframes slide {
   20% {
@@ -682,7 +687,7 @@ section {
 .radios-to-slider .slider-bar {
 
   background-color: #6E4D94;
-  float: left;
+  float: center;
   height: 100%;
   width: 0;
   pointer-events: none;
@@ -829,7 +834,7 @@ td:first-child {
   bottom: -2px;
   background-color: #ccc;
 	
-  /*box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);*/
+  
 	border-radius: 50%;
 }
 
