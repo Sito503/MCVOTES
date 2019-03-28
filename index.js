@@ -113,6 +113,11 @@ function getNextQuestion() {
   return value;
 }
 
+function showProgessBar(){
+  $(".progress").show();
+  $("#next").click(clickProgress);
+
+}
 
 
 
@@ -182,8 +187,7 @@ function showNextQuestion() {
     else {
       console.log("Error");
     }
-    
-    $("#next").click(clickProgress);
+    $("#next").click(showProgessBar);
 
   } else {
     questionDiv.innerHTML = answers;
@@ -261,6 +265,7 @@ function getAnswersFromSortableQuestion() {
   answers.push(answersID);
   $("#next").off("click");
   $("#next").click(showNextQuestion);
+  
   showNextQuestion();
 }
 
@@ -359,16 +364,23 @@ function makeAnswerSortable() {
 }
 // tab things do touch yet please
 $(document).ready(function () {
+  $(".progress").show();
+
+  $(".progress").hide();
+  $("#next").click(showProgessBar);
+
   $("#tab1_content").show();
   $("#tab2_content").hide();
   $("#tab3_content").hide();
   $("#tab4_content").hide();
+ 
 
   $("#quiz_tab").click(function () {
     $("#tab1_content").show();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
     $("#tab4_content").hide();
+    $("#next").click(showProgessBar);
   });
 
   $("#candidate_info_tab").click(function () {
@@ -376,12 +388,14 @@ $(document).ready(function () {
     $("#tab2_content").show();
     $("#tab3_content").hide();
     $("#tab4_content").hide();
+    
   });
   $("#role_info_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").show();
     $("#tab4_content").hide();
+   
   });
 
   $("#about_tab").click(function () {
@@ -389,6 +403,7 @@ $(document).ready(function () {
     $("#tab2_content").hide();
     $("#tab3_content").hide();
     $("#tab4_content").show();
+   
   });
 });
 $("#next").click(showNextQuestion);   

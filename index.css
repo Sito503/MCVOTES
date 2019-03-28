@@ -5,11 +5,7 @@ h3 {
 
 }
 
-p {
-  padding: 15px;
-  font-size: 14px;
-  font-family: 'Roboto', sans-serif;
-}
+
 
 ul.topnav {
   list-style-type: none;
@@ -73,7 +69,6 @@ ul.topnav li.right {
   color: black !important;
   transition: color 0.3s, background-color 0.3s;
   font-family: 'Open Sans', sans-serif;
-  margin: 0 auto;
   margin-top: 10px;
   padding:0%;
 }
@@ -144,9 +139,9 @@ i {
 }
 
 .question {
-  font-size: 24px;
+  font-size: 16px;
   font:  arial, sans-serif;
-  padding: 5%;
+  padding: 4%;
 }
 
 @import 'https://fonts.googleapis.com/css?family=Quicksand';
@@ -210,8 +205,9 @@ ul.tabs li {
 
 p {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   color: black;
+  padding: .5%;
 }
 
 
