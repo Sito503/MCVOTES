@@ -190,6 +190,8 @@ function showNextQuestion() {
     $("#next").click(showProgessBar);
 
   } else {
+
+
     questionDiv.innerHTML = answers;
     questionDiv.innerHTML += ":answers \n Quiz done get out here";
     questionContainer.appendChild(questionDiv);
@@ -242,18 +244,10 @@ function getAnswersFromRadioQuestion() {
 function clickProgress() {
 
   var $next = $('.progress ul li.current').removeClass('current').addClass('complete').next('li');
-    // if ($next.length) {
-       $next.removeClass('complete').addClass('current');
-       console.log('Prev');
+  $next.removeClass('complete').addClass('current');
+  console.log('Prev');
   
-    // } else {
-    //    $(".progress ul li:first").removeClass('complete').addClass('current');
-    //    if (".progress ul li:last") {
-    //      $('.progress ul li').removeClass('current').removeClass('complete').removeAttr('class');
-    //      $(".progress ul li:first").addClass('current');
-    //    }
-    //    console.log('Next');
-    // }
+   
 }
 function getAnswersFromSortableQuestion() {
   moduleAnswers = document.getElementsByClassName("module");
@@ -380,7 +374,7 @@ $(document).ready(function () {
     $("#tab2_content").hide();
     $("#tab3_content").hide();
     $("#tab4_content").hide();
-    $("#next").click(showProgessBar);
+    $("#next").click(showProgessBar);    
   });
 
   $("#candidate_info_tab").click(function () {
