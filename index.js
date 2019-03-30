@@ -55,7 +55,6 @@ const amyWang = [
   0, 1, 2,
 ]
 const questionSet = {
-  "Department advisor should be required to use Starfish for advising appointment.": ["Slider"],
 
   "Drag and rank the issues in terms of importance to you": [
     "Ranking",
@@ -89,6 +88,8 @@ const questionSet = {
     "Ranking",
     ["Affordability", "More Rentals", "More Z-courses/ open educational resources (no-cost resource)"]
   ],
+  "Department advisor should be required to use Starfish for advising appointment.": ["Slider"],
+
   "Montgomery College should improve security, even doing so will increase tuition costs.": ["Slider"],
   " I think the following characteristic(s) are important to me for candidates who...": [
     "matrix"
@@ -115,7 +116,6 @@ function getNextQuestion() {
 function showProgressBar() {
   $(".progress").show();
   $("#next").click(clickProgress);
-
 }
 
 
@@ -131,7 +131,6 @@ function showNextQuestion() {
     questionDiv = document.createElement("div");
     questionDiv.classList.add("question");
 
-    console.log("called")
     if (question != undefined) {
       questionProps = questionSet[question];
       questionType = questionProps[0];
@@ -181,7 +180,8 @@ function showNextQuestion() {
           $("#radios").radiosToSlider();
 
         }, 1)
-
+        $("#next").off("click");
+        $("#next").click(getAnswersFromRadioQuestion);
       } else if (questionType == "matrix") {
         wrapperDiv.id = "registration";
         wrapperDIv.classList.add("container-matrix")
@@ -190,12 +190,12 @@ function showNextQuestion() {
         for (let index = 1; index <= labelNameValues.length; index++) {
 
         }
-
-
       } else {
+        // not a valid value for the question
         console.log("Error");
       }
     } else {
+      // end of the quiz
       questionDiv.innerHTML = answers;
       questionDiv.innerHTML += ":answers \n Quiz done get out here";
       questionContainer.appendChild(questionDiv);
@@ -223,7 +223,6 @@ function getAnswersFromRadioQuestion() {
 
   for (var i = 0, length = radios.length; i < length; i++) {
     if (radios[i].checked) {
-      // do whatever you want with the checked radio
       alert(radios[i].value);
       switch (i) {
         case 0:
@@ -250,13 +249,14 @@ function getAnswersFromRadioQuestion() {
       break;
     }
   }
+  showNextQuestion();
+
 }
 
 function clickProgress() {
 
   var $next = $('.progress ul li.current').removeClass('current').addClass('complete').next('li');
   $next.removeClass('complete').addClass('current');
-  console.log('Prev');
 
 
 }
@@ -273,10 +273,6 @@ function getAnswersFromSortableQuestion() {
   console.log("user ans arr" + answerUser);
   console.log(moduleAnswers);
   answers.push(answersID);
-
-  $("#next").off("click");
-  $("#next").click(showNextQuestion);
-
   showNextQuestion();
 }
 
@@ -290,8 +286,6 @@ function createAnswerModule(id, answer, clickableQuestion) {
   if (clickableQuestion) {
     moduleSection.addEventListener("click", function () {
       answers.push([answer]);
-
-      showNextQuestion();
     });
   }
   return moduleSection;
