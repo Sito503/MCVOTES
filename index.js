@@ -46,25 +46,25 @@ $(document).ready(function () {
     }
   });
 });
-const amyWang=[
- 0,1,2,3,4,5,6,7,8,
-  4,1,2,0,3,
-  2,1,0,3,
-  1,3,2,4,5,0,
-  1,2,4,3,0,
-  0,1,2,
+const amyWang = [
+  0, 1, 2, 3, 4, 5, 6, 7, 8,
+  4, 1, 2, 0, 3,
+  2, 1, 0, 3,
+  1, 3, 2, 4, 5, 0,
+  1, 2, 4, 3, 0,
+  0, 1, 2,
 ]
 const questionSet = {
   "Drag and rank the issues in terms of importance to you": [
     "Ranking",
-    ["Food Quality & Affordability", "Improve Student Activities", 
-    "Textbook Affordability", "Transportation", "Improve Advising", 
-    "Campus Security", "Library access",
+    ["Food Quality & Affordability", "Improve Student Activities",
+      "Textbook Affordability", "Transportation", "Improve Advising",
+      "Campus Security", "Library access",
       "Diversty Inclusion", "Student Health Resource"
     ]
   ],
-  
- 
+
+
   "Drag and rank the following transportation improvements in terms of importance to you": [
     "Ranking",
     ["Continue Free Ride On", "Free Parking", "Shuttle Frequency",
@@ -90,7 +90,8 @@ const questionSet = {
   "Department advisor should be required to use Starfish for advising appointment.": ["Slider"],
   "Montgomery College should improve security, even doing so will increase tuition costs.": ["Slider"],
   " I think the following characteristic(s) are important to me for candidates who...": [
-    "matrix"]
+    "matrix"
+  ]
 };
 
 function* questionGen() {
@@ -110,7 +111,7 @@ function getNextQuestion() {
   return value;
 }
 
-function showProgessBar(){
+function showProgessBar() {
   $(".progress").show();
   $("#next").click(clickProgress);
 
@@ -119,7 +120,7 @@ function showProgessBar(){
 
 
 function showNextQuestion() {
-  console.log("called");
+
   $("#next").show();
   question = getNextQuestion();
   questionContainer = document.getElementById("question-container");
@@ -133,8 +134,8 @@ function showNextQuestion() {
     questionType = questionProps[0];
     questionDiv.innerText = question;
     questionContainer.appendChild(questionDiv);
-    
-    
+
+
 
     if (questionType == "Ranking") {
       questionAnswers = questionProps[1];
@@ -147,7 +148,7 @@ function showNextQuestion() {
       console.log(compareAnswers());
       $("#next").off("click");
       $("#next").click(getAnswersFromSortableQuestion);
-      
+
     } else if (questionType == "Slider") {
       wrapperDiv.id = "radios";
       wrapperDiv.classList.add("radio-block")
@@ -168,22 +169,21 @@ function showNextQuestion() {
 
       }
 
-       
-      var radios = $("#radios").radiosToSlider();
-      
 
-    }else if(quesitonType == "matrix"){
+      var radios = $("#radios").radiosToSlider();
+
+
+    } else if (quesitonType == "matrix") {
       wrapperDiv.id = "registration";
       wrapperDIv.classList.add("container-matrix")
-      labelNameValues=["yes","no","dont care"];
+      labelNameValues = ["yes", "no", "dont care"];
       index = 1
-      for(let index= 1; index <= labelNameValues.length; index++){
-        
+      for (let index = 1; index <= labelNameValues.length; index++) {
+
       }
-      
-    
-    } 
-    else {
+
+
+    } else {
       console.log("Error");
     }
     $("#next").click(showProgessBar);
@@ -195,11 +195,11 @@ function showNextQuestion() {
     questionDiv.innerHTML += ":answers \n Quiz done get out here";
     questionContainer.appendChild(questionDiv);
   }
-  
 }
-function getAnswerFromMatrix(){
 
-  
+function getAnswerFromMatrix() {
+
+
 
 }
 
@@ -245,25 +245,26 @@ function clickProgress() {
   var $next = $('.progress ul li.current').removeClass('current').addClass('complete').next('li');
   $next.removeClass('complete').addClass('current');
   console.log('Prev');
-  
-   
+
+
 }
-var answerUser =[];
+var answerUser = [];
+
 function getAnswersFromSortableQuestion() {
   moduleAnswers = document.getElementsByClassName("module");
   answersID = [];
   for (var answer of moduleAnswers) {
     answersID.push([answer.id, answer.innerText]);
-    console.log("ID is "+answer.id);
+    console.log("ID is " + answer.id);
     answerUser.push(answer.id);
   }
   console.log("user ans arr" + answerUser);
   console.log(moduleAnswers);
   answers.push(answersID);
-  
+
   $("#next").off("click");
   $("#next").click(showNextQuestion);
-  
+
   showNextQuestion();
 }
 
@@ -277,40 +278,37 @@ function createAnswerModule(id, answer, clickableQuestion) {
   if (clickableQuestion) {
     moduleSection.addEventListener("click", function () {
       answers.push([answer]);
-     
+
       showNextQuestion();
     });
   }
   return moduleSection;
 }
 
-var percentage= 0;
-function compareAnswers()
-{
-  var percentageCal=0;
+var percentage = 0;
+
+function compareAnswers() {
+  var percentageCal = 0;
   //Q1- 9 option
-  for(var i = 0;i<9;i++){
-   percentageCal += Math.abs(answerUser[i]-amyWang[i]); 
+  for (var i = 0; i < 9; i++) {
+    percentageCal += Math.abs(answerUser[i] - amyWang[i]);
   }
-  if(percentageCal==0)
-  {
-    
+  if (percentageCal == 0) {
+
     //console.log("% for q1 is SAME");
-    percentage += 100/8;
+    percentage += 100 / 8;
+  } else {
+    percentage = ((1 - (percentageCal / 36)) * 100) / 9;
   }
-  else{
-    percentage = ((1-(percentageCal/36))*100)/9;
-  }
-  console.log("% for q1 is "+ percentage+ " right now");
+  console.log("% for q1 is " + percentage + " right now");
   //Q2 - 5 option
-  percentageCal=0;
-  for(var i = 9; i< 14;i++)
-  {
-    percentageCal += Math.abs(answerUser[i]-amyWang[i]); 
+  percentageCal = 0;
+  for (var i = 9; i < 14; i++) {
+    percentageCal += Math.abs(answerUser[i] - amyWang[i]);
   }
-  percentage = ((1-(percentageCal/36))*100)/9;
-  
-  console.log("% for q2 is "+ percentage+ " right now");
+  percentage = ((1 - (percentageCal / 36)) * 100) / 9;
+
+  console.log("% for q2 is " + percentage + " right now");
 
 
 }
@@ -403,14 +401,14 @@ $(document).ready(function () {
   $("#tab2_content").hide();
   $("#tab3_content").hide();
   $("#tab4_content").hide();
- 
+
 
   $("#quiz_tab").click(function () {
     $("#tab1_content").show();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
     $("#tab4_content").hide();
-    $("#next").click(showProgessBar);    
+    $("#next").click(showProgessBar);
   });
 
   $("#candidate_info_tab").click(function () {
@@ -418,14 +416,14 @@ $(document).ready(function () {
     $("#tab2_content").show();
     $("#tab3_content").hide();
     $("#tab4_content").hide();
-    
+
   });
   $("#role_info_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").show();
     $("#tab4_content").hide();
-   
+
   });
 
   $("#about_tab").click(function () {
@@ -433,7 +431,7 @@ $(document).ready(function () {
     $("#tab2_content").hide();
     $("#tab3_content").hide();
     $("#tab4_content").show();
-   
+
   });
 });
-$("#next").click(showNextQuestion);   
+$("#next").click(showNextQuestion);
