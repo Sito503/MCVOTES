@@ -55,6 +55,8 @@ const amyWang = [
   0, 1, 2,
 ]
 const questionSet = {
+  "Department advisor should be required to use Starfish for advising appointment.": ["Slider"],
+
   "Drag and rank the issues in terms of importance to you": [
     "Ranking",
     ["Food Quality & Affordability", "Improve Student Activities",
@@ -87,7 +89,6 @@ const questionSet = {
     "Ranking",
     ["Affordability", "More Rentals", "More Z-courses/ open educational resources (no-cost resource)"]
   ],
-  "Department advisor should be required to use Starfish for advising appointment.": ["Slider"],
   "Montgomery College should improve security, even doing so will increase tuition costs.": ["Slider"],
   " I think the following characteristic(s) are important to me for candidates who...": [
     "matrix"
@@ -111,7 +112,7 @@ function getNextQuestion() {
   return value;
 }
 
-function showProgessBar() {
+function showProgressBar() {
   $(".progress").show();
   $("#next").click(clickProgress);
 
@@ -120,82 +121,93 @@ function showProgessBar() {
 
 
 function showNextQuestion() {
+  $("#question-container").fadeOut("fast", function () {
+    $("#next").show();
+    question = getNextQuestion();
+    questionContainer = document.getElementById("question-container");
+    questionContainer.innerHTML = "";
+    wrapperDiv = document.createElement("div");
+    wrapperDiv.classList.add("wrapper");
+    questionDiv = document.createElement("div");
+    questionDiv.classList.add("question");
 
-  $("#next").show();
-  question = getNextQuestion();
-  questionContainer = document.getElementById("question-container");
-  questionContainer.innerHTML = "";
-  wrapperDiv = document.createElement("div");
-  wrapperDiv.classList.add("wrapper");
-  questionDiv = document.createElement("div");
-  questionDiv.classList.add("question");
-  if (question != undefined) {
-    questionProps = questionSet[question];
-    questionType = questionProps[0];
-    questionDiv.innerText = question;
-    questionContainer.appendChild(questionDiv);
+    console.log("called")
+    if (question != undefined) {
+      questionProps = questionSet[question];
+      questionType = questionProps[0];
+      questionDiv.innerText = question;
+      questionContainer.appendChild(questionDiv);
 
 
 
-    if (questionType == "Ranking") {
-      questionAnswers = questionProps[1];
-      for (var i = 0; i < questionAnswers.length; i++) {
-        wrapperDiv.appendChild(createAnswerModule("" + i, questionAnswers[i]));
-      }
-      wrapperDiv.classList.add("sortable-items");
-      questionContainer.appendChild(wrapperDiv);
-      makeAnswerSortable();
-      console.log(compareAnswers());
-      $("#next").off("click");
-      $("#next").click(getAnswersFromSortableQuestion);
-
-    } else if (questionType == "Slider") {
-      wrapperDiv.id = "radios";
-      wrapperDiv.classList.add("radio-block")
-      labelNameValues = ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"]
-      index = 1
-      for (let index = 1; index <= labelNameValues.length; index++) {
-        optionValue = "option" + index
-        labelInput = document.createElement("input");
-        labelInput.type = "radio"
-        label = document.createElement("label");
-        label.for = optionValue
-        labelInput.id = optionValue
-        label.innerHTML = labelNameValues[index - 1];
-        wrapperDiv.append(labelInput)
-        wrapperDiv.append(label)
+      if (questionType == "Ranking") {
+        questionAnswers = questionProps[1];
+        for (var i = 0; i < questionAnswers.length; i++) {
+          wrapperDiv.appendChild(createAnswerModule("" + i, questionAnswers[i]));
+        }
+        wrapperDiv.classList.add("sortable-items");
         questionContainer.appendChild(wrapperDiv);
+        makeAnswerSortable();
+        console.log(compareAnswers());
+        $("#next").off("click");
+        $("#next").click(getAnswersFromSortableQuestion);
+
+      } else if (questionType == "Slider") {
+        wrapperDiv.id = "radios";
+        wrapperDiv.classList.add("radio-block")
+        labelNameValues = ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"]
+        index = 1
+        for (let index = 1; index <= labelNameValues.length; index++) {
+          optionValue = "option" + index
+          labelInput = document.createElement("input");
+          labelInput.type = "radio"
+          label = document.createElement("label");
+          label.for = optionValue
+          labelInput.id = optionValue
+          label.innerHTML = labelNameValues[index - 1];
+          wrapperDiv.append(labelInput)
+          wrapperDiv.append(label)
+          questionContainer.appendChild(wrapperDiv);
 
 
+        }
+
+        /*
+        The fade out callback restrict rendering of the radios to slider.
+        the 1 ms delay trick/hack the browser in rendering the dom after the divs have been created
+        */
+        setTimeout(function () {
+          // converting the radios to slider
+          $("#radios").radiosToSlider();
+
+        }, 1)
+
+      } else if (questionType == "matrix") {
+        wrapperDiv.id = "registration";
+        wrapperDIv.classList.add("container-matrix")
+        labelNameValues = ["yes", "no", "dont care"];
+        index = 1
+        for (let index = 1; index <= labelNameValues.length; index++) {
+
+        }
+
+
+      } else {
+        console.log("Error");
       }
-
-
-      var radios = $("#radios").radiosToSlider();
-
-
-    } else if (quesitonType == "matrix") {
-      wrapperDiv.id = "registration";
-      wrapperDIv.classList.add("container-matrix")
-      labelNameValues = ["yes", "no", "dont care"];
-      index = 1
-      for (let index = 1; index <= labelNameValues.length; index++) {
-
-      }
-
-
     } else {
-      console.log("Error");
+      questionDiv.innerHTML = answers;
+      questionDiv.innerHTML += ":answers \n Quiz done get out here";
+      questionContainer.appendChild(questionDiv);
     }
-    $("#next").click(showProgessBar);
+    showProgressBar()
 
-  } else {
+  })
 
 
-    questionDiv.innerHTML = answers;
-    questionDiv.innerHTML += ":answers \n Quiz done get out here";
-    questionContainer.appendChild(questionDiv);
-  }
+  $("#question-container").fadeIn(400)
 }
+
 
 function getAnswerFromMatrix() {
 
@@ -395,7 +407,7 @@ $(document).ready(function () {
   $(".progress").show();
 
   $(".progress").hide();
-  $("#next").click(showProgessBar);
+  $("#next").click(showProgressBar);
 
   $("#tab1_content").show();
   $("#tab2_content").hide();
@@ -408,7 +420,6 @@ $(document).ready(function () {
     $("#tab2_content").hide();
     $("#tab3_content").hide();
     $("#tab4_content").hide();
-    $("#next").click(showProgessBar);
   });
 
   $("#candidate_info_tab").click(function () {
