@@ -62,15 +62,15 @@ ul.topnav li.right {
 
 
 .module {
-  width: 80%;
+  width:80%;
   background: white;
   text-align: center;
   border: 2px solid #51237f;
   color: black !important;
   transition: color 0.3s, background-color 0.3s;
   font-family: 'Open Sans', sans-serif;
-  margin-top: 10px;
-  padding:0%;
+  padding: 0%;
+  margin-top: 6px;
 }
 
 .module:hover {
@@ -139,9 +139,9 @@ i {
 }
 
 .question {
-  font-size: 16px;
-  font:  arial, sans-serif;
-  padding: 4%;
+  font-size: 18px;
+  font-family:  'Roboto', sans-serif;
+  padding: 2%;
 }
 
 @import 'https://fonts.googleapis.com/css?family=Quicksand';
@@ -167,12 +167,12 @@ body {
   width: 20%;
   float: left;
   color: white;
-  font: 18px arial, sans-serif;
+  font: 15px 'Roboto', sans-serif;
 }
 
 ul.tabs {
   padding: 1px;
-  font: 18px arial, sans-serif;
+  font: 15px 'Roboto', sans-serif;
 }
 
 #quiz_tab,
@@ -182,7 +182,7 @@ ul.tabs {
   
   padding:8%;
   width: 80%;
-  font: 16px arial, sans-serif;
+  font: 15px 'Roboto', sans-serif;
 }
 
 ul.tabs li {
@@ -204,7 +204,7 @@ ul.tabs li {
 }
 
 p {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:'Roboto', sans-serif;
   font-size: 14px;
   color: black;
   padding: .5%;
@@ -867,9 +867,7 @@ h4,
     font-weight: bold;
 }
 
-.container {
-    width: 1170px;
-}
+
 
 .container {
     margin-left: auto;
@@ -910,6 +908,7 @@ h4,
     position: relative;
     bottom: -14px;
     left: 0;
+    margin-top: 20px;
 }
 
 .facebook-team

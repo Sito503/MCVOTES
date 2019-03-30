@@ -46,17 +46,14 @@ $(document).ready(function () {
     }
   });
 });
-const candidateAnsSet={
-  "Fake":[["0","3","2","4","6","7","8","1","5"],
-  ["1","3","2","0"],
-  ["2","0","3","1"],
-  ["2","1","0","3","5","4"],
-  ["1","2","3","0","4"],
-  ["1","0","2"],
-  ["Agree"],
-  ["Disagree"],
-  ["yes","no","yes","dont care"]],
-}
+const amyWang=[
+ 0,1,2,3,4,5,6,7,8,
+  4,1,2,0,3,
+  2,1,0,3,
+  1,3,2,4,5,0,
+  1,2,4,3,0,
+  0,1,2,
+]
 const questionSet = {
   "Drag and rank the issues in terms of importance to you": [
     "Ranking",
@@ -137,6 +134,7 @@ function showNextQuestion() {
     questionDiv.innerText = question;
     questionContainer.appendChild(questionDiv);
     
+    
 
     if (questionType == "Ranking") {
       questionAnswers = questionProps[1];
@@ -146,6 +144,7 @@ function showNextQuestion() {
       wrapperDiv.classList.add("sortable-items");
       questionContainer.appendChild(wrapperDiv);
       makeAnswerSortable();
+      console.log(compareAnswers());
       $("#next").off("click");
       $("#next").click(getAnswersFromSortableQuestion);
       
@@ -249,14 +248,19 @@ function clickProgress() {
   
    
 }
+var answerUser =[];
 function getAnswersFromSortableQuestion() {
   moduleAnswers = document.getElementsByClassName("module");
   answersID = [];
   for (var answer of moduleAnswers) {
     answersID.push([answer.id, answer.innerText]);
+    console.log("ID is "+answer.id);
+    answerUser.push(answer.id);
   }
+  console.log("user ans arr" + answerUser);
   console.log(moduleAnswers);
   answers.push(answersID);
+  
   $("#next").off("click");
   $("#next").click(showNextQuestion);
   
@@ -273,10 +277,42 @@ function createAnswerModule(id, answer, clickableQuestion) {
   if (clickableQuestion) {
     moduleSection.addEventListener("click", function () {
       answers.push([answer]);
+     
       showNextQuestion();
     });
   }
   return moduleSection;
+}
+
+var percentage= 0;
+function compareAnswers()
+{
+  var percentageCal=0;
+  //Q1- 9 option
+  for(var i = 0;i<9;i++){
+   percentageCal += Math.abs(answerUser[i]-amyWang[i]); 
+  }
+  if(percentageCal==0)
+  {
+    
+    //console.log("% for q1 is SAME");
+    percentage += 100/8;
+  }
+  else{
+    percentage = ((1-(percentageCal/36))*100)/9;
+  }
+  console.log("% for q1 is "+ percentage+ " right now");
+  //Q2 - 5 option
+  percentageCal=0;
+  for(var i = 9; i< 14;i++)
+  {
+    percentageCal += Math.abs(answerUser[i]-amyWang[i]); 
+  }
+  percentage = ((1-(percentageCal/36))*100)/9;
+  
+  console.log("% for q2 is "+ percentage+ " right now");
+
+
 }
 
 // please ignore this code is to make sure the list are sortable on mobile devices
