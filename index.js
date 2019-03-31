@@ -336,12 +336,6 @@ function compareAnswers(questionHd, questionTl) {
   }
   console.log("% for q1 is " + percentage + " right now");
 }
-function init() {
-  $("ui-page-theme-a a ").css("color", "white");
-  $("ui-page-theme-a a").css({
-    color: "white"
-  });
-}
 // please ignore this code is to make sure the list are sortable on mobile devices
 !(function(a) {
   function f(a, b) {
@@ -420,8 +414,8 @@ function makeAnswerSortable() {
   $(".sortable-items").disableSelection();
 }
 // tab things do touch yet please
+
 $(document).ready(function() {
-  $(init);
   $(".progress").show();
   $("#restart").hide();
   $(".progress").hide();
@@ -431,12 +425,15 @@ $(document).ready(function() {
   $("#tab2_content").hide();
   $("#tab3_content").hide();
   $("#tab4_content").hide();
+  $("#tab5_content").hide();
 
   $("#quiz_tab").click(function() {
     $("#tab1_content").show();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
     $("#tab4_content").hide();
+
+    $("#tab5_content").hide();
   });
 
   $("#candidate_info_tab").click(function() {
@@ -444,12 +441,16 @@ $(document).ready(function() {
     $("#tab2_content").show();
     $("#tab3_content").hide();
     $("#tab4_content").hide();
+
+    $("#tab5_content").hide();
   });
   $("#role_info_tab").click(function() {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").show();
     $("#tab4_content").hide();
+
+    $("#tab5_content").hide();
   });
 
   $("#about_tab").click(function() {
@@ -457,6 +458,14 @@ $(document).ready(function() {
     $("#tab2_content").hide();
     $("#tab3_content").hide();
     $("#tab4_content").show();
+    $("#tab5_content").hide();
+  });
+  $("#result_tab").click(function() {
+    $("#tab1_content").hide();
+    $("#tab2_content").hide();
+    $("#tab3_content").hide();
+    $("#tab4_content").hide();
+    $("#tab5_content").show();
   });
 });
 $("#next").click(showNextQuestion);

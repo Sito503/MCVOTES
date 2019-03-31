@@ -141,10 +141,9 @@ i {
 }
 
 .question {
-  font-size: 18edr 
-  px;
+  font-size: 18px;
   font-family:  'Roboto', sans-serif;
-  padding: 2%;
+  padding: 5%;
 }
 
 @import 'https://fonts.googleapis.com/css?family=Quicksand';
@@ -181,7 +180,8 @@ ul.tabs {
 #quiz_tab,
 #candidate_info_tab,
 #role_info_tab,
-#about_tab {
+#about_tab,
+#result_tab {
   
   padding:8%;
   width: 80%;
@@ -199,7 +199,8 @@ ul.tabs li {
 #tab1_content,
 #tab2_content,
 #tab3_content,
-#tab4_content {
+#tab4_content,
+#tab5_content {
   float: right;
   width: 80%;
   height: auto;
@@ -945,3 +946,12 @@ h4,
     color: #DE5845;
 }
 
+footer > p {
+  display: block;
+  text-align: right;
+  font-size: 10px;
+  clear: both;
+  font-family: "Coda", sans-serif;
+  padding: 2%;
+  
+}
