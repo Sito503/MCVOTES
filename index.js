@@ -46,14 +46,23 @@ $(document).ready(function () {
     }
   });
 });
-const amyWang = [
-  0, 1, 2, 3, 4, 5, 6, 7, 8,
-  4, 1, 2, 0, 3,
-  2, 1, 0, 3,
-  1, 3, 2, 4, 5, 0,
-  1, 2, 4, 3, 0,
-  0, 1, 2,
-]
+// const amyWang = [
+//   0, 1, 2, 3, 4, 5, 6, 7, 8,
+//   4, 1, 2, 0, 3,
+//   2, 1, 0, 3,
+//   1, 3, 2, 4, 5, 0,
+//   1, 2, 4, 3, 0,
+//   0, 1, 2,
+// ]
+var candidateAns= {
+  amyWang: ["0", "1", "2", "3", "4", "5", "6", "7", "8", //q1
+  " 4", "1", "2", "0", "3", //q2
+  "1", "2", "0", "3", //q3
+  "0", "1", "2", "3", "4", "5", //q4
+  " 4", "1", "2", "0", "3",
+  "0","1","2"],
+
+};
 const questionSet = {
 
   "Drag and rank the issues in terms of importance to you": [
@@ -130,8 +139,10 @@ function showNextQuestion() {
     wrapperDiv.classList.add("wrapper");
     questionDiv = document.createElement("div");
     questionDiv.classList.add("question");
+    
 
     if (question != undefined) {
+      
       questionProps = questionSet[question];
       questionType = questionProps[0];
       questionDiv.innerText = question;
@@ -147,7 +158,8 @@ function showNextQuestion() {
         wrapperDiv.classList.add("sortable-items");
         questionContainer.appendChild(wrapperDiv);
         makeAnswerSortable();
-        console.log(compareAnswers());
+        console.log("amyWang is "+ candidateAns.amyWang[0]);
+        
         $("#next").off("click");
         $("#next").click(getAnswersFromSortableQuestion);
 
@@ -183,22 +195,21 @@ function showNextQuestion() {
         $("#next").off("click");
         $("#next").click(getAnswersFromRadioQuestion);
       } else if (questionType == "matrix") {
-        wrapperDiv.id = "registration";
-        wrapperDIv.classList.add("container-matrix")
-        labelNameValues = ["yes", "no", "dont care"];
-        index = 1
-        for (let index = 1; index <= labelNameValues.length; index++) {
-
-        }
+        
       } else {
         // not a valid value for the question
         console.log("Error");
       }
+      
     } else {
       // end of the quiz
+      callCompare();
       questionDiv.innerHTML = answers;
       questionDiv.innerHTML += ":answers \n Quiz done get out here";
       questionContainer.appendChild(questionDiv);
+      $("#next").hide();
+      $("#restart").show();
+      $("#restart").click(refreshPage);
     }
     showProgressBar()
 
@@ -215,7 +226,9 @@ function getAnswerFromMatrix() {
 
 }
 
-
+function refreshPage(){
+  window.location.reload();
+} 
 
 function getAnswersFromRadioQuestion() {
   var radios = document.getElementsByName('radios')
@@ -244,7 +257,7 @@ function getAnswersFromRadioQuestion() {
 
       }
 
-
+    console.log("radio ans is " + radioValArr[i]);
       // only one radio can be logically checked, don't check the rest
       break;
     }
@@ -290,35 +303,38 @@ function createAnswerModule(id, answer, clickableQuestion) {
   }
   return moduleSection;
 }
+function callCompare(){
+  compareAnswers(0,9);
+  compareAnswers(10,14);
+  compareAnswers(15,18);
+  compareAnswers(19,24),
+  compareAnswers(25,29);
+  compareAnswers(30,32);
+}
 
-var percentage = 0;
+var percentage =0;
+function compareAnswers(questionHd, questionTl) {
 
-function compareAnswers() {
   var percentageCal = 0;
-  //Q1- 9 option
-  for (var i = 0; i < 9; i++) {
-    percentageCal += Math.abs(answerUser[i] - amyWang[i]);
+  
+  for (var i = questionHd; i < questionTl; i++) {
+    percentageCal += Math.abs(answerUser[i] - candidateAns.amyWang[i]); //i need to fix this
   }
   if (percentageCal == 0) {
 
-    //console.log("% for q1 is SAME");
     percentage += 100 / 8;
   } else {
     percentage = ((1 - (percentageCal / 36)) * 100) / 9;
   }
   console.log("% for q1 is " + percentage + " right now");
-  //Q2 - 5 option
-  percentageCal = 0;
-  for (var i = 9; i < 14; i++) {
-    percentageCal += Math.abs(answerUser[i] - amyWang[i]);
-  }
-  percentage = ((1 - (percentageCal / 36)) * 100) / 9;
-
-  console.log("% for q2 is " + percentage + " right now");
 
 
 }
-
+function init() {
+  $("ui-page-theme-a a ").css("color", "white");
+  $("ui-page-theme-a a").css({
+      "color": "white"});
+  }
 // please ignore this code is to make sure the list are sortable on mobile devices
 !(function (a) {
   function f(a, b) {
@@ -398,8 +414,9 @@ function makeAnswerSortable() {
 }
 // tab things do touch yet please
 $(document).ready(function () {
+  $(init);
   $(".progress").show();
-
+  $("#restart").hide();
   $(".progress").hide();
   $("#next").click(showProgressBar);
 
@@ -414,6 +431,7 @@ $(document).ready(function () {
     $("#tab2_content").hide();
     $("#tab3_content").hide();
     $("#tab4_content").hide();
+   
   });
 
   $("#candidate_info_tab").click(function () {
