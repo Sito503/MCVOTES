@@ -1,4 +1,5 @@
 let answers = [];
+var answerUser = [];
 $(document).ready(function() {
   $(".buddy").on("swiperight", function() {
     $(this)
@@ -45,14 +46,7 @@ $(document).ready(function() {
     }
   });
 });
-// const amyWang = [
-//   0, 1, 2, 3, 4, 5, 6, 7, 8,
-//   4, 1, 2, 0, 3,
-//   2, 1, 0, 3,
-//   1, 3, 2, 4, 5, 0,
-//   1, 2, 4, 3, 0,
-//   0, 1, 2,
-// ]
+
 var candidateAns = {
   amyWang: [
     ["0", "1", "2", "3", "4", "5", "6", "7", "8"], //q1
@@ -94,7 +88,7 @@ const questionSet = {
     [
       "Career Development",
       "Student Fundraising",
-      " Fun in Campus Life",
+      "Fun in Campus Life",
       "Multicultural Events",
       "Issue Townhalls",
       "Health Wellness"
@@ -125,7 +119,7 @@ const questionSet = {
   "Montgomery College should improve security, even doing so will increase tuition costs.": [
     "Slider"
   ],
-  " I think the following characteristic(s) are important to me for candidates who...": [
+  " I think the following characteristic(s) are important to me for candidates who ": [
     "matrix"
   ]
 };
@@ -179,7 +173,6 @@ function showNextQuestion() {
         wrapperDiv.classList.add("sortable-items");
         questionContainer.appendChild(wrapperDiv);
         makeAnswerSortable();
-        console.log("amyWang is " + candidateAns["amyWang"][0]);
 
         $("#next").off("click");
         $("#next").click(getAnswersFromSortableQuestion);
@@ -215,7 +208,6 @@ function showNextQuestion() {
           // converting the radios to slider
           $("#radios").radiosToSlider();
         }, 1);
-        $("#next").off("click");
         $("#next").click(getAnswersFromRadioQuestion);
       } else if (questionType == "matrix") {
       } else {
@@ -232,7 +224,6 @@ function showNextQuestion() {
       $("#restart").show();
       $("#restart").click(refreshPage);
     }
-    showProgressBar();
   });
 
   $("#question-container").fadeIn(400);
@@ -245,36 +236,13 @@ function refreshPage() {
 }
 
 function getAnswersFromRadioQuestion() {
-  var radios = document.getElementsByName("radios");
-  var radioValArr;
-
-  for (var i = 0, length = radios.length; i < length; i++) {
-    if (radios[i].checked) {
-      alert(radios[i].value);
-      switch (i) {
-        case 0:
-          radioValArr.push("Strongly Agree");
-          break;
-        case 1:
-          radioValArr.push("Agree");
-          break;
-        case 2:
-          radioValArr.push("Neutral");
-          break;
-        case 3:
-          radioValArr.push("Disagree");
-          break;
-        case 4:
-          radioValArr.push("Strongly Disagree");
-          break;
-      }
-
-      console.log("radio ans is " + radioValArr[i]);
-      // only one radio can be logically checked, don't check the rest
-      break;
-    }
+  selectedRadioValue = document.getElementsByClassName("slider-label-active");
+  if (selectedRadioValue.length != 0) {
+    value = selectedRadioValue[0].innerText;
+    answers.push(value);
+    clickProgress();
+    showNextQuestion();
   }
-  showNextQuestion();
 }
 
 function clickProgress() {
@@ -284,19 +252,17 @@ function clickProgress() {
     .next("li");
   $next.removeClass("complete").addClass("current");
 }
-var answerUser = [];
 
 function getAnswersFromSortableQuestion() {
   moduleAnswers = document.getElementsByClassName("module");
   answersID = [];
   for (var answer of moduleAnswers) {
     answersID.push([answer.id, answer.innerText]);
-    console.log("ID is " + answer.id);
     answerUser.push(answer.id);
   }
-  console.log("user ans arr" + answerUser);
-  console.log(moduleAnswers);
+
   answers.push(answersID);
+  clickProgress();
   showNextQuestion();
 }
 
@@ -334,7 +300,6 @@ function compareAnswers(questionHd, questionTl) {
   } else {
     percentage = ((1 - percentageCal / 36) * 100) / 9;
   }
-  console.log("% for q1 is " + percentage + " right now");
 }
 // please ignore this code is to make sure the list are sortable on mobile devices
 !(function(a) {
