@@ -3,7 +3,7 @@ h2 { font-family: Arial, Helvetica, sans-serif;  }
 
 .bar-main-container {
   margin: 10px auto;
-  width: 300px;
+  width: 500px;
   height: 100px;
   font-family: sans-serif;
   font-weight: normal;
@@ -16,11 +16,19 @@ h2 { font-family: Arial, Helvetica, sans-serif;  }
 .bar-percentage {
   float: left;
   background: rgba(0,0,0,0.13);
-  border-radius: 4px;
   padding: 30px 0px;
-  width: 18%;
+  width: 10%;
   height: 18%;
 }
+
+.bar-img {
+  float: left;
+  padding: 10px 0px;
+  width: 100px;
+  height: 100px;
+  margin-right: 0px;
+}
+
 .names{
   font-size: 14px;
   padding:2%;
@@ -33,13 +41,9 @@ h2 { font-family: Arial, Helvetica, sans-serif;  }
   border-radius: 10px;
   height: 10px;
   background: rgba(0,0,0,0.13);
-  width: 78%;
-  margin: 12px 0px; 
+  width: 60%;
+  margin: 12px 10px; 
   overflow: hidden;
-}
-
-.bar-image{
-  
 }
 
 .bar {
