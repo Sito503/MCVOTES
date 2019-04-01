@@ -267,11 +267,15 @@ function getAnswersFromSortableQuestion() {
 }
 
 function createAnswerModule(id, answer, clickableQuestion) {
+  sortableIcon = document.createElement("span");
+  sortableIcon.classList.add("ui-icon-grip-dotted-vertical");
+  sortableIcon.classList.add("ui-icon");
   moduleSection = document.createElement("section");
   moduleSection.id = id;
   moduleSection.classList.add("module");
   moduleParagraph = document.createElement("p");
   moduleParagraph.innerText = answer;
+  moduleSection.appendChild(sortableIcon);
   moduleSection.appendChild(moduleParagraph);
   if (clickableQuestion) {
     moduleSection.addEventListener("click", function() {

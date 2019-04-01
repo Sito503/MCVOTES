@@ -954,3 +954,10 @@ footer>p {
   padding: 2%;
 
 }
+
+.ui-icon-grip-dotted-vertical {
+  float: left !important;
+  -webkit-transform: scale(4) !important;
+  transform: scale(4) !important;
+  margin-top: 15px !important;
+}
