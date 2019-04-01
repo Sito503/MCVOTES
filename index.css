@@ -102,6 +102,7 @@ ul.topnav li.right {
   margin-left: auto;
   margin-top: 10px;
   color: white;
+  font-weight: 0px !important;
 
 
 }
@@ -960,4 +961,5 @@ footer>p {
   -webkit-transform: scale(4) !important;
   transform: scale(4) !important;
   margin-top: 15px !important;
+  margin-left: 10px !important;
 }
