@@ -1,6 +1,5 @@
 let answers = [];
-var answerUser = [];
-var answerSortedIn2d =[];
+
 const sliderLabelValues = [
   "Strongly Agree",
   "Agree",
@@ -13,11 +12,10 @@ const sliderLabelValues = [
 var candidateAns = {
   amyWang: [
     ["0", "1", "2", "3", "4", "5", "6", "7", "8"], //q1
-    [" 4", "1", "2", "0", "3"], //q2
-    ["1", "2", "0", "3"], //q3
-    ["0", "1", "2", "3", "4", "5"], //q4
-    [" 4", "1", "2", "0", "3"], //q5
-    ["0", "1", "2"] //q6
+    ["0", "1", "2", "3", "4"], //q2
+    ["0", "1", "2", "3","4","5"], //q3
+    ["0", "1", "2", "3", "4"], //q4
+    ["0", "1", "2"] //q5
   ]
 };
 const questionSet = {
@@ -224,36 +222,15 @@ function getAnswersFromSortableQuestion() {
   answersID = [];
   
   for (var answer of moduleAnswers) {
-    answersID.push([answer.id, answer.innerText]);
-    answerUser.push(answer.id);
+    answersID.push(answer.id);
   }
- //store the answer in a 2d array
-  var i,k;
-    //the tail of the loop will be the length of the array for each question
-    for (i = 0 ; i < 6; i++) {
-      if(!answerSortedIn2d[i])
-      {
-        answerSortedIn2d[i]= [];
-      }
-      for(k = 0; k < answerUser.length; k++) //there are 6 ranking questions
-      {
-        answerSortedIn2d[i].push(answerUser[k]); //create a colume
-      }
-        
-        
-      }
       
-    
-
-
-  answerUser=[]; //restore the arr for each question
+  
+      
   answers.push(answersID);
   clickProgress();
   showNextQuestion();
 }
-
-
-   
 
 
 function createAnswerModule(id, answer, clickableQuestion) {
@@ -275,42 +252,44 @@ function createAnswerModule(id, answer, clickableQuestion) {
   return moduleSection;
 }
 
-
-var percentage = 0;
-function compareAnswers(name) {
-
-  var percentageCal = 0, candidateAnsTotal =0;
-
-  for(key in candidateAns)
+function compareAnswers(candidate) {
+  totalPercent = 0;
+  for(candidate in candidateAns)
   {
-   
-    for(let j = 0; j <candidateAns[name].length; j++)
-    {
-     
-      for (let k = 0; k < candidateAns[name][j].length; k++)
-      {
-        percentageCal += Math.abs(answerSortedIn2d[j][k] - candidateAns[name][j][k]); 
-        candidateAnsTotal += Math.abs(candidateAns[name][j][k]);
+    
+    
+    candidateAnswers =  candidateAns[candidate]
+    for(let questionNumber = 0; questionNumber < candidateAnswers.length; questionNumber++){
+      candidateSAns =  candidateAnswers[questionNumber]
+      var candidateAnsTotal =0;
+      var percentageCal = 0;
+
+      for (let i = 0; i< candidateSAns.length;i++){
+        percentageCal += Math.abs(answers[questionNumber][i] - candidateSAns[i]); 
         
-        if (percentageCal == 0) {
-          percentage += 100 / 8;
-        } else {
-          percentage = (1 - (percentageCal / candidateAnsTotal)) / 8 *100;
-         
+        candidateAnsTotal += Math.abs(candidateSAns[i]); 
+        console.log("answer value is " + answers[questionNumber][i]);
         
-        }
-      
-        
-        
+       
       }
 
-      percentageCal =0;
-      candidateAnsTotal =0;
-      console.log("Percentage is " + percentage );
+      if(percentageCal == 0)
+      {
+        totalPercent += 12.5;
+      }
+      else{
+
+        totalPercent += (1 - (percentageCal/candidateAnsTotal))*10/8;
+
+      }
+      percentageCal = 0;
+      
+     
     }
+  candidateAnsTotal =0;
+  percentageCal = 0;
 
   }
-
   
 }
 // please ignore this code is to make sure the list are sortable on mobile devices
