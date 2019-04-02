@@ -169,6 +169,21 @@ function showNextQuestion() {
         }, 1);
         $("#next").click(getAnswersFromRadioQuestion);
       } else if (questionType == "matrix") {
+        val1 = $('tr input[name=pieces]:checked').parent().find('#matrix').html();
+        val1 = $("td input[name='pieces']:checked").parents().find('.matrix').html();
+        val1 = $('premis1').checked;
+        
+        function getMatrixValue()
+        {
+            var theCars = document.getElementsByName("matrix");
+            var i = theCars.length;
+            while (i--) {
+                if(theCars[i].checked)
+                     return theCars[i].value;
+        
+            }
+        }
+
   /*      Survey
     .StylesManager
     .applyTheme("default");
