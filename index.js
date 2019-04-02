@@ -1,51 +1,14 @@
 let answers = [];
 var answerUser = [];
-$(document).ready(function() {
-  $(".buddy").on("swiperight", function() {
-    $(this)
-      .addClass("rotate-left")
-      .delay(700)
-      .fadeOut(1);
-    $(".buddy")
-      .find(".status")
-      .remove();
+var answerSortedIn2d =[];
+const sliderLabelValues = [
+  "Strongly Agree",
+  "Agree",
+  "Neutral",
+  "Disagree",
+  "Strongly Disagree"
+];
 
-    $(this).append('<div class="status like">Like!</div>');
-    answers.push("yes");
-    if ($(this).is(":last-child")) {
-      $(".buddy:nth-child(1)")
-        .removeClass("rotate-left rotate-right")
-        .fadeIn(300);
-    } else {
-      $(this)
-        .next()
-        .removeClass("rotate-left rotate-right")
-        .fadeIn(400);
-    }
-  });
-
-  $(".buddy").on("swipeleft", function() {
-    $(this)
-      .addClass("rotate-right")
-      .delay(700)
-      .fadeOut(1);
-    $(".buddy")
-      .find(".status")
-      .remove();
-    $(this).append('<div class="status dislike">Dislike!</div>');
-    answers.push("no");
-    if ($(this).is(":last-child")) {
-      $(".buddy:nth-child(1)")
-        .removeClass("rotate-left rotate-right")
-        .fadeIn(300);
-    } else {
-      $(this)
-        .next()
-        .removeClass("rotate-left rotate-right")
-        .fadeIn(400);
-    }
-  });
-});
 
 var candidateAns = {
   amyWang: [
@@ -53,8 +16,8 @@ var candidateAns = {
     [" 4", "1", "2", "0", "3"], //q2
     ["1", "2", "0", "3"], //q3
     ["0", "1", "2", "3", "4", "5"], //q4
-    [" 4", "1", "2", "0", "3"],
-    ["0", "1", "2"]
+    [" 4", "1", "2", "0", "3"], //q5
+    ["0", "1", "2"] //q6
   ]
 };
 const questionSet = {
@@ -176,25 +139,21 @@ function showNextQuestion() {
 
         $("#next").off("click");
         $("#next").click(getAnswersFromSortableQuestion);
+       
+        
       } else if (questionType == "Slider") {
         wrapperDiv.id = "radios";
         wrapperDiv.classList.add("radio-block");
-        labelNameValues = [
-          "Strongly Agree",
-          "Agree",
-          "Neutral",
-          "Disagree",
-          "Strongly Disagree"
-        ];
+
         index = 1;
-        for (let index = 1; index <= labelNameValues.length; index++) {
+        for (let index = 1; index <= sliderLabelValues.length; index++) {
           optionValue = "option" + index;
           labelInput = document.createElement("input");
           labelInput.type = "radio";
           label = document.createElement("label");
           label.for = optionValue;
           labelInput.id = optionValue;
-          label.innerHTML = labelNameValues[index - 1];
+          label.innerHTML = sliderLabelValues[index - 1];
           wrapperDiv.append(labelInput);
           wrapperDiv.append(label);
           questionContainer.appendChild(wrapperDiv);
@@ -267,7 +226,7 @@ $("#surveyElement").Survey({model: survey});
       }
     } else {
       // end of the quiz
-      callCompare();
+      compareAnswers("amyWang") ;
       questionDiv.innerHTML = answers;
       questionDiv.innerHTML += ":answers \n Quiz done get out here";
       questionContainer.appendChild(questionDiv);
@@ -303,10 +262,17 @@ function getAnswersFromRadioQuestion() {
   selectedRadioValue = document.getElementsByClassName("slider-label-active");
   if (selectedRadioValue.length != 0) {
     value = selectedRadioValue[0].innerText;
-    answers.push(value);
+    for (let index = 0; index < sliderLabelValues.length; index++) {
+      sliderLabelValue = sliderLabelValues[index];
+      if (sliderLabelValue == value) {
+        answers.push(index);
+      }
+    }
+
     clickProgress();
     showNextQuestion();
   }
+
 }
 
 function clickProgress() {
@@ -320,15 +286,39 @@ function clickProgress() {
 function getAnswersFromSortableQuestion() {
   moduleAnswers = document.getElementsByClassName("module");
   answersID = [];
+  
   for (var answer of moduleAnswers) {
     answersID.push([answer.id, answer.innerText]);
     answerUser.push(answer.id);
   }
+ //store the answer in a 2d array
+  var i,k;
+    //the tail of the loop will be the length of the array for each question
+    for (i = 0 ; i < 6; i++) {
+      if(!answerSortedIn2d[i])
+      {
+        answerSortedIn2d[i]= [];
+      }
+      for(k = 0; k < answerUser.length; k++) //there are 6 ranking questions
+      {
+        answerSortedIn2d[i].push(answerUser[k]); //create a colume
+      }
+        
+        
+      }
+      
+    
 
+
+  answerUser=[]; //restore the arr for each question
   answers.push(answersID);
   clickProgress();
   showNextQuestion();
 }
+
+
+   
+
 
 function createAnswerModule(id, answer, clickableQuestion) {
   sortableIcon = document.createElement("span");
@@ -348,26 +338,44 @@ function createAnswerModule(id, answer, clickableQuestion) {
   }
   return moduleSection;
 }
-function callCompare() {
-  compareAnswers(0, 9);
-  compareAnswers(10, 14);
-  compareAnswers(15, 18);
-  compareAnswers(19, 24), compareAnswers(25, 29);
-  compareAnswers(30, 32);
-}
+
 
 var percentage = 0;
-function compareAnswers(questionHd, questionTl) {
-  var percentageCal = 0;
+function compareAnswers(name) {
 
-  for (var i = questionHd; i < questionTl; i++) {
-    percentageCal += Math.abs(answerUser[i] - candidateAns.amyWang[i]); //i need to fix this
+  var percentageCal = 0, candidateAnsTotal =0;
+
+  for(key in candidateAns)
+  {
+   
+    for(let j = 0; j <candidateAns[name].length; j++)
+    {
+     
+      for (let k = 0; k < candidateAns[name][j].length; k++)
+      {
+        percentageCal += Math.abs(answerSortedIn2d[j][k] - candidateAns[name][j][k]); 
+        candidateAnsTotal += Math.abs(candidateAns[name][j][k]);
+        
+        if (percentageCal == 0) {
+          percentage += 100 / 8;
+        } else {
+          percentage = (1 - (percentageCal / candidateAnsTotal)) / 8 *100;
+         
+        
+        }
+      
+        
+        
+      }
+
+      percentageCal =0;
+      candidateAnsTotal =0;
+      console.log("Percentage is " + percentage );
+    }
+
   }
-  if (percentageCal == 0) {
-    percentage += 100 / 8;
-  } else {
-    percentage = ((1 - percentageCal / 36) * 100) / 9;
-  }
+
+  
 }
 // please ignore this code is to make sure the list are sortable on mobile devices
 !(function(a) {
@@ -502,3 +510,53 @@ $(document).ready(function() {
   });
 });
 $("#next").click(showNextQuestion);
+
+
+
+//tinder style is here
+$(document).ready(function() {
+  $(".buddy").on("swiperight", function() {
+    $(this)
+      .addClass("rotate-left")
+      .delay(700)
+      .fadeOut(1);
+    $(".buddy")
+      .find(".status")
+      .remove();
+
+    $(this).append('<div class="status like">Like!</div>');
+    answers.push("yes");
+    if ($(this).is(":last-child")) {
+      $(".buddy:nth-child(1)")
+        .removeClass("rotate-left rotate-right")
+        .fadeIn(300);
+    } else {
+      $(this)
+        .next()
+        .removeClass("rotate-left rotate-right")
+        .fadeIn(400);
+    }
+  });
+
+  $(".buddy").on("swipeleft", function() {
+    $(this)
+      .addClass("rotate-right")
+      .delay(700)
+      .fadeOut(1);
+    $(".buddy")
+      .find(".status")
+      .remove();
+    $(this).append('<div class="status dislike">Dislike!</div>');
+    answers.push("no");
+    if ($(this).is(":last-child")) {
+      $(".buddy:nth-child(1)")
+        .removeClass("rotate-left rotate-right")
+        .fadeIn(300);
+    } else {
+      $(this)
+        .next()
+        .removeClass("rotate-left rotate-right")
+        .fadeIn(400);
+    }
+  });
+});
