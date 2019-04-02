@@ -1,5 +1,12 @@
 let answers = [];
 var answerUser = [];
+const sliderLabelValues = [
+  "Strongly Agree",
+  "Agree",
+  "Neutral",
+  "Disagree",
+  "Strongly Disagree"
+];
 $(document).ready(function() {
   $(".buddy").on("swiperight", function() {
     $(this)
@@ -180,22 +187,16 @@ function showNextQuestion() {
       } else if (questionType == "Slider") {
         wrapperDiv.id = "radios";
         wrapperDiv.classList.add("radio-block");
-        labelNameValues = [
-          "Strongly Agree",
-          "Agree",
-          "Neutral",
-          "Disagree",
-          "Strongly Disagree"
-        ];
+
         index = 1;
-        for (let index = 1; index <= labelNameValues.length; index++) {
+        for (let index = 1; index <= sliderLabelValues.length; index++) {
           optionValue = "option" + index;
           labelInput = document.createElement("input");
           labelInput.type = "radio";
           label = document.createElement("label");
           label.for = optionValue;
           labelInput.id = optionValue;
-          label.innerHTML = labelNameValues[index - 1];
+          label.innerHTML = sliderLabelValues[index - 1];
           wrapperDiv.append(labelInput);
           wrapperDiv.append(label);
           questionContainer.appendChild(wrapperDiv);
@@ -240,7 +241,12 @@ function getAnswersFromRadioQuestion() {
   selectedRadioValue = document.getElementsByClassName("slider-label-active");
   if (selectedRadioValue.length != 0) {
     value = selectedRadioValue[0].innerText;
-    answers.push(value);
+    for (let index = 0; index < sliderLabelValues.length; index++) {
+      sliderLabelValue = sliderLabelValues[index];
+      if (sliderLabelValue == value) {
+        answers.push(index);
+      }
+    }
     clickProgress();
     showNextQuestion();
   }
