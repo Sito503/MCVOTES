@@ -30,6 +30,7 @@
 
 .radios-to-slider .slider-level.slider-lower-level {
     opacity: 0.2;
+    margin-left: 0px;
 }
 
 .radios-to-slider.medium .slider-level {

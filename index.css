@@ -1,11 +1,8 @@
 h3 {
   padding: 15px;
   font-size: 16px;
-  font-family: 'Roboto', sans-serif;
-
+  font-family: "Roboto", sans-serif;
 }
-
-
 
 ul.topnav {
   list-style-type: none;
@@ -29,7 +26,6 @@ ul.topnav li a {
 
 ul.topnav li a:hover:not(.active) {
   background-color: #51237f;
-
 }
 
 ul.topnav li a:hover:not(.active) {
@@ -47,7 +43,6 @@ ul.topnav li.right {
 }
 
 @media screen and (max-width: 600px) {
-
   ul.topnav li.right,
   ul.topnav li {
     float: none;
@@ -55,11 +50,8 @@ ul.topnav li.right {
 }
 
 .container {
-
   text-align: center;
 }
-
-
 
 .module {
   width: 80%;
@@ -68,7 +60,7 @@ ul.topnav li.right {
   border: 2px solid #51237f;
   color: black !important;
   transition: color 0.3s, background-color 0.3s;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   padding: 0%;
   margin-top: 6px;
 }
@@ -87,7 +79,6 @@ ul.topnav li.right {
   margin-left: auto;
 }
 
-
 .next-btn {
   background-color: #51237f;
   border: none;
@@ -102,16 +93,13 @@ ul.topnav li.right {
   margin-left: auto;
   margin-top: 10px;
   color: white;
-
-
+  font-weight: 0px !important;
 }
 
 .next-btn:hover {
   background-color: white;
   color: #51237f;
 }
-
-
 
 i {
   border: solid black;
@@ -120,34 +108,29 @@ i {
   padding: 3px;
 }
 
-
 .right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 }
 
-
 .wrapper {
   border-radius: 25px;
   padding-left: 50px;
   padding-right: 50px;
-
-
 }
 
 #question-container {
   border: 1px black;
   height: 100%;
-
 }
 
 .question {
   font-size: 18px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   padding: 5px;
 }
 
-@import 'https://fonts.googleapis.com/css?family=Quicksand';
+@import "https://fonts.googleapis.com/css?family=Quicksand";
 
 @media screen and (max-width: 400px) {
   .tab_div {
@@ -162,7 +145,6 @@ body {
 .tab_div {
   width: 100%;
   transform: translateZ(0);
-
 }
 
 .tabs_menu {
@@ -170,12 +152,12 @@ body {
   width: 20%;
   float: left;
   color: white;
-  font: 15px 'Roboto', sans-serif;
+  font: 15px "Roboto", sans-serif;
 }
 
 ul.tabs {
   padding: 1px;
-  font: 15px 'Roboto', sans-serif;
+  font: 15px "Roboto", sans-serif;
 }
 
 #quiz_tab,
@@ -183,10 +165,9 @@ ul.tabs {
 #role_info_tab,
 #about_tab,
 #result_tab {
-
   padding: 8%;
   width: 80%;
-  font: 15px 'Roboto', sans-serif;
+  font: 15px "Roboto", sans-serif;
 }
 
 ul.tabs li {
@@ -209,12 +190,11 @@ ul.tabs li {
 }
 
 p {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   color: black;
-  padding: .5%;
+  padding: 0.5%;
 }
-
 
 /* hover effect */
 
@@ -239,7 +219,7 @@ ul.tabs li:before {
   background: #51237f;
   transform: scaleX(0);
   transform-origin: 0 50%;
-  transition: transform .5s ease-out;
+  transition: transform 0.5s ease-out;
 }
 
 ul.tabs li:hover:before {
@@ -247,7 +227,6 @@ ul.tabs li:hover:before {
 }
 
 /* ribbon */
-
 
 .ribbon {
   position: absolute;
@@ -263,7 +242,7 @@ ul.tabs li:hover:before {
 .ribbon span {
   font-size: 10px;
   font-weight: bold;
-  color: #FFF;
+  color: #fff;
   text-transform: uppercase;
   text-align: center;
   line-height: 20px;
@@ -271,8 +250,8 @@ ul.tabs li:hover:before {
   -webkit-transform: rotate(45deg);
   width: 100px;
   display: block;
-  background: #79A70A;
-  background: linear-gradient(#B6BAC9 0%, #808080 100%);
+  background: #79a70a;
+  background: linear-gradient(#b6bac9 0%, #808080 100%);
   box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
   position: absolute;
   top: 19px;
@@ -310,10 +289,9 @@ slider {
   background-color: #1f1f1f;
   overflow: hidden;
   position: absolute;
-
 }
 
-slider>* {
+slider > * {
   position: absolute;
   display: block;
   width: 100%;
@@ -329,7 +307,6 @@ slide:nth-child(1) {
   background-image: url("imgs/votepic.jpg");
   background-size: cover;
   background-position: center;
-
 }
 
 slide:nth-child(2) {
@@ -337,7 +314,6 @@ slide:nth-child(2) {
   background-image: url("imgs/student_senate.jpg");
   background-size: cover;
   background-position: center;
-
 }
 
 slide:nth-child(3) {
@@ -345,7 +321,6 @@ slide:nth-child(3) {
   background-image: url("imgs/horizon.jpg");
   background-size: cover;
   background-position: center;
-
 }
 
 slide:nth-child(4) {
@@ -353,7 +328,6 @@ slide:nth-child(4) {
   background-image: url("imgs/beVoice.jpg");
   background-size: cover;
   background-position: center;
-
 }
 
 .slide-text {
@@ -364,7 +338,6 @@ slide:nth-child(4) {
   width: 100%;
   margin-top: 50px;
   color: #fff;
-
 }
 
 @keyframes slide {
@@ -397,9 +370,8 @@ slide:nth-child(4) {
   }
 }
 
-
 .snip {
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: "Open Sans", Arial, sans-serif;
   position: relative;
   margin: 10px;
   min-width: 230px;
@@ -433,7 +405,7 @@ slide:nth-child(4) {
 
 .snip figcaption {
   width: 100%;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   color: #555;
   padding: 125px 25px 25px;
   margin-top: -100px;
@@ -449,8 +421,8 @@ slide:nth-child(4) {
 .snip h3 {
   font-weight: 600;
   font-size: 1.3em;
-  font-family: 'Playfair Display', Arial, sans-serif;
-  color: #28A689;
+  font-family: "Playfair Display", Arial, sans-serif;
+  color: #28a689;
 }
 
 .snip h4 {
@@ -506,21 +478,18 @@ slide:nth-child(4) {
 }
 
 .slide:nth-child(1) {
-
   background-image: url("imgs/votepic.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  opacity: .85;
-
+  opacity: 0.85;
 }
 
-
 .slide-number {
-  color: #FFF;
+  color: #fff;
   text-align: center;
   float: unset;
   font-size: 60px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 @-webkit-keyframes slide {
@@ -553,8 +522,6 @@ slide:nth-child(4) {
   }
 }
 
-
-
 /* slider */
 
 .block {
@@ -564,8 +531,6 @@ slide:nth-child(4) {
   height: 100px;
   text-align: center;
 }
-
-
 
 .main {
   margin: 40px;
@@ -586,18 +551,15 @@ section {
 }
 
 .ui-radio {
-
   text-align: center;
   font-size: 5px;
   box-sizing: 100%;
-
 }
 
 .slider-level {
   box-align: center;
   align-content: center;
   padding: 1px;
-
 }
 
 .radios-to-slider.medium .slider-label {
@@ -615,8 +577,7 @@ section {
 }
 
 .radios-to-slider .slider-bar {
-
-  background-color: #6E4D94;
+  background-color: #6e4d94;
   float: left;
   height: 100%;
   width: 0;
@@ -635,22 +596,19 @@ section {
 
 .slider-knob {
   float: right;
-  background-color: #51237F;
+  background-color: #51237f;
 }
 
 .ui-radio {
-
   text-align: center;
   font-size: 5px;
   box-sizing: 100%;
-
 }
 
 .slider-level {
   box-align: center;
   align-content: center;
   padding: 1px;
-
 }
 
 .radios-to-slider.medium .slider-label {
@@ -668,8 +626,7 @@ section {
 }
 
 .radios-to-slider .slider-bar {
-
-  background-color: #6E4D94;
+  background-color: #6e4d94;
   float: center;
   height: 100%;
   width: 0;
@@ -688,7 +645,7 @@ section {
 
 .slider-knob {
   float: right;
-  background-color: #51237F;
+  background-color: #51237f;
 }
 
 .box {
@@ -719,7 +676,6 @@ hr {
 }
 
 table.options th {
-
   color: #999;
   text-align: left;
   text-size-adjust: 5px;
@@ -740,13 +696,12 @@ td {
 
 /* matrix */
 
-
 .container-matrix {
   width: 80%;
   margin: 0 auto;
   font-size: 20px;
   color: #616161;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 table {
@@ -762,12 +717,12 @@ td {
 }
 
 th {
-  background-color: #6E4D94;
+  background-color: #6e4d94;
   color: #fff;
 }
 
 tr:nth-child(odd) {
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
 }
 
 td:first-child {
@@ -776,17 +731,13 @@ td:first-child {
 
 .column-button {
   width: 14%;
-
 }
-
 
 .button-text {
   margin-bottom: 20px;
-  border: 2px solid #2979FF;
+  border: 2px solid #2979ff;
   border-radius: 3px;
   padding: 5px;
-
-
 }
 
 .container-button {
@@ -794,21 +745,21 @@ td:first-child {
   padding: 3%;
 }
 
-#registration>div>label {
+#registration > div > label {
   display: inline-block;
   cursor: pointer;
   position: relative;
   /*padding-left: 25px;
   margin-right: 15px;*/
   font-size: 13px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-#registration>div>input[type=radio] {
+#registration > div > input[type="radio"] {
   display: none;
 }
 
-#registration>div>label:before {
+#registration > div > label:before {
   content: "";
   /*display: inline-block;*/
   width: 20px;
@@ -819,28 +770,27 @@ td:first-child {
   bottom: -2px;
   background-color: #ccc;
 
-
   border-radius: 50%;
 }
 
-#registration>div>input[type=radio]:checked+label:before {
+#registration > div > input[type="radio"]:checked + label:before {
   content: "\2022";
-  color: #9FA1A4;
+  color: #9fa1a4;
   font-size: 35px;
   text-align: center;
   line-height: 18px;
 }
 
-#registration>div>input.green:checked+label:before {
-  background-color: #28A689;
+#registration > div > input.green:checked + label:before {
+  background-color: #28a689;
 }
 
-#registration>div>input.orange:checked+label:before {
-  background-color: #FF5E3A;
+#registration > div > input.orange:checked + label:before {
+  background-color: #ff5e3a;
 }
 
-#registration>div>input.red:checked+label:before {
-  background-color: #0E8AD9;
+#registration > div > input.red:checked + label:before {
+  background-color: #0e8ad9;
 }
 
 /**card stuff**/
@@ -848,7 +798,7 @@ td:first-child {
 
 body {
   color: #858585;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 16px;
   font-weight: 200;
 }
@@ -858,8 +808,6 @@ h4,
   font-size: 18px;
   font-weight: bold;
 }
-
-
 
 .container {
   margin-left: auto;
@@ -871,11 +819,11 @@ h4,
 .team {
   width: 370px;
   min-height: 100%;
-  border: 1px solid rgba(133, 133, 133, .15);
+  border: 1px solid rgba(133, 133, 133, 0.15);
   background-color: #fff;
-  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .09);
-  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .09);
-  box-shadow: 0 0 8px rgba(0, 0, 0, .09);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.09);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.09);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.09);
   float: left;
   margin-left: 16px;
 }
@@ -905,7 +853,7 @@ h4,
   float: left;
   width: 48px;
   height: 48px;
-  color: #D1CFCF;
+  color: #d1cfcf;
   display: block;
   font-size: 30px;
   padding: 7px;
@@ -915,7 +863,7 @@ h4,
   float: left;
   width: 48px;
   height: 48px;
-  color: #D1CFCF;
+  color: #d1cfcf;
   display: block;
   font-size: 30px;
   padding: 7px;
@@ -925,33 +873,31 @@ h4,
   float: left;
   width: 48px;
   height: 48px;
-  color: #D1CFCF;
+  color: #d1cfcf;
   display: block;
   font-size: 30px;
   padding: 7px;
 }
 
-
 .facebook-team:hover {
-  color: #3B5998;
+  color: #3b5998;
 }
 
 .twitter-team:hover {
-  color: #29B3E1;
+  color: #29b3e1;
 }
 
 .google-team:hover {
-  color: #DE5845;
+  color: #de5845;
 }
 
-footer>p {
+footer > p {
   display: block;
   text-align: right;
   font-size: 10px;
   clear: both;
   font-family: "Coda", sans-serif;
   padding: 2%;
-
 }
 
 .ui-icon-grip-dotted-vertical {
@@ -959,5 +905,5 @@ footer>p {
   -webkit-transform: scale(4) !important;
   transform: scale(4) !important;
   margin-top: 15px !important;
-  margin-left: 5px;
+  margin-left: 10px !important;
 }
