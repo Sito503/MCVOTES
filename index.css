@@ -170,6 +170,7 @@ ul.tabs {
   padding: 8%;
   width: 80%;
   font: 15px "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 ul.tabs li {
@@ -178,6 +179,7 @@ ul.tabs li {
   border-right: 2px solid white;
   font-size: 18px;
   color: white;
+  -webkit-font-smoothing: antialiased;
 }
 
 #tab1_content,
@@ -189,6 +191,7 @@ ul.tabs li {
   width: 80%;
   height: auto;
   padding: 2%;
+  -webkit-font-smoothing: antialiased;
 }
 
 p {
@@ -196,6 +199,7 @@ p {
   font-size: 14px;
   color: black;
   padding: 0.5%;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* hover effect */
@@ -222,6 +226,7 @@ ul.tabs li:before {
   transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform 0.5s ease-out;
+  -webkit-font-smoothing: antialiased;
 }
 
 ul.tabs li:hover:before {
@@ -470,7 +475,7 @@ slide:nth-child(4) {
 
 .slide-wrapper {
   width: 100%;
-  -webkit-animation: slide 5s ease infinite;
+  
 }
 
 .slide {

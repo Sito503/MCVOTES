@@ -1,5 +1,6 @@
 let answers = [];
 var answerUser = [];
+var answerSortedIn2d =[];
 const sliderLabelValues = [
   "Strongly Agree",
   "Agree",
@@ -7,52 +8,7 @@ const sliderLabelValues = [
   "Disagree",
   "Strongly Disagree"
 ];
-$(document).ready(function() {
-  $(".buddy").on("swiperight", function() {
-    $(this)
-      .addClass("rotate-left")
-      .delay(700)
-      .fadeOut(1);
-    $(".buddy")
-      .find(".status")
-      .remove();
 
-    $(this).append('<div class="status like">Like!</div>');
-    answers.push("yes");
-    if ($(this).is(":last-child")) {
-      $(".buddy:nth-child(1)")
-        .removeClass("rotate-left rotate-right")
-        .fadeIn(300);
-    } else {
-      $(this)
-        .next()
-        .removeClass("rotate-left rotate-right")
-        .fadeIn(400);
-    }
-  });
-
-  $(".buddy").on("swipeleft", function() {
-    $(this)
-      .addClass("rotate-right")
-      .delay(700)
-      .fadeOut(1);
-    $(".buddy")
-      .find(".status")
-      .remove();
-    $(this).append('<div class="status dislike">Dislike!</div>');
-    answers.push("no");
-    if ($(this).is(":last-child")) {
-      $(".buddy:nth-child(1)")
-        .removeClass("rotate-left rotate-right")
-        .fadeIn(300);
-    } else {
-      $(this)
-        .next()
-        .removeClass("rotate-left rotate-right")
-        .fadeIn(400);
-    }
-  });
-});
 
 var candidateAns = {
   amyWang: [
@@ -183,7 +139,8 @@ function showNextQuestion() {
 
         $("#next").off("click");
         $("#next").click(getAnswersFromSortableQuestion);
-        compareAnswers("amyWang") ;
+       
+        
       } else if (questionType == "Slider") {
         wrapperDiv.id = "radios";
         wrapperDiv.classList.add("radio-block");
@@ -218,7 +175,7 @@ function showNextQuestion() {
       }
     } else {
       // end of the quiz
-      compareAnswers("amyWang");
+      compareAnswers("amyWang") ;
       questionDiv.innerHTML = answers;
       questionDiv.innerHTML += ":answers \n Quiz done get out here";
       questionContainer.appendChild(questionDiv);
@@ -247,6 +204,7 @@ function getAnswersFromRadioQuestion() {
         answers.push(index);
       }
     }
+
     clickProgress();
     showNextQuestion();
   }
@@ -264,28 +222,39 @@ function clickProgress() {
 function getAnswersFromSortableQuestion() {
   moduleAnswers = document.getElementsByClassName("module");
   answersID = [];
+  
   for (var answer of moduleAnswers) {
     answersID.push([answer.id, answer.innerText]);
     answerUser.push(answer.id);
   }
+ //store the answer in a 2d array
+  var i,k;
+    //the tail of the loop will be the length of the array for each question
+    for (i = 0 ; i < 6; i++) {
+      if(!answerSortedIn2d[i])
+      {
+        answerSortedIn2d[i]= [];
+      }
+      for(k = 0; k < answerUser.length; k++) //there are 6 ranking questions
+      {
+        answerSortedIn2d[i].push(answerUser[k]); //create a colume
+      }
+        
+        
+      }
+      
+    
 
+
+  answerUser=[]; //restore the arr for each question
   answers.push(answersID);
   clickProgress();
   showNextQuestion();
 }
 
-function storeAns(answerUser){
-  
-  var  answerUserSorted= [], i, k;
 
-    for (i = 0, k = -1; i < answerUser.length; i++) {
-      
+   
 
-        answerUserSorted[k].push(list[i]);
-    }
-
-    return answerUserSorted;
-}
 
 function createAnswerModule(id, answer, clickableQuestion) {
   sortableIcon = document.createElement("span");
@@ -310,28 +279,36 @@ function createAnswerModule(id, answer, clickableQuestion) {
 var percentage = 0;
 function compareAnswers(name) {
 
-  var percentageCal = 0;
+  var percentageCal = 0, candidateAnsTotal =0;
 
-  console.log("candidateAns length is" + candidateAns.size);
   for(key in candidateAns)
   {
-    console.log("i is right");
+   
     for(let j = 0; j <candidateAns[name].length; j++)
     {
-      console.log("j is right");
+     
       for (let k = 0; k < candidateAns[name][j].length; k++)
       {
-        percentageCal += Math.abs(answerUser[k] - candidateAns[name][j][k]); 
+        percentageCal += Math.abs(answerSortedIn2d[j][k] - candidateAns[name][j][k]); 
+        candidateAnsTotal += Math.abs(candidateAns[name][j][k]);
+        
         if (percentageCal == 0) {
           percentage += 100 / 8;
         } else {
-          percentage = ((1 - percentageCal / 36) * 100) / 9;
+          percentage = (1 - (percentageCal / candidateAnsTotal)) / 8 *100;
+         
         
         }
-        console.log("Percentage is " + percentage);
+      
+        
         
       }
+
+      percentageCal =0;
+      candidateAnsTotal =0;
+      console.log("Percentage is " + percentage );
     }
+
   }
 
   
@@ -469,3 +446,53 @@ $(document).ready(function() {
   });
 });
 $("#next").click(showNextQuestion);
+
+
+
+//tinder style is here
+$(document).ready(function() {
+  $(".buddy").on("swiperight", function() {
+    $(this)
+      .addClass("rotate-left")
+      .delay(700)
+      .fadeOut(1);
+    $(".buddy")
+      .find(".status")
+      .remove();
+
+    $(this).append('<div class="status like">Like!</div>');
+    answers.push("yes");
+    if ($(this).is(":last-child")) {
+      $(".buddy:nth-child(1)")
+        .removeClass("rotate-left rotate-right")
+        .fadeIn(300);
+    } else {
+      $(this)
+        .next()
+        .removeClass("rotate-left rotate-right")
+        .fadeIn(400);
+    }
+  });
+
+  $(".buddy").on("swipeleft", function() {
+    $(this)
+      .addClass("rotate-right")
+      .delay(700)
+      .fadeOut(1);
+    $(".buddy")
+      .find(".status")
+      .remove();
+    $(this).append('<div class="status dislike">Dislike!</div>');
+    answers.push("no");
+    if ($(this).is(":last-child")) {
+      $(".buddy:nth-child(1)")
+        .removeClass("rotate-left rotate-right")
+        .fadeIn(300);
+    } else {
+      $(this)
+        .next()
+        .removeClass("rotate-left rotate-right")
+        .fadeIn(400);
+    }
+  });
+});
