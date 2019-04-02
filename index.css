@@ -601,8 +601,8 @@ section {
 }
 
 .radios-to-slider.medium .slider-label {
-  width: 80% !important;
-  min-width: 50px;
+  /* width: 80% !important; */
+  /* min-width: 50px; */
   max-width: 100px;
 }
 
@@ -612,7 +612,6 @@ section {
   position: absolute;
   padding: unset;
   display: block;
-  margin-left: 5%;
 }
 
 .radios-to-slider .slider-bar {
@@ -960,4 +959,5 @@ footer>p {
   -webkit-transform: scale(4) !important;
   transform: scale(4) !important;
   margin-top: 15px !important;
+  margin-left: 5px;
 }
