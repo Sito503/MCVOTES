@@ -225,7 +225,6 @@ function getAnswersFromSortableQuestion() {
     answersID.push(answer.id);
   }
       
-  
       
   answers.push(answersID);
   clickProgress();
