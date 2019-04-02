@@ -26,11 +26,12 @@
     cursor: pointer;
     position: absolute;
     display: block;
+   
 }
 
 .radios-to-slider .slider-level.slider-lower-level {
     opacity: 0.2;
-    margin-left: 0px;
+    margin-left: 0px !important;
 }
 
 .radios-to-slider.medium .slider-level {
@@ -41,6 +42,7 @@
     -o-border-radius: 22px;
     border-radius: 22px;
     z-index: 2;
+    margin-left: 0px;
 }
 
 

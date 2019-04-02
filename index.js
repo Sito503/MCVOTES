@@ -53,8 +53,8 @@ var candidateAns = {
     [" 4", "1", "2", "0", "3"], //q2
     ["1", "2", "0", "3"], //q3
     ["0", "1", "2", "3", "4", "5"], //q4
-    [" 4", "1", "2", "0", "3"],
-    ["0", "1", "2"]
+    [" 4", "1", "2", "0", "3"], //q5
+    ["0", "1", "2"] //q6
   ]
 };
 const questionSet = {
@@ -176,6 +176,7 @@ function showNextQuestion() {
 
         $("#next").off("click");
         $("#next").click(getAnswersFromSortableQuestion);
+        compareAnswers("amyWang") ;
       } else if (questionType == "Slider") {
         wrapperDiv.id = "radios";
         wrapperDiv.classList.add("radio-block");
@@ -216,7 +217,7 @@ function showNextQuestion() {
       }
     } else {
       // end of the quiz
-      callCompare();
+      compareAnswers("amyWang");
       questionDiv.innerHTML = answers;
       questionDiv.innerHTML += ":answers \n Quiz done get out here";
       questionContainer.appendChild(questionDiv);
@@ -243,6 +244,7 @@ function getAnswersFromRadioQuestion() {
     clickProgress();
     showNextQuestion();
   }
+
 }
 
 function clickProgress() {
@@ -266,6 +268,19 @@ function getAnswersFromSortableQuestion() {
   showNextQuestion();
 }
 
+function storeAns(answerUser){
+  
+  var  answerUserSorted= [], i, k;
+
+    for (i = 0, k = -1; i < answerUser.length; i++) {
+      
+
+        answerUserSorted[k].push(list[i]);
+    }
+
+    return answerUserSorted;
+}
+
 function createAnswerModule(id, answer, clickableQuestion) {
   sortableIcon = document.createElement("span");
   sortableIcon.classList.add("ui-icon-grip-dotted-vertical");
@@ -284,26 +299,36 @@ function createAnswerModule(id, answer, clickableQuestion) {
   }
   return moduleSection;
 }
-function callCompare() {
-  compareAnswers(0, 9);
-  compareAnswers(10, 14);
-  compareAnswers(15, 18);
-  compareAnswers(19, 24), compareAnswers(25, 29);
-  compareAnswers(30, 32);
-}
+
 
 var percentage = 0;
-function compareAnswers(questionHd, questionTl) {
+function compareAnswers(name) {
+
   var percentageCal = 0;
 
-  for (var i = questionHd; i < questionTl; i++) {
-    percentageCal += Math.abs(answerUser[i] - candidateAns.amyWang[i]); //i need to fix this
+  console.log("candidateAns length is" + candidateAns.size);
+  for(key in candidateAns)
+  {
+    console.log("i is right");
+    for(let j = 0; j <candidateAns[name].length; j++)
+    {
+      console.log("j is right");
+      for (let k = 0; k < candidateAns[name][j].length; k++)
+      {
+        percentageCal += Math.abs(answerUser[k] - candidateAns[name][j][k]); 
+        if (percentageCal == 0) {
+          percentage += 100 / 8;
+        } else {
+          percentage = ((1 - percentageCal / 36) * 100) / 9;
+        
+        }
+        console.log("Percentage is " + percentage);
+        
+      }
+    }
   }
-  if (percentageCal == 0) {
-    percentage += 100 / 8;
-  } else {
-    percentage = ((1 - percentageCal / 36) * 100) / 9;
-  }
+
+  
 }
 // please ignore this code is to make sure the list are sortable on mobile devices
 !(function(a) {
