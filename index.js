@@ -210,6 +210,57 @@ function showNextQuestion() {
         }, 1);
         $("#next").click(getAnswersFromRadioQuestion);
       } else if (questionType == "matrix") {
+  /*      Survey
+    .StylesManager
+    .applyTheme("default");
+
+    var json = {
+      questions: [
+        {
+            type: "matrix",
+            name: "Quality",
+            title: "Please indicate if you agree or disagree with the following statements",
+            columns: [
+                {
+                    value: 1,
+                    text: "Strongly Disagree"
+                }, {
+                    value: 2,
+                    text: "Disagree"
+                }, {
+                    value: 3,
+                    text: "Neutral"
+                }, {
+                    value: 4,
+                    text: "Agree"
+                }, {
+                    value: 5,
+                    text: "Strongly Agree"
+                }
+            ],
+            rows: [
+                {
+                    value: "affordable",
+                    text: "Product is affordable"
+                }, {
+                    value: "does what it claims",
+                    text: "Product does what it claims"
+                }, {
+                    value: "better then others",
+                    text: "Product is better than other products on the market"
+                }, {
+                    value: "easy to use",
+                    text: "Product is easy to use"
+                }
+            ]
+        }
+    ]
+};
+
+
+$("#surveyElement").Survey({model: survey});
+*/
+
       } else {
         // not a valid value for the question
         console.log("Error");
@@ -229,7 +280,20 @@ function showNextQuestion() {
   $("#question-container").fadeIn(400);
 }
 
-function getAnswerFromMatrix() {}
+function getAnswerFromMatrix() {
+
+  /*window.survey = new Survey.Model(json);
+
+  survey
+      .onComplete
+      .add(function (result) {
+          document
+              .querySelector('#surveyResult')
+              .innerHTML = "result: " + JSON.stringify(result.data);
+      });
+
+*/
+}
 
 function refreshPage() {
   window.location.reload();
