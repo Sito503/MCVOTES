@@ -170,7 +170,6 @@ ul.tabs {
   padding: 8%;
   width: 80%;
   font: 15px "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
 }
 
 ul.tabs li {
@@ -179,7 +178,6 @@ ul.tabs li {
   border-right: 2px solid white;
   font-size: 18px;
   color: white;
-  -webkit-font-smoothing: antialiased;
 }
 
 #tab1_content,
@@ -199,7 +197,6 @@ p {
   font-size: 14px;
   color: black;
   padding: 0.5%;
-  -webkit-font-smoothing: antialiased;
 }
 
 /* hover effect */
@@ -226,7 +223,6 @@ ul.tabs li:before {
   transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform 0.5s ease-out;
-  -webkit-font-smoothing: antialiased;
 }
 
 ul.tabs li:hover:before {
@@ -612,12 +608,6 @@ section {
   box-sizing: 100%;
 }
 
-.slider-level {
-  box-align: center;
-  align-content: center;
-  padding: 1px;
-}
-
 .radios-to-slider.medium .slider-label {
   width: 80% !important;
   min-width: 50px;
@@ -645,15 +635,7 @@ section {
   min-width: 32px !important;
 }
 
-.radios-to-slider .slider-level.slider-lower-level {
-  opacity: 0.2;
-  align-items: center;
-}
 
-.slider-knob {
-  float: right;
-  background-color: #51237f;
-}
 
 .box {
   float: left;
@@ -907,6 +889,7 @@ footer > p {
   padding: 2%;
 }
 
+/* dots on the sortable */
 .ui-icon-grip-dotted-vertical {
   float: left !important;
   -webkit-transform: scale(4) !important;
