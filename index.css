@@ -608,12 +608,6 @@ section {
   box-sizing: 100%;
 }
 
-.slider-level {
-  box-align: center;
-  align-content: center;
-  padding: 1px;
-}
-
 .radios-to-slider.medium .slider-label {
   width: 80% !important;
   min-width: 50px;
@@ -641,15 +635,7 @@ section {
   min-width: 32px !important;
 }
 
-.radios-to-slider .slider-level.slider-lower-level {
-  opacity: 0.2;
-  align-items: center;
-}
 
-.slider-knob {
-  float: right;
-  background-color: #51237f;
-}
 
 .box {
   float: left;
@@ -903,6 +889,7 @@ footer > p {
   padding: 2%;
 }
 
+/* dots on the sortable */
 .ui-icon-grip-dotted-vertical {
   float: left !important;
   -webkit-transform: scale(4) !important;

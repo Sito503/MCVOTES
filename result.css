@@ -23,10 +23,9 @@ h2 { font-family: Arial, Helvetica, sans-serif;  }
 
 .bar-img {
   float: left;
-  padding: 10px 0px;
   width: 100px ;
   height: 100px ;
-  margin-right: 0px;
+  margin-right: 2px;
 }
 
 .names{

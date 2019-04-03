@@ -1,4 +1,4 @@
-let answers = [];
+var answers = [];
 
 const sliderLabelValues = [
   "Strongly Agree",
@@ -16,6 +16,13 @@ var candidateAns = {
     ["0", "1", "2", "3","4","5"], //q3
     ["0", "1", "2", "3", "4"], //q4
     ["0", "1", "2"] //q5
+  ],
+  puffyShen: [
+    ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
+    ["1", "0", "2", "3", "4"], //q2
+    ["1", "0", "2", "3","4","5"], //q3
+    ["1", "0", "2", "3", "4"], //q4
+    ["1", "0", "2"] //q5
   ]
 };
 const questionSet = {
@@ -173,7 +180,7 @@ function showNextQuestion() {
       }
     } else {
       // end of the quiz
-      compareAnswers("amyWang") ;
+      compareAnswers() ;
       questionDiv.innerHTML = answers;
       questionDiv.innerHTML += ":answers \n Quiz done get out here";
       questionContainer.appendChild(questionDiv);
@@ -225,11 +232,15 @@ function getAnswersFromSortableQuestion() {
     answersID.push(answer.id);
   }
       
+  
       
   answers.push(answersID);
   clickProgress();
   showNextQuestion();
 }
+
+
+   
 
 
 function createAnswerModule(id, answer, clickableQuestion) {
@@ -251,11 +262,10 @@ function createAnswerModule(id, answer, clickableQuestion) {
   return moduleSection;
 }
 
-function compareAnswers(candidate) {
+function compareAnswers() {
   totalPercent = 0;
   for(candidate in candidateAns)
   {
-    
     
     candidateAnswers =  candidateAns[candidate]
     for(let questionNumber = 0; questionNumber < candidateAnswers.length; questionNumber++){
@@ -264,10 +274,10 @@ function compareAnswers(candidate) {
       var percentageCal = 0;
 
       for (let i = 0; i< candidateSAns.length;i++){
+
         percentageCal += Math.abs(answers[questionNumber][i] - candidateSAns[i]); 
-        
         candidateAnsTotal += Math.abs(candidateSAns[i]); 
-        console.log("answer value is " + answers[questionNumber][i]);
+        // console.log("answer value is " + answers[questionNumber][i]);
         
        
       }
@@ -278,19 +288,50 @@ function compareAnswers(candidate) {
       }
       else{
 
-        totalPercent += (1 - (percentageCal/candidateAnsTotal))*10/8;
+        totalPercent += (1 - (percentageCal/candidateAnsTotal))*100/8;
 
       }
       percentageCal = 0;
-      
+      console.log("total % is " + totalPercent);
      
     }
-  candidateAnsTotal =0;
-  percentageCal = 0;
+    candidateAnsTotal =0;
+    percentageCal = 0;
+   
+  
+    $('.bar-percentage[data-percentage]').each(function () {
+      var progress = $(this);
+      var percentage;
+      for(let i =0; i<candidateAns.length; i++)
+      {
+        percentage = Math.ceil(totalPercent);
+      }
+     
+    
+      $({countNum: 0}).animate({countNum: percentage}, {
+        duration: 2000,
+        easing:'linear',
+        step: function() {
+    
+          // What todo on every count
+          var pct = Math.floor(this.countNum) + '%';
+          progress.text(pct) && progress.siblings().children().css('width',pct);
+        }
+      });
+    });
+    
+  
+    totalPercent = 0;
 
   }
+
+
+  
   
 }
+
+
+
 // please ignore this code is to make sure the list are sortable on mobile devices
 !(function(a) {
   function f(a, b) {
@@ -474,3 +515,4 @@ $(document).ready(function() {
     }
   });
 });
+
