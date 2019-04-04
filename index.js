@@ -115,7 +115,7 @@ function showProgressBar() {
 }
 
 function showNextQuestion() {
-  $("#question-container").fadeOut("fast", function () {
+  $("#question-container").fadeOut("fast", function() {
     $("#next").show();
     question = getNextQuestion();
     questionContainer = document.getElementById("question-container");
@@ -166,13 +166,16 @@ function showNextQuestion() {
         The fade out callback restrict rendering of the radios to slider.
         the 1 ms delay trick/hack the browser in rendering the dom after the divs have been created
         */
-        setTimeout(function () {
+        setTimeout(function() {
           // converting the radios to slider
           $("#radios").radiosToSlider();
         }, 1);
         $("#next").off();
         $("#next").click(getAnswersFromRadioQuestion);
-      } else if (questionType == "matrix") { 
+      } else if (questionType == "matrix") {
+        console.log(matixHtml);
+        wrapperDiv.innerHTML += matixHtml;
+        questionContainer.appendChild(wrapperDiv);
         $("#next").off();
         $("#next").click(getAnswersFromMatrixQuestion);
       } else {
@@ -194,8 +197,7 @@ function showNextQuestion() {
   $("#question-container").fadeIn(400);
 }
 
-function getAnswersFromMatrixQuestion(){
-  
+function getAnswersFromMatrixQuestion() {
   clickProgress();
   showNextQuestion();
 }
@@ -252,7 +254,7 @@ function createAnswerModule(id, answer, clickableQuestion) {
   moduleSection.appendChild(sortableIcon);
   moduleSection.appendChild(moduleParagraph);
   if (clickableQuestion) {
-    moduleSection.addEventListener("click", function () {
+    moduleSection.addEventListener("click", function() {
       answers.push([answer]);
     });
   }
@@ -264,7 +266,9 @@ function compareAnswers() {
   for (candidate in candidateAns) {
     candidateAnswers = candidateAns[candidate];
     for (
-      let questionNumber = 0; questionNumber < candidateAnswers.length; questionNumber++
+      let questionNumber = 0;
+      questionNumber < candidateAnswers.length;
+      questionNumber++
     ) {
       candidateSAns = candidateAnswers[questionNumber];
       var candidateAnsTotal = 0;
@@ -293,14 +297,13 @@ function compareAnswers() {
 
     console.log("Total percent arr " + totalPercentArr);
 
-
     totalPercent = 0;
 
     totalPercent = 0;
   }
 }
 
-$(".bar-percentage[data-percentage]").each(function () {
+$(".bar-percentage[data-percentage]").each(function() {
   var progress = $(this);
   var percentage = 10;
   var result = document.getElementsByClassName("bar-name");
@@ -323,7 +326,7 @@ $(".bar-percentage[data-percentage]").each(function () {
     {
       duration: 2000,
       easing: "linear",
-      step: function () {
+      step: function() {
         // What todo on every count
         var pct = Math.floor(this.countNum) + "%";
         progress.text(pct) &&
@@ -336,7 +339,7 @@ $(".bar-percentage[data-percentage]").each(function () {
   );
 });
 // please ignore this code is to make sure the list are sortable on mobile devices
-!(function (a) {
+!(function(a) {
   function f(a, b) {
     if (!(a.originalEvent.touches.length > 1)) {
       a.preventDefault();
@@ -367,27 +370,27 @@ $(".bar-percentage[data-percentage]").each(function () {
       b = a.ui.mouse.prototype,
       c = b._mouseInit,
       d = b._mouseDestroy;
-    (b._touchStart = function (a) {
+    (b._touchStart = function(a) {
       var b = this;
       !e &&
         b._mouseCapture(a.originalEvent.changedTouches[0]) &&
         ((e = !0),
-          (b._touchMoved = !1),
-          f(a, "mouseover"),
-          f(a, "mousemove"),
-          f(a, "mousedown"));
+        (b._touchMoved = !1),
+        f(a, "mouseover"),
+        f(a, "mousemove"),
+        f(a, "mousedown"));
     }),
-      (b._touchMove = function (a) {
+      (b._touchMove = function(a) {
         e && ((this._touchMoved = !0), f(a, "mousemove"));
       }),
-      (b._touchEnd = function (a) {
+      (b._touchEnd = function(a) {
         e &&
           (f(a, "mouseup"),
-            f(a, "mouseout"),
-            this._touchMoved || f(a, "click"),
-            (e = !1));
+          f(a, "mouseout"),
+          this._touchMoved || f(a, "click"),
+          (e = !1));
       }),
-      (b._mouseInit = function () {
+      (b._mouseInit = function() {
         var b = this;
         b.element.bind({
           touchstart: a.proxy(b, "_touchStart"),
@@ -396,7 +399,7 @@ $(".bar-percentage[data-percentage]").each(function () {
         }),
           c.call(b);
       }),
-      (b._mouseDestroy = function () {
+      (b._mouseDestroy = function() {
         var b = this;
         b.element.unbind({
           touchstart: a.proxy(b, "_touchStart"),
@@ -414,7 +417,7 @@ function makeAnswerSortable() {
 }
 // tab things do touch yet please
 
-$(document).ready(function () {
+$(document).ready(function() {
   $(".progress").show();
   $("#restart").hide();
   $(".progress").hide();
@@ -426,7 +429,7 @@ $(document).ready(function () {
   $("#tab4_content").hide();
   $("#tab5_content").hide();
 
-  $("#quiz_tab").click(function () {
+  $("#quiz_tab").click(function() {
     $("#tab1_content").show();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
@@ -435,7 +438,7 @@ $(document).ready(function () {
     $("#tab5_content").hide();
   });
 
-  $("#candidate_info_tab").click(function () {
+  $("#candidate_info_tab").click(function() {
     $("#tab1_content").hide();
     $("#tab2_content").show();
     $("#tab3_content").hide();
@@ -443,7 +446,7 @@ $(document).ready(function () {
 
     $("#tab5_content").hide();
   });
-  $("#role_info_tab").click(function () {
+  $("#role_info_tab").click(function() {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").show();
@@ -452,14 +455,14 @@ $(document).ready(function () {
     $("#tab5_content").hide();
   });
 
-  $("#about_tab").click(function () {
+  $("#about_tab").click(function() {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
     $("#tab4_content").show();
     $("#tab5_content").hide();
   });
-  $("#result_tab").click(function () {
+  $("#result_tab").click(function() {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
@@ -510,3 +513,82 @@ $(document).ready(function () {
   // });
 });
 $("#next").click(showNextQuestion);
+
+const matixHtml = `
+  <div class="container-matrix" id="registration">
+
+  <table>
+      <tr>
+          <th id="column-document"></th>
+          <th class="column-button">Yes </th>
+          <th class="column-button">No</th>
+          <th class="column-button">Don't care</th>
+      </tr>
+      <tr id="test">
+          <td>Served as a club leader previously</td>
+          <td class="container-button" class="matrixRadio">
+              <input type="radio" id="permis1" name="pieces" value="valide" class="green">
+              <label for="permis1"></label>
+          </td>
+          <td class="container-button">
+              <input type="radio" id="permis2" name="pieces" value="non-valide" class="orange">
+              <label for="permis2"></label>
+          </td>
+          <td class="container-button">
+              <input type="radio" id="permis3" name="pieces" value="non-recu" class="red">
+              <label for="permis3"></label>
+          </td>
+
+      </tr>
+      <tr>
+          <td>Serve on senate executive board previously</td>
+          <td class="container-button" class="matrixRadio">
+              <input type="radio" id="sols1" name="sols" value="valide" class="green">
+              <label for="sols1"></label>
+          </td>
+          <td class="container-button">
+              <input type="radio" id="sols2" name="sols" value="non-valide" class="orange">
+              <label for="sols2"></label>
+          </td>
+          <td class="container-button">
+              <input type="radio" id="sols3" name="sols" value="non-recu" class="red">
+              <label for="sols3"></label>
+          </td>
+
+      </tr>
+      <tr>
+          <td>Volunteer involvement</td>
+          <td class="container-button" class="matrixRadio">
+              <input type="radio" id="champ1" name="champA" value="valide" class="green">
+              <label for="champ1"></label>
+          </td>
+          <td class="container-button">
+              <input type="radio" id="champ2" name="champA" value="non-valide" class="orange">
+              <label for="champ2"></label>
+          </td>
+          <td class="container-button">
+              <input type="radio" id="champ3" name="champA" value="non-recu" class="red">
+              <label for="champ3"></label>
+          </td>
+
+      </tr>
+      <tr>
+          <td>Serve on the senate for two or more semesters</td>
+          <td class="container-button" class="matrixRadio">
+              <input type="radio" id="champ5" name="champB" value="valide" class="green">
+              <label for="champ5"></label>
+          </td>
+          <td class="container-button">
+              <input type="radio" id="champ6" name="champB" value="non-valide" class="orange">
+              <label for="champ6"></label>
+          </td>
+          <td class="container-button">
+              <input type="radio" id="champ7" name="champB" value="non-recu" class="red">
+              <label for="champ7"></label>
+          </td>
+
+      </tr>
+  </table>
+</div>
+
+  `;
