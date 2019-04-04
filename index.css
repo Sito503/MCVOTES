@@ -331,92 +331,6 @@ slide:nth-child(4) {
   }
 }
 
-.snip {
-  font-family: "Open Sans", Arial, sans-serif;
-  position: relative;
-  margin: 10px;
-  min-width: 230px;
-  max-width: 315px;
-  width: 100%;
-  color: #000000;
-  text-align: center;
-  line-height: 1.4em;
-  font-size: 14px;
-  box-shadow: none !important;
-}
-
-.snip * {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.snip .profile-image {
-  display: inline-block;
-  width: 80%;
-  z-index: 1;
-  position: relative;
-  padding: 10px;
-  border: 2px solid#51237f;
-}
-
-.snip .profile-image img {
-  max-width: 100%;
-  vertical-align: top;
-}
-
-.snip figcaption {
-  width: 100%;
-  background-color: #f2f2f2;
-  color: #555;
-  padding: 125px 25px 25px;
-  margin-top: -100px;
-  display: inline-block;
-}
-
-.snip h3,
-.snip h4,
-.snip p {
-  margin: 0 0 5px;
-}
-
-.snip h3 {
-  font-weight: 600;
-  font-size: 1.3em;
-  font-family: "Playfair Display", Arial, sans-serif;
-  color: #28a689;
-}
-
-.snip h4 {
-  color: #8c8c8c;
-  font-weight: 400;
-  letter-spacing: 2px;
-}
-
-.snip p {
-  font-size: 0.9em;
-  letter-spacing: 1px;
-  opacity: 0.9;
-}
-
-.snip .icons {
-  text-align: center;
-  width: 100%;
-}
-
-.snip i {
-  padding: 10px 2px;
-  display: inline-block;
-  font-size: 18px;
-  font-weight: normal;
-  color: #51237f;
-  opacity: 0.75;
-}
-
-.snip i:hover {
-  opacity: 1;
-  -webkit-transition: all 0.35s ease;
-  transition: all 0.35s ease;
-}
 
 /* slide show */
 
@@ -923,7 +837,7 @@ td {
   vertical-align: top;
   position: relative;
   border-radius: 50%;
-  max-width: 40%;
+  max-width: 60%;
 }
 
 .snip1559 figcaption {
