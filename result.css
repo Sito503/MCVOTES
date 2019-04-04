@@ -1,5 +1,8 @@
 #container { text-align: center; margin: 20px; }
-
+h2
+{
+  float:center;
+}
 .bar-main-container {
   margin: 10px auto;
   width: 400px;
