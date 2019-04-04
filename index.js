@@ -23,18 +23,27 @@ var candidateAns = {
     ["1", "0", "2", "3", "4", "5"], //q3
     ["1", "0", "2", "3", "4"], //q4
     ["1", "0", "2"] //q5
-  
+
   ],
 
   andrewWilson:
-  [
-    ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
-    ["1", "0", "2", "3", "4"], //q2
-    ["1", "0", "2", "3", "4", "5"], //q3
-    ["1", "0", "2", "3", "4"], //q4
-    ["1", "0", "2"] //q5
-  
-  ]
+    [
+      ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
+      ["1", "0", "2", "3", "4"], //q2
+      ["1", "0", "2", "3", "4", "5"], //q3
+      ["1", "0", "2", "3", "4"], //q4
+      ["1", "0", "2"] //q5
+
+    ],
+  tylerHope:
+    [
+      ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
+      ["1", "0", "2", "3", "4"], //q2
+      ["1", "0", "2", "3", "4", "5"], //q3
+      ["1", "0", "2", "3", "4"], //q4
+      ["1", "0", "2"] //q5
+
+    ]
 };
 const questionSet = {
   "Drag and rank the issues in terms of importance to you": [
@@ -337,6 +346,12 @@ function changePerecnt() {
       case "andrewWilson":
         percentage = Math.ceil(totalPercentArr[1]) + 1;
         break;
+      case "andrewWilson":
+        percentage = Math.ceil(totalPercentArr[1]) + 1;
+        break;
+      case "tylerHope":
+        percentage = Math.ceil(totalPercentArr[1]) + 1;
+        break;
       default:
         percentage = 0;
 
@@ -443,11 +458,12 @@ function makeAnswerSortable() {
 // tab things do touch yet please
 
 $(document).ready(function () {
+
   $(".progress").show();
   $("#restart").hide();
   $(".progress").hide();
   $("#next").click(showProgressBar);
-  changePerecnt();
+
 
   $("#tab1_content").show();
   $("#tab2_content").hide();
