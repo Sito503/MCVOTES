@@ -581,21 +581,7 @@ const matixHtml = `
               <label for="permis3"></label>
           </td>
        </tr>
-      <tr>
-          <td>Serve on senate executive board previously</td>
-          <td class="container-button" class="matrixRadio">
-              <input type="radio" id="sols1" name="sols" value="valide" class="green">
-              <label for="sols1"></label>
-          </td>
-          <td class="container-button">
-              <input type="radio" id="sols2" name="sols" value="non-valide" class="orange">
-              <label for="sols2"></label>
-          </td>
-          <td class="container-button">
-              <input type="radio" id="sols3" name="sols" value="non-recu" class="red">
-              <label for="sols3"></label>
-          </td>
-       </tr>
+       
       <tr>
           <td>Volunteer involvement</td>
           <td class="container-button" class="matrixRadio">

@@ -123,12 +123,14 @@ ul.tabs {
 #candidate_info_tab,
 #role_info_tab,
 #about_tab,
-#result_tab {
+#result_tab,
+#vote_tab {
   padding: 8%;
   width: 80%;
   font: 15px "Roboto", sans-serif;
   text-shadow: none !important;
 }
+
 
 ul.tabs li {
   list-style-type: none;
@@ -199,6 +201,7 @@ ul.tabs li:hover:before {
   width: 75px;
   height: 75px;
   text-align: right;
+  
 }
 
 .ribbon span {
