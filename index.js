@@ -115,7 +115,7 @@ function showProgressBar() {
 }
 
 function showNextQuestion() {
-  $("#question-container").fadeOut("fast", function() {
+  $("#question-container").fadeOut("fast", function () {
     $("#next").show();
     question = getNextQuestion();
     questionContainer = document.getElementById("question-container");
@@ -166,14 +166,13 @@ function showNextQuestion() {
         The fade out callback restrict rendering of the radios to slider.
         the 1 ms delay trick/hack the browser in rendering the dom after the divs have been created
         */
-        setTimeout(function() {
+        setTimeout(function () {
           // converting the radios to slider
           $("#radios").radiosToSlider();
         }, 1);
         $("#next").off();
         $("#next").click(getAnswersFromRadioQuestion);
-      } else if (questionType == "matrix") {
-      } else {
+      } else if (questionType == "matrix") {} else {
         // not a valid value for the question
         console.log("Error");
       }
@@ -247,7 +246,7 @@ function createAnswerModule(id, answer, clickableQuestion) {
   moduleSection.appendChild(sortableIcon);
   moduleSection.appendChild(moduleParagraph);
   if (clickableQuestion) {
-    moduleSection.addEventListener("click", function() {
+    moduleSection.addEventListener("click", function () {
       answers.push([answer]);
     });
   }
@@ -259,9 +258,7 @@ function compareAnswers() {
   for (candidate in candidateAns) {
     candidateAnswers = candidateAns[candidate];
     for (
-      let questionNumber = 0;
-      questionNumber < candidateAnswers.length;
-      questionNumber++
+      let questionNumber = 0; questionNumber < candidateAnswers.length; questionNumber++
     ) {
       candidateSAns = candidateAnswers[questionNumber];
       var candidateAnsTotal = 0;
@@ -290,7 +287,7 @@ function compareAnswers() {
 
     console.log("Total percent arr " + totalPercentArr);
 
-    $(".bar-percentage[data-percentage]").each(function() {
+    $(".bar-percentage[data-percentage]").each(function () {
       var progress = $(this);
       var percentage;
       var result = document.getElementsByClassName("bar-name");
@@ -308,22 +305,23 @@ function compareAnswers() {
         }
       }
 
-      $({ countNum: 0 }).animate(
-        { countNum: percentage },
-        {
-          duration: 2000,
-          easing: "linear",
-          step: function() {
-            // What todo on every count
-            var pct = Math.floor(this.countNum) + "%";
-            progress.text(pct) &&
-              progress
-                .siblings()
-                .children()
-                .css("width", pct);
-          }
+      $({
+        countNum: 0
+      }).animate({
+        countNum: percentage
+      }, {
+        duration: 2000,
+        easing: "linear",
+        step: function () {
+          // What todo on every count
+          var pct = Math.floor(this.countNum) + "%";
+          progress.text(pct) &&
+            progress
+            .siblings()
+            .children()
+            .css("width", pct);
         }
-      );
+      });
     });
 
     totalPercent = 0;
@@ -333,29 +331,29 @@ function compareAnswers() {
 }
 
 // please ignore this code is to make sure the list are sortable on mobile devices
-!(function(a) {
+!(function (a) {
   function f(a, b) {
     if (!(a.originalEvent.touches.length > 1)) {
       a.preventDefault();
       var c = a.originalEvent.changedTouches[0],
         d = document.createEvent("MouseEvents");
       d.initMouseEvent(
-        b,
-        !0,
-        !0,
-        window,
-        1,
-        c.screenX,
-        c.screenY,
-        c.clientX,
-        c.clientY,
-        !1,
-        !1,
-        !1,
-        !1,
-        0,
-        null
-      ),
+          b,
+          !0,
+          !0,
+          window,
+          1,
+          c.screenX,
+          c.screenY,
+          c.clientX,
+          c.clientY,
+          !1,
+          !1,
+          !1,
+          !1,
+          0,
+          null
+        ),
         a.target.dispatchEvent(d);
     }
   }
@@ -364,44 +362,44 @@ function compareAnswers() {
       b = a.ui.mouse.prototype,
       c = b._mouseInit,
       d = b._mouseDestroy;
-    (b._touchStart = function(a) {
+    (b._touchStart = function (a) {
       var b = this;
       !e &&
         b._mouseCapture(a.originalEvent.changedTouches[0]) &&
         ((e = !0),
-        (b._touchMoved = !1),
-        f(a, "mouseover"),
-        f(a, "mousemove"),
-        f(a, "mousedown"));
+          (b._touchMoved = !1),
+          f(a, "mouseover"),
+          f(a, "mousemove"),
+          f(a, "mousedown"));
     }),
-      (b._touchMove = function(a) {
-        e && ((this._touchMoved = !0), f(a, "mousemove"));
-      }),
-      (b._touchEnd = function(a) {
-        e &&
-          (f(a, "mouseup"),
+    (b._touchMove = function (a) {
+      e && ((this._touchMoved = !0), f(a, "mousemove"));
+    }),
+    (b._touchEnd = function (a) {
+      e &&
+        (f(a, "mouseup"),
           f(a, "mouseout"),
           this._touchMoved || f(a, "click"),
           (e = !1));
-      }),
-      (b._mouseInit = function() {
-        var b = this;
-        b.element.bind({
+    }),
+    (b._mouseInit = function () {
+      var b = this;
+      b.element.bind({
           touchstart: a.proxy(b, "_touchStart"),
           touchmove: a.proxy(b, "_touchMove"),
           touchend: a.proxy(b, "_touchEnd")
         }),
-          c.call(b);
-      }),
-      (b._mouseDestroy = function() {
-        var b = this;
-        b.element.unbind({
+        c.call(b);
+    }),
+    (b._mouseDestroy = function () {
+      var b = this;
+      b.element.unbind({
           touchstart: a.proxy(b, "_touchStart"),
           touchmove: a.proxy(b, "_touchMove"),
           touchend: a.proxy(b, "_touchEnd")
         }),
-          d.call(b);
-      });
+        d.call(b);
+    });
   }
 })(jQuery);
 // SORTABLE
@@ -411,7 +409,7 @@ function makeAnswerSortable() {
 }
 // tab things do touch yet please
 
-$(document).ready(function() {
+$(document).ready(function () {
   $(".progress").show();
   $("#restart").hide();
   $(".progress").hide();
@@ -423,7 +421,7 @@ $(document).ready(function() {
   $("#tab4_content").hide();
   $("#tab5_content").hide();
 
-  $("#quiz_tab").click(function() {
+  $("#quiz_tab").click(function () {
     $("#tab1_content").show();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
@@ -432,7 +430,7 @@ $(document).ready(function() {
     $("#tab5_content").hide();
   });
 
-  $("#candidate_info_tab").click(function() {
+  $("#candidate_info_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").show();
     $("#tab3_content").hide();
@@ -440,7 +438,7 @@ $(document).ready(function() {
 
     $("#tab5_content").hide();
   });
-  $("#role_info_tab").click(function() {
+  $("#role_info_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").show();
@@ -449,14 +447,14 @@ $(document).ready(function() {
     $("#tab5_content").hide();
   });
 
-  $("#about_tab").click(function() {
+  $("#about_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
     $("#tab4_content").show();
     $("#tab5_content").hide();
   });
-  $("#result_tab").click(function() {
+  $("#result_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
@@ -466,61 +464,13 @@ $(document).ready(function() {
 });
 $("#next").click(showNextQuestion);
 
-//tinder style is here
-$(document).ready(function() {
-  $(".buddy").on("swiperight", function() {
-    $(this)
-      .addClass("rotate-left")
-      .delay(700)
-      .fadeOut(1);
-    $(".buddy")
-      .find(".status")
-      .remove();
-
-    $(this).append('<div class="status like">Like!</div>');
-    answers.push("yes");
-    if ($(this).is(":last-child")) {
-      $(".buddy:nth-child(1)")
-        .removeClass("rotate-left rotate-right")
-        .fadeIn(300);
-    } else {
-      $(this)
-        .next()
-        .removeClass("rotate-left rotate-right")
-        .fadeIn(400);
-    }
-  });
-
-  $(".buddy").on("swipeleft", function() {
-    $(this)
-      .addClass("rotate-right")
-      .delay(700)
-      .fadeOut(1);
-    $(".buddy")
-      .find(".status")
-      .remove();
-    $(this).append('<div class="status dislike">Dislike!</div>');
-    answers.push("no");
-    if ($(this).is(":last-child")) {
-      $(".buddy:nth-child(1)")
-        .removeClass("rotate-left rotate-right")
-        .fadeIn(300);
-    } else {
-      $(this)
-        .next()
-        .removeClass("rotate-left rotate-right")
-        .fadeIn(400);
-    }
-  });
-});
-
 var sheet = document.createElement("style"),
   $rangeInput = $(".range input"),
   prefs = ["webkit-slider-runnable-track", "moz-range-track", "ms-track"];
 
 document.body.appendChild(sheet);
 
-var getTrackStyle = function(el) {
+var getTrackStyle = function (el) {
   var curVal = el.value,
     val = (curVal - 1) * 16.666666667,
     style = "";
@@ -554,12 +504,12 @@ var getTrackStyle = function(el) {
   return style;
 };
 
-$rangeInput.on("input", function() {
+$rangeInput.on("input", function () {
   sheet.textContent = getTrackStyle(this);
 });
 
 // Change input value on label click
-$(".range-labels li").on("click", function() {
+$(".range-labels li").on("click", function () {
   var index = $(this).index();
 
   $rangeInput.val(index + 1).trigger("input");
