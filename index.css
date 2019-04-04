@@ -696,12 +696,6 @@ section {
   margin: 50px auto;
 }
 
-.radios-to-slider.medium .slider-label {
-  /* width: 80% !important; */
-  /* min-width: 50px; */
-  max-width: 100px;
-}
-
 .radios-to-slider .slider-level {
   background-color: #fff;
   cursor: pointer;
@@ -742,7 +736,8 @@ section {
 .radios-to-slider.medium .slider-label {
   width: 80% !important;
   min-width: 50px;
-  max-width: 100px;
+  max-width: 80px;
+  font-size: 12px !important;
 }
 
 .radios-to-slider .slider-level {

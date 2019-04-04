@@ -172,7 +172,9 @@ function showNextQuestion() {
         }, 1);
         $("#next").off();
         $("#next").click(getAnswersFromRadioQuestion);
-      } else if (questionType == "matrix") {} else {
+      } else if (questionType == "matrix") { 
+        
+      } else {
         // not a valid value for the question
         console.log("Error");
       }
@@ -191,7 +193,6 @@ function showNextQuestion() {
   $("#question-container").fadeIn(400);
 }
 
-function getAnswerFromMatrix() {}
 
 function refreshPage() {
   window.location.reload();
@@ -294,9 +295,9 @@ function compareAnswers() {
   }
 }
 
-$(".bar-percentage[data-percentage]").each(function() {
+$(".bar-percentage[data-percentage]").each(function () {
   var progress = $(this);
-  var percentage= 10;
+  var percentage = 10;
   var result = document.getElementsByClassName("bar-name");
 
   for (let i = 0; i < totalPercentArr.length; i++) {
@@ -317,7 +318,7 @@ $(".bar-percentage[data-percentage]").each(function() {
     {
       duration: 2000,
       easing: "linear",
-      step: function() {
+      step: function () {
         // What todo on every count
         var pct = Math.floor(this.countNum) + "%";
         progress.text(pct) &&
@@ -337,22 +338,22 @@ $(".bar-percentage[data-percentage]").each(function() {
       var c = a.originalEvent.changedTouches[0],
         d = document.createEvent("MouseEvents");
       d.initMouseEvent(
-          b,
-          !0,
-          !0,
-          window,
-          1,
-          c.screenX,
-          c.screenY,
-          c.clientX,
-          c.clientY,
-          !1,
-          !1,
-          !1,
-          !1,
-          0,
-          null
-        ),
+        b,
+        !0,
+        !0,
+        window,
+        1,
+        c.screenX,
+        c.screenY,
+        c.clientX,
+        c.clientY,
+        !1,
+        !1,
+        !1,
+        !1,
+        0,
+        null
+      ),
         a.target.dispatchEvent(d);
     }
   }
@@ -371,34 +372,34 @@ $(".bar-percentage[data-percentage]").each(function() {
           f(a, "mousemove"),
           f(a, "mousedown"));
     }),
-    (b._touchMove = function (a) {
-      e && ((this._touchMoved = !0), f(a, "mousemove"));
-    }),
-    (b._touchEnd = function (a) {
-      e &&
-        (f(a, "mouseup"),
-          f(a, "mouseout"),
-          this._touchMoved || f(a, "click"),
-          (e = !1));
-    }),
-    (b._mouseInit = function () {
-      var b = this;
-      b.element.bind({
+      (b._touchMove = function (a) {
+        e && ((this._touchMoved = !0), f(a, "mousemove"));
+      }),
+      (b._touchEnd = function (a) {
+        e &&
+          (f(a, "mouseup"),
+            f(a, "mouseout"),
+            this._touchMoved || f(a, "click"),
+            (e = !1));
+      }),
+      (b._mouseInit = function () {
+        var b = this;
+        b.element.bind({
           touchstart: a.proxy(b, "_touchStart"),
           touchmove: a.proxy(b, "_touchMove"),
           touchend: a.proxy(b, "_touchEnd")
         }),
-        c.call(b);
-    }),
-    (b._mouseDestroy = function () {
-      var b = this;
-      b.element.unbind({
+          c.call(b);
+      }),
+      (b._mouseDestroy = function () {
+        var b = this;
+        b.element.unbind({
           touchstart: a.proxy(b, "_touchStart"),
           touchmove: a.proxy(b, "_touchMove"),
           touchend: a.proxy(b, "_touchEnd")
         }),
-        d.call(b);
-    });
+          d.call(b);
+      });
   }
 })(jQuery);
 // SORTABLE
