@@ -1,6 +1,6 @@
-let answers = [];
-var answerUser = [];
-var answerSortedIn2d =[];
+var answers = [];
+var totalPercentArr = [];
+
 const sliderLabelValues = [
   "Strongly Agree",
   "Agree",
@@ -8,7 +8,6 @@ const sliderLabelValues = [
   "Disagree",
   "Strongly Disagree"
 ];
-
 
 var candidateAns = {
   amyWang: [
@@ -127,7 +126,7 @@ function showProgressBar() {
 }
 
 function showNextQuestion() {
-  $("#question-container").fadeOut("fast", function() {
+  $("#question-container").fadeOut("fast", function () {
     $("#next").show();
     question = getNextQuestion();
     questionContainer = document.getElementById("question-container");
@@ -156,8 +155,6 @@ function showNextQuestion() {
 
         $("#next").off("click");
         $("#next").click(getAnswersFromSortableQuestion);
-       
-        
       } else if (questionType == "Slider") {
         wrapperDiv.id = "radios";
         wrapperDiv.classList.add("radio-block");
@@ -180,93 +177,22 @@ function showNextQuestion() {
         The fade out callback restrict rendering of the radios to slider.
         the 1 ms delay trick/hack the browser in rendering the dom after the divs have been created
         */
-        setTimeout(function() {
+        setTimeout(function () {
           // converting the radios to slider
           $("#radios").radiosToSlider();
         }, 1);
+        $("#next").off();
         $("#next").click(getAnswersFromRadioQuestion);
       } else if (questionType == "matrix") {
-        val1 = $('tr input[name=pieces]:checked').parent().find('#matrix').html();
-        val1 = $("td input[name='pieces']:checked").parents().find('.matrix').html();
-        val1 = $('premis1').checked;
-
-        
-        function getMatrixValue()
-        {
-            var theMatrix = document.getElementsByName("matrix");
-            var i = theMatrix.length;
-            while (i--) {
-                if(theMatrix[i].checked)
-                     return theMatrix[i].value;
-        
-            }
-        }
-
-  /*      Survey
-    .StylesManager
-    .applyTheme("default");
-
-    var json = {
-      questions: [
-        {
-            type: "matrix",
-            name: "Quality",
-            title: "Please indicate if you agree or disagree with the following statements",
-            columns: [
-                {
-                    value: 1,
-                    text: "Strongly Disagree"
-                }, {
-                    value: 2,
-                    text: "Disagree"
-                }, {
-                    value: 3,
-                    text: "Neutral"
-                }, {
-                    value: 4,
-                    text: "Agree"
-                }, {
-                    value: 5,
-                    text: "Strongly Agree"
-                }
-            ],
-            rows: [
-                {
-                    value: "affordable",
-                    text: "Product is affordable"
-                }, {
-                    value: "does what it claims",
-                    text: "Product does what it claims"
-                }, {
-                    value: "better then others",
-                    text: "Product is better than other products on the market"
-                }, {
-                    value: "easy to use",
-                    text: "Product is easy to use"
-                }
-            ]
-        }
-    ]
-};
-
-
-$("#surveyElement").Survey({model: survey});
-*/
-
-// =======
-//         console.log(matixHtml);
-//         wrapperDiv.innerHTML += matixHtml;
-//         questionContainer.appendChild(wrapperDiv);
-//         $("#next").off();
-//         $("#next").click(getAnswersFromMatrixQuestion);
-// >>>>>>> b8f738830cbff212419713ce141018e75534ba62
+        $("#next").off();
+        $("#next").click(getAnswersFromMatrixQuestion);
       } else {
         // not a valid value for the question
         console.log("Error");
       }
     } else {
       // end of the quiz
-      compareAnswers("amyWang") ;
+      compareAnswers();
       questionDiv.innerHTML = answers;
       questionDiv.innerHTML += ":answers \n Quiz done get out here";
       questionContainer.appendChild(questionDiv);
@@ -279,28 +205,11 @@ $("#surveyElement").Survey({model: survey});
   $("#question-container").fadeIn(400);
 }
 
-// <<<<<<< HEAD
-function getAnswerFromMatrix() {
-
-  /*window.survey = new Survey.Model(json);
-
-  survey
-      .onComplete
-      .add(function (result) {
-          document
-              .querySelector('#surveyResult')
-              .innerHTML = "result: " + JSON.stringify(result.data);
-      });
-
-*/
-}
-
-// =======
 function getAnswersFromMatrixQuestion() {
+
   clickProgress();
   showNextQuestion();
 }
-// >>>>>>> b8f738830cbff212419713ce141018e75534ba62
 function refreshPage() {
   window.location.reload();
 }
@@ -319,7 +228,6 @@ function getAnswersFromRadioQuestion() {
     clickProgress();
     showNextQuestion();
   }
-
 }
 
 function clickProgress() {
@@ -333,39 +241,15 @@ function clickProgress() {
 function getAnswersFromSortableQuestion() {
   moduleAnswers = document.getElementsByClassName("module");
   answersID = [];
-  
+
   for (var answer of moduleAnswers) {
-    answersID.push([answer.id, answer.innerText]);
-    answerUser.push(answer.id);
+    answersID.push(answer.id);
   }
- //store the answer in a 2d array
-  var i,k;
-    //the tail of the loop will be the length of the array for each question
-    for (i = 0 ; i < 6; i++) {
-      if(!answerSortedIn2d[i])
-      {
-        answerSortedIn2d[i]= [];
-      }
-      for(k = 0; k < answerUser.length; k++) //there are 6 ranking questions
-      {
-        answerSortedIn2d[i].push(answerUser[k]); //create a colume
-      }
-        
-        
-      }
-      
-    
 
-
-  answerUser=[]; //restore the arr for each question
   answers.push(answersID);
   clickProgress();
   showNextQuestion();
 }
-
-
-   
-
 
 function createAnswerModule(id, answer, clickableQuestion) {
   sortableIcon = document.createElement("span");
@@ -379,7 +263,7 @@ function createAnswerModule(id, answer, clickableQuestion) {
   moduleSection.appendChild(sortableIcon);
   moduleSection.appendChild(moduleParagraph);
   if (clickableQuestion) {
-    moduleSection.addEventListener("click", function() {
+    moduleSection.addEventListener("click", function () {
       answers.push([answer]);
     });
   }
@@ -391,9 +275,7 @@ function compareAnswers() {
   for (candidate in candidateAns) {
     candidateAnswers = candidateAns[candidate];
     for (
-      let questionNumber = 0;
-      questionNumber < candidateAnswers.length;
-      questionNumber++
+      let questionNumber = 0; questionNumber < candidateAnswers.length; questionNumber++
     ) {
       candidateSAns = candidateAnswers[questionNumber];
       var candidateAnsTotal = 0;
@@ -420,8 +302,11 @@ function compareAnswers() {
 
     totalPercentArr.push(totalPercent);
 
+    console.log("Total percent arr " + totalPercentArr);
+
 
     totalPercent = 0;
+
 
   }
 }
@@ -457,21 +342,20 @@ function changePerecnt() {
 
     }
 
-  }
-
-  $({ countNum: 0 }).animate(
-    { countNum: percentage },
-    {
-      duration: 2000,
-      easing: "linear",
-      step: function() {
-        // What todo on every count
-        var pct = Math.floor(this.countNum) + "%";
-        progress.text(pct) &&
-          progress
-            .siblings()
-            .children()
-            .css("width", pct);
+    $({ countNum: 0 }).animate(
+      { countNum: percentage },
+      {
+        duration: 2000,
+        easing: "linear",
+        step: function () {
+          // What todo on every count
+          var pct = Math.floor(this.countNum) + "%";
+          progress.text(pct) &&
+            progress
+              .siblings()
+              .children()
+              .css("width", pct);
+        }
       }
 
     );
@@ -480,7 +364,7 @@ function changePerecnt() {
 }
 
 // please ignore this code is to make sure the list are sortable on mobile devices
-!(function(a) {
+!(function (a) {
   function f(a, b) {
     if (!(a.originalEvent.touches.length > 1)) {
       a.preventDefault();
@@ -511,27 +395,27 @@ function changePerecnt() {
       b = a.ui.mouse.prototype,
       c = b._mouseInit,
       d = b._mouseDestroy;
-    (b._touchStart = function(a) {
+    (b._touchStart = function (a) {
       var b = this;
       !e &&
         b._mouseCapture(a.originalEvent.changedTouches[0]) &&
         ((e = !0),
-        (b._touchMoved = !1),
-        f(a, "mouseover"),
-        f(a, "mousemove"),
-        f(a, "mousedown"));
+          (b._touchMoved = !1),
+          f(a, "mouseover"),
+          f(a, "mousemove"),
+          f(a, "mousedown"));
     }),
-      (b._touchMove = function(a) {
+      (b._touchMove = function (a) {
         e && ((this._touchMoved = !0), f(a, "mousemove"));
       }),
-      (b._touchEnd = function(a) {
+      (b._touchEnd = function (a) {
         e &&
           (f(a, "mouseup"),
-          f(a, "mouseout"),
-          this._touchMoved || f(a, "click"),
-          (e = !1));
+            f(a, "mouseout"),
+            this._touchMoved || f(a, "click"),
+            (e = !1));
       }),
-      (b._mouseInit = function() {
+      (b._mouseInit = function () {
         var b = this;
         b.element.bind({
           touchstart: a.proxy(b, "_touchStart"),
@@ -540,7 +424,7 @@ function changePerecnt() {
         }),
           c.call(b);
       }),
-      (b._mouseDestroy = function() {
+      (b._mouseDestroy = function () {
         var b = this;
         b.element.unbind({
           touchstart: a.proxy(b, "_touchStart"),
@@ -558,7 +442,7 @@ function makeAnswerSortable() {
 }
 // tab things do touch yet please
 
-$(document).ready(function() {
+$(document).ready(function () {
   $(".progress").show();
   $("#restart").hide();
   $(".progress").hide();
@@ -571,7 +455,7 @@ $(document).ready(function() {
   $("#tab4_content").hide();
   $("#tab5_content").hide();
 
-  $("#quiz_tab").click(function() {
+  $("#quiz_tab").click(function () {
     $("#tab1_content").show();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
@@ -580,7 +464,7 @@ $(document).ready(function() {
     $("#tab5_content").hide();
   });
 
-  $("#candidate_info_tab").click(function() {
+  $("#candidate_info_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").show();
     $("#tab3_content").hide();
@@ -588,7 +472,7 @@ $(document).ready(function() {
     $("#tab5_content").hide();
     changePerecnt();
   });
-  $("#role_info_tab").click(function() {
+  $("#role_info_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").show();
@@ -597,95 +481,61 @@ $(document).ready(function() {
     $("#tab5_content").hide();
   });
 
-  $("#about_tab").click(function() {
+  $("#about_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
     $("#tab4_content").show();
     $("#tab5_content").hide();
   });
-  $("#result_tab").click(function() {
+  $("#result_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
     $("#tab4_content").hide();
     $("#tab5_content").show();
   });
+
+  // var sheet = document.createElement('style'),
+  //   $rangeInput = $('.range input'),
+  //   prefs = ['webkit-slider-runnable-track', 'moz-range-track', 'ms-track'];
+
+  // document.body.appendChild(sheet);
+
+  // var getTrackStyle = function (el) {
+  //   max_val = 6
+
+  //   var curVal = el.value,
+  //     val = (curVal - 1) * (100 / (max_val - 1)),
+  //     style = '';
+
+  //   // Set active label
+  //   $('.range-labels li').removeClass('active selected');
+
+  //   var curLabel = $('.range-labels').find('li:nth-child(' + curVal + ')');
+
+  //   curLabel.addClass('active selected');
+  //   curLabel.prevAll().addClass('selected');
+
+  //   // Change background gradient
+  //   for (var i = 0; i < prefs.length; i++) {
+  //     style += '.range {background: linear-gradient(to right, #37adbf 0%, #37adbf ' + val + '%, #fff ' + val + '%, #fff 100%)}';
+  //     style += '.range input::-' + prefs[i] + '{background: linear-gradient(to right, #37adbf 0%, #37adbf ' + val + '%, #b2b2b2 ' + val + '%, #b2b2b2 100%)}';
+  //   }
+
+  //   return style;
+  // }
+
+  // $rangeInput.on('input', function () {
+  //   sheet.textContent = getTrackStyle(this);
+  // });
+
+  // // Change input value on label click
+  // $('.range-labels li').on('click', function () {
+  //   var index = $(this).index();
+
+  //   $rangeInput.val(index + 1).trigger('input');
+
+  // });
 });
 $("#next").click(showNextQuestion);
-
-const matixHtml = `  <div class="container-matrix" id="registration">
-
-  <table>
-      <tr>
-          <th id="column-document"></th>
-          <th class="column-button">Yes </th>
-          <th class="column-button">No</th>
-          <th class="column-button">Don't care</th>
-      </tr>
-      <tr id="test">
-          <td>Served as a club leader previously</td>
-          <td class="container-button" class="matrixRadio">
-              <input type="radio" id="permis1" name="pieces" value="valide" class="green">
-              <label for="permis1"></label>
-          </td>
-          <td class="container-button">
-              <input type="radio" id="permis2" name="pieces" value="non-valide" class="orange">
-              <label for="permis2"></label>
-          </td>
-          <td class="container-button">
-              <input type="radio" id="permis3" name="pieces" value="non-recu" class="red">
-              <label for="permis3"></label>
-          </td>
-
-      </tr>
-      <tr>
-          <td>Serve on senate executive board previously</td>
-          <td class="container-button" class="matrixRadio">
-              <input type="radio" id="sols1" name="sols" value="valide" class="green">
-              <label for="sols1"></label>
-          </td>
-          <td class="container-button">
-              <input type="radio" id="sols2" name="sols" value="non-valide" class="orange">
-              <label for="sols2"></label>
-          </td>
-          <td class="container-button">
-              <input type="radio" id="sols3" name="sols" value="non-recu" class="red">
-              <label for="sols3"></label>
-          </td>
-
-      </tr>
-      <tr>
-          <td>Volunteer involvement</td>
-          <td class="container-button" class="matrixRadio">
-              <input type="radio" id="champ1" name="champA" value="valide" class="green">
-              <label for="champ1"></label>
-          </td>
-          <td class="container-button">
-              <input type="radio" id="champ2" name="champA" value="non-valide" class="orange">
-              <label for="champ2"></label>
-          </td>
-          <td class="container-button">
-              <input type="radio" id="champ3" name="champA" value="non-recu" class="red">
-              <label for="champ3"></label>
-          </td>
-
-      </tr>
-      <tr>
-          <td>Serve on the senate for two or more semesters</td>
-          <td class="container-button" class="matrixRadio">
-              <input type="radio" id="champ5" name="champB" value="valide" class="green">
-              <label for="champ5"></label>
-          </td>
-          <td class="container-button">
-              <input type="radio" id="champ6" name="champB" value="non-valide" class="orange">
-              <label for="champ6"></label>
-          </td>
-          <td class="container-button">
-              <input type="radio" id="champ7" name="champB" value="non-recu" class="red">
-              <label for="champ7"></label>
-          </td>
-
-      </tr>
-  </table>
-</div>`
