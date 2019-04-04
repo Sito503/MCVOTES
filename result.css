@@ -1,10 +1,12 @@
-#resultContainer { text-align: center; margin: 20px; }
-h2 { font-family: Arial, Helvetica, sans-serif;  }
+#container { text-align: center; margin: 20px; }
 
 .bar-main-container {
   margin: 10px auto;
-  width: 500px;
+  width: 400px;
   height: 100px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
   font-family: sans-serif;
   font-weight: normal;
   font-size: 0.8em;
@@ -16,24 +18,20 @@ h2 { font-family: Arial, Helvetica, sans-serif;  }
 .bar-percentage {
   float: left;
   background: rgba(0,0,0,0.13);
-  padding: 30px 0px;
-  width: 10%;
-  height: 18%;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  padding: 30px 20px;
+  width: 15%;
+  margin-left: 2px;
 }
 
-.bar-img {
-  float: left;
-  padding: 10px 0px;
-  width: 100px ;
-  height: 100px ;
-  margin-right: 0px;
-}
-
-.names{
+.bar-names{
   font-size: 14px;
   padding:2%;
   float: left;
-  padding-left:5%;
+  padding-left:7%;
+  text-shadow: none;
   
 }
 .bar-container {
@@ -41,9 +39,14 @@ h2 { font-family: Arial, Helvetica, sans-serif;  }
   border-radius: 10px;
   height: 10px;
   background: rgba(0,0,0,0.13);
-  width: 60%;
-  margin: 12px 10px; 
+  width: 78%;
+  margin: 12px 0px; 
   overflow: hidden;
+}
+
+.bar-image{
+  width:100px;
+  height: 100px;
 }
 
 .bar {

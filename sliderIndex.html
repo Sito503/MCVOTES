@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   
+
     <meta charset="utf-8">
     <title>radiosToSlider. jquery plugin to create a slider using a list of radio buttons</title>
     <link rel="stylesheet" href="css/examples.css">
@@ -10,8 +11,8 @@
     <link rel="stylesheet" type="text/css" href="progressBar.css" />
     <link rel="shortcut icon" type="image/png" href="/imgs/favicon.png" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" >
-    
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+
     <link rel="shortcut icon" type="image/png" href="/imgs/favicon.png" />
 
 
@@ -29,39 +30,39 @@
     <div class="ribbon"><span>Demo BUILD</span></div>
     <br />
 
-	<div class = "main options">
+    <div class="main options">
 
-    		<div class="radio-block">
+        <div class="radio-block">
 
-    			<h3>Montgomery College should improve security, even doing so will increase tuition costs.</h3> 
-    			<div id="radios">
-    				<input id="option1" name="options" type="radio" class="radio">
-    				<label for="option1">Strongly <br>Agree</label>
+            <h3>Montgomery College should improve security, even doing so will increase tuition costs.</h3>
+            <div id="radios">
+                <input id="option1" name="options" type="radio" class="radio">
+                <label for="option1">Strongly <br>Agree</label>
 
-    				<input id="option2" name="options" type="radio" class="radio">
-    				<label for="option2">Agree</label>
+                <input id="option2" name="options" type="radio" class="radio">
+                <label for="option2">Agree</label>
 
-    				<input id="option3" name="options" type="radio" checked>
-    				<label for="option3">Neutral</label>
+                <input id="option3" name="options" type="radio" checked>
+                <label for="option3">Neutral</label>
 
-    				<input id="option4" name="options" type="radio">
-    				<label for="option4">Disagree</label>
+                <input id="option4" name="options" type="radio">
+                <label for="option4">Disagree</label>
 
-    				<input id="option5" name="options" type="radio">
-    				<label for="option5">Strongly <br>Disagree</label>
+                <input id="option5" name="options" type="radio">
+                <label for="option5">Strongly <br>Disagree</label>
 
-    			</div>
-    		</div>
-           
+            </div>
+        </div>
+
 
     </div>
-        <div class="container-matrix" id ="registration">
-            <br>
-            <h3>I think the following characteristic(s) are important to me for candidates who...</h3>
-            <br>
-            
-    <!-- MATRIX -->
-            <table id= matrix>
+    <div class="container-matrix" id="registration">
+        <br>
+        <h3>I think the following characteristic(s) are important to me for candidates who...</h3>
+        <br>
+
+
+        <table>
             <tr>
 
                 <th id="column-document"></th>
@@ -74,75 +75,74 @@
             <tr id="test">
                 <td>Served as a club leader previously</td>
                 <td class="container-button" class="matrixRadio">
-                <input type="radio" id="permis1" name="pieces" value=0 class="green">
-                <label for="permis1"></label>
+                    <input type="radio" id="permis1" name="pieces" value="valide" class="green">
+                    <label for="permis1"></label>
                 </td>
                 <td class="container-button">
-                <input type="radio" id="permis2" name="pieces" value=1 class="orange">
-                <label for="permis2"></label>
+                    <input type="radio" id="permis2" name="pieces" value="non-valide" class="orange">
+                    <label for="permis2"></label>
                 </td>
                 <td class="container-button">
-                <input type="radio" id="permis3" name="pieces" value=2 class="red">
-                <label for="permis3"></label>
+                    <input type="radio" id="permis3" name="pieces" value="non-recu" class="red">
+                    <label for="permis3"></label>
                 </td>
-               
+
             </tr>
             <tr>
                 <td>Serve on senate executive board previously</td>
                 <td class="container-button" class="matrixRadio">
-                <input type="radio" id="sols1" name="sols" value=0 class="green">
-                <label for="sols1"></label>
+                    <input type="radio" id="sols1" name="sols" value="valide" class="green">
+                    <label for="sols1"></label>
                 </td>
                 <td class="container-button">
-                <input type="radio" id="sols2" name="sols" value=1 class="orange">
-                <label for="sols2"></label>
+                    <input type="radio" id="sols2" name="sols" value="non-valide" class="orange">
+                    <label for="sols2"></label>
                 </td>
                 <td class="container-button">
-                <input type="radio" id="sols3" name="sols" value=2 class="red">
-                <label for="sols3"></label>
-               
-            
+                    <input type="radio" id="sols3" name="sols" value="non-recu" class="red">
+                    <label for="sols3"></label>
+                </td>
+
             </tr>
             <tr>
                 <td>Volunteer involvement</td>
                 <td class="container-button" class="matrixRadio">
-                <input type="radio" id="champ1" name="champA" value=0 class="green">
-                <label for="champ1"></label>
+                    <input type="radio" id="champ1" name="champA" value="valide" class="green">
+                    <label for="champ1"></label>
                 </td>
                 <td class="container-button">
-                <input type="radio" id="champ2" name="champA" value=1 class="orange">
-                <label for="champ2"></label>
+                    <input type="radio" id="champ2" name="champA" value="non-valide" class="orange">
+                    <label for="champ2"></label>
                 </td>
                 <td class="container-button">
-                <input type="radio" id="champ3" name="champA" value=2 class="red">
-                <label for="champ3"></label>
+                    <input type="radio" id="champ3" name="champA" value="non-recu" class="red">
+                    <label for="champ3"></label>
                 </td>
-              
-                </td>
+
             </tr>
             <tr>
                 <td>Serve on the senate for two or more semesters</td>
                 <td class="container-button" class="matrixRadio">
-                <input type="radio" id="champ5" name="champB" value=0 class="green">
-                <label for="champ5"></label>
+                    <input type="radio" id="champ5" name="champB" value="valide" class="green">
+                    <label for="champ5"></label>
                 </td>
                 <td class="container-button">
-                <input type="radio" id="champ6" name="champB" value=1 class="orange">
-                <label for="champ6"></label>
+                    <input type="radio" id="champ6" name="champB" value="non-valide" class="orange">
+                    <label for="champ6"></label>
                 </td>
                 <td class="container-button">
-                <input type="radio" id="champ7" name="champB" value=2 class="red">
-                <label for="champ7"></label>
+                    <input type="radio" id="champ7" name="champB" value="non-recu" class="red">
+                    <label for="champ7"></label>
                 </td>
-               
+
             </tr>
-            </table>
-        </div>
+        </table>
+    </div>
 
 
-        
-        <div class="center">PROGRESS BAR</div>
-        <div class="progress">
+
+    <div class="center">PROGRESS BAR</div>
+    <div class="progress">
         <ul>
             <li class="current">1</li>
             <li>2</li>
@@ -153,25 +153,26 @@
             <li>7</li>
             <li>8</li>
         </ul>
-        </div>
-        <div class="buttons">
-            <a href="#" id="prev">&#8249; PREV</a>
-            <a href="#" id="next">NEXT &#8250;</a>	
-        </div>
+    </div>
+    <div class="buttons">
+        <a href="#" id="prev">&#8249; PREV</a>
+        <a href="#" id="next">NEXT &#8250;</a>
+    </div>
 
 
 
 
-        <script src="js/jquery-1.10.2.min.js"></script>
-        <script src="js/jquery.radios-to-slider.js"></script>
-        <script src="js/index.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" >
-        <script type="text/javascript" src="radios-to-slider/js/jquery.radios-to-slider.js"></script>
-       <script type ="text/javascript" src = progressBar.js></script>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery.radios-to-slider.js"></script>
+    <script src="js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+    <script type="text/javascript" src="radios-to-slider/js/jquery.radios-to-slider.js"></script>
+    <script type="text/javascript" src=progressBar.js></script>
 
 
 
 
 </body>
+
 </html>

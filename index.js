@@ -172,14 +172,15 @@ function showNextQuestion() {
         val1 = $('tr input[name=pieces]:checked').parent().find('#matrix').html();
         val1 = $("td input[name='pieces']:checked").parents().find('.matrix').html();
         val1 = $('premis1').checked;
+
         
         function getMatrixValue()
         {
-            var theCars = document.getElementsByName("matrix");
-            var i = theCars.length;
+            var theMatrix = document.getElementsByName("matrix");
+            var i = theMatrix.length;
             while (i--) {
-                if(theCars[i].checked)
-                     return theCars[i].value;
+                if(theMatrix[i].checked)
+                     return theMatrix[i].value;
         
             }
         }
