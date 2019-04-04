@@ -173,7 +173,8 @@ function showNextQuestion() {
         $("#next").off();
         $("#next").click(getAnswersFromRadioQuestion);
       } else if (questionType == "matrix") { 
-        
+        $("#next").off();
+        $("#next").click(getAnswersFromMatrixQuestion);
       } else {
         // not a valid value for the question
         console.log("Error");
@@ -193,7 +194,11 @@ function showNextQuestion() {
   $("#question-container").fadeIn(400);
 }
 
-
+function getAnswersFromMatrixQuestion(){
+  
+  clickProgress();
+  showNextQuestion();
+}
 function refreshPage() {
   window.location.reload();
 }
