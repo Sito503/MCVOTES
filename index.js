@@ -23,6 +23,17 @@ var candidateAns = {
     ["1", "0", "2", "3", "4", "5"], //q3
     ["1", "0", "2", "3", "4"], //q4
     ["1", "0", "2"] //q5
+  
+  ],
+
+  andrewWilson:
+  [
+    ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
+    ["1", "0", "2", "3", "4"], //q2
+    ["1", "0", "2", "3", "4", "5"], //q3
+    ["1", "0", "2", "3", "4"], //q4
+    ["1", "0", "2"] //q5
+  
   ]
 };
 const questionSet = {
@@ -172,7 +183,7 @@ function showNextQuestion() {
         }, 1);
         $("#next").off();
         $("#next").click(getAnswersFromRadioQuestion);
-      } else if (questionType == "matrix") { 
+      } else if (questionType == "matrix") {
         $("#next").off();
         $("#next").click(getAnswersFromMatrixQuestion);
       } else {
@@ -194,8 +205,8 @@ function showNextQuestion() {
   $("#question-container").fadeIn(400);
 }
 
-function getAnswersFromMatrixQuestion(){
-  
+function getAnswersFromMatrixQuestion() {
+
   clickProgress();
   showNextQuestion();
 }
@@ -296,45 +307,61 @@ function compareAnswers() {
 
     totalPercent = 0;
 
-    totalPercent = 0;
   }
 }
+function changePerecnt() {
+  let i = 0
+  var result = document.getElementsByClassName("bar-names");
+  var percentage = 0;
+  console.log(result)
 
-$(".bar-percentage[data-percentage]").each(function () {
-  var progress = $(this);
-  var percentage = 10;
-  var result = document.getElementsByClassName("bar-name");
+  $(".bar-percentage[data-percentage]").each(function () {
+    var progress = $(this);
+    if (result[i].id == undefined) {
+      percentage = 0;
+    }
+    else {
+      percentage = Math.ceil($(this).attr('data-percentage'));
+    }
 
-  for (let i = 0; i < totalPercentArr.length; i++) {
-    switch (result[i]) {
+
+    console.log(result[i].id)
+    switch (result[i].id) {
       case "amyWang":
-        percentage = Math.ceil(totalPercentArr[0]);
+        percentage = Math.ceil(totalPercentArr[0]) + 1;
         break;
       case "puffyShen":
-        percentage = Math.ceil(totalPercentArr[1]);
+        percentage = Math.ceil(totalPercentArr[1]) + 1;
+        break;
+      case "andrewWilson":
+        percentage = Math.ceil(totalPercentArr[1]) + 1;
         break;
       default:
         percentage = 0;
-    }
-  }
 
-  $({ countNum: 0 }).animate(
-    { countNum: percentage },
-    {
-      duration: 2000,
-      easing: "linear",
-      step: function () {
-        // What todo on every count
-        var pct = Math.floor(this.countNum) + "%";
-        progress.text(pct) &&
-          progress
-            .siblings()
-            .children()
-            .css("width", pct);
-      }
     }
-  );
-});
+
+    $({ countNum: 0 }).animate(
+      { countNum: percentage },
+      {
+        duration: 2000,
+        easing: "linear",
+        step: function () {
+          // What todo on every count
+          var pct = Math.floor(this.countNum) + "%";
+          progress.text(pct) &&
+            progress
+              .siblings()
+              .children()
+              .css("width", pct);
+        }
+      }
+
+    );
+    i++;
+  });
+}
+
 // please ignore this code is to make sure the list are sortable on mobile devices
 !(function (a) {
   function f(a, b) {
@@ -419,6 +446,7 @@ $(document).ready(function () {
   $("#restart").hide();
   $(".progress").hide();
   $("#next").click(showProgressBar);
+  changePerecnt();
 
   $("#tab1_content").show();
   $("#tab2_content").hide();
@@ -440,8 +468,8 @@ $(document).ready(function () {
     $("#tab2_content").show();
     $("#tab3_content").hide();
     $("#tab4_content").hide();
-
     $("#tab5_content").hide();
+    changePerecnt();
   });
   $("#role_info_tab").click(function () {
     $("#tab1_content").hide();
