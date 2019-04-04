@@ -9,7 +9,7 @@ h3 {
 }
 
 .module {
-  width: 80%;
+  /* width: 80%; */
   background: white;
   text-align: center;
   border: 2px solid #51237f;
@@ -410,7 +410,7 @@ slide:nth-child(4) {
 
 table {
   border-collapse: collapse;
-  width: 80%;
+  /* width: 80%; */
 }
 
 table,
@@ -808,6 +808,7 @@ td {
 @import url(https://fonts.googleapis.com/css?family=Lato);
 @import url(https://fonts.googleapis.com/css?family=Oswald);
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+
 .profile {
   font-family: 'Lato', Arial, sans-serif;
   position: relative;
@@ -876,6 +877,3 @@ td {
 .profile .icons i a {
   text-decoration: none;
 }
-
-
-
