@@ -1,4 +1,5 @@
 var answers = [];
+var totalPercentArr = [];
 
 const sliderLabelValues = [
   "Strongly Agree",
@@ -285,11 +286,26 @@ function compareAnswers() {
     candidateAnsTotal = 0;
     percentageCal = 0;
 
+    totalPercentArr.push(totalPercent);
+
+    console.log("Total percent arr " + totalPercentArr);
+
     $(".bar-percentage[data-percentage]").each(function() {
       var progress = $(this);
       var percentage;
-      for (let i = 0; i < candidateAns.length; i++) {
-        percentage = Math.ceil(totalPercent);
+      var result = document.getElementsByClassName("bar-name");
+
+      for (let i = 0; i < totalPercentArr.length; i++) {
+        switch (result[i]) {
+          case "amyWang":
+            percentage = Math.ceil(totalPercentArr[0]);
+            break;
+          case "puffyShen":
+            percentage = Math.ceil(totalPercentArr[1]);
+            break;
+          default:
+            percentage = 0;
+        }
       }
 
       $({ countNum: 0 }).animate(
@@ -309,6 +325,8 @@ function compareAnswers() {
         }
       );
     });
+
+    totalPercent = 0;
 
     totalPercent = 0;
   }
