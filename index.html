@@ -17,7 +17,7 @@
     <script src="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
     <script type="text/javascript" src="radios-to-slider/js/jquery.radios-to-slider.js"></script>
     <!-- fonts -->
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" /> -->
     <link rel="stylesheet" type="text/css" href="radios-to-slider/css/radios-to-slider.css">
     <link rel="stylesheet" type="text/css" href="result.css" />
     <link rel="stylesheet" type="text/css" href="progressBar.css" />
@@ -322,6 +322,24 @@
                     influence on clubs and represent Montgomery College Rockville Campus in
                     public arena.
                     Join the student senate today and become the voice of students! </p>
+                <div class="wrapper">
+                    <div class="toggle_radio">
+                        <input type="radio" class="toggle_option" id="first_toggle" name="toggle_option">
+                        <input type="radio" checked class="toggle_option" id="second_toggle" name="toggle_option">
+                        <input type="radio" class="toggle_option" id="third_toggle" name="toggle_option">
+                        <label for="first_toggle">
+                            <p>First Button</p>
+                        </label>
+                        <label for="second_toggle">
+                            <p>Second Button</p>
+                        </label>
+                        <label for="third_toggle">
+                            <p>Third Button</p>
+                        </label>
+                        <div class="toggle_option_slider">
+                        </div>
+                    </div>
+                </div>
 
                 <h2>Do you know? </h2>
                 <p>In Student senate, there are 7 committees to help you improve your school
@@ -332,19 +350,6 @@
                     questions for them.
                 </p>
 
-                <div class="range">
-                    <input type="range" min="1" max="5" steps="1" value="1" id="iii">
-                </div>
-
-                <ul class="range-labels">
-                    <li class="active selected">Today</li>
-                    <li>2 days</li>
-                    <li>3 days</li>
-                    <li>4 days</li>
-                    <li>5 days</li>
-                    <li>6 days</li>
-                    <li>7 days</li>
-                </ul>
 
                 <!--       closes tab 2 content -->
             </div>
