@@ -8,19 +8,18 @@ const sliderLabelValues = [
   "Strongly Disagree"
 ];
 
-
 var candidateAns = {
   amyWang: [
     ["0", "1", "2", "3", "4", "5", "6", "7", "8"], //q1
     ["0", "1", "2", "3", "4"], //q2
-    ["0", "1", "2", "3","4","5"], //q3
+    ["0", "1", "2", "3", "4", "5"], //q3
     ["0", "1", "2", "3", "4"], //q4
     ["0", "1", "2"] //q5
   ],
   puffyShen: [
     ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
     ["1", "0", "2", "3", "4"], //q2
-    ["1", "0", "2", "3","4","5"], //q3
+    ["1", "0", "2", "3", "4", "5"], //q3
     ["1", "0", "2", "3", "4"], //q4
     ["1", "0", "2"] //q5
   ]
@@ -144,8 +143,6 @@ function showNextQuestion() {
 
         $("#next").off("click");
         $("#next").click(getAnswersFromSortableQuestion);
-       
-        
       } else if (questionType == "Slider") {
         wrapperDiv.id = "radios";
         wrapperDiv.classList.add("radio-block");
@@ -172,7 +169,7 @@ function showNextQuestion() {
           // converting the radios to slider
           $("#radios").radiosToSlider();
         }, 1);
-        $("#next").off()
+        $("#next").off();
         $("#next").click(getAnswersFromRadioQuestion);
       } else if (questionType == "matrix") {
       } else {
@@ -181,7 +178,7 @@ function showNextQuestion() {
       }
     } else {
       // end of the quiz
-      compareAnswers() ;
+      compareAnswers();
       questionDiv.innerHTML = answers;
       questionDiv.innerHTML += ":answers \n Quiz done get out here";
       questionContainer.appendChild(questionDiv);
@@ -214,7 +211,6 @@ function getAnswersFromRadioQuestion() {
     clickProgress();
     showNextQuestion();
   }
-
 }
 
 function clickProgress() {
@@ -228,21 +224,15 @@ function clickProgress() {
 function getAnswersFromSortableQuestion() {
   moduleAnswers = document.getElementsByClassName("module");
   answersID = [];
-  
+
   for (var answer of moduleAnswers) {
     answersID.push(answer.id);
   }
-      
-  
-      
+
   answers.push(answersID);
   clickProgress();
   showNextQuestion();
 }
-
-
-   
-
 
 function createAnswerModule(id, answer, clickableQuestion) {
   sortableIcon = document.createElement("span");
@@ -265,73 +255,64 @@ function createAnswerModule(id, answer, clickableQuestion) {
 
 function compareAnswers() {
   totalPercent = 0;
-  for(candidate in candidateAns)
-  {
-    
-    candidateAnswers =  candidateAns[candidate]
-    for(let questionNumber = 0; questionNumber < candidateAnswers.length; questionNumber++){
-      candidateSAns =  candidateAnswers[questionNumber]
-      var candidateAnsTotal =0;
+  for (candidate in candidateAns) {
+    candidateAnswers = candidateAns[candidate];
+    for (
+      let questionNumber = 0;
+      questionNumber < candidateAnswers.length;
+      questionNumber++
+    ) {
+      candidateSAns = candidateAnswers[questionNumber];
+      var candidateAnsTotal = 0;
       var percentageCal = 0;
 
-      for (let i = 0; i< candidateSAns.length;i++){
-
-        percentageCal += Math.abs(answers[questionNumber][i] - candidateSAns[i]); 
-        candidateAnsTotal += Math.abs(candidateSAns[i]); 
+      for (let i = 0; i < candidateSAns.length; i++) {
+        percentageCal += Math.abs(
+          answers[questionNumber][i] - candidateSAns[i]
+        );
+        candidateAnsTotal += Math.abs(candidateSAns[i]);
         // console.log("answer value is " + answers[questionNumber][i]);
-        
-       
       }
 
-      if(percentageCal == 0)
-      {
+      if (percentageCal == 0) {
         totalPercent += 12.5;
-      }
-      else{
-
-        totalPercent += (1 - (percentageCal/candidateAnsTotal))*100/8;
-
+      } else {
+        totalPercent += ((1 - percentageCal / candidateAnsTotal) * 100) / 8;
       }
       percentageCal = 0;
       console.log("total % is " + totalPercent);
-     
     }
-    candidateAnsTotal =0;
+    candidateAnsTotal = 0;
     percentageCal = 0;
-   
-  
-    $('.bar-percentage[data-percentage]').each(function () {
+
+    $(".bar-percentage[data-percentage]").each(function() {
       var progress = $(this);
       var percentage;
-      for(let i =0; i<candidateAns.length; i++)
-      {
+      for (let i = 0; i < candidateAns.length; i++) {
         percentage = Math.ceil(totalPercent);
       }
-     
-    
-      $({countNum: 0}).animate({countNum: percentage}, {
-        duration: 2000,
-        easing:'linear',
-        step: function() {
-    
-          // What todo on every count
-          var pct = Math.floor(this.countNum) + '%';
-          progress.text(pct) && progress.siblings().children().css('width',pct);
+
+      $({ countNum: 0 }).animate(
+        { countNum: percentage },
+        {
+          duration: 2000,
+          easing: "linear",
+          step: function() {
+            // What todo on every count
+            var pct = Math.floor(this.countNum) + "%";
+            progress.text(pct) &&
+              progress
+                .siblings()
+                .children()
+                .css("width", pct);
+          }
         }
-      });
+      );
     });
-    
-  
+
     totalPercent = 0;
-
   }
-
-
-  
-  
 }
-
-
 
 // please ignore this code is to make sure the list are sortable on mobile devices
 !(function(a) {
@@ -467,8 +448,6 @@ $(document).ready(function() {
 });
 $("#next").click(showNextQuestion);
 
-
-
 //tinder style is here
 $(document).ready(function() {
   $(".buddy").on("swiperight", function() {
@@ -517,3 +496,53 @@ $(document).ready(function() {
   });
 });
 
+var sheet = document.createElement("style"),
+  $rangeInput = $(".range input"),
+  prefs = ["webkit-slider-runnable-track", "moz-range-track", "ms-track"];
+
+document.body.appendChild(sheet);
+
+var getTrackStyle = function(el) {
+  var curVal = el.value,
+    val = (curVal - 1) * 16.666666667,
+    style = "";
+
+  // Set active label
+  $(".range-labels li").removeClass("active selected");
+
+  var curLabel = $(".range-labels").find("li:nth-child(" + curVal + ")");
+
+  curLabel.addClass("active selected");
+  curLabel.prevAll().addClass("selected");
+
+  // Change background gradient
+  for (var i = 0; i < prefs.length; i++) {
+    style +=
+      ".range {background: linear-gradient(to right, #37adbf 0%, #37adbf " +
+      val +
+      "%, #fff " +
+      val +
+      "%, #fff 100%)}";
+    style +=
+      ".range input::-" +
+      prefs[i] +
+      "{background: linear-gradient(to right, #37adbf 0%, #37adbf " +
+      val +
+      "%, #b2b2b2 " +
+      val +
+      "%, #b2b2b2 100%)}";
+  }
+
+  return style;
+};
+
+$rangeInput.on("input", function() {
+  sheet.textContent = getTrackStyle(this);
+});
+
+// Change input value on label click
+$(".range-labels li").on("click", function() {
+  var index = $(this).index();
+
+  $rangeInput.val(index + 1).trigger("input");
+});

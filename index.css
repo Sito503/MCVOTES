@@ -43,6 +43,7 @@ ul.topnav li.right {
 }
 
 @media screen and (max-width: 600px) {
+
   ul.topnav li.right,
   ul.topnav li {
     float: none;
@@ -294,7 +295,7 @@ slider {
   position: absolute;
 }
 
-slider > * {
+slider>* {
   position: absolute;
   display: block;
   width: 100%;
@@ -471,7 +472,7 @@ slide:nth-child(4) {
 
 .slide-wrapper {
   width: 100%;
-  
+
 }
 
 .slide {
@@ -734,7 +735,7 @@ td:first-child {
   padding: 3%;
 }
 
-#registration > div > label {
+#registration>div>label {
   display: inline-block;
   cursor: pointer;
   position: relative;
@@ -744,11 +745,11 @@ td:first-child {
   font-family: "Roboto", sans-serif;
 }
 
-#registration > div > input[type="radio"] {
+#registration>div>input[type="radio"] {
   display: none;
 }
 
-#registration > div > label:before {
+#registration>div>label:before {
   content: "";
   /*display: inline-block;*/
   width: 20px;
@@ -762,7 +763,7 @@ td:first-child {
   border-radius: 50%;
 }
 
-#registration > div > input[type="radio"]:checked + label:before {
+#registration>div>input[type="radio"]:checked+label:before {
   content: "\2022";
   color: #9fa1a4;
   font-size: 35px;
@@ -770,15 +771,15 @@ td:first-child {
   line-height: 18px;
 }
 
-#registration > div > input.green:checked + label:before {
+#registration>div>input.green:checked+label:before {
   background-color: #28a689;
 }
 
-#registration > div > input.orange:checked + label:before {
+#registration>div>input.orange:checked+label:before {
   background-color: #ff5e3a;
 }
 
-#registration > div > input.red:checked + label:before {
+#registration>div>input.red:checked+label:before {
   background-color: #0e8ad9;
 }
 
@@ -880,7 +881,7 @@ h4,
   color: #de5845;
 }
 
-footer > p {
+footer>p {
   display: block;
   text-align: right;
   font-size: 10px;
@@ -896,4 +897,125 @@ footer > p {
   transform: scale(4) !important;
   margin-top: 15px !important;
   margin-left: 10px !important;
+}
+
+/* slider with input range */
+.range {
+  position: relative;
+  width: 550px;
+  height: 5px;
+}
+
+.range input {
+  width: 100%;
+  position: absolute;
+  top: 2px;
+  height: 0;
+  -webkit-appearance: none;
+}
+
+.range input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: -8px 0 0;
+  border-radius: 50%;
+  background: #37adbf;
+  cursor: pointer;
+  border: 0 !important;
+}
+
+.range input::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  margin: -8px 0 0;
+  border-radius: 50%;
+  background: #37adbf;
+  cursor: pointer;
+  border: 0 !important;
+}
+
+.range input::-ms-thumb {
+  width: 18px;
+  height: 18px;
+  margin: -8px 0 0;
+  border-radius: 50%;
+  background: #37adbf;
+  cursor: pointer;
+  border: 0 !important;
+}
+
+.range input::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background: #b2b2b2;
+}
+
+.range input::-moz-range-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background: #b2b2b2;
+}
+
+.range input::-ms-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background: #b2b2b2;
+}
+
+.range input:focus {
+  background: none;
+  outline: none;
+}
+
+.range input::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.range-labels {
+  margin: 18px -41px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.range-labels li {
+  position: relative;
+  float: left;
+  width: 90.25px;
+  text-align: center;
+  color: #b2b2b2;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.range-labels li::before {
+  position: absolute;
+  top: -25px;
+  right: 0;
+  left: 0;
+  content: "";
+  margin: 0 auto;
+  width: 9px;
+  height: 9px;
+  background: #b2b2b2;
+  border-radius: 50%;
+}
+
+.range-labels .active {
+  color: #37adbf;
+}
+
+.range-labels .selected::before {
+  background: #37adbf;
+}
+
+.range-labels .active.selected::before {
+  display: none;
 }
