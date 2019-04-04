@@ -171,6 +171,7 @@ ul.tabs {
   padding: 8%;
   width: 80%;
   font: 15px "Roboto", sans-serif;
+  text-shadow: none !important;
 }
 
 ul.tabs li {
@@ -198,6 +199,7 @@ p {
   font-size: 14px;
   color: black;
   padding: 0.5%;
+  text-shadow: none !important;
 }
 
 /* hover effect */
@@ -566,11 +568,6 @@ section {
   padding: 1px;
 }
 
-.radios-to-slider.medium .slider-label {
-  /* width: 80% !important; */
-  /* min-width: 50px; */
-  max-width: 100px;
-}
 
 .radios-to-slider .slider-level {
   background-color: #fff;
@@ -602,6 +599,9 @@ section {
   float: right;
   background-color: #51237f;
 }
+.slider-label{
+  font-size: 12px !important;
+}
 
 .ui-radio {
   text-align: center;
@@ -612,7 +612,7 @@ section {
 .radios-to-slider.medium .slider-label {
   width: 80% !important;
   min-width: 50px;
-  max-width: 100px;
+  max-width: 50px;
 }
 
 .radios-to-slider .slider-level {

@@ -290,41 +290,6 @@ function compareAnswers() {
 
     console.log("Total percent arr " + totalPercentArr);
 
-    $(".bar-percentage[data-percentage]").each(function() {
-      var progress = $(this);
-      var percentage;
-      var result = document.getElementsByClassName("bar-name");
-
-      for (let i = 0; i < totalPercentArr.length; i++) {
-        switch (result[i]) {
-          case "amyWang":
-            percentage = Math.ceil(totalPercentArr[0]);
-            break;
-          case "puffyShen":
-            percentage = Math.ceil(totalPercentArr[1]);
-            break;
-          default:
-            percentage = 0;
-        }
-      }
-
-      $({ countNum: 0 }).animate(
-        { countNum: percentage },
-        {
-          duration: 2000,
-          easing: "linear",
-          step: function() {
-            // What todo on every count
-            var pct = Math.floor(this.countNum) + "%";
-            progress.text(pct) &&
-              progress
-                .siblings()
-                .children()
-                .css("width", pct);
-          }
-        }
-      );
-    });
 
     totalPercent = 0;
 
@@ -332,6 +297,41 @@ function compareAnswers() {
   }
 }
 
+$(".bar-percentage[data-percentage]").each(function() {
+  var progress = $(this);
+  var percentage= 10;
+  var result = document.getElementsByClassName("bar-name");
+
+  for (let i = 0; i < totalPercentArr.length; i++) {
+    switch (result[i]) {
+      case "amyWang":
+        percentage = Math.ceil(totalPercentArr[0]);
+        break;
+      case "puffyShen":
+        percentage = Math.ceil(totalPercentArr[1]);
+        break;
+      default:
+        percentage = 0;
+    }
+  }
+
+  $({ countNum: 0 }).animate(
+    { countNum: percentage },
+    {
+      duration: 2000,
+      easing: "linear",
+      step: function() {
+        // What todo on every count
+        var pct = Math.floor(this.countNum) + "%";
+        progress.text(pct) &&
+          progress
+            .siblings()
+            .children()
+            .css("width", pct);
+      }
+    }
+  );
+});
 // please ignore this code is to make sure the list are sortable on mobile devices
 !(function(a) {
   function f(a, b) {
