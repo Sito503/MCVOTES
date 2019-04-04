@@ -1,4 +1,5 @@
 var answers = [];
+var totalPercentArr = [];
 
 const sliderLabelValues = [
   "Strongly Agree",
@@ -13,14 +14,14 @@ var candidateAns = {
   amyWang: [
     ["0", "1", "2", "3", "4", "5", "6", "7", "8"], //q1
     ["0", "1", "2", "3", "4"], //q2
-    ["0", "1", "2", "3","4","5"], //q3
+    ["0", "1", "2", "3", "4", "5"], //q3
     ["0", "1", "2", "3", "4"], //q4
     ["0", "1", "2"] //q5
   ],
   puffyShen: [
     ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
     ["1", "0", "2", "3", "4"], //q2
-    ["1", "0", "2", "3","4","5"], //q3
+    ["1", "0", "2", "3", "4", "5"], //q3
     ["1", "0", "2", "3", "4"], //q4
     ["1", "0", "2"] //q5
   ]
@@ -115,7 +116,7 @@ function showProgressBar() {
 }
 
 function showNextQuestion() {
-  $("#question-container").fadeOut("fast", function() {
+  $("#question-container").fadeOut("fast", function () {
     $("#next").show();
     question = getNextQuestion();
     questionContainer = document.getElementById("question-container");
@@ -144,8 +145,8 @@ function showNextQuestion() {
 
         $("#next").off("click");
         $("#next").click(getAnswersFromSortableQuestion);
-       
-        
+
+
       } else if (questionType == "Slider") {
         wrapperDiv.id = "radios";
         wrapperDiv.classList.add("radio-block");
@@ -168,7 +169,7 @@ function showNextQuestion() {
         The fade out callback restrict rendering of the radios to slider.
         the 1 ms delay trick/hack the browser in rendering the dom after the divs have been created
         */
-        setTimeout(function() {
+        setTimeout(function () {
           // converting the radios to slider
           $("#radios").radiosToSlider();
         }, 1);
@@ -180,7 +181,7 @@ function showNextQuestion() {
       }
     } else {
       // end of the quiz
-      compareAnswers() ;
+      compareAnswers();
       questionDiv.innerHTML = answers;
       questionDiv.innerHTML += ":answers \n Quiz done get out here";
       questionContainer.appendChild(questionDiv);
@@ -193,7 +194,7 @@ function showNextQuestion() {
   $("#question-container").fadeIn(400);
 }
 
-function getAnswerFromMatrix() {}
+function getAnswerFromMatrix() { }
 
 function refreshPage() {
   window.location.reload();
@@ -227,20 +228,20 @@ function clickProgress() {
 function getAnswersFromSortableQuestion() {
   moduleAnswers = document.getElementsByClassName("module");
   answersID = [];
-  
+
   for (var answer of moduleAnswers) {
     answersID.push(answer.id);
   }
-      
-  
-      
+
+
+
   answers.push(answersID);
   clickProgress();
   showNextQuestion();
 }
 
 
-   
+
 
 
 function createAnswerModule(id, answer, clickableQuestion) {
@@ -255,7 +256,7 @@ function createAnswerModule(id, answer, clickableQuestion) {
   moduleSection.appendChild(sortableIcon);
   moduleSection.appendChild(moduleParagraph);
   if (clickableQuestion) {
-    moduleSection.addEventListener("click", function() {
+    moduleSection.addEventListener("click", function () {
       answers.push([answer]);
     });
   }
@@ -264,76 +265,90 @@ function createAnswerModule(id, answer, clickableQuestion) {
 
 function compareAnswers() {
   totalPercent = 0;
-  for(candidate in candidateAns)
-  {
-    
-    candidateAnswers =  candidateAns[candidate]
-    for(let questionNumber = 0; questionNumber < candidateAnswers.length; questionNumber++){
-      candidateSAns =  candidateAnswers[questionNumber]
-      var candidateAnsTotal =0;
+  for (candidate in candidateAns) {
+
+    candidateAnswers = candidateAns[candidate]
+    for (let questionNumber = 0; questionNumber < candidateAnswers.length; questionNumber++) {
+      candidateSAns = candidateAnswers[questionNumber]
+      var candidateAnsTotal = 0;
       var percentageCal = 0;
 
-      for (let i = 0; i< candidateSAns.length;i++){
+      for (let i = 0; i < candidateSAns.length; i++) {
 
-        percentageCal += Math.abs(answers[questionNumber][i] - candidateSAns[i]); 
-        candidateAnsTotal += Math.abs(candidateSAns[i]); 
+        percentageCal += Math.abs(answers[questionNumber][i] - candidateSAns[i]);
+        candidateAnsTotal += Math.abs(candidateSAns[i]);
         // console.log("answer value is " + answers[questionNumber][i]);
-        
-       
+
+
       }
 
-      if(percentageCal == 0)
-      {
+      if (percentageCal == 0) {
         totalPercent += 12.5;
       }
-      else{
+      else {
 
-        totalPercent += (1 - (percentageCal/candidateAnsTotal))*100/8;
+        totalPercent += (1 - (percentageCal / candidateAnsTotal)) * 100 / 8;
 
       }
       percentageCal = 0;
       console.log("total % is " + totalPercent);
-     
+
     }
-    candidateAnsTotal =0;
+    candidateAnsTotal = 0;
     percentageCal = 0;
-   
-  
+
+    totalPercentArr.push(totalPercent);
+
+    console.log("Total percent arr " + totalPercentArr);
+
     $('.bar-percentage[data-percentage]').each(function () {
       var progress = $(this);
       var percentage;
-      for(let i =0; i<candidateAns.length; i++)
-      {
-        percentage = Math.ceil(totalPercent);
+      var result = document.getElementsByClassName('bar-name');
+
+      for (let i = 0; i < totalPercentArr.length; i++) {
+        switch (result[i]) {
+          case "amyWang":
+            percentage = Math.ceil(totalPercentArr[0]);
+            break;
+          case "puffyShen":
+            percentage = Math.ceil(totalPercentArr[1]);
+            break;
+          default:
+            percentage = 0;
+        }
       }
-     
-    
-      $({countNum: 0}).animate({countNum: percentage}, {
+
+      $({ countNum: 0 }).animate({ countNum: percentage }, {
         duration: 2000,
-        easing:'linear',
-        step: function() {
-    
+        easing: 'linear',
+        step: function () {
+
           // What todo on every count
           var pct = Math.floor(this.countNum) + '%';
-          progress.text(pct) && progress.siblings().children().css('width',pct);
+          progress.text(pct) && progress.siblings().children().css('width', pct);
         }
       });
+
+
+
+
     });
-    
-  
+
+
     totalPercent = 0;
 
   }
 
 
-  
-  
+
+
 }
 
 
 
 // please ignore this code is to make sure the list are sortable on mobile devices
-!(function(a) {
+!(function (a) {
   function f(a, b) {
     if (!(a.originalEvent.touches.length > 1)) {
       a.preventDefault();
@@ -364,27 +379,27 @@ function compareAnswers() {
       b = a.ui.mouse.prototype,
       c = b._mouseInit,
       d = b._mouseDestroy;
-    (b._touchStart = function(a) {
+    (b._touchStart = function (a) {
       var b = this;
       !e &&
         b._mouseCapture(a.originalEvent.changedTouches[0]) &&
         ((e = !0),
-        (b._touchMoved = !1),
-        f(a, "mouseover"),
-        f(a, "mousemove"),
-        f(a, "mousedown"));
+          (b._touchMoved = !1),
+          f(a, "mouseover"),
+          f(a, "mousemove"),
+          f(a, "mousedown"));
     }),
-      (b._touchMove = function(a) {
+      (b._touchMove = function (a) {
         e && ((this._touchMoved = !0), f(a, "mousemove"));
       }),
-      (b._touchEnd = function(a) {
+      (b._touchEnd = function (a) {
         e &&
           (f(a, "mouseup"),
-          f(a, "mouseout"),
-          this._touchMoved || f(a, "click"),
-          (e = !1));
+            f(a, "mouseout"),
+            this._touchMoved || f(a, "click"),
+            (e = !1));
       }),
-      (b._mouseInit = function() {
+      (b._mouseInit = function () {
         var b = this;
         b.element.bind({
           touchstart: a.proxy(b, "_touchStart"),
@@ -393,7 +408,7 @@ function compareAnswers() {
         }),
           c.call(b);
       }),
-      (b._mouseDestroy = function() {
+      (b._mouseDestroy = function () {
         var b = this;
         b.element.unbind({
           touchstart: a.proxy(b, "_touchStart"),
@@ -411,7 +426,7 @@ function makeAnswerSortable() {
 }
 // tab things do touch yet please
 
-$(document).ready(function() {
+$(document).ready(function () {
   $(".progress").show();
   $("#restart").hide();
   $(".progress").hide();
@@ -423,7 +438,7 @@ $(document).ready(function() {
   $("#tab4_content").hide();
   $("#tab5_content").hide();
 
-  $("#quiz_tab").click(function() {
+  $("#quiz_tab").click(function () {
     $("#tab1_content").show();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
@@ -432,7 +447,7 @@ $(document).ready(function() {
     $("#tab5_content").hide();
   });
 
-  $("#candidate_info_tab").click(function() {
+  $("#candidate_info_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").show();
     $("#tab3_content").hide();
@@ -440,7 +455,7 @@ $(document).ready(function() {
 
     $("#tab5_content").hide();
   });
-  $("#role_info_tab").click(function() {
+  $("#role_info_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").show();
@@ -449,14 +464,14 @@ $(document).ready(function() {
     $("#tab5_content").hide();
   });
 
-  $("#about_tab").click(function() {
+  $("#about_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
     $("#tab4_content").show();
     $("#tab5_content").hide();
   });
-  $("#result_tab").click(function() {
+  $("#result_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
@@ -469,8 +484,8 @@ $("#next").click(showNextQuestion);
 
 
 //tinder style is here
-$(document).ready(function() {
-  $(".buddy").on("swiperight", function() {
+$(document).ready(function () {
+  $(".buddy").on("swiperight", function () {
     $(this)
       .addClass("rotate-left")
       .delay(700)
@@ -493,7 +508,7 @@ $(document).ready(function() {
     }
   });
 
-  $(".buddy").on("swipeleft", function() {
+  $(".buddy").on("swipeleft", function () {
     $(this)
       .addClass("rotate-right")
       .delay(700)
