@@ -173,6 +173,7 @@ function showNextQuestion() {
           // converting the radios to slider
           $("#radios").radiosToSlider();
         }, 1);
+        $("#next").off()
         $("#next").click(getAnswersFromRadioQuestion);
       } else if (questionType == "matrix") {
       } else {
