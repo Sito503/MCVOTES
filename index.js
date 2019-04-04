@@ -236,6 +236,13 @@ function showNextQuestion() {
 $("#surveyElement").Survey({model: survey});
 */
 
+// =======
+//         console.log(matixHtml);
+//         wrapperDiv.innerHTML += matixHtml;
+//         questionContainer.appendChild(wrapperDiv);
+//         $("#next").off();
+//         $("#next").click(getAnswersFromMatrixQuestion);
+// >>>>>>> b8f738830cbff212419713ce141018e75534ba62
       } else {
         // not a valid value for the question
         console.log("Error");
@@ -255,6 +262,7 @@ $("#surveyElement").Survey({model: survey});
   $("#question-container").fadeIn(400);
 }
 
+// <<<<<<< HEAD
 function getAnswerFromMatrix() {
 
   /*window.survey = new Survey.Model(json);
@@ -270,6 +278,12 @@ function getAnswerFromMatrix() {
 */
 }
 
+// =======
+function getAnswersFromMatrixQuestion() {
+  clickProgress();
+  showNextQuestion();
+}
+// >>>>>>> b8f738830cbff212419713ce141018e75534ba62
 function refreshPage() {
   window.location.reload();
 }
@@ -355,44 +369,85 @@ function createAnswerModule(id, answer, clickableQuestion) {
   return moduleSection;
 }
 
+function compareAnswers() {
+  totalPercent = 0;
+  for (candidate in candidateAns) {
+    candidateAnswers = candidateAns[candidate];
+    for (
+      let questionNumber = 0;
+      questionNumber < candidateAnswers.length;
+      questionNumber++
+    ) {
+      candidateSAns = candidateAnswers[questionNumber];
+      var candidateAnsTotal = 0;
+      var percentageCal = 0;
+
+      for (let i = 0; i < candidateSAns.length; i++) {
+        percentageCal += Math.abs(
+          answers[questionNumber][i] - candidateSAns[i]
+        );
+        candidateAnsTotal += Math.abs(candidateSAns[i]);
+        // console.log("answer value is " + answers[questionNumber][i]);
+      }
+
+      if (percentageCal == 0) {
+        totalPercent += 12.5;
+      } else {
+        totalPercent += ((1 - percentageCal / candidateAnsTotal) * 100) / 8;
+      }
+      percentageCal = 0;
+      console.log("total % is " + totalPercent);
+    }
+    candidateAnsTotal = 0;
+    percentageCal = 0;
+
+    totalPercentArr.push(totalPercent);
 
 var percentage = 0;
 function compareAnswers(name) {
 
-  var percentageCal = 0, candidateAnsTotal =0;
+    totalPercent = 0;
 
-  for(key in candidateAns)
-  {
-   
-    for(let j = 0; j <candidateAns[name].length; j++)
-    {
-     
-      for (let k = 0; k < candidateAns[name][j].length; k++)
-      {
-        percentageCal += Math.abs(answerSortedIn2d[j][k] - candidateAns[name][j][k]); 
-        candidateAnsTotal += Math.abs(candidateAns[name][j][k]);
-        
-        if (percentageCal == 0) {
-          percentage += 100 / 8;
-        } else {
-          percentage = (1 - (percentageCal / candidateAnsTotal)) / 8 *100;
-         
-        
-        }
-      
-        
-        
-      }
+    totalPercent = 0;
+  }
+}
 
-      percentageCal =0;
-      candidateAnsTotal =0;
-      console.log("Percentage is " + percentage );
+$(".bar-percentage[data-percentage]").each(function() {
+  var progress = $(this);
+  var percentage = 10;
+  var result = document.getElementsByClassName("bar-name");
+
+  for (let i = 0; i < totalPercentArr.length; i++) {
+    switch (result[i]) {
+      case "amyWang":
+        percentage = Math.ceil(totalPercentArr[0]);
+        break;
+      case "puffyShen":
+        percentage = Math.ceil(totalPercentArr[1]);
+        break;
+      default:
+        percentage = 0;
     }
 
   }
 
-  
-}
+  $({ countNum: 0 }).animate(
+    { countNum: percentage },
+    {
+      duration: 2000,
+      easing: "linear",
+      step: function() {
+        // What todo on every count
+        var pct = Math.floor(this.countNum) + "%";
+        progress.text(pct) &&
+          progress
+            .siblings()
+            .children()
+            .css("width", pct);
+      }
+    }
+  );
+});
 // please ignore this code is to make sure the list are sortable on mobile devices
 !(function(a) {
   function f(a, b) {
@@ -527,52 +582,78 @@ $(document).ready(function() {
 });
 $("#next").click(showNextQuestion);
 
+const matixHtml = `  <div class="container-matrix" id="registration">
 
+  <table>
+      <tr>
+          <th id="column-document"></th>
+          <th class="column-button">Yes </th>
+          <th class="column-button">No</th>
+          <th class="column-button">Don't care</th>
+      </tr>
+      <tr id="test">
+          <td>Served as a club leader previously</td>
+          <td class="container-button" class="matrixRadio">
+              <input type="radio" id="permis1" name="pieces" value="valide" class="green">
+              <label for="permis1"></label>
+          </td>
+          <td class="container-button">
+              <input type="radio" id="permis2" name="pieces" value="non-valide" class="orange">
+              <label for="permis2"></label>
+          </td>
+          <td class="container-button">
+              <input type="radio" id="permis3" name="pieces" value="non-recu" class="red">
+              <label for="permis3"></label>
+          </td>
 
-//tinder style is here
-$(document).ready(function() {
-  $(".buddy").on("swiperight", function() {
-    $(this)
-      .addClass("rotate-left")
-      .delay(700)
-      .fadeOut(1);
-    $(".buddy")
-      .find(".status")
-      .remove();
+      </tr>
+      <tr>
+          <td>Serve on senate executive board previously</td>
+          <td class="container-button" class="matrixRadio">
+              <input type="radio" id="sols1" name="sols" value="valide" class="green">
+              <label for="sols1"></label>
+          </td>
+          <td class="container-button">
+              <input type="radio" id="sols2" name="sols" value="non-valide" class="orange">
+              <label for="sols2"></label>
+          </td>
+          <td class="container-button">
+              <input type="radio" id="sols3" name="sols" value="non-recu" class="red">
+              <label for="sols3"></label>
+          </td>
 
-    $(this).append('<div class="status like">Like!</div>');
-    answers.push("yes");
-    if ($(this).is(":last-child")) {
-      $(".buddy:nth-child(1)")
-        .removeClass("rotate-left rotate-right")
-        .fadeIn(300);
-    } else {
-      $(this)
-        .next()
-        .removeClass("rotate-left rotate-right")
-        .fadeIn(400);
-    }
-  });
+      </tr>
+      <tr>
+          <td>Volunteer involvement</td>
+          <td class="container-button" class="matrixRadio">
+              <input type="radio" id="champ1" name="champA" value="valide" class="green">
+              <label for="champ1"></label>
+          </td>
+          <td class="container-button">
+              <input type="radio" id="champ2" name="champA" value="non-valide" class="orange">
+              <label for="champ2"></label>
+          </td>
+          <td class="container-button">
+              <input type="radio" id="champ3" name="champA" value="non-recu" class="red">
+              <label for="champ3"></label>
+          </td>
 
-  $(".buddy").on("swipeleft", function() {
-    $(this)
-      .addClass("rotate-right")
-      .delay(700)
-      .fadeOut(1);
-    $(".buddy")
-      .find(".status")
-      .remove();
-    $(this).append('<div class="status dislike">Dislike!</div>');
-    answers.push("no");
-    if ($(this).is(":last-child")) {
-      $(".buddy:nth-child(1)")
-        .removeClass("rotate-left rotate-right")
-        .fadeIn(300);
-    } else {
-      $(this)
-        .next()
-        .removeClass("rotate-left rotate-right")
-        .fadeIn(400);
-    }
-  });
-});
+      </tr>
+      <tr>
+          <td>Serve on the senate for two or more semesters</td>
+          <td class="container-button" class="matrixRadio">
+              <input type="radio" id="champ5" name="champB" value="valide" class="green">
+              <label for="champ5"></label>
+          </td>
+          <td class="container-button">
+              <input type="radio" id="champ6" name="champB" value="non-valide" class="orange">
+              <label for="champ6"></label>
+          </td>
+          <td class="container-button">
+              <input type="radio" id="champ7" name="champB" value="non-recu" class="red">
+              <label for="champ7"></label>
+          </td>
+
+      </tr>
+  </table>
+</div>`

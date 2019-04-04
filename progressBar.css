@@ -18,7 +18,7 @@ body {
 .buttons {
 	display: block;
 	width: 100%;
-
+	margin-top: 20px;
 	text-align: center;
 	padding-bottom: 2%;
 	padding-top: unset;
@@ -57,7 +57,7 @@ a.prev {
 	position: relative;
 	text-align: center;
 	left: 4%;
-	padding: 2%;
+	padding: 6%;
 
 }
 
