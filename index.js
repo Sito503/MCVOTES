@@ -466,6 +466,54 @@ $(document).ready(function() {
 });
 $("#next").click(showNextQuestion);
 
+//tinder style is here
+$(document).ready(function() {
+  $(".buddy").on("swiperight", function() {
+    $(this)
+      .addClass("rotate-left")
+      .delay(700)
+      .fadeOut(1);
+    $(".buddy")
+      .find(".status")
+      .remove();
+
+    $(this).append('<div class="status like">Like!</div>');
+    answers.push("yes");
+    if ($(this).is(":last-child")) {
+      $(".buddy:nth-child(1)")
+        .removeClass("rotate-left rotate-right")
+        .fadeIn(300);
+    } else {
+      $(this)
+        .next()
+        .removeClass("rotate-left rotate-right")
+        .fadeIn(400);
+    }
+  });
+
+  $(".buddy").on("swipeleft", function() {
+    $(this)
+      .addClass("rotate-right")
+      .delay(700)
+      .fadeOut(1);
+    $(".buddy")
+      .find(".status")
+      .remove();
+    $(this).append('<div class="status dislike">Dislike!</div>');
+    answers.push("no");
+    if ($(this).is(":last-child")) {
+      $(".buddy:nth-child(1)")
+        .removeClass("rotate-left rotate-right")
+        .fadeIn(300);
+    } else {
+      $(this)
+        .next()
+        .removeClass("rotate-left rotate-right")
+        .fadeIn(400);
+    }
+  });
+});
+
 var sheet = document.createElement("style"),
   $rangeInput = $(".range input"),
   prefs = ["webkit-slider-runnable-track", "moz-range-track", "ms-track"];
