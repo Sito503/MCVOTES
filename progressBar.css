@@ -1,44 +1,51 @@
-
 body {
 	background-color: #f8f8f8;
 	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
+
 * {
 	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-		     box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
+
 .center {
-  color: #d6d6d6;
+	color: #d6d6d6;
 	text-align: center;
 	margin-top: 50px;
 }
+
 .buttons {
 	display: block;
 	width: 100%;
-	margin-top: 30px;
+
 	text-align: center;
 	padding-bottom: 2%;
 	padding-top: unset;
 }
+
 .buttons a {
 	text-decoration: none;
-	background-color: gray;	
+	background-color: gray;
 	padding: 15px 25px;
-    color: #ffffff;
-		font-family: Arial, Helvetica, sans-serif;
-		margin-top: 20px;
-	
+	color: #ffffff;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top: 20px;
+
 }
+
 .buttons a:hover {
 	background-color: #51237F;
 }
+
 a.next {
 	margin-left: 25px;
 }
+
 a.prev {
 	margin-right: 25px;
 }
+
 /* =================== */
 /* PROGRESS BAR STYLES */
 /* =================== */
@@ -53,11 +60,14 @@ a.prev {
 	padding: 2%;
 
 }
-.progress ul {  
+
+.progress ul {
 	display: table-row;
 }
+
 .progress ul li {
-	background-color: #d6d6d6; /* Default Bar Color */
+	background-color: #d6d6d6;
+	/* Default Bar Color */
 	display: table-cell;
 	position: relative;
 	line-height: 20px;
@@ -66,35 +76,39 @@ a.prev {
 	text-align: left;
 	transition: background-color 0.75s, color 0.5s;
 }
+
 .progress ul li::before {
-	content:'';
+	content: '';
 	width: 40px;
 	height: 40px;
 	color: #FFF;
 	line-height: 30px;
 	text-align: center;
 	left: -15px;
-	background-color: #d6d6d6;/* Default Circle Color */
-	border: solid 5px #d6d6d6;/* Default Circle Color */
+	background-color: #d6d6d6;
+	/* Default Circle Color */
+	border: solid 5px #d6d6d6;
+	/* Default Circle Color */
 	index7b6: -9;
 	position: absolute;
 	display: block;
-	top: -10px;	
+	top: -10px;
 	margin-right: auto;
 	margin-left: auto;
 	z-index: -1;
-	
+
 	transition: background-color 0.75s, color 0.5s;
-	
-	
+
+
 	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-	        box-sizing: border-box;
-	
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
 	-webkit-border-radius: 50%;
-	   -moz-border-radius: 50%;
-	        border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
 }
+
 /* CURRENT STEP */
 .progress ul li.current {
 	display: inline-block;
@@ -103,46 +117,71 @@ a.prev {
 	color: #51237F;
 	position: relative;
 	transition: background-color 0.75s, color 0.5s;
-	
+
 }
+
 .progress ul li.current::before {
-	border: solid 5px  #51237F;/* Current Step Circle Color */
+	border: solid 5px #51237F;
+	/* Current Step Circle Color */
 	background-color: #FFF;
 	transition: background-color 0.75s, color 0.5s;
-	
+
 	-webkit-animation: pulse 3s ease-out;
-  -moz-animation: pulse 3s ease-out;
-  animation: pulse 3s ease-out;
-  -webkit-animation-iteration-count: infinite;
-  -moz-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
+	-moz-animation: pulse 3s ease-out;
+	animation: pulse 3s ease-out;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
 }
+
 /* COMPLETED STEPS */
 .progress ul li.complete {
-	background-color:  #51237F; /* Completed Step Bar Color */
+	background-color: #51237F;
+	/* Completed Step Bar Color */
 	transition: background-color 0.75s, color 0.5s;
 }
+
 .progress ul li.complete::before {
-	background-color: #51237F; /* Completed Step Circle Color */
+	background-color: #51237F;
+	/* Completed Step Circle Color */
 	border: 5px solid transparent;
 	transition: background-color 0.75s, color 0.5s;
 }
+
 /* REMOVE FIRST STEP COLOR BAR LINE */
 .progress ul li:last-of-type {
 	background-color: transparent;
 }
+
 .progress ul li.current:last-of-type,
-.progress ul li.complete:last-of-type  {
+.progress ul li.complete:last-of-type {
 	background-color: transparent;
 }
 
 @-webkit-keyframes pulse {
-    0% {-webkit-transform: scale(1, 1);}
-    50% {-webkit-transform: scale(1.1, 1.1);}
-    100% {-webkit-transform: scale(1, 1);}
+	0% {
+		-webkit-transform: scale(1, 1);
+	}
+
+	50% {
+		-webkit-transform: scale(1.1, 1.1);
+	}
+
+	100% {
+		-webkit-transform: scale(1, 1);
+	}
 }
+
 @-keyframes pulse {
-    0% {transform: scale(1, 1);}
-    50% {transform: scale(1.1, 1.1);}
-    100% {transform: scale(1, 1);}
+	0% {
+		transform: scale(1, 1);
+	}
+
+	50% {
+		transform: scale(1.1, 1.1);
+	}
+
+	100% {
+		transform: scale(1, 1);
+	}
 }
