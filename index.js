@@ -1,4 +1,5 @@
 var answers = [];
+var answersSlider = [];
 var totalPercentArr = [];
 
 const sliderLabelValues = [
@@ -15,14 +16,18 @@ var candidateAns = {
     ["0", "1", "2", "3", "4"], //q2
     ["0", "1", "2", "3", "4", "5"], //q3
     ["0", "1", "2", "3", "4"], //q4
-    ["0", "1", "2"] //q5
+    ["0", "1", "2"], //q5
+    ["0"], //q6
+    ["0"] //q7
   ],
   puffyShen: [
-    ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
-    ["1", "0", "2", "3", "4"], //q2
-    ["1", "0", "2", "3", "4", "5"], //q3
-    ["1", "0", "2", "3", "4"], //q4
-    ["1", "0", "2"] //q5
+    ["0", "1", "2", "3", "4", "5", "6", "7", "8"], //q1
+    ["0", "1", "2", "3", "4"], //q2
+    ["0", "1", "2", "3", "4", "5"], //q3
+    ["0", "1", "2", "3", "4"], //q4
+    ["0", "1", "2"], //q5
+    ["0"], //q6
+    ["0"] //q7
 
   ],
 
@@ -32,7 +37,9 @@ var candidateAns = {
       ["1", "0", "2", "3", "4"], //q2
       ["1", "0", "2", "3", "4", "5"], //q3
       ["1", "0", "2", "3", "4"], //q4
-      ["1", "0", "2"] //q5
+      ["1", "0", "2"], //q5
+      ["1"], //q6
+      ["1"] //q7
 
     ],
   tylerHope:
@@ -41,7 +48,9 @@ var candidateAns = {
       ["1", "0", "2", "3", "4"], //q2
       ["1", "0", "2", "3", "4", "5"], //q3
       ["1", "0", "2", "3", "4"], //q4
-      ["1", "0", "2"] //q5
+      ["1", "0", "2"], //q5
+      ["1"], //q6
+      ["1"] //q7
 
     ],
   winstonMiller:
@@ -50,7 +59,9 @@ var candidateAns = {
       ["1", "0", "2", "3", "4"], //q2
       ["1", "0", "2", "3", "4", "5"], //q3
       ["1", "0", "2", "3", "4"], //q4
-      ["1", "0", "2"] //q5
+      ["1", "0", "2"], //q5
+      ["1"], //q6
+      ["1"] //q7
 
     ]
 };
@@ -213,6 +224,7 @@ function showNextQuestion() {
     } else {
       // end of the quiz
       compareAnswers();
+      //compareSliderAnswer();
       // questionDiv.innerHTML = answers;
       // questionDiv.innerHTML += ":answers \n Quiz done get out here";
       // questionContainer.appendChild(questionDiv);
@@ -220,6 +232,7 @@ function showNextQuestion() {
       // $("#restart").show();
       // $("#restart").click(refreshPage);
 
+      console.log("print answer: " + answers);
       $("#tab1_content").hide();
       $("#tab2_content").show();
       $("#tab3_content").hide();
@@ -248,7 +261,7 @@ function getAnswersFromRadioQuestion() {
     for (let index = 0; index < sliderLabelValues.length; index++) {
       sliderLabelValue = sliderLabelValues[index];
       if (sliderLabelValue == value) {
-        answers.push(index);
+        answers.push([index]);
       }
     }
 
@@ -299,6 +312,7 @@ function createAnswerModule(id, answer, clickableQuestion) {
 
 function compareAnswers() {
   totalPercent = 0;
+  candidateSliderCal=0;
   for (candidate in candidateAns) {
     candidateAnswers = candidateAns[candidate];
     for (
@@ -311,19 +325,37 @@ function compareAnswers() {
       var percentageCal = 0;
 
       for (let i = 0; i < candidateSAns.length; i++) {
-        percentageCal += Math.abs(
-          answers[questionNumber][i] - candidateSAns[i]
-        );
+        if(candidateSAns.length<2)
+        {
+          candidateSAns = candidateAnswers[questionNumber];
+          if (candidateSAns[i] == answers[questionNumber][i]) {
+            totalPercent += 12.5;
+          }
+          else {
+            
+            percentageSliderCal = Math.abs(candidateSAns[i] - answers[questionNumber][i]);
+            console.log("percentageSliderCal is " + percentageSliderCal);
+            totalPercent += 2.5 * (5 -  percentageSliderCal);
+          }
+          percentageSliderCal=0;
+        }
+        else{
+        percentageCal += Math.abs(answers[questionNumber][i] - candidateSAns[i]);
         candidateAnsTotal += Math.abs(candidateSAns[i]);
-        // console.log("answer value is " + answers[questionNumber][i]);
+        }
+      }
+      if(candidateAnsTotal!=0){
+        if (percentageCal == 0) {
+          totalPercent += 12.5;
+        } else {
+          totalPercent += ((1 - percentageCal / candidateAnsTotal) * 100) / 8;
+        }
       }
 
-      if (percentageCal == 0) {
-        totalPercent += 12.5;
-      } else {
-        totalPercent += ((1 - percentageCal / candidateAnsTotal) * 100) / 8;
-      }
+     
+    
       percentageCal = 0;
+      percentageSliderCal =0;
       console.log("total % is " + totalPercent);
     }
     candidateAnsTotal = 0;
@@ -344,33 +376,33 @@ function changePerecnt() {
 
   $(".bar-percentage[data-percentage]").each(function () {
     var progress = $(this);
-    if (totalPercentArr.length<1) {
+    if (totalPercentArr.length < 1) {
       percentage = 0;
     } else {
       percentage = Math.ceil($(this).attr("data-percentage"));
-    
 
-    console.log(result[i].id);
-    switch (result[i].id) {
-      case "amyWang":
-        percentage = Math.ceil(totalPercentArr[0]) + 1;
-        break;
-      case "puffyShen":
-        percentage = Math.ceil(totalPercentArr[1]) + 1;
-        break;
-      case "andrewWilson":
-        percentage = Math.ceil(totalPercentArr[2]) + 1;
-        break;
-      case "winstonMiller":
-        percentage = Math.ceil(totalPercentArr[3]) + 1;
-        break;
-      case "tylerHope":
-        percentage = Math.ceil(totalPercentArr[4]) + 1;
-        break;
-      default:
-        percentage = 0;
+
+      console.log(result[i].id);
+      switch (result[i].id) {
+        case "amyWang":
+          percentage = Math.ceil(totalPercentArr[0]) + 1;
+          break;
+        case "puffyShen":
+          percentage = Math.ceil(totalPercentArr[1]) + 1;
+          break;
+        case "andrewWilson":
+          percentage = Math.ceil(totalPercentArr[2]) + 1;
+          break;
+        case "winstonMiller":
+          percentage = Math.ceil(totalPercentArr[3]) + 1;
+          break;
+        case "tylerHope":
+          percentage = Math.ceil(totalPercentArr[4]) + 1;
+          break;
+        default:
+          percentage = 0;
+      }
     }
-  }
 
     $({ countNum: 0 }).animate(
       { countNum: percentage },
