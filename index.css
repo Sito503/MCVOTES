@@ -246,7 +246,11 @@ ul.tabs li:hover:before {
   border-bottom: 3px solid transparent;
   border-top: 3px solid #808080;
 }
+.logo-img{
+  width: 80%;
+  margin: 3%;
 
+}
 slider {
   display: block;
   width: 100%;
