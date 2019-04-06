@@ -52,12 +52,12 @@ a.prev {
 .progress {
 	width: 100%;
 	max-width: 800px;
-	margin: 30px auto 0;
+	margin: 0 auto 0;
 	display: table;
 	position: relative;
 	text-align: center;
 	left: 4%;
-	padding: 6%;
+	padding: 3%;
 
 }
 

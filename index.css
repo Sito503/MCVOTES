@@ -73,8 +73,7 @@ i {
 
 .wrapper {
   border-radius: 25px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding: 4%;
   /* min-height: 30em; */
 }
 
@@ -146,7 +145,7 @@ ul.tabs li {
   float: right;
   width: 80%;
   height: auto;
-  padding: 2%;
+  padding: .5%;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -828,6 +827,7 @@ td {
 .profile * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  margin: 0 auto;
 }
 
 .profile .profile-image {

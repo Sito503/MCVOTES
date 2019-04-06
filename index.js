@@ -204,7 +204,7 @@ function showNextQuestion() {
       $("#tab3_content").hide();
       $("#tab4_content").hide();
       $("#tab5_content").hide();
-      changePerecnt();
+      changePercent();
     }
   });
 
@@ -314,11 +314,10 @@ function compareAnswers() {
     totalPercent = 0;
   }
 }
-function changePerecnt() {
+function changePercent() {
   let i = 0;
   var result = document.getElementsByClassName("bar-names");
   var percentage = 0;
-  console.log(result);
 
   $(".bar-percentage[data-percentage]").each(function() {
     var progress = $(this);
@@ -328,7 +327,6 @@ function changePerecnt() {
       percentage = Math.ceil($(this).attr("data-percentage"));
     }
 
-    console.log(result[i].id);
     switch (result[i].id) {
       case "amyWang":
         percentage = Math.ceil(totalPercentArr[0]) + 1;
@@ -447,7 +445,7 @@ $(document).ready(function() {
   $("#restart").hide();
   $(".progress").hide();
   $("#next").click(showProgressBar);
-  changePerecnt();
+  changePercent();
 
   $("#tab1_content").show();
   $("#tab2_content").hide();
@@ -470,7 +468,7 @@ $(document).ready(function() {
     $("#tab3_content").hide();
     $("#tab4_content").hide();
     $("#tab5_content").hide();
-    changePerecnt();
+    changePercent();
   });
   $("#role_info_tab").click(function() {
     $("#tab1_content").hide();

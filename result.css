@@ -1,8 +1,12 @@
-#container { text-align: center; margin: 20px; }
-h2
-{
-  float:center;
+#container {
+  text-align: center;
+  margin: 20px;
 }
+
+h2 {
+  float: center;
+}
+
 .bar-main-container {
   margin: 10px auto;
   width: 400px;
@@ -14,13 +18,17 @@ h2
   font-weight: normal;
   font-size: 0.8em;
   color: #FFF;
+  float: left;
+  width: 60%;
 }
 
-.wrap { padding: 8px; }
+.wrap {
+  padding: 8px;
+}
 
 .bar-percentage {
   float: left;
-  background: rgba(0,0,0,0.13);
+  background: rgba(0, 0, 0, 0.13);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -29,26 +37,27 @@ h2
   margin-left: 2px;
 }
 
-.bar-names{
+.bar-names {
   font-size: 14px;
-  padding:2%;
+  padding: 2%;
   float: left;
-  padding-left:7%;
+  padding-left: 7%;
   text-shadow: none;
-  
+
 }
+
 .bar-container {
   float: right;
   border-radius: 10px;
   height: 10px;
-  background: rgba(0,0,0,0.13);
+  background: rgba(0, 0, 0, 0.13);
   width: 78%;
-  margin: 12px 0px; 
+  margin: 12px 0px;
   overflow: hidden;
 }
 
-.bar-image{
-  width:100px;
+.bar-image {
+  width: 100px;
   height: 100px;
 }
 
@@ -67,8 +76,22 @@ h2
 }
 
 /* COLORS */
-.azure   { background: #FF5E3A ; }
-.emerald { background: #666666 ; }
-.violet  { background: #28A689 ; }
-.yellow  { background: #6E4D94; }
-.red     { background: #0E8AD9; }
+.azure {
+  background: #FF5E3A;
+}
+
+.emerald {
+  background: #666666;
+}
+
+.violet {
+  background: #28A689;
+}
+
+.yellow {
+  background: #6E4D94;
+}
+
+.red {
+  background: #0E8AD9;
+}
