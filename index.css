@@ -243,9 +243,11 @@ ul.tabs li:hover:before {
 }
 
 .logo-img {
-  width: 80%;
-  margin: 3%;
+  width: 20%;
+  margin: 1%;
+  float:right;
 }
+
 
 slider {
   display: block;
@@ -743,12 +745,22 @@ td {
   text-align: center;
   font-size: 16px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  
+}
+.readMore {
+  padding: 1%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color:#6E4D94;
+  padding: 1px 1px 3px 1px;
+
 }
 
 .profile * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .profile .profile-image {
@@ -761,16 +773,19 @@ td {
   position: relative;
   border-radius: 50%;
   max-width: 60%;
+  cursor: pointer;
 }
 
 .profile figcaption {
   padding: 10% 15%;
+  display: none;
+  overflow: hidden;
 }
 
 .profile h3 {
   font-family: "Oswald";
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 400;
   line-height: 24px;
   margin: 3px 0;
@@ -778,10 +793,11 @@ td {
 
 .profile h5 {
   font-weight: 400;
-  margin: 0;
+  margin-bottom: 10px;
   text-transform: uppercase;
   color: #888;
   letter-spacing: 1px;
+  font-size: 14px;
 }
 
 .profile .icons i {
@@ -799,11 +815,11 @@ td {
   text-decoration: none;
 }
 
+
 #menuToggle {
   display: block;
   position: relative;
   top: 10px;
-  left: -10px;
 
   z-index: 1;
 
@@ -913,3 +929,5 @@ td {
 #menuToggle input:checked~ul {
   transform: none;
 }
+
+
