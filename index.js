@@ -328,6 +328,7 @@ function getAnswersFromRadioQuestion() {
 }
 function alertUserToSelectAnswer() {
   // TODO: alert user to answers of the questions
+  alert("Please answer the prompt");
 }
 function clickProgress() {
   var $next = $(".progress ul li.current")
