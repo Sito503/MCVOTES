@@ -83,7 +83,7 @@ i {
 .question {
   font-size: 18px;
   font-family: "Roboto", sans-serif;
-  padding: 5px;
+  padding: 2%;
 }
 
 @import "https://fonts.googleapis.com/css?family=Quicksand";
@@ -144,10 +144,18 @@ ul.tabs li {
   float: right;
   width: 80%;
   height: auto;
-  padding: 0.5%;
+  padding: 1%;
   -webkit-font-smoothing: antialiased;
 }
+h2{
 
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: normal;
+  color: #000000;
+
+}
 p {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
@@ -243,9 +251,11 @@ ul.tabs li:hover:before {
 }
 
 .logo-img {
-  width: 80%;
-  margin: 3%;
+  width: 20%;
+  margin: 1%;
+  float:right;
 }
+
 
 slider {
   display: block;
@@ -448,105 +458,6 @@ td:first-child {
   padding: 3%;
 }
 
-/**card stuff**/
-@import url(https://fonts.googleapis.com/css?family=Raleway:200);
-
-h4,
-.h4 {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.team {
-  width: 370px;
-  min-height: 100%;
-  border: 1px solid rgba(133, 133, 133, 0.15);
-  background-color: #fff;
-  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.09);
-  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.09);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.09);
-  float: left;
-  margin-left: 16px;
-}
-
-.teamimg {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  margin-top: -80px;
-  width: 170px;
-  height: 170px;
-  background: #1bbc9d;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.09);
-}
-
-.teamsocial {
-  height: 48px;
-  background-color: #f7f5f5;
-  position: relative;
-  bottom: -14px;
-  left: 0;
-  margin-top: 20px;
-}
-
-.facebook-team {
-  float: left;
-  width: 48px;
-  height: 48px;
-  color: #d1cfcf;
-  display: block;
-  font-size: 30px;
-  padding: 7px;
-}
-
-.twitter-team {
-  float: left;
-  width: 48px;
-  height: 48px;
-  color: #d1cfcf;
-  display: block;
-  font-size: 30px;
-  padding: 7px;
-}
-
-.google-team {
-  float: left;
-  width: 48px;
-  height: 48px;
-  color: #d1cfcf;
-  display: block;
-  font-size: 30px;
-  padding: 7px;
-}
-
-.facebook-team:hover {
-  color: #3b5998;
-}
-
-.twitter-team:hover {
-  color: #29b3e1;
-}
-
-.google-team:hover {
-  color: #de5845;
-}
-
-footer>p {
-  display: block;
-  text-align: right;
-  font-size: 10px;
-  clear: both;
-  font-family: "Coda", sans-serif;
-  padding: 2%;
-}
 
 /* dots on the sortable */
 .ui-icon-grip-dotted-vertical {
@@ -743,12 +654,22 @@ td {
   text-align: center;
   font-size: 16px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  
+}
+.readMore {
+  padding: 1%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color:#6E4D94;
+  padding: 1px 1px 3px 1px;
+
 }
 
 .profile * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .profile .profile-image {
@@ -761,16 +682,19 @@ td {
   position: relative;
   border-radius: 50%;
   max-width: 60%;
+  cursor: pointer;
 }
 
 .profile figcaption {
   padding: 10% 15%;
+  display: none;
+  overflow: hidden;
 }
 
 .profile h3 {
   font-family: "Oswald";
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 400;
   line-height: 24px;
   margin: 3px 0;
@@ -778,10 +702,11 @@ td {
 
 .profile h5 {
   font-weight: 400;
-  margin: 0;
+  margin-bottom: 10px;
   text-transform: uppercase;
   color: #888;
   letter-spacing: 1px;
+  font-size: 14px;
 }
 
 .profile .icons i {
@@ -799,11 +724,11 @@ td {
   text-decoration: none;
 }
 
+
 #menuToggle {
   display: block;
   position: relative;
   top: 10px;
-  left: -10px;
 
   z-index: 1;
 
@@ -912,4 +837,15 @@ td {
  */
 #menuToggle input:checked~ul {
   transform: none;
+}
+
+.footer-img{
+float: right;
+width: 10%;
+
+}
+
+.bar-img{
+  width: 100px;
+  height: 100px;
 }
