@@ -83,6 +83,18 @@ let candidateAns = {
 
 
   ],
+
+  ivy: [
+    ["0", "3", "7", "5", "2", "8", "1", "6", "4"], //q1
+    ["1", "0", "2", "3", "4"], //q2
+    ["0", "2", "1", "3", "5", "4"], //q3
+    ["1", "0", "2", "3", "4"], //q4
+    ["2", "0", "1"], //q5
+    ["1"], //q6
+    ["0"] //q7
+    // [n, y]
+  ],
+
   kyle: [
     ["7", "5", "8", "4", "2", "6", "0", "1", "3"],//q1
     ["3", "2", "0", "1", "4"], //q2
@@ -478,8 +490,11 @@ function changePercent() {
         case "ishita":
           percentage = Math.ceil(totalPercentArr[5]) + 1;
           break;
-        case "kyle":
+        case "ivy":
           percentage = Math.ceil(totalPercentArr[6]) + 1;
+          break;
+        case "kyle":
+          percentage = Math.ceil(totalPercentArr[7]) + 1;
           break;
         default:
           percentage = 0;
