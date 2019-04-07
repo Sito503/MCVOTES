@@ -12,56 +12,89 @@ const sliderLabelValues = [
 ];
 
 let candidateAns = {
-  amyWang: [
-    ["0", "1", "2", "3", "4", "5", "6", "7", "8"], //q1
+  bryan: [["2", "7", "8", "0", "5", "3", "4", "1", "6"],//q1
+  ["3", "0", "2", "4", "1"], //q2
+  ["5", "3", "2", "0", "4", "1"], //q3
+  ["2", "0", "4", "1", "3"], //q4
+  ["2", "0", "1"],
+  ["2"], //q6
+  ["3"] //q7
+  ],
+
+
+  maeve: [
+    ["4", "2", "5", "3", "0", "1", "7", "6", "8"],//q1
     ["0", "1", "2", "3", "4"], //q2
-    ["0", "1", "2", "3", "4", "5"], //q3
+    ["0", "3", "2", "1", "5", "4"], //q3
     ["0", "1", "2", "3", "4"], //q4
-    ["0", "1", "2"], //q5
+    ["0", "1", "2"],
+    ["1"], //q6
+    ["3"] //q7
+    // [y,y]] //q8
+
+
+  ],
+
+  paige: [
+    ["7", "4", "3", "1", "0", "5", "8", "6", "2"], //q1
+    ["1", "0", "2", "3", "4"], //q2
+    ["4", "5", "0", "3", "2", "1"], //q3
+    ["2", "0", "1", "3", "4"], //q4
+    ["2", "0", "1"],
+    ["1"], //q6
+    ["2"] //q7
+    // [y,y]] //q8
+
+
+  ],
+  mark: [
+    ["3", "5", "4", "2", "0", "1", "7", "8", "6"],//q1
+    ["0", "3", "2", "1", "4"], //q2
+    ["0", "2", "5", "1", "3", "4"], //q3
+    ["1", "0", "3", "2", "4"], //q4
+    ["0", "2", "1"],
     ["0"], //q6
-    ["0"] //q7
+    ["2"], //q7
+    // ["y","y"]] //q8
+
+
   ],
-  puffyShen: [
-    ["0", "1", "2", "3", "4", "5", "6", "7", "8"], //q1
-    ["0", "1", "2", "3", "4"], //q2
-    ["0", "1", "2", "3", "4", "5"], //q3
-    ["0", "1", "2", "3", "4"], //q4
-    ["0", "1", "2"], //q5
+  divine: [
+    ["1", "0", "2", "7", "3", "4", "5", "8", "6"],//q1
+    ["3", "0", "2", "1", "4"], //q2
+    ["3", "2", "1", "4", "0", "5"], //q3
+    ["1", "0", "2", "4", "3"], //q4
+    ["0", "1", "2"],
+    ["1"], //q6
+    ["0"] //q7
+    // [y,y]] //q8
+
+
+  ],
+  ishita: [
+    ["6", "0", "2", "5", "3", "7", "4", "1", "8"],//q1
+    ["1", "3", "0", "2", "4"], //q2
+    ["0", "3", "2", "1", "5", "4"], //q3
+    ["1", "2", "0", "4", "3"], //q4
+    ["0", "1", "2"],
     ["0"], //q6
-    ["0"] //q7
+    ["2"] //q7
+    // [n, y] //q8
+
 
   ],
-
-  andrewWilson: [
-    ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
-    ["1", "0", "2", "3", "4"], //q2
-    ["1", "0", "2", "3", "4", "5"], //q3
-    ["1", "0", "2", "3", "4"], //q4
-    ["1", "0", "2"], //q5
+  kyle: [
+    ["7", "5", "8", "4", "2", "6", "0", "1", "3"],//q1
+    ["3", "2", "0", "1", "4"], //q2
+    ["2", "1", "3", "4", "5", "0"], //q3
+    ["2", "3", "0", "1", "4"], //q4
+    ["1", "2", "0"], //q5
     ["1"], //q6
-    ["1"] //q7
-
-  ],
-  tylerHope: [
-    ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
-    ["1", "0", "2", "3", "4"], //q2
-    ["1", "0", "2", "3", "4", "5"], //q3
-    ["1", "0", "2", "3", "4"], //q4
-    ["1", "0", "2"], //q5
-    ["1"], //q6
-    ["1"] //q7
-
-  ],
-  winstonMiller: [
-    ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
-    ["1", "0", "2", "3", "4"], //q2
-    ["1", "0", "2", "3", "4", "5"], //q3
-    ["1", "0", "2", "3", "4"], //q4
-    ["1", "0", "2"], //q5
-    ["1"], //q6
-    ["1"] //q7
+    ["2"] //q7
+    // [y,y]] //q8
 
   ]
+
 };
 
 function getDatabase() {
@@ -80,16 +113,16 @@ function getDatabase() {
 const questionSet = {
   "Drag and rank the issues in terms of importance to you": [
     "Ranking",
-    [
+    ["Textbook Affordability",
       "Food Quality & Affordability",
-      "Improve Student Activities",
-      "Textbook Affordability",
       "Transportation",
       "Improve Advising",
       "Campus Security",
+      "Student Health Resource",
+      "Improve Student Activities",
       "Library access",
       "Diversty Inclusion",
-      "Student Health Resource"
+
     ]
   ],
 
@@ -273,7 +306,7 @@ function showNextQuestion() {
     } else {
       // end of the quiz
 
-      ;
+      compareAnswers();
 
       console.log("print answer: " + answers);
       $("#tab1_content").hide();
@@ -427,20 +460,26 @@ function changePercent() {
 
       console.log(result[i].id);
       switch (result[i].id) {
-        case "amyWang":
+        case "bryan":
           percentage = Math.ceil(totalPercentArr[0]) + 1;
           break;
-        case "puffyShen":
+        case "maeve":
           percentage = Math.ceil(totalPercentArr[1]) + 1;
           break;
-        case "andrewWilson":
+        case "paige":
           percentage = Math.ceil(totalPercentArr[2]) + 1;
           break;
-        case "winstonMiller":
+        case "mark":
           percentage = Math.ceil(totalPercentArr[3]) + 1;
           break;
-        case "tylerHope":
+        case "divine":
           percentage = Math.ceil(totalPercentArr[4]) + 1;
+          break;
+        case "ishita":
+          percentage = Math.ceil(totalPercentArr[5]) + 1;
+          break;
+        case "kyle":
+          percentage = Math.ceil(totalPercentArr[6]) + 1;
           break;
         default:
           percentage = 0;
@@ -452,18 +491,18 @@ function changePercent() {
     }).animate({
       countNum: percentage
     }, {
-      duration: 2000,
-      easing: "linear",
-      step: function () {
-        // What todo on every count
-        var pct = Math.floor(this.countNum) + "%";
-        progress.text(pct) &&
-          progress
-          .siblings()
-          .children()
-          .css("width", pct);
-      }
-    });
+        duration: 2000,
+        easing: "linear",
+        step: function () {
+          // What todo on every count
+          var pct = Math.floor(this.countNum) + "%";
+          progress.text(pct) &&
+            progress
+              .siblings()
+              .children()
+              .css("width", pct);
+        }
+      });
     i++;
   });
 }
@@ -476,22 +515,22 @@ function changePercent() {
       var c = a.originalEvent.changedTouches[0],
         d = document.createEvent("MouseEvents");
       d.initMouseEvent(
-          b,
-          !0,
-          !0,
-          window,
-          1,
-          c.screenX,
-          c.screenY,
-          c.clientX,
-          c.clientY,
-          !1,
-          !1,
-          !1,
-          !1,
-          0,
-          null
-        ),
+        b,
+        !0,
+        !0,
+        window,
+        1,
+        c.screenX,
+        c.screenY,
+        c.clientX,
+        c.clientY,
+        !1,
+        !1,
+        !1,
+        !1,
+        0,
+        null
+      ),
         a.target.dispatchEvent(d);
     }
   }
@@ -510,34 +549,34 @@ function changePercent() {
           f(a, "mousemove"),
           f(a, "mousedown"));
     }),
-    (b._touchMove = function (a) {
-      e && ((this._touchMoved = !0), f(a, "mousemove"));
-    }),
-    (b._touchEnd = function (a) {
-      e &&
-        (f(a, "mouseup"),
-          f(a, "mouseout"),
-          this._touchMoved || f(a, "click"),
-          (e = !1));
-    }),
-    (b._mouseInit = function () {
-      var b = this;
-      b.element.bind({
+      (b._touchMove = function (a) {
+        e && ((this._touchMoved = !0), f(a, "mousemove"));
+      }),
+      (b._touchEnd = function (a) {
+        e &&
+          (f(a, "mouseup"),
+            f(a, "mouseout"),
+            this._touchMoved || f(a, "click"),
+            (e = !1));
+      }),
+      (b._mouseInit = function () {
+        var b = this;
+        b.element.bind({
           touchstart: a.proxy(b, "_touchStart"),
           touchmove: a.proxy(b, "_touchMove"),
           touchend: a.proxy(b, "_touchEnd")
         }),
-        c.call(b);
-    }),
-    (b._mouseDestroy = function () {
-      var b = this;
-      b.element.unbind({
+          c.call(b);
+      }),
+      (b._mouseDestroy = function () {
+        var b = this;
+        b.element.unbind({
           touchstart: a.proxy(b, "_touchStart"),
           touchmove: a.proxy(b, "_touchMove"),
           touchend: a.proxy(b, "_touchEnd")
         }),
-        d.call(b);
-    });
+          d.call(b);
+      });
   }
 })(jQuery);
 // SORTABLE
