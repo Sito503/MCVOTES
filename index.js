@@ -220,17 +220,49 @@ function showNextQuestion() {
         the 1 ms delay trick/hack the browser in rendering the dom after the divs have been created
         */
         setTimeout(function () {
-          // converting the radios to slider
           var radios = $("#radios").radiosToSlider();
-
-
-
-          // Retrieve value
         }, 1);
         $("#next").off();
         $("#next").click(getAnswersFromRadioQuestion);
       } else if (questionType == "matrix") {
-        wrapperDiv.innerHTML += matixHtml;
+        // table and container creation
+        wrapperDiv.classList.add("container-matrix")
+        wrapperDiv.id = "registration"
+        table = document.createElement("table")
+        statements = ["Served as a club leader previously", "Has been involved with volunteer work"]
+        // header row
+        headerRow = document.createElement("tr")
+        StatementRow = document.createElement("th")
+        StatementRow.id = "column-document"
+        headerRow.appendChild(StatementRow)
+        tableHeaders = ["Agree", "Neutral", "Disagree"]
+        tableHeaders.forEach(element => {
+          header = document.createElement("th")
+          header.classList.add("column-button")
+          header.innerText = element
+          headerRow.appendChild(header)
+        });
+        table.appendChild(headerRow)
+        // statement row with radio buttons
+        statements.forEach((statement, statementIndex) => {
+          statementRow = document.createElement("tr")
+          statementTableData = document.createElement("td")
+          statementTableData.innerText = statement
+          statementRow.appendChild(statementTableData)
+          for (let index = 0; index < 3; index++) {
+            containerButtonTD = document.createElement("td")
+            containerButtonTD.classList.add("container-button")
+
+            radioButton = document.createElement("input")
+            radioButton.type = "radio"
+            radioButton.value = index
+            radioButton.name = statementIndex
+            containerButtonTD.appendChild(radioButton)
+            statementRow.appendChild(containerButtonTD)
+          }
+          table.append(statementRow)
+        })
+        wrapperDiv.appendChild(table)
         questionContainer.appendChild(wrapperDiv);
         $("#next").off();
         $("#next").click(getAnswersFromMatrixQuestion);
@@ -240,14 +272,8 @@ function showNextQuestion() {
       }
     } else {
       // end of the quiz
-      compareAnswers();
-      //compareSliderAnswer();
-      // questionDiv.innerHTML = answers;
-      // questionDiv.innerHTML += ":answers \n Quiz done get out here";
-      // questionContainer.appendChild(questionDiv);
-      // $("#next").hide();
-      // $("#restart").show();
-      // $("#restart").click(refreshPage);
+
+      ;
 
       console.log("print answer: " + answers);
       $("#tab1_content").hide();
@@ -265,6 +291,7 @@ function showNextQuestion() {
 }
 
 function getAnswersFromMatrixQuestion() {
+  // TODO: update the answer based on the matrix answers given
   clickProgress();
   showNextQuestion();
 }
@@ -330,6 +357,8 @@ function createAnswerModule(id, answer, clickableQuestion) {
 }
 
 function compareAnswers() {
+  // compareAnswers();
+  // //compareSliderAnswer();
   totalPercent = 0;
   candidateSliderCal = 0;
   for (candidate in candidateAns) {
@@ -591,46 +620,13 @@ $(document).ready(function () {
 
 });
 $("#next").click(showNextQuestion);
-const matixHtml = `
-  <div class="container-matrix" id="registration">
-   <table>
-      <tr>
-          <th id="column-document"></th>
-          <th class="column-button">Yes </th>
-          <th class="column-button">No</th>
-          <th class="column-button">Don't care</th>
-      </tr>
-      <tr id="test">
-          <td>Served as a club leader previously</td>
-          <td class="container-button" class="matrixRadio">
-              <input type="radio" id="permis1" name="pieces" value="valide" class="green">
-              <label for="permis1"></label>
-          </td>
-          <td class="container-button">
-              <input type="radio" id="permis2" name="pieces" value="non-valide" class="orange">
-              <label for="permis2"></label>
-          </td>
-          <td class="container-button">
-              <input type="radio" id="permis3" name="pieces" value="non-recu" class="red">
-              <label for="permis3"></label>
-          </td>
-       </tr>
 
-      <tr>
-          <td>have been involved with volunteer work</td>
-          <td class="container-button" class="matrixRadio">
-              <input type="radio" id="champ1" name="champA" value="valide" class="green">
-              <label for="champ1"></label>
-          </td>
-          <td class="container-button">
-              <input type="radio" id="champ2" name="champA" value="non-valide" class="orange">
-              <label for="champ2"></label>
-          </td>
-          <td class="container-button">
-              <input type="radio" id="champ3" name="champA" value="non-recu" class="red">
-              <label for="champ3"></label>
-          </td>
-       </tr>
-  </table>
-</div>
-   `;
+document.addEventListener("keydown", keyDownTextField, false);
+
+function keyDownTextField(e) {
+  var keyCode = e.keyCode;
+  if (keyCode == 13) {
+    showNextQuestion()
+    showProgressBar()
+  }
+}
