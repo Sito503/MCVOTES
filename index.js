@@ -202,7 +202,7 @@ function showProgressBar() {
 }
 
 function showNextQuestion() {
-  $("#question-container").fadeOut("fast", function() {
+  $("#question-container").fadeOut("fast", function () {
     $("#next").show();
     question = getNextQuestion();
     questionContainer = document.getElementById("question-container");
@@ -253,7 +253,7 @@ function showNextQuestion() {
         The fade out callback restrict rendering of the radios to slider.
         the 1 ms delay trick/hack the browser in rendering the dom after the divs have been created
         */
-        setTimeout(function() {
+        setTimeout(function () {
           var radios = $("#radios").radiosToSlider();
         }, 1);
         $("#next").off();
@@ -312,7 +312,10 @@ function showNextQuestion() {
       }
     } else {
       // end of the quiz
-      studentSenate2019DBRef.push({ questions: questionSet, answers: answers });
+      studentSenate2019DBRef.push({
+        questions: questionSet,
+        answers: answers
+      });
 
       console.log("print answer: " + answers);
       $("#tab1_content").hide();
@@ -321,6 +324,7 @@ function showNextQuestion() {
       $("#tab4_content").hide();
       $("#tab5_content").hide();
       $("#tab6_content").hide();
+      compareAnswers();
       changePercent();
     }
   });
@@ -330,7 +334,7 @@ function showNextQuestion() {
 
 function getAnswersFromMatrixQuestion() {
   matrixAnswers = [];
-  $(".matrix-buttons").each(function(i, checkbox) {
+  $(".matrix-buttons").each(function (i, checkbox) {
     if (checkbox.checked) {
       matrixAnswers.push(parseInt(checkbox.value));
     }
@@ -366,10 +370,11 @@ function getAnswersFromRadioQuestion() {
     alertUserToSelectAnswer();
   }
 }
+
 function alertUserToSelectAnswer() {
-  // TODO: alert user to answers of the questions
   alert("Please answer the prompt");
 }
+
 function clickProgress() {
   var $next = $(".progress ul li.current")
     .removeClass("current")
@@ -403,7 +408,7 @@ function createAnswerModule(id, answer, clickableQuestion) {
   moduleSection.appendChild(sortableIcon);
   moduleSection.appendChild(moduleParagraph);
   if (clickableQuestion) {
-    moduleSection.addEventListener("click", function() {
+    moduleSection.addEventListener("click", function () {
       answers.push([answer]);
     });
   }
@@ -416,9 +421,7 @@ function compareAnswers() {
   for (candidate in candidateAns) {
     candidateAnswers = candidateAns[candidate];
     for (
-      let questionNumber = 0;
-      questionNumber < candidateAnswers.length;
-      questionNumber++
+      let questionNumber = 0; questionNumber < candidateAnswers.length; questionNumber++
     ) {
       candidateSAns = candidateAnswers[questionNumber];
       var candidateAnsTotal = 0;
@@ -473,7 +476,7 @@ function changePercent() {
   var percentage = 0;
   // compareAnswers();
 
-  $(".bar-percentage[data-percentage]").each(function() {
+  $(".bar-percentage[data-percentage]").each(function () {
     var progress = $(this);
     if (totalPercentArr.length < 1) {
       percentage = 0;
@@ -513,52 +516,49 @@ function changePercent() {
 
     $({
       countNum: 0
-    }).animate(
-      {
-        countNum: percentage
-      },
-      {
-        duration: 2000,
-        easing: "linear",
-        step: function() {
-          // What todo on every count
-          var pct = Math.floor(this.countNum) + "%";
-          progress.text(pct) &&
-            progress
-              .siblings()
-              .children()
-              .css("width", pct);
-        }
+    }).animate({
+      countNum: percentage
+    }, {
+      duration: 2000,
+      easing: "linear",
+      step: function () {
+        // What todo on every count
+        var pct = Math.floor(this.countNum) + "%";
+        progress.text(pct) &&
+          progress
+          .siblings()
+          .children()
+          .css("width", pct);
       }
-    );
+    });
     i++;
   });
 }
 
 // please ignore this code is to make sure the list are sortable on mobile devices
-!(function(a) {
+!(function (a) {
   function f(a, b) {
     if (!(a.originalEvent.touches.length > 1)) {
       a.preventDefault();
       var c = a.originalEvent.changedTouches[0],
         d = document.createEvent("MouseEvents");
       d.initMouseEvent(
-        b,
-        !0,
-        !0,
-        window,
-        1,
-        c.screenX,
-        c.screenY,
-        c.clientX,
-        c.clientY,
-        !1,
-        !1,
-        !1,
-        !1,
-        0,
-        null
-      ),
+          b,
+          !0,
+          !0,
+          window,
+          1,
+          c.screenX,
+          c.screenY,
+          c.clientX,
+          c.clientY,
+          !1,
+          !1,
+          !1,
+          !1,
+          0,
+          null
+        ),
         a.target.dispatchEvent(d);
     }
   }
@@ -567,44 +567,44 @@ function changePercent() {
       b = a.ui.mouse.prototype,
       c = b._mouseInit,
       d = b._mouseDestroy;
-    (b._touchStart = function(a) {
+    (b._touchStart = function (a) {
       var b = this;
       !e &&
         b._mouseCapture(a.originalEvent.changedTouches[0]) &&
         ((e = !0),
-        (b._touchMoved = !1),
-        f(a, "mouseover"),
-        f(a, "mousemove"),
-        f(a, "mousedown"));
+          (b._touchMoved = !1),
+          f(a, "mouseover"),
+          f(a, "mousemove"),
+          f(a, "mousedown"));
     }),
-      (b._touchMove = function(a) {
-        e && ((this._touchMoved = !0), f(a, "mousemove"));
-      }),
-      (b._touchEnd = function(a) {
-        e &&
-          (f(a, "mouseup"),
+    (b._touchMove = function (a) {
+      e && ((this._touchMoved = !0), f(a, "mousemove"));
+    }),
+    (b._touchEnd = function (a) {
+      e &&
+        (f(a, "mouseup"),
           f(a, "mouseout"),
           this._touchMoved || f(a, "click"),
           (e = !1));
-      }),
-      (b._mouseInit = function() {
-        var b = this;
-        b.element.bind({
+    }),
+    (b._mouseInit = function () {
+      var b = this;
+      b.element.bind({
           touchstart: a.proxy(b, "_touchStart"),
           touchmove: a.proxy(b, "_touchMove"),
           touchend: a.proxy(b, "_touchEnd")
         }),
-          c.call(b);
-      }),
-      (b._mouseDestroy = function() {
-        var b = this;
-        b.element.unbind({
+        c.call(b);
+    }),
+    (b._mouseDestroy = function () {
+      var b = this;
+      b.element.unbind({
           touchstart: a.proxy(b, "_touchStart"),
           touchmove: a.proxy(b, "_touchMove"),
           touchend: a.proxy(b, "_touchEnd")
         }),
-          d.call(b);
-      });
+        d.call(b);
+    });
   }
 })(jQuery);
 // SORTABLE
@@ -614,7 +614,7 @@ function makeAnswerSortable() {
 }
 // tab things do touch yet please
 
-$(document).ready(function() {
+$(document).ready(function () {
   $(".progress").show();
   $("#restart").hide();
   $(".progress").hide();
@@ -628,7 +628,7 @@ $(document).ready(function() {
   $("#tab5_content").hide();
   $("#tab6_content").hide();
 
-  $("#quiz_tab").click(function() {
+  $("#quiz_tab").click(function () {
     $("#tab1_content").show();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
@@ -637,7 +637,7 @@ $(document).ready(function() {
     $("#tab6_content").hide();
   });
 
-  $("#candidate_info_tab").click(function() {
+  $("#candidate_info_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").show();
     $("#tab3_content").hide();
@@ -646,7 +646,7 @@ $(document).ready(function() {
     $("#tab6_content").hide();
     changePercent();
   });
-  $("#role_info_tab").click(function() {
+  $("#role_info_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").show();
@@ -656,7 +656,7 @@ $(document).ready(function() {
     $("#tab6_content").hide();
   });
 
-  $("#about_tab").click(function() {
+  $("#about_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
@@ -664,7 +664,7 @@ $(document).ready(function() {
     $("#tab5_content").hide();
     $("#tab6_content").hide();
   });
-  $("#result_tab").click(function() {
+  $("#result_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
@@ -672,7 +672,7 @@ $(document).ready(function() {
     $("#tab5_content").show();
     $("#tab6_content").hide();
   });
-  $("#vote_tab").click(function() {
+  $("#vote_tab").click(function () {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
