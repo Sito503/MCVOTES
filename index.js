@@ -29,7 +29,6 @@ let candidateAns = {
     ["0", "1", "2"], //q5
     ["0"], //q6
     ["0"] //q7
-
   ],
 
   andrewWilson: [
@@ -40,7 +39,6 @@ let candidateAns = {
     ["1", "0", "2"], //q5
     ["1"], //q6
     ["1"] //q7
-
   ],
   tylerHope: [
     ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
@@ -50,7 +48,6 @@ let candidateAns = {
     ["1", "0", "2"], //q5
     ["1"], //q6
     ["1"] //q7
-
   ],
   winstonMiller: [
     ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
@@ -60,7 +57,6 @@ let candidateAns = {
     ["1", "0", "2"], //q5
     ["1"], //q6
     ["1"] //q7
-
   ]
 };
 
@@ -144,7 +140,6 @@ const questionSet = {
   ]
 };
 
-
 function* questionGen() {
   for (var question in questionSet) {
     yield question;
@@ -168,7 +163,7 @@ function showProgressBar() {
 }
 
 function showNextQuestion() {
-  $("#question-container").fadeOut("fast", function () {
+  $("#question-container").fadeOut("fast", function() {
     $("#next").show();
     question = getNextQuestion();
     questionContainer = document.getElementById("question-container");
@@ -219,50 +214,56 @@ function showNextQuestion() {
         The fade out callback restrict rendering of the radios to slider.
         the 1 ms delay trick/hack the browser in rendering the dom after the divs have been created
         */
-        setTimeout(function () {
+        setTimeout(function() {
           var radios = $("#radios").radiosToSlider();
         }, 1);
         $("#next").off();
         $("#next").click(getAnswersFromRadioQuestion);
       } else if (questionType == "matrix") {
         // table and container creation
-        wrapperDiv.classList.add("container-matrix")
-        wrapperDiv.id = "registration"
-        table = document.createElement("table")
-        statements = ["Served as a club leader previously", "Has been involved with volunteer work"]
+        wrapperDiv.classList.add("container-matrix");
+        wrapperDiv.id = "registration";
+        table = document.createElement("table");
+        statements = [
+          "Served as a club leader previously",
+          "Has been involved with volunteer work"
+        ];
         // header row
-        headerRow = document.createElement("tr")
-        StatementRow = document.createElement("th")
-        StatementRow.id = "column-document"
-        headerRow.appendChild(StatementRow)
-        tableHeaders = ["Agree", "Neutral", "Disagree"]
+        headerRow = document.createElement("tr");
+        StatementRow = document.createElement("th");
+        StatementRow.id = "column-document";
+        headerRow.appendChild(StatementRow);
+        tableHeaders = ["Agree", "Neutral", "Disagree"];
         tableHeaders.forEach(element => {
-          header = document.createElement("th")
-          header.classList.add("column-button")
-          header.innerText = element
-          headerRow.appendChild(header)
+          header = document.createElement("th");
+          header.classList.add("column-button");
+          header.innerText = element;
+          headerRow.appendChild(header);
         });
-        table.appendChild(headerRow)
+        table.appendChild(headerRow);
         // statement row with radio buttons
         statements.forEach((statement, statementIndex) => {
-          statementRow = document.createElement("tr")
-          statementTableData = document.createElement("td")
-          statementTableData.innerText = statement
-          statementRow.appendChild(statementTableData)
-          for (let index = 0; index < 3; index++) {
-            containerButtonTD = document.createElement("td")
-            containerButtonTD.classList.add("container-button")
+          statementRow = document.createElement("tr");
+          statementRow.classList.add("stRow");
 
-            radioButton = document.createElement("input")
-            radioButton.type = "radio"
-            radioButton.value = index
-            radioButton.name = statementIndex
-            containerButtonTD.appendChild(radioButton)
-            statementRow.appendChild(containerButtonTD)
+          statementTableData = document.createElement("td");
+          statementTableData.innerText = statement;
+          statementRow.appendChild(statementTableData);
+          for (let index = 0; index < 3; index++) {
+            containerButtonTD = document.createElement("td");
+            containerButtonTD.classList.add("container-button");
+
+            radioButton = document.createElement("input");
+            radioButton.type = "radio";
+            radioButton.value = index;
+            radioButton.name = statementIndex;
+            radioButton.classList.add("matrix-buttons");
+            containerButtonTD.appendChild(radioButton);
+            statementRow.appendChild(containerButtonTD);
           }
-          table.append(statementRow)
-        })
-        wrapperDiv.appendChild(table)
+          table.append(statementRow);
+        });
+        wrapperDiv.appendChild(table);
         questionContainer.appendChild(wrapperDiv);
         $("#next").off();
         $("#next").click(getAnswersFromMatrixQuestion);
@@ -273,17 +274,14 @@ function showNextQuestion() {
     } else {
       // end of the quiz
 
-      ;
-
       console.log("print answer: " + answers);
       $("#tab1_content").hide();
       $("#tab2_content").show();
       $("#tab3_content").hide();
       $("#tab4_content").hide();
       $("#tab5_content").hide();
-      changePercent();
       $("#tab6_content").hide();
-
+      changePercent();
     }
   });
 
@@ -291,9 +289,20 @@ function showNextQuestion() {
 }
 
 function getAnswersFromMatrixQuestion() {
-  // TODO: update the answer based on the matrix answers given
-  clickProgress();
-  showNextQuestion();
+  matrixAnswers = [];
+  $(".matrix-buttons").each(function(i, checkbox) {
+    if (checkbox.checked) {
+      matrixAnswers.push(parseInt(checkbox.value));
+    }
+  });
+  statements = $(".stRow");
+  if (matrixAnswers.length == statements.length) {
+    answers.push(matrixAnswers);
+    clickProgress();
+    showNextQuestion();
+  } else {
+    alertUserToSelectAnswer();
+  }
 }
 
 function refreshPage() {
@@ -313,9 +322,13 @@ function getAnswersFromRadioQuestion() {
 
     clickProgress();
     showNextQuestion();
+  } else {
+    alertUserToSelectAnswer();
   }
 }
-
+function alertUserToSelectAnswer() {
+  // TODO: alert user to answers of the questions
+}
 function clickProgress() {
   var $next = $(".progress ul li.current")
     .removeClass("current")
@@ -349,7 +362,7 @@ function createAnswerModule(id, answer, clickableQuestion) {
   moduleSection.appendChild(sortableIcon);
   moduleSection.appendChild(moduleParagraph);
   if (clickableQuestion) {
-    moduleSection.addEventListener("click", function () {
+    moduleSection.addEventListener("click", function() {
       answers.push([answer]);
     });
   }
@@ -364,7 +377,9 @@ function compareAnswers() {
   for (candidate in candidateAns) {
     candidateAnswers = candidateAns[candidate];
     for (
-      let questionNumber = 0; questionNumber < candidateAnswers.length; questionNumber++
+      let questionNumber = 0;
+      questionNumber < candidateAnswers.length;
+      questionNumber++
     ) {
       candidateSAns = candidateAnswers[questionNumber];
       var candidateAnsTotal = 0;
@@ -376,14 +391,17 @@ function compareAnswers() {
           if (candidateSAns[i] == answers[questionNumber][i]) {
             totalPercent += 12.5;
           } else {
-
-            percentageSliderCal = Math.abs(candidateSAns[i] - answers[questionNumber][i]);
+            percentageSliderCal = Math.abs(
+              candidateSAns[i] - answers[questionNumber][i]
+            );
             console.log("percentageSliderCal is " + percentageSliderCal);
             totalPercent += 2.5 * (5 - percentageSliderCal);
           }
           percentageSliderCal = 0;
         } else {
-          percentageCal += Math.abs(answers[questionNumber][i] - candidateSAns[i]);
+          percentageCal += Math.abs(
+            answers[questionNumber][i] - candidateSAns[i]
+          );
           candidateAnsTotal += Math.abs(candidateSAns[i]);
         }
       }
@@ -394,8 +412,6 @@ function compareAnswers() {
           totalPercent += ((1 - percentageCal / candidateAnsTotal) * 100) / 8;
         }
       }
-
-
 
       percentageCal = 0;
       percentageSliderCal = 0;
@@ -417,13 +433,12 @@ function changePercent() {
   var result = document.getElementsByClassName("bar-names");
   var percentage = 0;
 
-  $(".bar-percentage[data-percentage]").each(function () {
+  $(".bar-percentage[data-percentage]").each(function() {
     var progress = $(this);
     if (totalPercentArr.length < 1) {
       percentage = 0;
     } else {
       percentage = Math.ceil($(this).attr("data-percentage"));
-
 
       console.log(result[i].id);
       switch (result[i].id) {
@@ -449,49 +464,52 @@ function changePercent() {
 
     $({
       countNum: 0
-    }).animate({
-      countNum: percentage
-    }, {
-      duration: 2000,
-      easing: "linear",
-      step: function () {
-        // What todo on every count
-        var pct = Math.floor(this.countNum) + "%";
-        progress.text(pct) &&
-          progress
-          .siblings()
-          .children()
-          .css("width", pct);
+    }).animate(
+      {
+        countNum: percentage
+      },
+      {
+        duration: 2000,
+        easing: "linear",
+        step: function() {
+          // What todo on every count
+          var pct = Math.floor(this.countNum) + "%";
+          progress.text(pct) &&
+            progress
+              .siblings()
+              .children()
+              .css("width", pct);
+        }
       }
-    });
+    );
     i++;
   });
 }
 
 // please ignore this code is to make sure the list are sortable on mobile devices
-!(function (a) {
+!(function(a) {
   function f(a, b) {
     if (!(a.originalEvent.touches.length > 1)) {
       a.preventDefault();
       var c = a.originalEvent.changedTouches[0],
         d = document.createEvent("MouseEvents");
       d.initMouseEvent(
-          b,
-          !0,
-          !0,
-          window,
-          1,
-          c.screenX,
-          c.screenY,
-          c.clientX,
-          c.clientY,
-          !1,
-          !1,
-          !1,
-          !1,
-          0,
-          null
-        ),
+        b,
+        !0,
+        !0,
+        window,
+        1,
+        c.screenX,
+        c.screenY,
+        c.clientX,
+        c.clientY,
+        !1,
+        !1,
+        !1,
+        !1,
+        0,
+        null
+      ),
         a.target.dispatchEvent(d);
     }
   }
@@ -500,44 +518,44 @@ function changePercent() {
       b = a.ui.mouse.prototype,
       c = b._mouseInit,
       d = b._mouseDestroy;
-    (b._touchStart = function (a) {
+    (b._touchStart = function(a) {
       var b = this;
       !e &&
         b._mouseCapture(a.originalEvent.changedTouches[0]) &&
         ((e = !0),
-          (b._touchMoved = !1),
-          f(a, "mouseover"),
-          f(a, "mousemove"),
-          f(a, "mousedown"));
+        (b._touchMoved = !1),
+        f(a, "mouseover"),
+        f(a, "mousemove"),
+        f(a, "mousedown"));
     }),
-    (b._touchMove = function (a) {
-      e && ((this._touchMoved = !0), f(a, "mousemove"));
-    }),
-    (b._touchEnd = function (a) {
-      e &&
-        (f(a, "mouseup"),
+      (b._touchMove = function(a) {
+        e && ((this._touchMoved = !0), f(a, "mousemove"));
+      }),
+      (b._touchEnd = function(a) {
+        e &&
+          (f(a, "mouseup"),
           f(a, "mouseout"),
           this._touchMoved || f(a, "click"),
           (e = !1));
-    }),
-    (b._mouseInit = function () {
-      var b = this;
-      b.element.bind({
+      }),
+      (b._mouseInit = function() {
+        var b = this;
+        b.element.bind({
           touchstart: a.proxy(b, "_touchStart"),
           touchmove: a.proxy(b, "_touchMove"),
           touchend: a.proxy(b, "_touchEnd")
         }),
-        c.call(b);
-    }),
-    (b._mouseDestroy = function () {
-      var b = this;
-      b.element.unbind({
+          c.call(b);
+      }),
+      (b._mouseDestroy = function() {
+        var b = this;
+        b.element.unbind({
           touchstart: a.proxy(b, "_touchStart"),
           touchmove: a.proxy(b, "_touchMove"),
           touchend: a.proxy(b, "_touchEnd")
         }),
-        d.call(b);
-    });
+          d.call(b);
+      });
   }
 })(jQuery);
 // SORTABLE
@@ -547,13 +565,12 @@ function makeAnswerSortable() {
 }
 // tab things do touch yet please
 
-$(document).ready(function () {
+$(document).ready(function() {
   $(".progress").show();
   $("#restart").hide();
   $(".progress").hide();
   $("#next").click(showProgressBar);
   changePercent();
-
 
   $("#tab1_content").show();
   $("#tab2_content").hide();
@@ -562,7 +579,7 @@ $(document).ready(function () {
   $("#tab5_content").hide();
   $("#tab6_content").hide();
 
-  $("#quiz_tab").click(function () {
+  $("#quiz_tab").click(function() {
     $("#tab1_content").show();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
@@ -571,7 +588,7 @@ $(document).ready(function () {
     $("#tab6_content").hide();
   });
 
-  $("#candidate_info_tab").click(function () {
+  $("#candidate_info_tab").click(function() {
     $("#tab1_content").hide();
     $("#tab2_content").show();
     $("#tab3_content").hide();
@@ -579,9 +596,8 @@ $(document).ready(function () {
     $("#tab5_content").hide();
     $("#tab6_content").hide();
     changePercent();
-
   });
-  $("#role_info_tab").click(function () {
+  $("#role_info_tab").click(function() {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").show();
@@ -591,7 +607,7 @@ $(document).ready(function () {
     $("#tab6_content").hide();
   });
 
-  $("#about_tab").click(function () {
+  $("#about_tab").click(function() {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
@@ -599,7 +615,7 @@ $(document).ready(function () {
     $("#tab5_content").hide();
     $("#tab6_content").hide();
   });
-  $("#result_tab").click(function () {
+  $("#result_tab").click(function() {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
@@ -607,7 +623,7 @@ $(document).ready(function () {
     $("#tab5_content").show();
     $("#tab6_content").hide();
   });
-  $("#vote_tab").click(function () {
+  $("#vote_tab").click(function() {
     $("#tab1_content").hide();
     $("#tab2_content").hide();
     $("#tab3_content").hide();
@@ -615,9 +631,6 @@ $(document).ready(function () {
     $("#tab5_content").hide();
     $("#tab6_content").show();
   });
-
-
-
 });
 $("#next").click(showNextQuestion);
 
@@ -626,7 +639,7 @@ document.addEventListener("keydown", keyDownTextField, false);
 function keyDownTextField(e) {
   var keyCode = e.keyCode;
   if (keyCode == 13) {
-    showNextQuestion()
-    showProgressBar()
+    showNextQuestion();
+    showProgressBar();
   }
 }
