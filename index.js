@@ -1,6 +1,7 @@
-var answers = [];
-var answersSlider = [];
-var totalPercentArr = [];
+let answers = [];
+let answersSlider = [];
+let totalPercentArr = [];
+let database;
 
 const sliderLabelValues = [
   "Strongly Agree",
@@ -10,7 +11,7 @@ const sliderLabelValues = [
   "Strongly Disagree"
 ];
 
-var candidateAns = {
+let candidateAns = {
   amyWang: [
     ["0", "1", "2", "3", "4", "5", "6", "7", "8"], //q1
     ["0", "1", "2", "3", "4"], //q2
@@ -31,40 +32,51 @@ var candidateAns = {
 
   ],
 
-  andrewWilson:
-    [
-      ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
-      ["1", "0", "2", "3", "4"], //q2
-      ["1", "0", "2", "3", "4", "5"], //q3
-      ["1", "0", "2", "3", "4"], //q4
-      ["1", "0", "2"], //q5
-      ["1"], //q6
-      ["1"] //q7
+  andrewWilson: [
+    ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
+    ["1", "0", "2", "3", "4"], //q2
+    ["1", "0", "2", "3", "4", "5"], //q3
+    ["1", "0", "2", "3", "4"], //q4
+    ["1", "0", "2"], //q5
+    ["1"], //q6
+    ["1"] //q7
 
-    ],
-  tylerHope:
-    [
-      ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
-      ["1", "0", "2", "3", "4"], //q2
-      ["1", "0", "2", "3", "4", "5"], //q3
-      ["1", "0", "2", "3", "4"], //q4
-      ["1", "0", "2"], //q5
-      ["1"], //q6
-      ["1"] //q7
+  ],
+  tylerHope: [
+    ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
+    ["1", "0", "2", "3", "4"], //q2
+    ["1", "0", "2", "3", "4", "5"], //q3
+    ["1", "0", "2", "3", "4"], //q4
+    ["1", "0", "2"], //q5
+    ["1"], //q6
+    ["1"] //q7
 
-    ],
-  winstonMiller:
-    [
-      ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
-      ["1", "0", "2", "3", "4"], //q2
-      ["1", "0", "2", "3", "4", "5"], //q3
-      ["1", "0", "2", "3", "4"], //q4
-      ["1", "0", "2"], //q5
-      ["1"], //q6
-      ["1"] //q7
+  ],
+  winstonMiller: [
+    ["1", "0", "2", "3", "4", "5", "6", "7", "8"], //q1
+    ["1", "0", "2", "3", "4"], //q2
+    ["1", "0", "2", "3", "4", "5"], //q3
+    ["1", "0", "2", "3", "4"], //q4
+    ["1", "0", "2"], //q5
+    ["1"], //q6
+    ["1"] //q7
 
-    ]
+  ]
 };
+
+function getDatabase() {
+  var config = {
+    apiKey: "AIzaSyDVWCgKEEb1GJmXSfr-CsMJKrEVRc8s35w",
+    authDomain: "mcvotes-916fb.firebaseapp.com",
+    databaseURL: "https://mcvotes-916fb.firebaseio.com",
+    projectId: "mcvotes-916fb",
+    storageBucket: "mcvotes-916fb.appspot.com",
+    messagingSenderId: "872674444214"
+  };
+  firebase.initializeApp(config);
+  // Get a reference to the database service
+  database = firebase.database();
+}
 const questionSet = {
   "Drag and rank the issues in terms of importance to you": [
     "Ranking",
@@ -131,6 +143,7 @@ const questionSet = {
     "matrix"
   ]
 };
+
 
 function* questionGen() {
   for (var question in questionSet) {
@@ -208,7 +221,11 @@ function showNextQuestion() {
         */
         setTimeout(function () {
           // converting the radios to slider
-          $("#radios").radiosToSlider();
+          var radios = $("#radios").radiosToSlider();
+
+
+
+          // Retrieve value
         }, 1);
         $("#next").off();
         $("#next").click(getAnswersFromRadioQuestion);
@@ -238,8 +255,9 @@ function showNextQuestion() {
       $("#tab3_content").hide();
       $("#tab4_content").hide();
       $("#tab5_content").hide();
+      changePercent();
       $("#tab6_content").hide();
-      changePerecnt();
+
     }
   });
 
@@ -250,6 +268,7 @@ function getAnswersFromMatrixQuestion() {
   clickProgress();
   showNextQuestion();
 }
+
 function refreshPage() {
   window.location.reload();
 }
@@ -312,39 +331,34 @@ function createAnswerModule(id, answer, clickableQuestion) {
 
 function compareAnswers() {
   totalPercent = 0;
-  candidateSliderCal=0;
+  candidateSliderCal = 0;
   for (candidate in candidateAns) {
     candidateAnswers = candidateAns[candidate];
     for (
-      let questionNumber = 0;
-      questionNumber < candidateAnswers.length;
-      questionNumber++
+      let questionNumber = 0; questionNumber < candidateAnswers.length; questionNumber++
     ) {
       candidateSAns = candidateAnswers[questionNumber];
       var candidateAnsTotal = 0;
       var percentageCal = 0;
 
       for (let i = 0; i < candidateSAns.length; i++) {
-        if(candidateSAns.length<2)
-        {
+        if (candidateSAns.length < 2) {
           candidateSAns = candidateAnswers[questionNumber];
           if (candidateSAns[i] == answers[questionNumber][i]) {
             totalPercent += 12.5;
-          }
-          else {
-            
+          } else {
+
             percentageSliderCal = Math.abs(candidateSAns[i] - answers[questionNumber][i]);
             console.log("percentageSliderCal is " + percentageSliderCal);
-            totalPercent += 2.5 * (5 -  percentageSliderCal);
+            totalPercent += 2.5 * (5 - percentageSliderCal);
           }
-          percentageSliderCal=0;
-        }
-        else{
-        percentageCal += Math.abs(answers[questionNumber][i] - candidateSAns[i]);
-        candidateAnsTotal += Math.abs(candidateSAns[i]);
+          percentageSliderCal = 0;
+        } else {
+          percentageCal += Math.abs(answers[questionNumber][i] - candidateSAns[i]);
+          candidateAnsTotal += Math.abs(candidateSAns[i]);
         }
       }
-      if(candidateAnsTotal!=0){
+      if (candidateAnsTotal != 0) {
         if (percentageCal == 0) {
           totalPercent += 12.5;
         } else {
@@ -352,10 +366,10 @@ function compareAnswers() {
         }
       }
 
-     
-    
+
+
       percentageCal = 0;
-      percentageSliderCal =0;
+      percentageSliderCal = 0;
       console.log("total % is " + totalPercent);
     }
     candidateAnsTotal = 0;
@@ -368,11 +382,11 @@ function compareAnswers() {
     totalPercent = 0;
   }
 }
-function changePerecnt() {
+
+function changePercent() {
   let i = 0;
   var result = document.getElementsByClassName("bar-names");
   var percentage = 0;
-  console.log(result);
 
   $(".bar-percentage[data-percentage]").each(function () {
     var progress = $(this);
@@ -404,22 +418,23 @@ function changePerecnt() {
       }
     }
 
-    $({ countNum: 0 }).animate(
-      { countNum: percentage },
-      {
-        duration: 2000,
-        easing: "linear",
-        step: function () {
-          // What todo on every count
-          var pct = Math.floor(this.countNum) + "%";
-          progress.text(pct) &&
-            progress
-              .siblings()
-              .children()
-              .css("width", pct);
-        }
+    $({
+      countNum: 0
+    }).animate({
+      countNum: percentage
+    }, {
+      duration: 2000,
+      easing: "linear",
+      step: function () {
+        // What todo on every count
+        var pct = Math.floor(this.countNum) + "%";
+        progress.text(pct) &&
+          progress
+          .siblings()
+          .children()
+          .css("width", pct);
       }
-    );
+    });
     i++;
   });
 }
@@ -432,22 +447,22 @@ function changePerecnt() {
       var c = a.originalEvent.changedTouches[0],
         d = document.createEvent("MouseEvents");
       d.initMouseEvent(
-        b,
-        !0,
-        !0,
-        window,
-        1,
-        c.screenX,
-        c.screenY,
-        c.clientX,
-        c.clientY,
-        !1,
-        !1,
-        !1,
-        !1,
-        0,
-        null
-      ),
+          b,
+          !0,
+          !0,
+          window,
+          1,
+          c.screenX,
+          c.screenY,
+          c.clientX,
+          c.clientY,
+          !1,
+          !1,
+          !1,
+          !1,
+          0,
+          null
+        ),
         a.target.dispatchEvent(d);
     }
   }
@@ -466,34 +481,34 @@ function changePerecnt() {
           f(a, "mousemove"),
           f(a, "mousedown"));
     }),
-      (b._touchMove = function (a) {
-        e && ((this._touchMoved = !0), f(a, "mousemove"));
-      }),
-      (b._touchEnd = function (a) {
-        e &&
-          (f(a, "mouseup"),
-            f(a, "mouseout"),
-            this._touchMoved || f(a, "click"),
-            (e = !1));
-      }),
-      (b._mouseInit = function () {
-        var b = this;
-        b.element.bind({
+    (b._touchMove = function (a) {
+      e && ((this._touchMoved = !0), f(a, "mousemove"));
+    }),
+    (b._touchEnd = function (a) {
+      e &&
+        (f(a, "mouseup"),
+          f(a, "mouseout"),
+          this._touchMoved || f(a, "click"),
+          (e = !1));
+    }),
+    (b._mouseInit = function () {
+      var b = this;
+      b.element.bind({
           touchstart: a.proxy(b, "_touchStart"),
           touchmove: a.proxy(b, "_touchMove"),
           touchend: a.proxy(b, "_touchEnd")
         }),
-          c.call(b);
-      }),
-      (b._mouseDestroy = function () {
-        var b = this;
-        b.element.unbind({
+        c.call(b);
+    }),
+    (b._mouseDestroy = function () {
+      var b = this;
+      b.element.unbind({
           touchstart: a.proxy(b, "_touchStart"),
           touchmove: a.proxy(b, "_touchMove"),
           touchend: a.proxy(b, "_touchEnd")
         }),
-          d.call(b);
-      });
+        d.call(b);
+    });
   }
 })(jQuery);
 // SORTABLE
@@ -508,6 +523,7 @@ $(document).ready(function () {
   $("#restart").hide();
   $(".progress").hide();
   $("#next").click(showProgressBar);
+  changePercent();
 
 
   $("#tab1_content").show();
@@ -533,7 +549,8 @@ $(document).ready(function () {
     $("#tab4_content").hide();
     $("#tab5_content").hide();
     $("#tab6_content").hide();
-    changePerecnt();
+    changePercent();
+
   });
   $("#role_info_tab").click(function () {
     $("#tab1_content").hide();
@@ -572,48 +589,6 @@ $(document).ready(function () {
 
 
 
-
-  // var sheet = document.createElement('style'),
-  //   $rangeInput = $('.range input'),
-  //   prefs = ['webkit-slider-runnable-track', 'moz-range-track', 'ms-track'];
-
-  // document.body.appendChild(sheet);
-
-  // var getTrackStyle = function (el) {
-  //   max_val = 6
-
-  //   var curVal = el.value,
-  //     val = (curVal - 1) * (100 / (max_val - 1)),
-  //     style = '';
-
-  //   // Set active label
-  //   $('.range-labels li').removeClass('active selected');
-
-  //   var curLabel = $('.range-labels').find('li:nth-child(' + curVal + ')');
-
-  //   curLabel.addClass('active selected');
-  //   curLabel.prevAll().addClass('selected');
-
-  //   // Change background gradient
-  //   for (var i = 0; i < prefs.length; i++) {
-  //     style += '.range {background: linear-gradient(to right, #37adbf 0%, #37adbf ' + val + '%, #fff ' + val + '%, #fff 100%)}';
-  //     style += '.range input::-' + prefs[i] + '{background: linear-gradient(to right, #37adbf 0%, #37adbf ' + val + '%, #b2b2b2 ' + val + '%, #b2b2b2 100%)}';
-  //   }
-
-  //   return style;
-  // }
-
-  // $rangeInput.on('input', function () {
-  //   sheet.textContent = getTrackStyle(this);
-  // });
-
-  // // Change input value on label click
-  // $('.range-labels li').on('click', function () {
-  //   var index = $(this).index();
-
-  //   $rangeInput.val(index + 1).trigger('input');
-
-  // });
 });
 $("#next").click(showNextQuestion);
 const matixHtml = `
@@ -656,7 +631,6 @@ const matixHtml = `
               <label for="champ3"></label>
           </td>
        </tr>
-      
   </table>
 </div>
    `;

@@ -6,148 +6,164 @@
 <head>
     <link rel="shortcut icon" type="image/png" href="/imgs/mcvotes.png" />
 
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"> -->
     <!-- new sorting list libs-->
-    <script src="https://code.jquery.com/jquery.min.js" type="text/javascript"></script>
-    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+
+
     <!-- end there for new sorting list lib -->
     <title>Advanced Mini-Site</title>
 
-
-    <script src="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-    <script type="text/javascript" src="radios-to-slider/js/jquery.radios-to-slider.js"></script>
     <!-- fonts -->
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
-    <link rel="stylesheet" type="text/css" href="radios-to-slider/css/radios-to-slider.css">
+
     <link rel="stylesheet" type="text/css" href="index.css" />
     <link rel="stylesheet" type="text/css" href="result.css" />
     <link rel="stylesheet" type="text/css" href="progressBar.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="js/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="radios-to-slider/css/radios-to-slider.css">
+
 </head>
 
 <body>
 
-    <div class="ribbon"><span>Demo BUILD</span>
-       
-    </div>
+    <!-- <div class="ribbon"><span>Demo BUILD</span>
+        
+    </div> -->
 
     <body>
+        <nav role="navigation">
+            <div id="menuToggle">
 
-        <div class="tab_div">
-            <div class="tabs_menu">
-                <ul class="tabs">
-                        <img class= "logo-img" src="/imgs/MC Votes Logo Black Transparent.png" alt="profile-sample2"  />
-                    <li id="quiz_tab">Take the Quiz </li>
-                    <li id="candidate_info_tab">See Your Result </li>
-                    <li id="role_info_tab">See Who's Running </li>
-                    <li id="about_tab">Learn About Student Senate Position</li>
-                    <li id="result_tab">About Student Senate Voter Guide</li>
-                    <li id="vote_tab">How to Vote for Student Senate Election</li>
+                <input type="checkbox" />
 
-                </ul>
-                <!--     closing tabs menu div -->
-            </div>
-            <div class="tab_content">
-                <div id="tab1_content">
-                    <div class="container">
-                        <div id="question-container">
-                            <div id="slideshow">
-                                <div class="slide-wrapper">
-                                    <div class="slide">
-                                        <p class="slide-text">LETS MATCH YOUR THOUGHTS TO CANDIDATES?</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="progress">
-                            <ul>
-                                <li class="current"></li>
-                                <li>1</li>
-                                <li>2</li>
-                                <li>3</li>
-                                <li>4</li>
-                                <li>5</li>
-                                <li>6</li>
-                                <li>7</li>
-                                <li>8</li>
+                <span></span>
+                <span></span>
+                <span></span>
+
+
+                <ul id="menu">
+                    <div class="tab_div">
+                        <div class="tabs_menu">
+                            <ul class="tabs">
+                                <img class="logo-img" src="/imgs/MC Votes Logo Black Transparent.png"
+                                    alt="profile-sample2" />
+                                <li id="quiz_tab">Take the Quiz </li>
+                                <li id="candidate_info_tab">See Your Result </li>
+                                <li id="role_info_tab">See Who's Running </li>
+                                <li id="about_tab">Learn About Student Senate Position</li>
+                                <li id="result_tab">About Student Senate Voter Guide</li>
+                                <li id="vote_tab">How to Vote for Student Senate Election</li>
+
                             </ul>
+                            <!--     closing tabs menu div -->
                         </div>
+                </ul>
+            </div>
 
-                        <div class=buttons>
-                            <a href="#" class="next-btn" id="next" fu> <i class="arrow right"></i>
-                                <a href="#" class="result-btn" id="restart">RESTART</a>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        </nav>
 
-
-                <div id="tab2_content">
-
-                    <div id="resultContainer">
-                        <h2><strong>Your Result is Here</strong></h2>
-
-                        <div id="bar-1" class="bar-main-container azure">
-                            <div class="wrap">
-
-                                <div class="bar-img" img src="/imgs/beVoice.jpg"></div>
-                                <div class="bar-percentage" data-percentage=""></div>
-                                <div class="bar-names" id="amyWang"> Amy Wang</div>
-                                <div class="bar-container">
-                                    <div class="bar"></div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="bar-2" class="bar-main-container emerald">
-                            <div class="wrap">
-                                <div class="bar-img" img src="/imgs/beVoice.jpg"></div>
-                                <div class="bar-percentage" data-percentage=""></div>
-                                <div class="bar-names" id="puffyShen"> Puffy Shen</div>
-                                <div class="bar-container">
-                                    <div class="bar"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="bar-3" class="bar-main-container violet">
-                            <div class="wrap">
-                                <div class="bar-img" img src="/imgs/beVoice.jpg"></div>
-                                <div class="bar-percentage" data-percentage=""></div>
-                                <div class="bar-names" id="andrewWilson"> Andrew Wilson</div>
-                                <div class="bar-container">
-                                    <div class="bar"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="bar-4" class="bar-main-container yellow">
-                            <div class="wrap">
-                                <div class="bar-img" img src="/imgs/beVoice.jpg"></div>
-                                <div class="bar-percentage" data-percentage=""></div>
-                                <div class="bar-names" id="tylerHope"> Tyler Hope</div>
-                                <div class="bar-container">
-                                    <div class="bar"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="bar-5" class="bar-main-container red">
-                            <div class="wrap">
-                                <div class="bar-img" img src="/imgs/beVoice.jpg"></div>
-                                <div class="bar-percentage" data-percentage=""></div>
-                                <div class="bar-names" id="winstonMiller"> Winston Miller</div>
-                                <div class="bar-container">
-                                    <div class="bar"></div>
+        <div class="tab_content">
+            <div id="tab1_content">
+                <div class="container">
+                    <div id="question-container">
+                        <div id="slideshow">
+                            <div class="slide-wrapper">
+                                <div class="slide">
+                                    <p class="slide-text">LETS MATCH YOUR THOUGHTS TO CANDIDATES?</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="progress">
+                        <ul>
+                            <li class="current"></li>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                            <li>5</li>
+                            <li>6</li>
+                            <li>7</li>
+                            <li>8</li>
+                        </ul>
+                    </div>
+
+                    <div class=buttons>
+                        <a href="#" class="next-btn" id="next" fu> <i class="arrow right"></i>
+                            <a href="#" class="result-btn" id="restart">RESTART</a>
+                        </a>
+                    </div>
                 </div>
+            </div>
+
+
+            <div id="tab2_content">
+
+                <div id="resultContainer">
+                    <h2><strong>Your Result is Here</strong></h2>
+
+                    <div id="bar-1" class="bar-main-container azure">
+                        <div class="wrap">
+
+                            <div class="bar-img" img src="/imgs/beVoice.jpg"></div>
+                            <div class="bar-percentage" data-percentage=""></div>
+                            <div class="bar-names" id="amyWang"> Amy Wang</div>
+                            <div class="bar-container">
+                                <div class="bar"></div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="bar-2" class="bar-main-container emerald">
+                        <div class="wrap">
+                            <div class="bar-img" img src="/imgs/beVoice.jpg"></div>
+                            <div class="bar-percentage" data-percentage=""></div>
+                            <div class="bar-names" id="puffyShen"> Puffy Shen</div>
+                            <div class="bar-container">
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="bar-3" class="bar-main-container violet">
+                        <div class="wrap">
+                            <div class="bar-img" img src="/imgs/beVoice.jpg"></div>
+                            <div class="bar-percentage" data-percentage=""></div>
+                            <div class="bar-names" id="andrewWilson"> Andrew Wilson</div>
+                            <div class="bar-container">
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="bar-4" class="bar-main-container yellow">
+                        <div class="wrap">
+                            <div class="bar-img" img src="/imgs/beVoice.jpg"></div>
+                            <div class="bar-percentage" data-percentage=""></div>
+                            <div class="bar-names" id="tylerHope"> Tyler Hope</div>
+                            <div class="bar-container">
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="bar-5" class="bar-main-container red">
+                        <div class="wrap">
+                            <div class="bar-img" img src="/imgs/beVoice.jpg"></div>
+                            <div class="bar-percentage" data-percentage=""></div>
+                            <div class="bar-names" id="winstonMiller"> Winston Miller</div>
+                            <div class="bar-container">
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 
@@ -197,89 +213,91 @@
                     </figure>
                 </div>
 
-                <div id="tab4_content">
+            <div id="tab4_content">
 
 
-                    <h2> President</h2>
-                    Represent student senate with other institutions and deal with faculty, staff and administration.
-                    President will assign the leader of committees.
-                    He/she will also need to serve as Chairman of the executive board. </p>
-                    <h2>Vice President I</h2>
-                    Assist the President in carrying out duties. Vp II will provide the other point of view towards all
-                    the
-                    student Committees. </p>
+                <h2> President</h2>
+                Represent student senate with other institutions and deal with faculty, staff and administration.
+                President will assign the leader of committees.
+                He/she will also need to serve as Chairman of the executive board. </p>
+                <h2>Vice President I</h2>
+                Assist the President in carrying out duties. Vp II will provide the other point of view towards all
+                the
+                student Committees. </p>
 
-                    <h2>Vice President II</h2>
-                    Sit on the budget panel and serve as a chairperson of Inter Club Council. The duty also including
-                    maintaining the relationship with the clubs. </p>
+                <h2>Vice President II</h2>
+                Sit on the budget panel and serve as a chairperson of Inter Club Council. The duty also including
+                maintaining the relationship with the clubs. </p>
 
-                    <h2>Treasurer</h2>
-                    The person who’s in charge of all the budgets. He/ she will maintain accurate record of expense of
-                    the
-                    Student Senate. This position is responsible for knowing the details of money and its effect on the
-                    Student
-                    Senate. </p>
+                <h2>Treasurer</h2>
+                The person who’s in charge of all the budgets. He/ she will maintain accurate record of expense of
+                the
+                Student Senate. This position is responsible for knowing the details of money and its effect on the
+                Student
+                Senate. </p>
 
-                    <h2>Secretary</h2>
-                    This position will be recording the minutes of the meetings with details like votes, topics been
-                    discussed,
-                    et cetera. Secretary also needs to prepare and distribute meeting agendas. </p>
+                <h2>Secretary</h2>
+                This position will be recording the minutes of the meetings with details like votes, topics been
+                discussed,
+                et cetera. Secretary also needs to prepare and distribute meeting agendas. </p>
 
-                    <!--       closes tab 2 content -->
-                </div>
-
-                <div id="tab5_content">
-
-
-                    <h2>About Student Senate Voters' Guide</h2>
-                    <p>Student Senate Voters' Guide is a tool to help students know more about Rockville Campus student
-                        senate before deciding whom to vote for. The quiz in the tool will help voters to know which
-                        candidates
-                        have more similar thoughts towards student life in Montgomery College Rockville campus.</p>
-                    <h2>What does student senate do?</h2>
-                    <p>Student Senate is a group of students that helps you to improve student life experience
-                        in all different kinds of aspects. They host events, advocate for policy changes, have
-                        influence on clubs and represent Montgomery College Rockville Campus in public arena.
-                        Join the student senate today and become the voice of students! </p>
-
-                    <h2>Do you know? </h2>
-                    <p>In Student senate, there are 7 committees to help you improve your school experience.
-                        There are student issue, food, policy and archives, campus activity, budget panel,
-                        public outreach and fundraising! Contact them if you have any suggestions or questions for them.
-                    </p>
-
-
-
-                    <!--       closes tab 5 content -->
-                </div>
-
-                <div id="tab6_content">
-
-
-                    <h2>How to Vote?</h2>
-                    <p>Click on this link: </p>
-
-
-
-                    <!--       closes tab 5 content -->
-                </div>
-
-
-                <!--     closing tab content div -->
+                <!--       closes tab 2 content -->
             </div>
-            <!--     closing tab div -->
+
+            <div id="tab5_content">
+
+
+                <h2>About Student Senate Voters' Guide</h2>
+                <p>Student Senate Voters' Guide is a tool to help students know more about Rockville Campus student
+                    senate before deciding whom to vote for. The quiz in the tool will help voters to know which
+                    candidates
+                    have more similar thoughts towards student life in Montgomery College Rockville campus.</p>
+                <h2>What does student senate do?</h2>
+                <p>Student Senate is a group of students that helps you to improve student life experience
+                    in all different kinds of aspects. They host events, advocate for policy changes, have
+                    influence on clubs and represent Montgomery College Rockville Campus in public arena.
+                    Join the student senate today and become the voice of students! </p>
+
+                <h2>Do you know? </h2>
+                <p>In Student senate, there are 7 committees to help you improve your school experience.
+                    There are student issue, food, policy and archives, campus activity, budget panel,
+                    public outreach and fundraising! Contact them if you have any suggestions or questions for them.
+                </p>
+
+
+
+                <!--       closes tab 5 content -->
+            </div>
+
+            <div id="tab6_content">
+
+
+                <h2>How to Vote?</h2>
+                <p>Click on this link: </p>
+
+
+
+                <!--       closes tab 5 content -->
+            </div>
+
+
+            <!--     closing tab content div -->
+        </div>
+        <!--     closing tab div -->
         </div>
 
         <footer>
-            <p>Created by Raja, Nelson and Hsien <br> Supported by Student Life </p>
+            <p>Created by Rajashow, Nelson and Hsien <br> Supported by Student Life </p>
         </footer>
     </body>
 
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
 
 
-    <script src="index.js"></script>
+    <script src="js/jquery.radios-to-slider.min.js"></script>
     <script src="progressBar.js"></script>
+    <script src="index.js"></script>
+
 </body>
 
 </html>
