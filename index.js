@@ -1,8 +1,8 @@
 let answers = [];
 let answersSlider = [];
 let totalPercentArr = [];
-let database;
-
+let database, studentSenate2019DBRef;
+const apiKey = "AIza";
 const sliderLabelValues = [
   "Strongly Agree",
   "Agree",
@@ -62,7 +62,7 @@ let candidateAns = {
 
 function getDatabase() {
   var config = {
-    apiKey: "AIzaSyDVWCgKEEb1GJmXSfr-CsMJKrEVRc8s35w",
+    apiKey: apiKey,
     authDomain: "mcvotes-916fb.firebaseapp.com",
     databaseURL: "https://mcvotes-916fb.firebaseio.com",
     projectId: "mcvotes-916fb",
@@ -72,7 +72,9 @@ function getDatabase() {
   firebase.initializeApp(config);
   // Get a reference to the database service
   database = firebase.database();
+  studentSenate2019DBRef = database.ref("student-senate-2019");
 }
+getDatabase();
 const questionSet = {
   "Drag and rank the issues in terms of importance to you": [
     "Ranking",
@@ -99,7 +101,7 @@ const questionSet = {
       "Bike Share Program"
     ]
   ],
-  "Drag and rank the following campus events in terms of importance to you.": [
+  "Drag and rank the following campus events in terms of importance to you": [
     "Ranking",
     [
       "Career Development",
@@ -110,7 +112,7 @@ const questionSet = {
       "Health Wellness"
     ]
   ],
-  "Rank the following food improvement in terms of importance to you.": [
+  "Rank the following food improvement in terms of importance to you": [
     "Ranking",
     [
       "Quality & Taste",
@@ -128,14 +130,14 @@ const questionSet = {
       "More Z-courses/ open educational resources (no-cost resource)"
     ]
   ],
-  "Department advisor should be required to use Starfish for advising appointment.": [
+  "Department advisor should be required to use Starfish for advising appointment": [
     "Slider"
   ],
 
-  "Montgomery College should improve security, even doing so will increase tuition costs.": [
+  "Montgomery College should improve security, even doing so will increase tuition costs": [
     "Slider"
   ],
-  " I think the following characteristic(s) are important to me for candidates who ": [
+  " I think the following characteristic(s) are important to me for candidates who": [
     "matrix"
   ]
 };
@@ -273,6 +275,7 @@ function showNextQuestion() {
       }
     } else {
       // end of the quiz
+      studentSenate2019DBRef.push({ questions: questionSet, answers: answers });
 
       console.log("print answer: " + answers);
       $("#tab1_content").hide();
@@ -371,8 +374,6 @@ function createAnswerModule(id, answer, clickableQuestion) {
 }
 
 function compareAnswers() {
-  // compareAnswers();
-  // //compareSliderAnswer();
   totalPercent = 0;
   candidateSliderCal = 0;
   for (candidate in candidateAns) {
@@ -433,6 +434,7 @@ function changePercent() {
   let i = 0;
   var result = document.getElementsByClassName("bar-names");
   var percentage = 0;
+  // compareAnswers();
 
   $(".bar-percentage[data-percentage]").each(function() {
     var progress = $(this);
