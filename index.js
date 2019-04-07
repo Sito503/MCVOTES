@@ -1,6 +1,7 @@
-var answers = [];
-var answersSlider = [];
-var totalPercentArr = [];
+let answers = [];
+let answersSlider = [];
+let totalPercentArr = [];
+let database;
 
 const sliderLabelValues = [
   "Strongly Agree",
@@ -10,7 +11,7 @@ const sliderLabelValues = [
   "Strongly Disagree"
 ];
 
-var candidateAns = {
+let candidateAns = {
   amyWang: [
     ["0", "1", "2", "3", "4", "5", "6", "7", "8"], //q1
     ["0", "1", "2", "3", "4"], //q2
@@ -62,6 +63,20 @@ var candidateAns = {
 
   ]
 };
+
+function getDatabase() {
+  var config = {
+    apiKey: "AIzaSyDVWCgKEEb1GJmXSfr-CsMJKrEVRc8s35w",
+    authDomain: "mcvotes-916fb.firebaseapp.com",
+    databaseURL: "https://mcvotes-916fb.firebaseio.com",
+    projectId: "mcvotes-916fb",
+    storageBucket: "mcvotes-916fb.appspot.com",
+    messagingSenderId: "872674444214"
+  };
+  firebase.initializeApp(config);
+  // Get a reference to the database service
+  database = firebase.database();
+}
 const questionSet = {
   "Drag and rank the issues in terms of importance to you": [
     "Ranking",
@@ -128,6 +143,7 @@ const questionSet = {
     "matrix"
   ]
 };
+
 
 function* questionGen() {
   for (var question in questionSet) {
@@ -205,7 +221,11 @@ function showNextQuestion() {
         */
         setTimeout(function () {
           // converting the radios to slider
-          $("#radios").radiosToSlider();
+          var radios = $("#radios").radiosToSlider();
+
+
+
+          // Retrieve value
         }, 1);
         $("#next").off();
         $("#next").click(getAnswersFromRadioQuestion);
@@ -611,7 +631,6 @@ const matixHtml = `
               <label for="champ3"></label>
           </td>
        </tr>
-      
   </table>
 </div>
    `;

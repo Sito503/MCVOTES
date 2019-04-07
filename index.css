@@ -50,8 +50,6 @@ h3 {
   width: 20%;
   color: white;
   font-weight: 0 !important;
-
-
 }
 
 .next-btn:hover {
@@ -73,7 +71,7 @@ i {
 
 .wrapper {
   border-radius: 25px;
-  padding: 4%;
+  /* padding: 4%; */
   /* min-height: 30em; */
 }
 
@@ -96,18 +94,12 @@ i {
   }
 }
 
-body {
-  background: #ffffff;
-}
-
 .tab_div {
   width: 100%;
   transform: translateZ(0);
 }
 
 .tabs_menu {
-  padding-top: 1%;
-  width: 20%;
   float: left;
   color: white;
   font: 15px "Roboto", sans-serif;
@@ -124,17 +116,22 @@ ul.tabs {
 #about_tab,
 #result_tab,
 #vote_tab {
-  padding: 8%;
-  width: 80%;
+  display: inherit;
   font: 15px "Roboto", sans-serif;
   text-shadow: none !important;
 }
 
+#vote_tab {
+  border-bottom-right-radius: 10px;
+}
+
+#quiz_tab {
+  border-top-right-radius: 10px;
+}
 
 ul.tabs li {
   list-style-type: none;
   font-family: Arial, Helvetica, sans-serif;
-  border-right: 2px solid white;
   font-size: 18px;
   color: white;
 }
@@ -147,7 +144,7 @@ ul.tabs li {
   float: right;
   width: 80%;
   height: auto;
-  padding: .5%;
+  padding: 0.5%;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -200,7 +197,6 @@ ul.tabs li:hover:before {
   width: 75px;
   height: 75px;
   text-align: right;
-  
 }
 
 .ribbon span {
@@ -245,11 +241,12 @@ ul.tabs li:hover:before {
   border-bottom: 3px solid transparent;
   border-top: 3px solid #808080;
 }
-.logo-img{
+
+.logo-img {
   width: 80%;
   margin: 3%;
-
 }
+
 slider {
   display: block;
   width: 100%;
@@ -338,25 +335,21 @@ slide:nth-child(4) {
   }
 }
 
-
 /* slide show */
 
 #slideshow {
   overflow: hidden;
   height: 510px;
-  width: 728px;
   margin: 0 auto;
 }
 
 .slide-wrapper {
   width: 100%;
-
 }
 
 .slide {
   float: left;
   height: 510px;
-  width: 728px;
 }
 
 .slide:nth-child(1) {
@@ -457,13 +450,6 @@ td:first-child {
 
 /**card stuff**/
 @import url(https://fonts.googleapis.com/css?family=Raleway:200);
-
-body {
-  color: #858585;
-  font-family: "Raleway", sans-serif;
-  font-size: 16px;
-  font-weight: 200;
-}
 
 h4,
 .h4 {
@@ -571,7 +557,6 @@ footer>p {
   margin-left: 10px !important;
 }
 
-
 /* slider */
 
 .block {
@@ -610,76 +595,6 @@ section {
   box-align: center;
   align-content: center;
   padding: 1px;
-}
-
-.radios-to-slider.medium {
-
-  margin: 50px auto;
-}
-
-.radios-to-slider .slider-level {
-  background-color: #fff;
-  cursor: pointer;
-  position: absolute;
-  padding: unset;
-  display: block;
-}
-
-.radios-to-slider .slider-bar {
-  background-color: #6e4d94;
-  float: left;
-  height: 100%;
-  width: 0;
-  pointer-events: none;
-  display: none;
-  position: absolute;
-  left: 0;
-  top: 0;
-  min-width: 32px !important;
-}
-
-.radios-to-slider .slider-level.slider-lower-level {
-  opacity: 0.2;
-  align-items: center;
-}
-
-.slider-knob {
-  float: right;
-  background-color: #51237f;
-}
-
-.ui-radio {
-  text-align: center;
-  font-size: 5px;
-  box-sizing: 100%;
-}
-
-.radios-to-slider.medium .slider-label {
-  width: 80% !important;
-  min-width: 50px;
-  max-width: 80px;
-  font-size: 12px !important;
-}
-
-.radios-to-slider .slider-level {
-  background-color: #fff;
-  cursor: pointer;
-  position: absolute;
-  padding: unset;
-  display: block;
-}
-
-.radios-to-slider .slider-bar {
-  background-color: #6e4d94;
-  float: center;
-  height: 100%;
-  width: 0;
-  pointer-events: none;
-  display: none;
-  position: absolute;
-  left: 0;
-  top: 0;
-  min-width: 32px !important;
 }
 
 
@@ -730,14 +645,13 @@ td {
   margin: 50px 0 50px 0;
 }
 
-
 /* .wrapper {
   margin: 100px 0;
 } */
 
 .toggle_radio {
   position: relative;
-  background: rgba(255, 255, 255, .1);
+  background: rgba(255, 255, 255, 0.1);
   margin: 4px auto;
   overflow: hidden;
   padding: 0 !important;
@@ -753,14 +667,14 @@ td {
   float: left;
 }
 
-.toggle_radio input[type=radio] {
+.toggle_radio input[type="radio"] {
   display: none;
   /*position: fixed;*/
 }
 
 .toggle_radio label {
   font: 90%/1.618 "Source Sans Pro";
-  color: rgba(255, 255, 255, .9);
+  color: rgba(255, 255, 255, 0.9);
   z-index: 0;
   display: block;
   width: 100px;
@@ -788,25 +702,25 @@ td {
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   border-radius: 50px;
-  -webkit-transition: all .4s ease;
-  -moz-transition: all .4s ease;
-  -o-transition: all .4s ease;
-  -ms-transition: all .4s ease;
-  transition: all .4s ease;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  transition: all 0.4s ease;
 }
 
 #first_toggle:checked~.toggle_option_slider {
-  background: rgba(255, 255, 255, .3);
+  background: rgba(255, 255, 255, 0.3);
   left: 3px;
 }
 
 #second_toggle:checked~.toggle_option_slider {
-  background: rgba(255, 255, 255, .3);
+  background: rgba(255, 255, 255, 0.3);
   left: 109px;
 }
 
 #third_toggle:checked~.toggle_option_slider {
-  background: rgba(255, 255, 255, .3);
+  background: rgba(255, 255, 255, 0.3);
   left: 215px;
 }
 
@@ -816,7 +730,7 @@ td {
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 
 .profile {
-  font-family: 'Lato', Arial, sans-serif;
+  font-family: "Lato", Arial, sans-serif;
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -825,7 +739,7 @@ td {
   max-width: 310px;
   width: 100%;
   background-color: #ffffff;
-  color: #2B2B2B;
+  color: #2b2b2b;
   text-align: center;
   font-size: 16px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
@@ -854,7 +768,7 @@ td {
 }
 
 .profile h3 {
-  font-family: 'Oswald';
+  font-family: "Oswald";
   text-transform: uppercase;
   font-size: 20px;
   font-weight: 400;
@@ -883,4 +797,119 @@ td {
 
 .profile .icons i a {
   text-decoration: none;
+}
+
+#menuToggle {
+  display: block;
+  position: relative;
+  top: 10px;
+  left: -10px;
+
+  z-index: 1;
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: 5px;
+
+  cursor: pointer;
+
+  opacity: 0;
+  /* hide this */
+  z-index: 2;
+  /* and place it over the hamburger */
+
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+
+  background: #17171e;
+  border-radius: 3px;
+
+  z-index: 1;
+  left: 5px;
+  transform-origin: 4px 0px;
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+}
+
+#menuToggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked~span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked~span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked~span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu {
+  position: absolute;
+  width: 300px;
+  padding-left: 0px !important;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+
+  transform-origin: 0% 0%;
+  transform: translate(-150%, 0);
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+#menu li {
+  padding: 10px 0;
+  padding-left: 10px;
+  font-size: 22px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked~ul {
+  transform: none;
 }
