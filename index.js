@@ -11,9 +11,9 @@ const sliderLabelValues = [
   "Strongly Disagree"
 ];
 let candidatePic = [
-  "imgs/bryan.jpg", "imgs/maeve.jpg ", "imgs/paige.jpg", 
+  "imgs/bryan.jpg", "imgs/meave.jpg ", "imgs/paige.jpg", 
   "imgs/mark.jpg", "imgs/divine.jpg", "imgs/ishita.jpg", 
-  "imgs/ivy.jpg", "imgs/kyle.jpg"
+  "imgs/ivy.jpg", "imgs/mcvotes.png"
 ];
 let candidateAns = {
   bryan: [
@@ -692,25 +692,24 @@ $(document).ready(function () {
     $("#tab5_content").hide();
     $("#tab6_content").show();
   });
-
-  resultPic();
+  resultPic()
 });
 $("#next").click(showNextQuestion);
 
-document.addEventListener("keydown", keyDownTextField, false);
+// document.addEventListener("keydown", keyDownTextField, false);
 
-function keyDownTextField(e) {
-  var keyCode = e.keyCode;
-  if (keyCode == 13) {
-    showNextQuestion();
-    showProgressBar();
-  }
-}
+// function keyDownTextField(e) {
+//   var keyCode = e.keyCode;
+//   if (keyCode == 13) {
+//     showNextQuestion();
+//     showProgressBar();
+//   }
+// }
 
 function resultPic() {
   $(".bar-percentage").each((i, bar) => {
-    var imageURL = candidatePic[i];
-    bar.style("background-image", 'url($imageURL)')
-    console.log(bar);
+    imageURL = candidatePic[i];
+    bar.style.background = `url("${imageURL}") no-repeat`
+    bar.style.backgroundSize = "100% 100%"
   });
 }
