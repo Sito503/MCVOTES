@@ -255,8 +255,8 @@ ul.tabs li:hover:before {
   width: 20%;
   margin: 1%;
   float: right;
-  position: absolute;
-  bottom: 0;
+  
+
 }
 
 slider {

@@ -488,12 +488,12 @@ function changePercent() {
   var percentage = 0;
   // compareAnswers();
 
-  $(".bar-percentage[data-percentage]").each(function () {
+  $(".bar-percent[data-percentage]").each(function () {
     var progress = $(this);
     if (totalPercentArr.length < 1) {
       percentage = 0;
     } else {
-      percentage = Math.ceil($(this).attr("data-percentage"));
+      percentage = Math.ceil($(this).attr("data-percent"));
 
       console.log(result[i].id);
       switch (result[i].id) {
