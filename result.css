@@ -35,6 +35,15 @@ h2 {
   padding: 30px 20px;
   width: 15%;
   margin-left: 2px;
+  background-image: url("");
+  object-fit: contain;
+  color: transparent;
+  background-size: 100% 100%;
+}
+
+.bar-percentage .pic-kyle
+{
+  background-image: url("imgs/mcvotes.png");
 }
 
 .bar-names {

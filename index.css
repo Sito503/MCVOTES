@@ -9,7 +9,7 @@ h3 {
 }
 
 .module {
-  /* width: 80%; */
+  width: 80%; 
   background: white;
   text-align: center;
   border: 2px solid #51237f;
@@ -140,7 +140,8 @@ ul.tabs li {
 #tab2_content,
 #tab3_content,
 #tab4_content,
-#tab5_content {
+#tab5_content,
+#tab6_content {
   float: right;
   width: 80%;
   height: auto;
