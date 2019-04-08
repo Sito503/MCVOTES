@@ -143,7 +143,7 @@ ul.tabs li {
 #tab5_content,
 #tab6_content {
   float: right;
-  width: 100%;
+  width: 80%;
   height: auto;
   padding: 1%;
   -webkit-font-smoothing: antialiased;
@@ -361,7 +361,7 @@ slide:nth-child(4) {
 
 .slide {
   height: 510px;
-  margin: 0 5%;
+  margin: 0 0%;
 }
 
 .slide:nth-child(1) {
