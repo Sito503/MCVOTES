@@ -700,15 +700,15 @@ $(document).ready(function () {
 });
 $("#next").click(showNextQuestion);
 
-document.addEventListener("keydown", keyDownTextField, false);
+// document.addEventListener("keydown", keyDownTextField, false);
 
-function keyDownTextField(e) {
-  var keyCode = e.keyCode;
-  if (keyCode == 13) {
-    showNextQuestion();
-    showProgressBar();
-  }
-}
+// function keyDownTextField(e) {
+//   var keyCode = e.keyCode;
+//   if (keyCode == 13) {
+//     showNextQuestion();
+//     showProgressBar();
+//   }
+// }
 
 function resultPic() {
   $(".bar-percentage").each((i, bar) => {
