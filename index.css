@@ -284,7 +284,7 @@ slider>* {
 slide:nth-child(1) {
   left: 0;
   animation-delay: -1s;
-  background-image: url("imgs/votepic.jpg");
+  background-image: url("imgs/slidePic.jpg");
   background-size: contain;
   background-position: center;
 }
@@ -317,7 +317,7 @@ slide:nth-child(4) {
   display: inline-block;
   width: 100%;
   margin-top: 50px;
-  color: #fff;
+  color:transparent;
 }
 
 @keyframes slide {
@@ -368,7 +368,7 @@ slide:nth-child(4) {
 }
 
 .slide:nth-child(1) {
-  background-image: url("imgs/votepic.jpg");
+  background-image: url("imgs/slidePic.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.85;

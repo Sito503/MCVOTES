@@ -10,9 +10,9 @@ const sliderLabelValues = [
   "Disagree",
   "Strongly Disagree"
 ];
-let candidatePic = {
-
-}
+let candidatePic = [
+  "imgs/paige.jpg"
+];
 let candidateAns = {
   bryan: [
     ["2", "7", "8", "0", "5", "3", "4", "1", "6"], //q1
@@ -529,18 +529,18 @@ function changePercent() {
     }).animate({
       countNum: percentage
     }, {
-      duration: 2000,
-      easing: "linear",
-      step: function () {
-        // What todo on every count
-        var pct = Math.floor(this.countNum) + "%";
-        progress.text(pct) &&
-          progress
-          .siblings()
-          .children()
-          .css("width", pct);
-      }
-    });
+        duration: 2000,
+        easing: "linear",
+        step: function () {
+          // What todo on every count
+          var pct = Math.floor(this.countNum) + "%";
+          progress.text(pct) &&
+            progress
+              .siblings()
+              .children()
+              .css("width", pct);
+        }
+      });
     i++;
   });
 }
@@ -553,22 +553,22 @@ function changePercent() {
       var c = a.originalEvent.changedTouches[0],
         d = document.createEvent("MouseEvents");
       d.initMouseEvent(
-          b,
-          !0,
-          !0,
-          window,
-          1,
-          c.screenX,
-          c.screenY,
-          c.clientX,
-          c.clientY,
-          !1,
-          !1,
-          !1,
-          !1,
-          0,
-          null
-        ),
+        b,
+        !0,
+        !0,
+        window,
+        1,
+        c.screenX,
+        c.screenY,
+        c.clientX,
+        c.clientY,
+        !1,
+        !1,
+        !1,
+        !1,
+        0,
+        null
+      ),
         a.target.dispatchEvent(d);
     }
   }
@@ -587,34 +587,34 @@ function changePercent() {
           f(a, "mousemove"),
           f(a, "mousedown"));
     }),
-    (b._touchMove = function (a) {
-      e && ((this._touchMoved = !0), f(a, "mousemove"));
-    }),
-    (b._touchEnd = function (a) {
-      e &&
-        (f(a, "mouseup"),
-          f(a, "mouseout"),
-          this._touchMoved || f(a, "click"),
-          (e = !1));
-    }),
-    (b._mouseInit = function () {
-      var b = this;
-      b.element.bind({
+      (b._touchMove = function (a) {
+        e && ((this._touchMoved = !0), f(a, "mousemove"));
+      }),
+      (b._touchEnd = function (a) {
+        e &&
+          (f(a, "mouseup"),
+            f(a, "mouseout"),
+            this._touchMoved || f(a, "click"),
+            (e = !1));
+      }),
+      (b._mouseInit = function () {
+        var b = this;
+        b.element.bind({
           touchstart: a.proxy(b, "_touchStart"),
           touchmove: a.proxy(b, "_touchMove"),
           touchend: a.proxy(b, "_touchEnd")
         }),
-        c.call(b);
-    }),
-    (b._mouseDestroy = function () {
-      var b = this;
-      b.element.unbind({
+          c.call(b);
+      }),
+      (b._mouseDestroy = function () {
+        var b = this;
+        b.element.unbind({
           touchstart: a.proxy(b, "_touchStart"),
           touchmove: a.proxy(b, "_touchMove"),
           touchend: a.proxy(b, "_touchEnd")
         }),
-        d.call(b);
-    });
+          d.call(b);
+      });
   }
 })(jQuery);
 // SORTABLE
@@ -690,6 +690,8 @@ $(document).ready(function () {
     $("#tab5_content").hide();
     $("#tab6_content").show();
   });
+
+  resultPic();
 });
 $("#next").click(showNextQuestion);
 
@@ -701,4 +703,12 @@ function keyDownTextField(e) {
     showNextQuestion();
     showProgressBar();
   }
+}
+
+function resultPic() {
+  $(".bar-percentage").each((i, bar) => {
+    var imageURL = candidatePic[i];
+    bar.style("background-image", 'url($imageURL)')
+    console.log(bar);
+  });
 }
