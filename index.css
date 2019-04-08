@@ -143,20 +143,18 @@ ul.tabs li {
 #tab5_content,
 #tab6_content {
   float: right;
-  width: 80%;
+  width: 100%;
   height: auto;
   padding: 1%;
   -webkit-font-smoothing: antialiased;
 }
 
 h2 {
-
   font-style: normal;
   font-weight: bold;
   font-size: 30px;
   line-height: normal;
   color: #000000;
-
 }
 
 p {
@@ -261,7 +259,6 @@ ul.tabs li:hover:before {
   bottom: 0;
 }
 
-
 slider {
   display: block;
   width: 100%;
@@ -363,8 +360,8 @@ slide:nth-child(4) {
 }
 
 .slide {
-  float: left;
   height: 510px;
+  margin: 0 5%;
 }
 
 .slide:nth-child(1) {
@@ -372,7 +369,6 @@ slide:nth-child(4) {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   opacity: 0.85;
-
 }
 
 .slide-number {
@@ -416,7 +412,7 @@ slide:nth-child(4) {
 /* matrix */
 
 .container-matrix {
-  width: 80%;
+  width: 45%;
   margin: 0 auto;
   font-size: 20px;
   color: #616161;
@@ -463,7 +459,6 @@ td:first-child {
   text-align: center;
   padding: 3%;
 }
-
 
 /* dots on the sortable */
 .ui-icon-grip-dotted-vertical {
@@ -513,8 +508,6 @@ section {
   align-content: center;
   padding: 1px;
 }
-
-
 
 .box {
   float: left;
@@ -660,16 +653,14 @@ td {
   text-align: center;
   font-size: 16px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-
 }
 
 .readMore {
   padding: 1%;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
-  color: #6E4D94;
+  color: #6e4d94;
   padding: 1px 1px 3px 1px;
-
 }
 
 .profile * {
@@ -730,7 +721,6 @@ td {
 .profile .icons i a {
   text-decoration: none;
 }
-
 
 #menuToggle {
   display: block;
@@ -846,7 +836,6 @@ td {
 .footer-img {
   float: right;
   width: 10%;
-
 }
 
 .bar-img {

@@ -3,8 +3,8 @@
   margin: 20px;
 }
 
-h2 {
-  float: center;
+#resultContainer>h2 {
+  text-align: center
 }
 
 .bar-main-container {
@@ -18,7 +18,6 @@ h2 {
   font-weight: normal;
   font-size: 0.8em;
   color: #FFF;
-  float: left;
   width: 60%;
 }
 
@@ -41,8 +40,7 @@ h2 {
   background-size: 100% 100%;
 }
 
-.bar-percentage .pic-kyle
-{
+.bar-percentage .pic-kyle {
   background-image: url("imgs/mcvotes.png");
 }
 
@@ -82,7 +80,7 @@ h2 {
   -moz-opacity: 1;
   -khtml-opacity: 1;
   opacity: 1;
-  
+
 }
 
 /* COLORS */
