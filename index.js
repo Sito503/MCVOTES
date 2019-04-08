@@ -10,7 +10,6 @@ const sliderLabelValues = [
   "Disagree",
   "Strongly Disagree"
 ];
-
 let candidateAns = {
   bryan: [
     ["2", "7", "8", "0", "5", "3", "4", "1", "6"], //q1
@@ -426,34 +425,41 @@ function compareAnswers() {
       candidateSAns = candidateAnswers[questionNumber];
       var candidateAnsTotal = 0;
       var percentageCal = 0;
+      if (candidateSAns.length == 2) {
+        for (let i = 0; i < candidateSAns.length; i++) {
+          percentageCal = Math.abs(candidateSAns[i] - answers[questionNumber][i]) / 3
+          totalPercent += 6.25 * (1 - (percentageCal))
+        }
+      } else {
+        for (let i = 0; i < candidateSAns.length; i++) {
+          if (candidateSAns.length == 1) {
+            if (candidateSAns[i] == answers[questionNumber][i]) {
+              totalPercent += 12.5;
+            } else {
+              percentageSliderCal = Math.abs(
+                candidateSAns[i] - answers[questionNumber][i]
+              );
+              console.log("percentageSliderCal is " + percentageSliderCal);
+              totalPercent += 2.5 * (5 - percentageSliderCal);
+            }
+            percentageSliderCal = 0;
 
-      for (let i = 0; i < candidateSAns.length; i++) {
-        if (candidateSAns.length < 2) {
-          candidateSAns = candidateAnswers[questionNumber];
-          if (candidateSAns[i] == answers[questionNumber][i]) {
+          } else {
+            percentageCal += Math.abs(
+              answers[questionNumber][i] - candidateSAns[i]
+            );
+            candidateAnsTotal += Math.abs(candidateSAns[i]);
+          }
+        }
+        if (candidateAnsTotal != 0) {
+          if (percentageCal == 0) {
             totalPercent += 12.5;
           } else {
-            percentageSliderCal = Math.abs(
-              candidateSAns[i] - answers[questionNumber][i]
-            );
-            console.log("percentageSliderCal is " + percentageSliderCal);
-            totalPercent += 2.5 * (5 - percentageSliderCal);
+            totalPercent += ((1 - percentageCal / candidateAnsTotal) * 100) / 8;
           }
-          percentageSliderCal = 0;
-        } else {
-          percentageCal += Math.abs(
-            answers[questionNumber][i] - candidateSAns[i]
-          );
-          candidateAnsTotal += Math.abs(candidateSAns[i]);
         }
       }
-      if (candidateAnsTotal != 0) {
-        if (percentageCal == 0) {
-          totalPercent += 12.5;
-        } else {
-          totalPercent += ((1 - percentageCal / candidateAnsTotal) * 100) / 8;
-        }
-      }
+
 
       percentageCal = 0;
       percentageSliderCal = 0;

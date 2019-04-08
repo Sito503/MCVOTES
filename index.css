@@ -284,28 +284,28 @@ slide:nth-child(1) {
   left: 0;
   animation-delay: -1s;
   background-image: url("imgs/votepic.jpg");
-  background-size: cover;
+  background-size: contain;
   background-position: center;
 }
 
 slide:nth-child(2) {
   animation-delay: 5s;
   background-image: url("imgs/student_senate.jpg");
-  background-size: cover;
+  background-size: contain;
   background-position: center;
 }
 
 slide:nth-child(3) {
   animation-delay: 11s;
   background-image: url("imgs/horizon.jpg");
-  background-size: cover;
+  background-size: contain;
   background-position: center;
 }
 
 slide:nth-child(4) {
   animation-delay: 17s;
   background-image: url("imgs/beVoice.jpg");
-  background-size: cover;
+  background-size: contain;
   background-position: center;
 }
 
