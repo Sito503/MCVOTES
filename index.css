@@ -9,7 +9,7 @@ h3 {
 }
 
 .module {
-  width: 80%; 
+  width: 80%;
   background: white;
   text-align: center;
   border: 2px solid #51237f;
@@ -370,8 +370,9 @@ slide:nth-child(4) {
 .slide:nth-child(1) {
   background-image: url("imgs/votepic.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
   opacity: 0.85;
+
 }
 
 .slide-number {

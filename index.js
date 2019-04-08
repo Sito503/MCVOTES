@@ -10,9 +10,15 @@ const sliderLabelValues = [
   "Disagree",
   "Strongly Disagree"
 ];
-let candidatePic = {
+let candidatePic = [
+  "imgs/bryan.jpg",
+  "imgs/bryan.jpg", "imgs/paige-result.jpg", "imgs/divine.jpg",
+  "imgs/bryan.jpg", "imgs/bryan.jpg", "imgs/bryan.jpg", "imgs/divine.jpg"
 
-}
+
+]
+
+
 let candidateAns = {
   bryan: [
     ["2", "7", "8", "0", "5", "3", "4", "1", "6"], //q1
@@ -690,6 +696,7 @@ $(document).ready(function () {
     $("#tab5_content").hide();
     $("#tab6_content").show();
   });
+  resultPic()
 });
 $("#next").click(showNextQuestion);
 
@@ -701,4 +708,12 @@ function keyDownTextField(e) {
     showNextQuestion();
     showProgressBar();
   }
+}
+
+function resultPic() {
+  $(".bar-percentage").each((i, bar) => {
+    imageURL = candidatePic[i];
+    bar.style.background = `url("${imageURL}") no-repeat`
+    bar.style.backgroundSize = "100% 100%"
+  });
 }
