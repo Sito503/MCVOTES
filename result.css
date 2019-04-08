@@ -52,11 +52,12 @@
  
 }
 .bar-names {
-  font-size: 16px;
+  font-size: 14px;
   padding: 2%;
   float: left;
   padding-left: 7%;
   text-shadow: none;
+  max-width: 50%;
 
 }
 
