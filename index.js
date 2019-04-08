@@ -11,7 +11,9 @@ const sliderLabelValues = [
   "Strongly Disagree"
 ];
 let candidatePic = [
-  "imgs/paige.jpg"
+  "imgs/bryan.jpg", "imgs/maeve.jpg ", "imgs/paige.jpg", 
+  "imgs/mark.jpg", "imgs/divine.jpg", "imgs/ishita.jpg", 
+  "imgs/ivy.jpg", "imgs/kyle.jpg"
 ];
 let candidateAns = {
   bryan: [
