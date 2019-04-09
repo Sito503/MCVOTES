@@ -38,8 +38,7 @@
 
 }
 
-.bar-percent
-{
+.bar-percent {
   float: left;
   background: rgba(0, 0, 0, 0.13);
   -webkit-border-radius: 4px;
@@ -49,8 +48,9 @@
   width: 10%;
   margin-left: 10px;
   color: #FFF;
- 
+
 }
+
 .bar-names {
   font-size: 14px;
   padding: 2%;

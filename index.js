@@ -11,9 +11,14 @@ const sliderLabelValues = [
   "Strongly Disagree"
 ];
 let candidatePic = [
-  "imgs/bryan.jpg", "imgs/meave.jpg ", "imgs/paige.jpg", 
-  "imgs/mark.jpg", "imgs/divine.jpg", 
-  "imgs/ivy.jpg", "imgs/ishita.jpg", "imgs/kyle.jpg"
+  "imgs/bryan.jpg", 
+  "imgs/meave.jpg ", 
+  "imgs/paige.jpg",
+  "imgs/mark.jpg", 
+  "imgs/divine.jpg",
+  "imgs/ivy.jpg", 
+  "imgs/ishita.jpg", 
+  "imgs/kyle.jpg"
 ];
 let candidateAns = {
   bryan: [
@@ -317,7 +322,12 @@ function showNextQuestion() {
       }
     } else {
       // end of the quiz
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, "0");
+      var mm = String(today.getMonth() + 1).padStart(2, "0");
+      var yyyy = today.getFullYear();
       studentSenate2019DBRef.push({
+        meta: [dd, mm, yyyy],
         questions: questionSet,
         answers: answers
       });
@@ -402,15 +412,11 @@ function getAnswersFromSortableQuestion() {
 }
 
 function createAnswerModule(id, answer, clickableQuestion) {
-  sortableIcon = document.createElement("span");
-  sortableIcon.classList.add("ui-icon-grip-dotted-vertical");
-  sortableIcon.classList.add("ui-icon");
   moduleSection = document.createElement("section");
   moduleSection.id = id;
   moduleSection.classList.add("module");
   moduleParagraph = document.createElement("p");
   moduleParagraph.innerText = answer;
-  moduleSection.appendChild(sortableIcon);
   moduleSection.appendChild(moduleParagraph);
   if (clickableQuestion) {
     moduleSection.addEventListener("click", function () {
@@ -426,15 +432,18 @@ function compareAnswers() {
   for (candidate in candidateAns) {
     candidateAnswers = candidateAns[candidate];
     for (
-      let questionNumber = 0; questionNumber < candidateAnswers.length; questionNumber++
+      let questionNumber = 0;
+      questionNumber < candidateAnswers.length;
+      questionNumber++
     ) {
       candidateSAns = candidateAnswers[questionNumber];
       var candidateAnsTotal = 0;
       var percentageCal = 0;
       if (candidateSAns.length == 2) {
         for (let i = 0; i < candidateSAns.length; i++) {
-          percentageCal = Math.abs(candidateSAns[i] - answers[questionNumber][i]) / 3
-          totalPercent += 6.25 * (1 - (percentageCal))
+          percentageCal =
+            Math.abs(candidateSAns[i] - answers[questionNumber][i]) / 3;
+          totalPercent += 6.25 * (1 - percentageCal);
         }
       } else {
         for (let i = 0; i < candidateSAns.length; i++) {
@@ -449,7 +458,6 @@ function compareAnswers() {
               totalPercent += 2.5 * (5 - percentageSliderCal);
             }
             percentageSliderCal = 0;
-
           } else {
             percentageCal += Math.abs(
               answers[questionNumber][i] - candidateSAns[i]
@@ -465,7 +473,6 @@ function compareAnswers() {
           }
         }
       }
-
 
       percentageCal = 0;
       percentageSliderCal = 0;
@@ -528,9 +535,11 @@ function changePercent() {
 
     $({
       countNum: 0
-    }).animate({
-      countNum: percentage
-    }, {
+    }).animate(
+      {
+        countNum: percentage
+      },
+      {
         duration: 2000,
         easing: "linear",
         step: function () {
@@ -542,7 +551,8 @@ function changePercent() {
               .children()
               .css("width", pct);
         }
-      });
+      }
+    );
     i++;
   });
 }
@@ -692,7 +702,7 @@ $(document).ready(function () {
     $("#tab5_content").hide();
     $("#tab6_content").show();
   });
-  resultPic()
+  resultPic();
 });
 $("#next").click(showNextQuestion);
 
@@ -709,7 +719,7 @@ $("#next").click(showNextQuestion);
 function resultPic() {
   $(".bar-percentage").each((i, bar) => {
     imageURL = candidatePic[i];
-    bar.style.background = `url("${imageURL}") no-repeat`
-    bar.style.backgroundSize = "100% 100%"
+    bar.style.background = `url("${imageURL}") no-repeat`;
+    bar.style.backgroundSize = "100% 100%";
   });
 }

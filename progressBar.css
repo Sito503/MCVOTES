@@ -58,7 +58,7 @@ a.prev {
 	text-align: center;
 	left: 4%;
 	padding: 3%;
-
+	padding-bottom: 0;
 }
 
 .progress ul {
