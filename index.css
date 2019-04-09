@@ -81,7 +81,7 @@ i {
 }
 
 .question {
-  font-size: 18px;
+  font-size: 48px;
   font-family: "Roboto", sans-serif;
   padding: 2%;
 }
@@ -163,6 +163,7 @@ p {
   color: black;
   padding: 0.5%;
   text-shadow: none !important;
+  font-size: 30px;
 }
 
 /* hover effect */
@@ -266,7 +267,7 @@ slider {
   position: absolute;
 }
 
-slider > * {
+slider>* {
   position: absolute;
   display: block;
   width: 100%;
@@ -571,7 +572,7 @@ td {
   width: 318px;
 }
 
-.toggle_radio > * {
+.toggle_radio>* {
   float: left;
 }
 
@@ -617,17 +618,17 @@ td {
   transition: all 0.4s ease;
 }
 
-#first_toggle:checked ~ .toggle_option_slider {
+#first_toggle:checked~.toggle_option_slider {
   background: rgba(255, 255, 255, 0.3);
   left: 3px;
 }
 
-#second_toggle:checked ~ .toggle_option_slider {
+#second_toggle:checked~.toggle_option_slider {
   background: rgba(255, 255, 255, 0.3);
   left: 109px;
 }
 
-#third_toggle:checked ~ .toggle_option_slider {
+#third_toggle:checked~.toggle_option_slider {
   background: rgba(255, 255, 255, 0.3);
   left: 215px;
 }
@@ -779,7 +780,7 @@ td {
  * Transform all the slices of hamburger
  * into a crossmark.
  */
-#menuToggle input:checked ~ span {
+#menuToggle input:checked~span {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
   background: #232323;
@@ -788,7 +789,7 @@ td {
 /*
  * But let's hide the middle one.
  */
-#menuToggle input:checked ~ span:nth-last-child(3) {
+#menuToggle input:checked~span:nth-last-child(3) {
   opacity: 0;
   transform: rotate(0deg) scale(0.2, 0.2);
 }
@@ -796,7 +797,7 @@ td {
 /*
  * Ohyeah and the last one should go the other direction
  */
-#menuToggle input:checked ~ span:nth-last-child(2) {
+#menuToggle input:checked~span:nth-last-child(2) {
   transform: rotate(-45deg) translate(0, -1px);
 }
 
@@ -827,7 +828,7 @@ td {
 /*
  * And let's slide it in from the left
  */
-#menuToggle input:checked ~ ul {
+#menuToggle input:checked~ul {
   transform: none;
 }
 
