@@ -255,8 +255,6 @@ ul.tabs li:hover:before {
   width: 20%;
   margin: 1%;
   float: right;
-  
-
 }
 
 slider {
@@ -268,7 +266,7 @@ slider {
   position: absolute;
 }
 
-slider>* {
+slider > * {
   position: absolute;
   display: block;
   width: 100%;
@@ -314,7 +312,7 @@ slide:nth-child(4) {
   display: inline-block;
   width: 100%;
   margin-top: 50px;
-  color:transparent;
+  color: transparent;
 }
 
 @keyframes slide {
@@ -573,7 +571,7 @@ td {
   width: 318px;
 }
 
-.toggle_radio>* {
+.toggle_radio > * {
   float: left;
 }
 
@@ -619,17 +617,17 @@ td {
   transition: all 0.4s ease;
 }
 
-#first_toggle:checked~.toggle_option_slider {
+#first_toggle:checked ~ .toggle_option_slider {
   background: rgba(255, 255, 255, 0.3);
   left: 3px;
 }
 
-#second_toggle:checked~.toggle_option_slider {
+#second_toggle:checked ~ .toggle_option_slider {
   background: rgba(255, 255, 255, 0.3);
   left: 109px;
 }
 
-#third_toggle:checked~.toggle_option_slider {
+#third_toggle:checked ~ .toggle_option_slider {
   background: rgba(255, 255, 255, 0.3);
   left: 215px;
 }
@@ -781,7 +779,7 @@ td {
  * Transform all the slices of hamburger
  * into a crossmark.
  */
-#menuToggle input:checked~span {
+#menuToggle input:checked ~ span {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
   background: #232323;
@@ -790,7 +788,7 @@ td {
 /*
  * But let's hide the middle one.
  */
-#menuToggle input:checked~span:nth-last-child(3) {
+#menuToggle input:checked ~ span:nth-last-child(3) {
   opacity: 0;
   transform: rotate(0deg) scale(0.2, 0.2);
 }
@@ -798,7 +796,7 @@ td {
 /*
  * Ohyeah and the last one should go the other direction
  */
-#menuToggle input:checked~span:nth-last-child(2) {
+#menuToggle input:checked ~ span:nth-last-child(2) {
   transform: rotate(-45deg) translate(0, -1px);
 }
 
@@ -829,7 +827,7 @@ td {
 /*
  * And let's slide it in from the left
  */
-#menuToggle input:checked~ul {
+#menuToggle input:checked ~ ul {
   transform: none;
 }
 
@@ -851,7 +849,7 @@ td {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   -o-box-sizing: content-box;
-  box-sizing: content-box
+  box-sizing: content-box;
 }
 
 .radios-to-slider.medium {
@@ -860,18 +858,18 @@ td {
   -moz-border-radius: 25px;
   -o-border-radius: 25px;
   border-radius: 25px;
-  padding: 5px
+  padding: 5px;
 }
 
 .radios-to-slider .slider-level {
   background-color: #fff;
   cursor: pointer;
   position: absolute;
-  display: block
+  display: block;
 }
 
 .radios-to-slider .slider-level.slider-lower-level {
-  opacity: .2
+  opacity: 0.2;
 }
 
 .radios-to-slider.medium .slider-level {
@@ -881,7 +879,7 @@ td {
   -moz-border-radius: 22px;
   -o-border-radius: 22px;
   border-radius: 22px;
-  z-index: 2
+  z-index: 2;
 }
 
 .slider-label {
@@ -889,16 +887,16 @@ td {
   display: block;
   cursor: pointer;
   color: #5e5e5e;
-  text-align: center
+  text-align: center;
 }
 
 .slider-label-active {
-  font-weight: bold
+  font-weight: bold;
 }
 
 .radios-to-slider.medium .slider-label {
   top: 50px;
-  width: 44px
+  width: 44px;
 }
 
 .radios-to-slider .slider-bar {
@@ -911,26 +909,26 @@ td {
   position: absolute;
   left: 0;
   top: 0;
-  min-width: 32px !important
+  min-width: 32px !important;
 }
 
 .slider-bar.transition-enabled {
-  -webkit-transition: .2s;
-  -moz-transition: .2s;
-  -o-transition: .2s;
-  transition: .2s
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
 }
 
 .radios-to-slider.medium .slider-bar {
   -webkit-border-radius: 22px;
   -moz-border-radius: 22px;
   -o-border-radius: 22px;
-  border-radius: 22px
+  border-radius: 22px;
 }
 
 .slider-knob {
   float: right;
-  background-color: #51237f
+  background-color: #51237f;
 }
 
 .radios-to-slider.medium .slider-knob {
@@ -939,5 +937,5 @@ td {
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
   -o-border-radius: 25px;
-  border-radius: 25px
+  border-radius: 25px;
 }
