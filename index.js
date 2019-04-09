@@ -12,8 +12,8 @@ const sliderLabelValues = [
 ];
 let candidatePic = [
   "imgs/bryan.jpg", "imgs/meave.jpg ", "imgs/paige.jpg", 
-  "imgs/mark.jpg", "imgs/divine.jpg", "imgs/ishita.jpg", 
-  "imgs/ivy.jpg", "imgs/mcvotes.png"
+  "imgs/mark.jpg", "imgs/divine.jpg", 
+  "imgs/ivy.jpg", "imgs/ishita.jpg", "imgs/kyle.jpg"
 ];
 let candidateAns = {
   bryan: [
