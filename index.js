@@ -159,7 +159,7 @@ const questionSet = {
       "Health Wellness"
     ]
   ],
-  "Rank the following food improvement in terms of importance to you": [
+  "Rank the following food improvements in terms of importance to you": [
     "Ranking",
     [
       "Quality & Taste",
@@ -169,7 +169,7 @@ const questionSet = {
       "Healthier Vending Option"
     ]
   ],
-  "Drag and rank the following textbook improvement in terms of importance to you": [
+  "Drag and rank the following textbook improvements in terms of importance to you": [
     "Ranking",
     [
       "Affordability",
@@ -177,11 +177,11 @@ const questionSet = {
       "More Z-courses/ open educational resources (no-cost resource)"
     ]
   ],
-  "Department advisor should be required to use Starfish for advising appointment": [
+  "Department advisors should be required to use Starfish for advising appointment": [
     "Slider"
   ],
 
-  "Montgomery College should improve security, even doing so will increase tuition costs": [
+  "Montgomery College should improve security, even though doing so will increase tuition costs": [
     "Slider"
   ],
   " I think the following characteristic(s) are important to me for candidates who": [
