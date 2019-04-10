@@ -164,7 +164,6 @@ p {
   color: black;
   padding: 0.5%;
   text-shadow: none !important;
-  font-size: 3vw;
 }
 
 /* hover effect */
@@ -689,6 +688,7 @@ td {
 
 .profile .profile-image {
   padding: 15% 10% 0;
+  height: 100%;
 }
 
 .profile .profile-image img {
